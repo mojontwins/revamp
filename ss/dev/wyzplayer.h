@@ -14,10 +14,10 @@ unsigned char play_music = 0;
 void ISR(void) {
 	if (play_music) {
 		#asm
-			ld a, 1
+			ld b, 1
 			call SetRAMBank
 			call WYZPLAYERISR
-			xor a
+			ld b, 0
 			call SetRAMBank			
 		#endasm
 	}
@@ -31,11 +31,11 @@ void wyz_play_sound (unsigned char fx_number, unsigned char fx_channel) {
 	
 	#asm
 		di
-		ld a,1
+		ld b, 1
 		call SetRAMBank
 		ld bc, (_asm_int)
 		call INICIAEFECTO
-		xor a
+		ld b, 0
 		call SetRAMBank
 		ei
 	#endasm
@@ -49,11 +49,11 @@ void wyz_play_music (unsigned char song_number) {
 
 	#asm
 		di
-		ld a, 1
+		ld b, 1
 		call SetRAMBank
 		ld a, (_asm_int)
 		call CARGA_CANCION
-		xor a
+		ld b, 0
 		call SetRAMBank
 		ei
 	#endasm
@@ -66,10 +66,10 @@ void wyz_stop_sound ()
 	
 	#asm
 		di
-		ld a,1
+		ld b, 1
 		call SetRAMBank
 		call SILENCIA_PLAYER
-		xor a
+		ld b, 0
 		call SetRAMBank
 		ei
 	#endasm

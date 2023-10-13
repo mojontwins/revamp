@@ -154,13 +154,14 @@ void unpack_RAMn (unsigned char n, unsigned int address, unsigned int destinatio
 	#asm	
 		di
 		ld a, (_ram_page)
+		ld b, a
 		call SetRAMBank
 		
 		ld hl, (_ram_address)
 		ld de, (_ram_destination)
 		call depack
 		
-		xor a
+		ld b, 0
 		call SetRAMBank
 		ei
 	#endasm

@@ -31,10 +31,13 @@ extern unsigned char level_buffer[0];
 	._level_buffer defs 4275
 #endasm
 
+/*
 extern unsigned char AD_FREE[0];
 #asm
 	._AD_FREE defs 40 * 15
 #endasm
+*/
+unsigned char AD_FREE[40*15];
 
 struct sp_UDK keys;										// Keys structure.
 unsigned int (*joyfunc)(struct sp_UDK *);				// Controls.
@@ -121,17 +124,14 @@ void main (void) {
 	joyfunc = (void *)sp_JoyKeyboard;
 
 	// Load tileset
-		
+
 	gen_pt = tileset;
 	gpit = 0; do {
 		sp_TileArray (gpit, gen_pt);
 		gen_pt += 8;
 		gpit ++;		
 	} while (gpit);
-#asm
-	ld a, 3
-	out(254),a
-#endasm		
+
 	// Clipping rectangle
 
 	spritesClipValues.row_coord = VIEWPORT_Y;
@@ -139,9 +139,9 @@ void main (void) {
 	spritesClipValues.height = 18;
 	spritesClipValues.width = 30;
 	spritesClip = &spritesClipValues;
-	
+
 	// Create sprites
-	
+
 	sp_player = sp_CreateSpr (sp_MASK_SPRITE, 3, sprite_1_a);
 	sp_AddColSpr (sp_player, sprite_1_b);
 	sp_AddColSpr (sp_player, sprite_1_c);
@@ -155,7 +155,6 @@ void main (void) {
 	}
 
 
-	
 	// Intro
 	
 	play_music = 1;
@@ -172,7 +171,7 @@ void main (void) {
 	
 	blackout_everything ();
 	draw_fast (10, 10, 70, (unsigned char *) ("DEDICATED TO"));
-	draw_fast (9, 12, 71, (unsigned char *) ("ENRIQ  CERVERA"));
+	draw_fast (9, 12, 71, (unsigned char *) ("ENRIC  CERVERA"));
 	draw_fast (8, 13, 71, (unsigned char *) ("EMILIO SALGUEIRO"));
 	wyz_play_sound (6, 2);
 	espera_activa (150);
