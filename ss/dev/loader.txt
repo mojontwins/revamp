@@ -1,0 +1,11 @@
+blackout	EQU 05D5CH
+depack		EQU 05D69H
+dzx7_standard	EQU 05D69H
+dzx7s_copy_byte_loop EQU 05D6BH
+dzx7s_exit	EQU 05DA5H
+dzx7s_len_size_loop EQU 05D77H
+dzx7s_len_value_loop EQU 05D7DH
+dzx7s_main_loop	EQU 05D6DH
+dzx7s_next_bit	EQU 05DA8H
+dzx7s_offset_end EQU 05D9CH
+dzx7s_rld_next_bit EQU 05D92H

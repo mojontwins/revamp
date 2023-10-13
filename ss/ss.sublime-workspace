@@ -1,0 +1,1621 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"array",
+				"array_keys_get_args\tabc"
+			],
+			[
+				"noti",
+				"notificame\t(ficheros.php)"
+			],
+			[
+				"mysqli_fe",
+				"mysqli_fetch_assoc\tabc"
+			],
+			[
+				"emai",
+				"email_dest\t(diario.md)"
+			],
+			[
+				"resultados",
+				"resultados_por_pagina\tabc"
+			],
+			[
+				"resumen",
+				"resumen_invitaciones\tabc"
+			],
+			[
+				"intervalo",
+				"intervalo_tiempo_pretty\t(ficheros.php)"
+			],
+			[
+				"fecha",
+				"fechaenvio\tabc"
+			],
+			[
+				"invitati",
+				"invitation_data\tabc"
+			],
+			[
+				"_user",
+				"_user_ldap_displayName\t(REST_Controller.php)"
+			],
+			[
+				"feche",
+				"fechaenvio\t(ficheros.php)"
+			],
+			[
+				"_user_ldap_",
+				"_user_ldap_mail\tabc"
+			],
+			[
+				"_user_lda",
+				"_user_ldap_displayName\tabc"
+			],
+			[
+				"texto",
+				"texto_opcional\t(genera-invitacion.php)"
+			],
+			[
+				"table",
+				"table-layout\tproperty"
+			],
+			[
+				"JAconsi",
+				"JAconsignaLimitesSoft\tabc"
+			],
+			[
+				"UPLOA",
+				"UPLOAD_ERR_INI_SIZE\tabc"
+			],
+			[
+				"JA",
+				"JAconsignaLimitesMaxPrettyPrint\t(form-envio-fichero.php)"
+			],
+			[
+				"ja",
+				"jaconsignalimites\t(LDAP.php)"
+			],
+			[
+				"DefaultLimit",
+				"DefaultLimitTime\t(LDAP.php)"
+			],
+			[
+				"descripc",
+				"descripción\tabc"
+			],
+			[
+				"invit",
+				"invitation\tabc"
+			],
+			[
+				"extrae",
+				"extrae_invitacion\t(trabajoficheros.php)"
+			],
+			[
+				"crea",
+				"crea_invitacion\t(trabajoficheros.php)"
+			],
+			[
+				"defecto",
+				"defecto_ta_publico\tabc"
+			],
+			[
+				"form_sub",
+				"form_submit\t(form-opciones-fichero.php)"
+			],
+			[
+				"PROCESADOE",
+				"PROCESADO_ERR_EXTENSION\tabc"
+			],
+			[
+				"write",
+				"write_log\t(Common.php)"
+			],
+			[
+				"margi",
+				"margin-right\tproperty"
+			],
+			[
+				"fechaexp",
+				"fechaexp_altered\tabc"
+			],
+			[
+				"bean",
+				"beanstalkd_port\tabc"
+			],
+			[
+				"get_se",
+				"get_select_sql\t(Ignitedquery.php)"
+			],
+			[
+				"log_",
+				"log_message('info',\"estadoav::fid"
+			],
+			[
+				"HTTP",
+				"HTTP_HOST"
+			],
+			[
+				"CSRF",
+				"CSRFToken"
+			],
+			[
+				"uploa",
+				"uploadedImage"
+			],
+			[
+				"orgi",
+				"organismoId"
+			],
+			[
+				"Appl",
+				"ApplyDifference"
+			],
+			[
+				"RE",
+				"REMOTE_ADDR"
+			],
+			[
+				"LAST",
+				"LAST_ATTEMPT\t(ColumnNames.php)"
+			],
+			[
+				"ANTIBRUTE",
+				"ANTIBRUTEFORCE_BANFOR\t(LdapConfig.php)"
+			],
+			[
+				"antibrute",
+				"antibruteforce.attempts\t(Ldap.config.php)"
+			],
+			[
+				"GET_USER",
+				"GET_USER_BY_USERNAME"
+			],
+			[
+				"session_reg",
+				"session_regenerate_id"
+			],
+			[
+				"str",
+				"strcasecmp"
+			],
+			[
+				"sedeSele",
+				"sedeSeleccionadaShow"
+			],
+			[
+				"format",
+				"formattedStartDate"
+			],
+			[
+				"org",
+				"organismo_id\t(Queries.php)"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"orga",
+				"organismoId"
+			],
+			[
+				"orgna",
+				"organismoId"
+			],
+			[
+				"organis",
+				"organismo_id"
+			],
+			[
+				"organimo",
+				"organismoId"
+			],
+			[
+				"edif",
+				"edificio"
+			],
+			[
+				"ORGA",
+				"ORGANISMO_ID\t(ManageBlackoutsPage.php)"
+			],
+			[
+				"organismo",
+				"organismoId"
+			],
+			[
+				"organi",
+				"organismoId"
+			],
+			[
+				"locationP",
+				"locationParameters"
+			],
+			[
+				"fijarEs",
+				"fijarEstaSede\t(ManageBlackoutsPage.php)"
+			],
+			[
+				"locatio",
+				"locationParameters"
+			],
+			[
+				"SetOrgans",
+				"SetFilterOrganismoId"
+			],
+			[
+				"organismo_",
+				"organismo_id"
+			],
+			[
+				"text-",
+				"text-overflow"
+			],
+			[
+				"_autoa",
+				"_autoAssignToggledOff"
+			],
+			[
+				"_autoAS",
+				"_autoAssignToggledOff"
+			],
+			[
+				"organ",
+				"organismo_id"
+			],
+			[
+				"ORGANI",
+				"ORGANISMO_ID"
+			],
+			[
+				"collapseSM",
+				"collapseSMFaqs1\t(seguimiento_faqs_panel.html)"
+			],
+			[
+				"RESOURCE_TYP",
+				"RESOURCE_TYPE_ID"
+			],
+			[
+				"sede",
+				"sedeId"
+			],
+			[
+				"menu",
+				"mainMenuSelected"
+			],
+			[
+				"zone",
+				"zoneSelected"
+			],
+			[
+				"list",
+				"listZones"
+			],
+			[
+				"AE_",
+				"AE_render_bg_inner_loop"
+			],
+			[
+				"AE_render_bg",
+				"AE_render_bg_pat_outter_loop"
+			],
+			[
+				"AE_ren",
+				"AE_render_bg_attr_lop"
+			],
+			[
+				"ignore",
+				"ignoreMapFile"
+			],
+			[
+				"bolts",
+				"bolts_update_tile"
+			],
+			[
+				"psk",
+				"PLAYER_SINKS"
+			],
+			[
+				"PLAYER_PU",
+				"PLAYER_HAS_PUNCH\t(definitions.h)"
+			],
+			[
+				"sclp",
+				"sclpGetValue"
+			],
+			[
+				"menu_instr",
+				"menu_instructions_one_char"
+			],
+			[
+				"MENU_T",
+				"MENU_TOP_Y"
+			],
+			[
+				"poin",
+				"pointer_opt"
+			],
+			[
+				"MENU",
+				"MENU_INST_TOP_Y"
+			],
+			[
+				"MENU_",
+				"MENU_INST_ST_DELETE"
+			],
+			[
+				"MENU_INST",
+				"MENU_INST_ST_PRINT"
+			],
+			[
+				"MENU_INS",
+				"MENU_INST_ST_IDLE"
+			],
+			[
+				"MEN",
+				"MENU_INST_ST_DELETE"
+			],
+			[
+				"MENU_I",
+				"MENU_INST_ST_IDLE"
+			],
+			[
+				"SPRI",
+				"SPRINGS_CREATE_FROM_MAP"
+			],
+			[
+				"CREATE",
+				"PROPELLERS_CREATE_FROM_MAP"
+			],
+			[
+				"LAME",
+				"ENABLE_LAME_BOSS_1"
+			],
+			[
+				"ENABLE_",
+				"ENABLE_LAME_BOSS_1"
+			],
+			[
+				"ENEMS_",
+				"ENEMS_GENERAL_HIT_FRAMES"
+			],
+			[
+				"ENABLE",
+				"ENABLE_LAME_BOSS_1"
+			],
+			[
+				"ENAB",
+				"ENABLE_PRECALC_HOMING_FANTY"
+			],
+			[
+				"SAW",
+				"ENABLE_SAW"
+			],
+			[
+				"levelNames",
+				"levelNamesListIndex"
+			],
+			[
+				"ppode",
+				"ppodewwwr_on"
+			],
+			[
+				"ppu",
+				"ppu_waitnmi"
+			],
+			[
+				"fra",
+				"frame_counter"
+			],
+			[
+				"PLAYER_",
+				"PLAYER_GENITAL"
+			],
+			[
+				"PLAYER_HA",
+				"PLAYER_HAS_JUMP"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "dev/comp.bat",
+			"settings":
+			{
+				"buffer_size": 1042,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/ss.c",
+			"settings":
+			{
+				"buffer_size": 3845,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/loader.txt",
+			"settings":
+			{
+				"buffer_size": 292,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 24 files for \"ob_y\" (case sensitive)\n\n0 matches\n\nSearching 24 files for \"yOsc\" (case sensitive)\n\nD:\\temp\\ss\\dev\\engine.h:\n  531  \t\t// Lit somewhat obscured screens\n  532  \t\t\n  533: \t\tif (y_pant >= yOsc) draw_overlay ((player.x >> 3), (player.y >> 3));\n  534: \t\tif (y_pant >= yOsc) draw_buff ();\n  535: \t\tif (y_pant >= yOsc) del_overlay ((player.x >> 3), (player.y >> 3));\n  536  \t\t\n  537  \t\t// erm...\n\nD:\\temp\\ss\\dev\\leveldata.h:\n    3  typedef struct {\n    4  \tunsigned int address;\n    5: \tunsigned char yOsc;\n    6  \tunsigned char init_x_pant;\n    7  \tunsigned char init_y_pant;\n\nD:\\temp\\ss\\dev\\levelstruct.h:\n   53  extern unsigned char map_buffer [0];\n   54  extern unsigned int level_pointer [0];\n   55: unsigned char yOsc = 4;\n   56  \n   57  #asm\n   ..\n   64  void load_level (unsigned char level) {\n   65  \tunpack_RAMn (4, levels [level].address, level_buffer, 0);\n   66: \tyOsc = levels [level].yOsc;\n   67  }\n   68  \n   ..\n  152  \t// Dark?\n  153  \t\n  154: \tif (y_pant < yOsc) {\n  155  \t\t#asm\n  156  \t\t\tld hl, 24999\n\nD:\\temp\\ss\\dev\\ss.map:\n  724  _map_buffer                     = $ACBC ; addr, public, , ss_c, code_compiler, levelstruct.h::draw_buff::0::50:57\n  725  _level_pointer                  = $ACBA ; addr, public, , ss_c, code_compiler, levelstruct.h::draw_buff::0::50:57\n  726: _yOsc                           = $D6CA ; addr, public, , ss_c, data_compiler, levelstruct.h::draw_buff::0::50:55\n  727  _load_level                     = $AD52 ; addr, public, , ss_c, code_compiler, levelstruct.h::load_level::0::50:66\n  728  _draw_coloured_tile             = $AD93 ; addr, public, , ss_c, code_compiler, levelstruct.h::draw_coloured_tile::0::51:71\n\n9 matches across 4 files\n",
+			"settings":
+			{
+				"buffer_size": 1699,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "dev/levelstruct.h",
+			"settings":
+			{
+				"buffer_size": 4149,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/loader/loader.asm",
+			"settings":
+			{
+				"buffer_size": 3651,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/overlay.h",
+			"settings":
+			{
+				"buffer_size": 5215,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/engine.h",
+			"settings":
+			{
+				"buffer_size": 13895,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "bin/make-ram3.bat",
+			"settings":
+			{
+				"buffer_size": 147,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/loader/loaderzx.asm-orig",
+			"settings":
+			{
+				"buffer_size": 3776,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 79.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"php",
+				"phpfmt: format now"
+			],
+			[
+				"phpf",
+				"phpfmt: format now"
+			],
+			[
+				"phpm",
+				"phpfmt: format now"
+			],
+			[
+				"phpfmt",
+				"phpfmt: format now"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"boxy",
+				"Boxy Theme: Preferences"
+			]
+		],
+		"width": 430.0
+	},
+	"console":
+	{
+		"height": 184.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/temp/ss",
+		"/D/temp/ss/bin",
+		"/D/temp/ss/dev",
+		"/D/temp/ss/dev/loader",
+		"/D/temp/ss/gfx",
+		"/D/temp/ss/map",
+		"/D/temp/ss/mus",
+		"/D/temp/ss/utils"
+	],
+	"file_history":
+	[
+		"/D/temp/ss/dev/ss.c",
+		"/D/temp/ss/dev/menu.h",
+		"/D/temp/ss/dev/engine.h",
+		"/D/temp/ss/dev/ss.map",
+		"/D/temp/ss/dev/levelstruct.h",
+		"/D/temp/ss/bin/make-ram4.bat",
+		"/D/git/MK1/src/dev/assets/levels.h",
+		"/D/temp/ss/dev/128k.h",
+		"/D/temp/ss/dev/wyzplayer.h",
+		"/D/temp/ss/dev/aplib.h",
+		"/D/temp/ss/dev/loader/loaderzx.asm-orig",
+		"/D/Proyectos/2023/20230808 - Revision SMSWS en P3S/instrucciones.txt",
+		"/D/Proyectos/2023/20230516 - Reparación vista Administradores de Recursos en Reservas/modificaciones/Presenters/Sandetel/ManageResourceAdminsPresenter.php",
+		"/D/Proyectos/CIs.txt",
+		"/D/Proyectos/2023/20230808 - Revision SMSWS en P3S/instrucciones-separado.txt",
+		"/D/Proyectos/2021/20211215a - P3S. Nuevos métodos en WebmovilWS/instrucciones-separado.txt",
+		"/D/Proyectos/2021/20211215a - P3S. Nuevos métodos en WebmovilWS/instrucciones2.txt",
+		"/C/Users/jcastano/Downloads/SmsWS.java",
+		"/C/Users/jcastano/Downloads/BlockLeaves.java",
+		"/D/Proyectos/remote/descon01/consigna/app/config/rest.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/authmodules/LDAP.php",
+		"/D/Proyectos/2023/20230504 - Reparación PassCaducado Consigna y Reservas/instrucciones.txt",
+		"/D/Proyectos/remote/descon01/simplesaml/config/config.php",
+		"/D/Proyectos/remote/descon01/simplesaml/www/_include.php",
+		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Error/Error.php",
+		"/D/Proyectos/remote/descon01/consigna/app/controllers/ficheros.php",
+		"/D/Proyectos/remote/descon01/simplesaml/templates/includes/header.php",
+		"/D/Proyectos/remote/descon01/simplesaml/dictionaries/errors.translation.json",
+		"/D/Proyectos/remote/descon01/consigna.OLD/app/libraries/authmodules/LDAP.php-deprecated",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/authmodules/LDAP.php-deprecated",
+		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Error/ErrorCodes.php",
+		"/D/Proyectos/remote/descon01/consigna/system/libraries/Upload.php",
+		"/D/Proyectos/2023/20230321 - Reserva de Recursos v1.32.0.0 - Edificios recuperables en Sync/instrucciones.txt",
+		"/D/Proyectos/remote/descon01/consigna/app/models/trabajoficheros.php",
+		"/D/Proyectos/remote/descon01/consigna/app/controllers/api_v1/api.php",
+		"/C/Users/jcastano/Desktop/pikapika.txt",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/MY_Form_validation.php",
+		"/D/Proyectos/2021/20210319a - Consigna v2.7.0.0 - históricos, correcciones/instrucciones.txt",
+		"/D/Proyectos/2021/20210205a - Actualización Consigna 2.4.0.0/instrucciones.txt",
+		"/D/temp/logs/consigna--20230113/log-2023-01-13.php.nodo2",
+		"/D/Proyectos/remote/descon01/consigna/mysql-database/database.sql",
+		"/D/Proyectos/remote/descon01/consigna/system/helpers/form_helper.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/Manejoauxiliar.php",
+		"/D/Proyectos/remote/descon01/consigna/app/config/config.php",
+		"/D/Proyectos/2023/20230120 - Declaraciones de Accesibilidad para clientes móviles de Consigna/instrucciones.txt",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/nusoap.php",
+		"/D/Proyectos/remote/descon01/consigna/app/views/cabecera.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/nusoapmime.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.xmlschema.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.wsdlcache.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.wsdl.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soapclient.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_val.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_transport_http.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_server.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_parser.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_fault.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/Email.php",
+		"/D/Proyectos/remote/descon01/consigna/app/views/invitacion-results.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Output.php",
+		"/C/Users/jcastano/Downloads/Thread.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/URI.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Router.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/authmodules/SamlSSO.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/CodeIgniter.php",
+		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Logger.php",
+		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Logger/FileLoggingHandler.php",
+		"/D/Proyectos/remote/descon01/simplesaml/SamlAuthentication.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/Auth.php",
+		"/D/Proyectos/remote/descon01/consigna/app/controllers/usuario.php",
+		"/C/Users/jcastano/Desktop/Configuration.php",
+		"/C/Users/jcastano/Desktop/authsources.php",
+		"/C/Users/jcastano/Desktop/config.php",
+		"/D/Proyectos/remote/descon01/simplesaml/metadata/saml20-idp-remote.php",
+		"/D/Proyectos/remote/descon01/simplesaml/config/authsources.php",
+		"/D/Proyectos/remote/descon01/simplesaml/Configuration.php",
+		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Memcache.php",
+		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Session.php",
+		"/D/Proyectos/remote/descon01/upgrade_php8.md",
+		"/D/Proyectos/remote/descon01/consigna/.gitignore",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Exceptions.php",
+		"/D/Proyectos/remote/descon01/consigna/system/helpers/html_helper.php",
+		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Error/Assertion.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/php-8.1-strftime.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/Ignitedquery.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Lang.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Input.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/MY_Log.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Common.php",
+		"/D/Proyectos/remote/descon01/consigna/system/libraries/Log.php",
+		"/D/Proyectos/remote/descon01/consigna/.htaccess",
+		"/D/Proyectos/remote/descon01/consigna/public/index.php",
+		"/D/Proyectos/remote/descon01/consigna/app/views/form-login.php",
+		"/D/Proyectos/remote/descon01/consigna/app/config/routes.php",
+		"/D/Proyectos/2022/20221125b - Reserva de Recursos 1.29.0.0/instrucciones.txt",
+		"/D/Proyectos/2022/20221209a - Consigna 2.15.0.0 - Separación de autenticación y autorización/instrucciones.txt",
+		"/C/Users/jcastano/Desktop/archivo_dest_test",
+		"/C/Users/jcastano/Desktop/destinatario.txt",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/Gestionpermisos.php",
+		"/D/Proyectos/remote/descon01/consigna/app/config/ldap.php",
+		"/D/Proyectos/remote/descon01/consigna/system/helpers/array_helper.php",
+		"/C/Users/jcastano/Downloads/rcube.php",
+		"/C/Users/jcastano/Downloads/instrucciones (2).txt",
+		"/D/Proyectos/remote/descon01/sftp-config.json",
+		"/D/Proyectos/remote/descon01/consigna/app/config/config.php-MODELO",
+		"/D/Proyectos/remote/descon01/consigna/config/config.php",
+		"/C/Users/jcastano/AppData/Local/Temp/7zO01770D76/About.txt",
+		"/D/temp/jetpaco/dev/compile.bat",
+		"/D/Proyectos/2022/20220418a - Consigna 2.13.0.0 - Cookies seguras y correcciones/instrucciones.txt",
+		"/D/Proyectos/remote/descon01/consigna/app/views/ver_fichero.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/MY_Upload.php",
+		"/D/Proyectos/remote/descon01/consigna/app/controllers/cron.php",
+		"/D/Proyectos/remote/descon01/consigna/app/language/spanish/upload_lang.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Loader.php",
+		"/D/Proyectos/remote/descon01/consigna/diario.md",
+		"/D/Proyectos/remote/descon01/consigna/app/models/api_model.php",
+		"/D/Proyectos/remote/descon01/consigna/system/libraries/Form_validation.php",
+		"/D/Proyectos/2022/20220721a - Consigna 2.14.0.0 - Revisión procedimiento logout/instrucciones.txt",
+		"/D/temp/fotos/show_album.php",
+		"/D/Proyectos/remote/descon01/consigna/app/config/avanzadas.php",
+		"/D/temp/fotos/index.php",
+		"/D/temp/fotos/resize.php",
+		"/D/temp/fotos/show_photo.php",
+		"/D/temp/goe/showcomic.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/Session.php",
+		"/D/temp/fotos/style.css",
+		"/D/cosas/CPCbasic3/test1.bas",
+		"/C/Users/jcastano/AppData/Local/Temp/7zO84544D35/ficheros.php"
+	],
+	"find":
+	{
+		"height": 54.0
+	},
+	"find_in_files":
+	{
+		"height": 134.0,
+		"where_history":
+		[
+			"D:\\temp\\ss\\dev",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\extra",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\libraries\\authmodules",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01",
+			"D:\\Proyectos\\remote\\descon01\\simplesaml\\templates",
+			"D:\\Proyectos\\remote\\descon01\\simplesaml",
+			"D:\\Proyectos\\remote\\descon01\\simplesaml\\www",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\mysql-database",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\simplesaml",
+			"D:\\Proyectos\\remote\\descon01\\simplesaml\\lib\\SimpleSAML",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\controllers",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\simplesaml",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\system",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\config",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\config",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\css",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\login_prod",
+			"",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\system",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\system",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\system",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\js",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\css",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\js",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\controllers",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\libraries\\pheanstalk",
+			"D:\\Proyectos\\remote\\descon01\\consigna",
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"i",
+			"j",
+			"^\n",
+			"yOsc",
+			"ob_y",
+			"28375",
+			"25000",
+			"level_buffer",
+			"joyfunc",
+			"yOsc",
+			"SetRAMBank",
+			"avws",
+			"No funci",
+			"LIMPIO",
+			"PENDIENTE",
+			"identidad",
+			"var7",
+			"var6",
+			"var5",
+			"var4",
+			"var3",
+			"var2",
+			"var1",
+			"excesivo",
+			"general",
+			"api_model",
+			"enlace",
+			"ijab",
+			"_detect_method",
+			"post",
+			"ficheros_post",
+			"rest_controller",
+			"expired",
+			"passcaducado",
+			"peticion POST",
+			"passcaducado",
+			"\"header\"",
+			"\"header",
+			"UNHANDLEDEXCEPTION",
+			"title_UNHANDLEDEXCEPTION",
+			"no controlada",
+			"error",
+			"errors",
+			"0131",
+			"extensi",
+			"exe",
+			"move_uploaded_file",
+			"'nombre'",
+			"data",
+			"logdetalles",
+			"INSERT INTO",
+			"UPLOAD",
+			"404",
+			"code",
+			"404",
+			"resultado",
+			"_procesado_envio_fichero",
+			"PROCESADO_ERR_EXTENSION",
+			"log_message",
+			"_procesado",
+			"_procesado_envio_fichero",
+			"UPLOAD_ERR_INI_SIZE",
+			"para enviar",
+			"uid=([a-z\\.]+).+",
+			"expiracion",
+			"form_validation",
+			" 13/01/2023",
+			"expiracion",
+			"trigger",
+			"parent::",
+			"class ",
+			"nusoap_client_mime",
+			"class ",
+			"class",
+			"debug_str",
+			"function debug",
+			"call",
+			"wsccor_wsdl",
+			"no es lo suficientemente segura",
+			"secure",
+			"set_output",
+			"final_output",
+			"if($output == null) $output = '';",
+			"strftime",
+			"message",
+			"_invitar",
+			"invitacion",
+			"_spool_email",
+			"_send_with_smtp",
+			"_smtp_connect()",
+			"favicon",
+			"debug",
+			"log_message",
+			"message",
+			"logger",
+			"format",
+			"to the strfto",
+			"require_once",
+			"1.18",
+			"secure",
+			"historicoborrados",
+			"historico",
+			"store",
+			"handler",
+			"LogoutStore",
+			"ASSERT_QUIET_EVAL",
+			"require",
+			"status_code",
+			"implode",
+			"2011",
+			"uri_protocol",
+			"enable_query_strings",
+			"load_class",
+			"function load_class",
+			"RTR",
+			"default",
+			"default controller",
+			"favicon",
+			"favicon.ico",
+			"act-rr-20220916a.tar.gz",
+			"memcache",
+			"self",
+			"favicon.ico",
+			"favicon",
+			"show_404",
+			"function element",
+			"element",
+			"displayname"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"gpit",
+			"blockID",
+			"z",
+			"x",
+			"hash",
+			"j",
+			"zPlayer",
+			"xPlayer",
+			"0321",
+			"\\1",
+			"info",
+			"act-rr--20221125a.tar.gz",
+			"10.10",
+			"..\\utils\\",
+			"2.14",
+			"\"",
+			"/",
+			"\\n",
+			"sandetel",
+			"/login_prod/",
+			"sandetel",
+			"/var/www/html/consigna/",
+			"php",
+			"%%%dni%%%",
+			"%%%uidnumber%%%",
+			"%%%surname%%%",
+			"%%%firstname%%%",
+			"%%%uid%%%",
+			"prueba",
+			"act-consigna--20210715a",
+			"EOL",
+			"EMAIL_EOL",
+			".",
+			"'info'",
+			"\"",
+			"20210429a",
+			"2.7",
+			"/var/www/html/consigna/app",
+			"/var/www/html/consigna/",
+			"1.18.7",
+			"1.18",
+			"log_message",
+			"CONUCD] ' . $this->_user_ldap_dn . ' ",
+			"$resource->\\1(filter_var(\\2, FILTER_SANITIZE_STRING))",
+			"$resource->\\1(filter_var(\\2, FILTER_SANITIZE_STRING)));",
+			"$this->resourceRepository->\\1(filter_var(\\2, FILTER_SANITIZE_STRING)));",
+			"$this->resourceRepository->\\1(filter_var(\\2, FILTER_SANITIZE_STRING));",
+			"/",
+			"date",
+			"gmdate",
+			"strtotime",
+			"function",
+			"php",
+			"Europe/Madrid",
+			"",
+			"false",
+			"o=juntadeandalucia",
+			"Imagen",
+			"sedeId",
+			"organismoId",
+			"h3",
+			"Médicos",
+			"Policía",
+			"Público",
+			"Gestión",
+			"Córdoba",
+			"Málaga",
+			"Cádiz",
+			"Andalucía",
+			"Pública",
+			"Políticas",
+			"Ordenación",
+			"Informático",
+			"Científico",
+			"Consejería",
+			"Evaluación",
+			"aeronáutico",
+			"tecnológico",
+			"Administración",
+			"Ríos",
+			"Área",
+			"Formación",
+			"Estadística",
+			"Innovación",
+			"Economía",
+			"Educación",
+			"Andalucía",
+			"Fundación",
+			"Integración",
+			"Pública",
+			"Fundación",
+			"Energía",
+			"Consejería",
+			"replicación",
+			"dn: \\1\\nchangetype: modify\\nreplace: displayName",
+			"",
+			"\\ndn",
+			"",
+			"locationParameters",
+			"this",
+			" ",
+			"2",
+			"RRFaqs",
+			"RRAdministradores",
+			"accordionRRAdministradores",
+			" accordionRRAdministradores",
+			" ",
+			"\\n",
+			"",
+			" ",
+			" \\n",
+			" ",
+			"\\n",
+			" ",
+			"if",
+			"$PageTitle",
+			"pl\\1_bg_collision_done",
+			"__pl0_pl1_collision_done",
+			"__pl0_bg_collision",
+			"__pl1_ball_collision_done",
+			"__pl0_ball_collision_done",
+			"pl0_pl1_collision",
+			"__collision_pl0_pl1_done",
+			"pl\\1_ball",
+			"pl0_pl1",
+			"skip_collision",
+			"(64,64,64)",
+			"curZone"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "dev/comp.bat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1042,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								358,
+								358
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "dev/ss.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3845,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2547,
+								2547
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C Improved/C Improved.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1044.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "dev/loader.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 292,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1699,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										207,
+										211
+									],
+									[
+										285,
+										289
+									],
+									[
+										328,
+										332
+									],
+									[
+										516,
+										520
+									],
+									[
+										734,
+										738
+									],
+									[
+										891,
+										895
+									],
+									[
+										913,
+										917
+									],
+									[
+										989,
+										993
+									],
+									[
+										1308,
+										1312
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								991,
+								991
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"incomplete_sync": null,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 39.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "dev/levelstruct.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3537,
+								3537
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1536.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "dev/loader/loader.asm",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								499,
+								499
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Kick Assembler (C64)/Syntaxes/KickAssembler (C64).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "dev/overlay.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								464,
+								476
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "dev/engine.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13895,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11132,
+								11136
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6490.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "bin/make-ram3.bat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								147,
+								147
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 9,
+					"file": "dev/loader/loaderzx.asm-orig",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3776,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								639,
+								639
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 507.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SFTP":
+	{
+		"height": 96.0
+	},
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 183.0
+	},
+	"pinned_build_system": "",
+	"project": "ss.sublime-project",
+	"replace":
+	{
+		"height": 94.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\git\\infhell2\\infhell2.sublime-project"
+			],
+			[
+				"desres",
+				"D:\\Proyectos\\remote\\desres01.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 268.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

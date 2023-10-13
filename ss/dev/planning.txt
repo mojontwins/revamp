@@ -1,0 +1,23 @@
+LEVEL 1. Título: "Kiss Me Black"
+
+Pantalla de inicio: 24. (XY) = 13, 5
+Nivel de oscuridad: Y >= 3.
+Address in RAM4: $C000
+
+LEVEL 2. Titulo: "Kathy's Kisses"
+
+Pantalla de inicio:
+Nivel de oscuridad: Y >=
+Address in RAM4:
+
+LEVEL 3. Título: "Figure of Fun"
+
+Pantalla de inicio: 10.
+Nivel de oscuridad: Y >= 4.
+Address in RAM4:
+
+LEVEL 4. Titulo: "Guilt Parade"
+
+Pantalla de inicio:
+Nivel de oscuridad: Y >=
+Address in RAM4:
