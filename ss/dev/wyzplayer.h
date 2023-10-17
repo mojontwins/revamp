@@ -1,7 +1,7 @@
-// WYZ player interface module.
+// WYZ p_interface module.
 
 #define INICIAEFECTO	0xC364
-#define WYZPLAYERISR	0xC021	// Esto es INICIO en el código de wyzplayer.asm
+#define WYZp_SR	0xC021	// Esto es INICIO en el código de wyzp_asm
 #define CARGA_CANCION	0xC05E	// 0xC063
 #define SILENCIA_PLAYER	0xC043	// 0xC048
 
@@ -16,7 +16,7 @@ void ISR(void) {
 		#asm
 			ld b, 1
 			call SetRAMBank
-			call WYZPLAYERISR
+			call WYZp_SR
 			ld b, 0
 			call SetRAMBank			
 		#endasm

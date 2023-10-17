@@ -51,20 +51,7 @@
 	scf
 	ld	a, $ff
 	ld	ix, $C000
-	ld	de, 5214
-	call $0556
-	di
-
-; RAM4
-	ld	a, $14 		; ROM 1, RAM 4
-	ld	bc, $7ffd
-	out (C), a
-
-	; Load block in $C000
-	scf
-	ld	a, $ff
-	ld	ix, $C000
-	ld	de, 7277
+	ld	de, 12491
 	call $0556
 	di
 
@@ -76,13 +63,13 @@
 	; Load as high as possible
 	scf
 	ld	a, $ff
-	ld	ix, $ffff - 11974
-	ld	de, 11974
+	ld	ix, $ffff - 11436
+	ld	de, 11436
 	call $0556
 	di
 
 	; Unpack
-	ld  hl, $ffff - 11974
+	ld  hl, $ffff - 11436
 	ld  de, 24000
 	call depack
 	

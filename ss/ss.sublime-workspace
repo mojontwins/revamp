@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"black",
+				"blackout_everything\tabc"
+			],
+			[
 				"array",
 				"array_keys_get_args\tabc"
 			],
@@ -424,89 +428,81 @@
 	"buffers":
 	[
 		{
-			"file": "dev/comp.bat",
+			"contents": "Searching 28 files for \"spritesclip\"\n\nD:\\git\\revamp\\ss\\dev\\engine.h:\n  478  \tinit_player (level);\n  479  \tinit_hotspots ();\n  480: \tsp_ClearRect(spritesClip, 0, 0, sp_CR_TILES); \n  481: \tsp_Invalidate(spritesClip, spritesClip); \n  482  \tsp_UpdateNow ();\n  483  \n  ...\n  582  \t\t\n  583  \t\t// Render\n  584: \t\tsp_MoveSprAbs(sp_player, spritesClip, player.next_frame - player.current_frame, 1 + (player.y >> 3), 1 + (player.x >> 3), player.x & 7, player.y & 7);\n  585  \t\tplayer.current_frame = player.next_frame;\n  586  \t\t\n  ...\n  589  \t\t\t\tx = malotes [enoffs + i].x;\n  590  \t\t\t\ty = malotes [enoffs + i].y;\n  591: \t\t\t\tsp_MoveSprAbs (sp_moviles [i], spritesClip, en_an [i].next_frame - en_an [i].current_frame, VIEWPORT_Y + (y >> 3), VIEWPORT_X + (x >> 3),x & 7, y & 7);\n  592  \t\t\t\ten_an [i].current_frame = en_an [i].next_frame;\n  593  \t\t\t}\n\nD:\\git\\revamp\\ss\\dev\\levelstruct.h:\n  133  \t\tswitch (malotes [enoffs + i].t) {\n  134  \t\t\tcase 0:\n  135: \t\t\t\tsp_MoveSprAbs (sp_moviles [i], spritesClip, 0, 22, 0, 0, 0);\n  136  \t\t\t\tbreak;\n  137  \t\t\tcase 1:\n\nD:\\git\\revamp\\ss\\dev\\ss.map:\n  595  _sp_player                      = $D81B ; addr, public, , ss_c, bss_compiler, ss.c::main::0::145:42\n  596  _sp_moviles                     = $D81D ; addr, public, , ss_c, bss_compiler, ss.c::main::0::145:42\n  597: _spritesClipValues              = $D823 ; addr, public, , ss_c, bss_compiler, ss.c::main::0::145:42\n  598: _spritesClip                    = $D827 ; addr, public, , ss_c, bss_compiler, ss.c::main::0::145:42\n  599  _asm_number                     = $7CAA ; addr, public, , ss_c, code_compiler, globals.h::my_malloc::0::10:30\n  600  _asm_int                        = $7CAB ; addr, public, , ss_c, code_compiler, globals.h::my_malloc::0::10:30\n\n8 matches across 3 files\n\n\nSearching 28 files for \"en_an\" (regex)\n\nD:\\git\\revamp\\ss\\dev\\engine.h:\n  297  \t\t\t\tmalotes [enoffsmasi].my = -malotes [enoffsmasi].my;\n  298  \t\t\t\t\n  299: \t\t\ten_an [i].count ++; \n  300: \t\t\tif (en_an [i].count == 4) {\n  301: \t\t\t\ten_an [i].count = 0;\n  302: \t\t\t\ten_an [i].frame = !en_an [i].frame;\n  303  \n  304  \t\t\t\t// Optimization: \n  ...\n  306  \t\t\t\t//\t288 = 256 + 32; x * 288 = (x << 8) + (x << 5)\n  307  \t\t\t\t//\t144 = 128 + 16; x * 144 = (x << 7) + (x << 4)\n  308: \t\t\t\t// en_an [i].next_frame = sprite_9_a + \n  309  \t\t\t\t//\t576 * malotes [enoffsmasi].t + \n  310: \t\t\t\t//\t144 * en_an [i].frame + \n  311  \t\t\t\t//\t288 * (malotes [enoffsmasi].mx < 0 || malotes [enoffsmasi].my < 0);\n  312  \t\t\t\t\n  313  \t\t\t\torientation = (malotes [enoffsmasi].mx < 0 || malotes [enoffsmasi].my < 0);\n  314: \t\t\t\ten_an [i].next_frame = sprite_5_a + \n  315  \t\t\t\t\t((malotes [enoffsmasi].t << 9) + (malotes [enoffsmasi].t << 6)) + \n  316: \t\t\t\t\t((en_an [i].frame << 7) + (en_an [i].frame << 4)) + \n  317  \t\t\t\t\t((orientation << 8) + (orientation << 5));\n  318  \t\t\t}\n  ...\n  622  \t\t\t\tx = malotes [enoffs + i].x;\n  623  \t\t\t\ty = malotes [enoffs + i].y;\n  624: \t\t\t\tsp_MoveSprAbs (sp_moviles [i], spritesClip, en_an [i].next_frame - en_an [i].current_frame, VIEWPORT_Y + (y >> 3), VIEWPORT_X + (x >> 3),x & 7, y & 7);\n  625  \t\t\t\t*/\n  626  \t\t\t\t_en_x = malotes [enoffsmasi].x;\n  ...\n  654  \n  655  \t\t\t\t\t// Animation\n  656: \t\t\t\t\t// en_an_next_frame [enit] - en_an_current_frame [enit]\n  657: \t\t\t\t\tld  hl, _en_an_current_frame\n  658: \t\t\t\t\tadd hl, bc \t\t\t\t// HL -> en_an_current_frame [enit]\n  659  \t\t\t\t\tld  e, (hl)\n  660  \t\t\t\t\tinc hl \n  661: \t\t\t\t\tld  d, (hl) \t\t\t// DE = en_an_current_frame [enit]\n  662  \n  663: \t\t\t\t\tld  hl, _en_an_next_frame\n  664: \t\t\t\t\tadd hl, bc \t\t\t\t// HL -> en_an_next_frame [enit]\n  665  \t\t\t\t\tld  a, (hl)\n  666  \t\t\t\t\tinc hl\n  667  \t\t\t\t\tld  h, (hl)\n  668: \t\t\t\t\tld  l, a \t\t\t\t// HL = en_an_next_frame [enit]\n  669  \n  670  \t\t\t\t\tor  a \t\t\t\t\t// clear carry\n  671: \t\t\t\t\tsbc hl, de \t\t\t\t// en_an_next_frame [enit] - en_an_current_frame [enit]\n  672  \n  673  \t\t\t\t\tpush bc \t\t\t\t// Save for later\n  ...\n  702  \t\t\t\t\tcall SPMoveSprAbs\n  703  \n  704: \t\t\t\t\t// en_an_current_frame [enit] = en_an_next_frame [enit];\n  705  \n  706  \t\t\t\t\tpop bc \t\t\t\t\t// Retrieve index\n  707  \n  708: \t\t\t\t\tld  hl, _en_an_current_frame\n  709  \t\t\t\t\tadd hl, bc\n  710: \t\t\t\t\tex  de, hl \t\t\t\t// DE -> en_an_current_frame [enit]\t\n  711  \n  712: \t\t\t\t\tld  hl, _en_an_next_frame\n  713: \t\t\t\t\tadd hl, bc \t\t\t\t// HL -> en_an_next_frame [enit]\n  714  \t\t\t\t\t\n  715  \t\t\t\t\tldi\n  ...\n  717  \t\t\t\t#endasm\n  718  \n  719: \t\t\t\ten_an [i].current_frame = en_an [i].next_frame;\n  720  \t\t\t}\n  721  \t\t}\n\nD:\\git\\revamp\\ss\\dev\\levelstruct.h:\n   59  // \n   60  \n   61: ANIMADO en_an [3];\n   62  BLOB blobs [MAX_BLOBS];\n   63  \n   ..\n  128  \t\n  129  \tfor (i = 0; i < 3; i ++) {\n  130: \t\ten_an [i].frame = 0;\n  131: \t\ten_an [i].count = 0;\n  132  \t\t\n  133  \t\tswitch (malotes [enoffs + i].t) {\n  ...\n  136  \t\t\t\tbreak;\n  137  \t\t\tcase 1:\n  138: \t\t\t\ten_an [i].next_frame = sprite_9_a;\n  139  \t\t\t\tbreak;\n  140  \t\t\tcase 2:\n  141: \t\t\t\ten_an [i].next_frame = sprite_13_a;\n  142  \t\t\t\tbreak;\n  143  \t\t\tcase 3:\n  144: \t\t\t\ten_an [i].next_frame = sprite_17_a;\n  145  \t\t\t\tbreak;\n  146  \t\t\tcase 4:\n  147: \t\t\t\ten_an [i].next_frame = sprite_21_a;\n  148  \t\t\t\tbreak;\n  149  \t\t\tdefault:\n  150: \t\t\t\ten_an [i].next_frame = sprite_21_a;\n  151  \t\t}\n  152  \t}\n\nD:\\git\\revamp\\ss\\dev\\ss.c:\n   89  \t\tsp_AddColSpr (sp_moviles [gpit], sprite_9_b);\n   90  \t\tsp_AddColSpr (sp_moviles [gpit], sprite_9_c);\t\n   91: \t\ten_an [gpit].current_frame = en_an [gpit].next_frame = sprite_9_a;\n   92  \t}\n   93  \n\nD:\\git\\revamp\\ss\\dev\\ss.map:\n  729  _malotes                        = $A809 ; addr, public, , ss_c, code_compiler, levelstruct.h::draw_buff::0::50:52\n  730  _hotspots                       = $AB42 ; addr, public, , ss_c, code_compiler, levelstruct.h::draw_buff::0::50:59\n  731: _en_an                          = $D85C ; addr, public, , ss_c, bss_compiler, ss.c::main::0::145:42\n  732  _blobs                          = $D889 ; addr, public, , ss_c, bss_compiler, ss.c::main::0::145:42\n  733  _n_blobs                        = $D8C5 ; addr, public, , ss_c, bss_compiler, ss.c::main::0::145:42\n\n41 matches across 4 files\n\n\nSearching 28 files for \"sp_MoveSprAbs\" (regex)\n\nD:\\git\\revamp\\ss\\dev\\engine.h:\n  566  \t\t// Render\n  567  \t\t/*\n  568: \t\tsp_MoveSprAbs(\n  569  \t\t\tsp_player, \n  570  \t\t\tspritesClip, \n  ...\n  622  \t\t\t\tx = malotes [enoffs + i].x;\n  623  \t\t\t\ty = malotes [enoffs + i].y;\n  624: \t\t\t\tsp_MoveSprAbs (sp_moviles [i], spritesClip, en_an_next_frame [i] - en_an_current_frame [i], VIEWPORT_Y + (y >> 3), VIEWPORT_X + (x >> 3),x & 7, y & 7);\n  625  \t\t\t\t*/\n  626  \t\t\t\t_en_x = malotes [enoffsmasi].x;\n\nD:\\git\\revamp\\ss\\dev\\levelstruct.h:\n  133  \t\tswitch (malotes [enoffs + i].t) {\n  134  \t\t\tcase 0:\n  135: \t\t\t\tsp_MoveSprAbs (sp_moviles [i], spritesClip, 0, 22, 0, 0, 0);\n  136  \t\t\t\tbreak;\n  137  \t\t\tcase 1:\n\nD:\\git\\revamp\\ss\\dev\\ss.map:\n  795  _sp_KeyPressed                  = $CBAE ; addr, public, , sp_KeyPressed_c, code_compiler, sp_KeyPressed.c::sp_KeyPressed::0::0:15\n  796  sp_KeyPressed                   = $CBAE ; addr, public, , sp_KeyPressed_c, code_compiler, sp_KeyPressed.c::sp_KeyPressed::0::0:15\n  797: _sp_MoveSprAbs                  = $CBBE ; addr, public, , sp_MoveSprAbs_c, code_compiler, sp_MoveSprAbs.c::sp_MoveSprAbs::0::0:15\n  798: sp_MoveSprAbs                   = $CBBE ; addr, public, , sp_MoveSprAbs_c, code_compiler, sp_MoveSprAbs.c::sp_MoveSprAbs::0::0:15\n  799  sp_moveabshelp                  = $6068 ; addr, public, , sp_moveabshelp, , cwrapper/sp_moveabshelp.asm:17\n  800  _sp_PrintAtInv                  = $CBC7 ; addr, public, , sp_PrintAtInv_c, code_compiler, sp_PrintAtInv.c::sp_PrintAtInv::0::0:15\n\n11 matches across 3 files\n",
 			"settings":
 			{
-				"buffer_size": 1042,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/ss.c",
-			"settings":
-			{
-				"buffer_size": 3845,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/loader.txt",
-			"settings":
-			{
-				"buffer_size": 292,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 24 files for \"ob_y\" (case sensitive)\n\n0 matches\n\nSearching 24 files for \"yOsc\" (case sensitive)\n\nD:\\temp\\ss\\dev\\engine.h:\n  531  \t\t// Lit somewhat obscured screens\n  532  \t\t\n  533: \t\tif (y_pant >= yOsc) draw_overlay ((player.x >> 3), (player.y >> 3));\n  534: \t\tif (y_pant >= yOsc) draw_buff ();\n  535: \t\tif (y_pant >= yOsc) del_overlay ((player.x >> 3), (player.y >> 3));\n  536  \t\t\n  537  \t\t// erm...\n\nD:\\temp\\ss\\dev\\leveldata.h:\n    3  typedef struct {\n    4  \tunsigned int address;\n    5: \tunsigned char yOsc;\n    6  \tunsigned char init_x_pant;\n    7  \tunsigned char init_y_pant;\n\nD:\\temp\\ss\\dev\\levelstruct.h:\n   53  extern unsigned char map_buffer [0];\n   54  extern unsigned int level_pointer [0];\n   55: unsigned char yOsc = 4;\n   56  \n   57  #asm\n   ..\n   64  void load_level (unsigned char level) {\n   65  \tunpack_RAMn (4, levels [level].address, level_buffer, 0);\n   66: \tyOsc = levels [level].yOsc;\n   67  }\n   68  \n   ..\n  152  \t// Dark?\n  153  \t\n  154: \tif (y_pant < yOsc) {\n  155  \t\t#asm\n  156  \t\t\tld hl, 24999\n\nD:\\temp\\ss\\dev\\ss.map:\n  724  _map_buffer                     = $ACBC ; addr, public, , ss_c, code_compiler, levelstruct.h::draw_buff::0::50:57\n  725  _level_pointer                  = $ACBA ; addr, public, , ss_c, code_compiler, levelstruct.h::draw_buff::0::50:57\n  726: _yOsc                           = $D6CA ; addr, public, , ss_c, data_compiler, levelstruct.h::draw_buff::0::50:55\n  727  _load_level                     = $AD52 ; addr, public, , ss_c, code_compiler, levelstruct.h::load_level::0::50:66\n  728  _draw_coloured_tile             = $AD93 ; addr, public, , ss_c, code_compiler, levelstruct.h::draw_coloured_tile::0::51:71\n\n9 matches across 4 files\n",
-			"settings":
-			{
-				"buffer_size": 1699,
+				"buffer_size": 7501,
 				"line_ending": "Windows",
 				"name": "Find Results",
 				"scratch": true
 			}
 		},
 		{
-			"file": "dev/levelstruct.h",
-			"settings":
-			{
-				"buffer_size": 4149,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/loader/loader.asm",
-			"settings":
-			{
-				"buffer_size": 3651,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/overlay.h",
-			"settings":
-			{
-				"buffer_size": 5215,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "dev/engine.h",
 			"settings":
 			{
-				"buffer_size": 13895,
+				"buffer_size": 14857,
 				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "bin/make-ram3.bat",
+			"file": "dev/levelstruct.h",
 			"settings":
 			{
-				"buffer_size": 147,
+				"buffer_size": 4361,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "dev/loader/loaderzx.asm-orig",
+			"file": "dev/mojon_twins--severin-sewers.tap",
 			"settings":
 			{
-				"buffer_size": 3776,
+				"buffer_size": 0,
+				"encoding": "Hexadecimal",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dev/ss.c",
+			"settings":
+			{
+				"buffer_size": 2262,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/leveldata.h",
+			"settings":
+			{
+				"buffer_size": 419,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/ss.map",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/wyzplayer.h",
+			"settings":
+			{
+				"buffer_size": 1083,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/globals.h",
+			"settings":
+			{
+				"buffer_size": 1925,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -576,17 +572,33 @@
 	},
 	"expanded_folders":
 	[
-		"/D/temp/ss",
-		"/D/temp/ss/bin",
-		"/D/temp/ss/dev",
-		"/D/temp/ss/dev/loader",
-		"/D/temp/ss/gfx",
-		"/D/temp/ss/map",
-		"/D/temp/ss/mus",
-		"/D/temp/ss/utils"
+		"/D/git/revamp/ss",
+		"/D/git/revamp/ss/dev",
+		"/D/git/revamp/ss/dev/loader"
 	],
 	"file_history":
 	[
+		"/D/git/revamp/ss/dev/aplib.h",
+		"/D/git/revamp/ss/dev/globals.h",
+		"/D/git/revamp/ss/dev/ss.c",
+		"/D/git/revamp/ss/dev/engine.h",
+		"/D/git/revamp/ss/dev/comp.bat",
+		"/D/git/revamp/ss/dev/levelstruct.h",
+		"/D/git/revamp/ss/dev/leveldata.h",
+		"/D/git/revamp/ss/dev/printer.h",
+		"/D/git/revamp/ss/dev/ss.map",
+		"/D/git/revamp/ss/dev/librarian.h",
+		"/D/git/revamp/ss/bin/list.txt",
+		"/D/git/revamp/ss/dev/loader/loaderzx.asm-orig",
+		"/D/git/revamp/ss/bin/ram3.bin",
+		"/D/git/revamp/ss/dev/menu.h",
+		"/D/Proyectos/2016/20160719a--Api REST LDAP WMCCOR/manual.txt",
+		"/D/git/revamp/ss/dev/128k.h",
+		"/D/git/revamp/ss/dev/loader.txt",
+		"/D/git/revamp/ss/dev/wyzplayer.h",
+		"/D/git/revamp/ss/dev/loader/loader.asm",
+		"/D/git/revamp/ss/dev/overlay.h",
+		"/D/git/revamp/ss/bin/make-ram3.bat",
 		"/D/temp/ss/dev/ss.c",
 		"/D/temp/ss/dev/menu.h",
 		"/D/temp/ss/dev/engine.h",
@@ -693,28 +705,7 @@
 		"/D/Proyectos/remote/descon01/sftp-config.json",
 		"/D/Proyectos/remote/descon01/consigna/app/config/config.php-MODELO",
 		"/D/Proyectos/remote/descon01/consigna/config/config.php",
-		"/C/Users/jcastano/AppData/Local/Temp/7zO01770D76/About.txt",
-		"/D/temp/jetpaco/dev/compile.bat",
-		"/D/Proyectos/2022/20220418a - Consigna 2.13.0.0 - Cookies seguras y correcciones/instrucciones.txt",
-		"/D/Proyectos/remote/descon01/consigna/app/views/ver_fichero.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/MY_Upload.php",
-		"/D/Proyectos/remote/descon01/consigna/app/controllers/cron.php",
-		"/D/Proyectos/remote/descon01/consigna/app/language/spanish/upload_lang.php",
-		"/D/Proyectos/remote/descon01/consigna/system/core/Loader.php",
-		"/D/Proyectos/remote/descon01/consigna/diario.md",
-		"/D/Proyectos/remote/descon01/consigna/app/models/api_model.php",
-		"/D/Proyectos/remote/descon01/consigna/system/libraries/Form_validation.php",
-		"/D/Proyectos/2022/20220721a - Consigna 2.14.0.0 - Revisión procedimiento logout/instrucciones.txt",
-		"/D/temp/fotos/show_album.php",
-		"/D/Proyectos/remote/descon01/consigna/app/config/avanzadas.php",
-		"/D/temp/fotos/index.php",
-		"/D/temp/fotos/resize.php",
-		"/D/temp/fotos/show_photo.php",
-		"/D/temp/goe/showcomic.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/Session.php",
-		"/D/temp/fotos/style.css",
-		"/D/cosas/CPCbasic3/test1.bas",
-		"/C/Users/jcastano/AppData/Local/Temp/7zO84544D35/ficheros.php"
+		"/C/Users/jcastano/AppData/Local/Temp/7zO01770D76/About.txt"
 	],
 	"find":
 	{
@@ -725,6 +716,7 @@
 		"height": 134.0,
 		"where_history":
 		[
+			"D:\\git\\revamp\\ss\\dev",
 			"D:\\temp\\ss\\dev",
 			"D:\\Proyectos\\remote\\descon01\\consigna",
 			"D:\\Proyectos\\remote\\descon01\\consigna\\extra",
@@ -851,8 +843,7 @@
 			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
 			"D:\\Proyectos\\remote\\descon01\\consigna",
 			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\libraries\\pheanstalk",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app"
+			"D:\\Proyectos\\remote\\descon01\\consigna"
 		]
 	},
 	"find_state":
@@ -860,6 +851,54 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"yOsc",
+			"sp_MoveSprAbs",
+			"en_an (\\[[a-z\\_]+\\])\\.([A-Za-z\\_]+)",
+			"en_an",
+			"moveSprAb",
+			"player.([a-z\\_]+)",
+			"player.current_frame",
+			"player.next_frame",
+			"player_y",
+			"player_x",
+			"player.y",
+			"player.x",
+			"spritesclip",
+			"map_buffer",
+			"ENEMS_DATA",
+			"MAX_BLOBS",
+			"23304",
+			"24999",
+			"sp_UpdateNow",
+			"unpack",
+			"ram_address",
+			"yOsc",
+			"draw_overlay",
+			"unpack",
+			"list.txt",
+			"level_buffer",
+			"\nlevel_buffer",
+			"map_pointer",
+			"n_pant",
+			"n_oant",
+			"x_pant",
+			"terminado",
+			"denew",
+			"fl1",
+			"key",
+			"thispass",
+			"len",
+			"res",
+			"j",
+			"i",
+			"espera_activa",
+			"espera_actia",
+			"espera_activa",
+			"SetRAMBank",
+			"ram_address",
+			"ram",
+			"ram_address",
+			"unpack_RAMn",
 			"i",
 			"j",
 			"^\n",
@@ -939,62 +978,26 @@
 			"call",
 			"wsccor_wsdl",
 			"no es lo suficientemente segura",
-			"secure",
-			"set_output",
-			"final_output",
-			"if($output == null) $output = '';",
-			"strftime",
-			"message",
-			"_invitar",
-			"invitacion",
-			"_spool_email",
-			"_send_with_smtp",
-			"_smtp_connect()",
-			"favicon",
-			"debug",
-			"log_message",
-			"message",
-			"logger",
-			"format",
-			"to the strfto",
-			"require_once",
-			"1.18",
-			"secure",
-			"historicoborrados",
-			"historico",
-			"store",
-			"handler",
-			"LogoutStore",
-			"ASSERT_QUIET_EVAL",
-			"require",
-			"status_code",
-			"implode",
-			"2011",
-			"uri_protocol",
-			"enable_query_strings",
-			"load_class",
-			"function load_class",
-			"RTR",
-			"default",
-			"default controller",
-			"favicon",
-			"favicon.ico",
-			"act-rr-20220916a.tar.gz",
-			"memcache",
-			"self",
-			"favicon.ico",
-			"favicon",
-			"show_404",
-			"function element",
-			"element",
-			"displayname"
+			"secure"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"en_an_\\2 \\1",
+			"p_\\1",
+			"p_current_frame",
+			"p_next_frame",
+			"p_y",
+			"p_x",
+			"player_y",
+			"player_x",
+			"rdb",
+			"gen_pt",
+			"rda",
+			"gpjt",
 			"gpit",
 			"blockID",
 			"z",
@@ -1110,47 +1113,318 @@
 			"\\n",
 			" ",
 			"if",
-			"$PageTitle",
-			"pl\\1_bg_collision_done",
-			"__pl0_pl1_collision_done",
-			"__pl0_bg_collision",
-			"__pl1_ball_collision_done",
-			"__pl0_ball_collision_done",
-			"pl0_pl1_collision",
-			"__collision_pl0_pl1_done",
-			"pl\\1_ball",
-			"pl0_pl1",
-			"skip_collision",
-			"(64,64,64)",
-			"curZone"
+			"$PageTitle"
 		],
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "dev/comp.bat",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1042,
+						"buffer_size": 7501,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										145,
+										156
+									],
+									[
+										201,
+										212
+									],
+									[
+										214,
+										225
+									],
+									[
+										331,
+										342
+									],
+									[
+										644,
+										655
+									],
+									[
+										976,
+										987
+									],
+									[
+										1294,
+										1305
+									],
+									[
+										1401,
+										1412
+									],
+									[
+										1918,
+										1923
+									],
+									[
+										1953,
+										1958
+									],
+									[
+										1988,
+										1993
+									],
+									[
+										2020,
+										2025
+									],
+									[
+										2039,
+										2044
+									],
+									[
+										2233,
+										2238
+									],
+									[
+										2336,
+										2341
+									],
+									[
+										2547,
+										2552
+									],
+									[
+										2677,
+										2682
+									],
+									[
+										2702,
+										2707
+									],
+									[
+										2934,
+										2939
+									],
+									[
+										2957,
+										2962
+									],
+									[
+										3153,
+										3158
+									],
+									[
+										3179,
+										3184
+									],
+									[
+										3227,
+										3232
+									],
+									[
+										3283,
+										3288
+									],
+									[
+										3389,
+										3394
+									],
+									[
+										3445,
+										3450
+									],
+									[
+										3498,
+										3503
+									],
+									[
+										3622,
+										3627
+									],
+									[
+										3722,
+										3727
+									],
+									[
+										3748,
+										3753
+									],
+									[
+										3884,
+										3889
+									],
+									[
+										3913,
+										3918
+									],
+									[
+										4017,
+										4022
+									],
+									[
+										4096,
+										4101
+									],
+									[
+										4153,
+										4158
+									],
+									[
+										4206,
+										4211
+									],
+									[
+										4303,
+										4308
+									],
+									[
+										4329,
+										4334
+									],
+									[
+										4445,
+										4450
+									],
+									[
+										4554,
+										4559
+									],
+									[
+										4584,
+										4589
+									],
+									[
+										4711,
+										4716
+									],
+									[
+										4793,
+										4798
+									],
+									[
+										4876,
+										4881
+									],
+									[
+										4959,
+										4964
+									],
+									[
+										5043,
+										5048
+									],
+									[
+										5248,
+										5253
+									],
+									[
+										5277,
+										5282
+									],
+									[
+										5613,
+										5618
+									],
+									[
+										6074,
+										6087
+									],
+									[
+										6230,
+										6243
+									],
+									[
+										6548,
+										6561
+									],
+									[
+										6957,
+										6970
+									],
+									[
+										7014,
+										7027
+									],
+									[
+										7046,
+										7059
+									],
+									[
+										7063,
+										7076
+									],
+									[
+										7093,
+										7106
+									],
+									[
+										7151,
+										7164
+									],
+									[
+										7183,
+										7196
+									],
+									[
+										7200,
+										7213
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								6556,
+								6556
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"incomplete_sync": null,
+							"line_numbers": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2197.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "dev/engine.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14857,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								358,
-								358
+								9691,
+								9695
 							]
 						],
 						"settings":
@@ -1158,30 +1432,93 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 63.0,
+						"translation.y": 6048.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "dev/ss.c",
+					"buffer": 2,
+					"file": "dev/levelstruct.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3845,
+						"buffer_size": 4361,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2547,
-								2547
+								1560,
+								1560
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 665.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "dev/mojon_twins--severin-sewers.tap",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "dev/ss.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2262,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								448,
+								448
 							]
 						],
 						"settings":
@@ -1193,19 +1530,51 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1044.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "dev/loader.txt",
+					"buffer": 5,
+					"file": "dev/leveldata.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 292,
+						"buffer_size": 419,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "dev/ss.map",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -1227,245 +1596,38 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1699,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										207,
-										211
-									],
-									[
-										285,
-										289
-									],
-									[
-										328,
-										332
-									],
-									[
-										516,
-										520
-									],
-									[
-										734,
-										738
-									],
-									[
-										891,
-										895
-									],
-									[
-										913,
-										917
-									],
-									[
-										989,
-										993
-									],
-									[
-										1308,
-										1312
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								991,
-								991
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"incomplete_sync": null,
-							"line_numbers": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 39.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "dev/levelstruct.h",
+					"buffer": 7,
+					"file": "dev/wyzplayer.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4149,
+						"buffer_size": 1083,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3537,
-								3537
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1536.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "dev/loader/loader.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3651,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								499,
-								499
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Kick Assembler (C64)/Syntaxes/KickAssembler (C64).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "dev/overlay.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5215,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								464,
-								476
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "dev/engine.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13895,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11132,
-								11136
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 6490.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "bin/make-ram3.bat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 147,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								147,
-								147
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1475,20 +1637,20 @@
 			"sheets":
 			[
 				{
-					"buffer": 9,
-					"file": "dev/loader/loaderzx.asm-orig",
+					"buffer": 8,
+					"file": "dev/globals.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3776,
+						"buffer_size": 1925,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								639,
-								639
+								1923,
+								1923
 							]
 						],
 						"settings":
@@ -1496,14 +1658,14 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 507.0,
+						"translation.y": 702.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]

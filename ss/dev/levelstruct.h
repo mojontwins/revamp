@@ -20,30 +20,41 @@ typedef struct {
 	char t;
 } MALOTE;
 
-MALOTE *malotes;
-
-typedef struct {
-	unsigned char frame;
-	unsigned char count;
-	unsigned char *current_frame, *next_frame;
-	int x;
-	int y;
-	int vx;
-	int vy;
-	unsigned char fanty_activo;
-} ANIMADO;
-
-ANIMADO en_an [3];
-
 typedef struct {
 	unsigned char xy, tipo, act;
 } HOTSPOT;
 
-HOTSPOT *hotspots;
-
 typedef struct {
 	unsigned char x, y, v;
 } BLOB;
+
+// Decompresion buffers. Total= 3375 + 825 + 75 = 4275 which is the size of a level
+
+extern unsigned char level_buffer[0];
+#asm
+	._level_buffer defs 3375
+#endasm
+
+extern MALOTE malotes[0];
+#asm
+	._malotes defs 825
+#endasm
+
+extern HOTSPOT hotspots[0];
+#asm
+	._hotspots defs 75
+#endasm
+
+// 
+
+unsigned char en_an_frame [3];
+unsigned char en_an_count [3];
+unsigned char *en_an_current_frame [3], *en_an_next_frame [3];
+signed int en_x [3];
+signed int en_y [3];
+signed int en_vx [3];
+signed int en_vy [3];
+unsigned char fanty_activo;
 
 BLOB blobs [MAX_BLOBS];
 
@@ -61,9 +72,11 @@ unsigned char yOsc = 4;
 		defs 	150, 0
 #endasm
 
-void load_level (unsigned char level) {
-	unpack_RAMn (4, levels [level].address, level_buffer, 0);
+void load_level (unsigned char level) {	
+	get_resource(levels[level].resource, level_buffer);
 	yOsc = levels [level].yOsc;
+
+	yOsc = 99;
 }
 
 void __FASTCALL__ draw_coloured_tile (unsigned char x, unsigned char y, unsigned char t) {
@@ -75,14 +88,15 @@ void __FASTCALL__ draw_coloured_tile (unsigned char x, unsigned char y, unsigned
 	sp_PrintAtInv (y + 1, x + 1, supertiles[st_index ++], supertiles[st_index]);
 }
 
-void render_screen (unsigned char x_pant, unsigned char y_pant) {
+void render_screen () {
 	unsigned char *map_pointer; 
 	unsigned char y = 0, x = 0;
 	unsigned char i;
 	unsigned char t;
-	unsigned char n_pant = y_pant * 5 + x_pant;
+
+	n_pant = x_pant + (y_pant << 2) + y_pant;
 	
-	map_pointer = (unsigned char *) (level_buffer + y_pant * 9 * 75 + x_pant * 15);
+	map_pointer = (unsigned char *) (level_buffer + y_pant * 675 + x_pant * 15);
 	n_blobs = 0;
 		
 	for (i = 0; i < 135; i ++) {
@@ -109,30 +123,30 @@ void render_screen (unsigned char x_pant, unsigned char y_pant) {
 	
 	// Create enemies:
 	
-	enoffs = n_pant * 3;
+	enoffs = n_pant + n_pant + n_pant;
 	
 	for (i = 0; i < 3; i ++) {
-		en_an [i].frame = 0;
-		en_an [i].count = 0;
+		en_an_frame [i] = 0;
+		en_an_count [i] = 0;
 		
 		switch (malotes [enoffs + i].t) {
 			case 0:
-				sp_MoveSprAbs (sp_moviles [i], spritesClip, 0, 22, 0, 0, 0);
+				//sp_MoveSprAbs (sp_moviles [i], spritesClip, 0, 22, 0, 0, 0);
 				break;
 			case 1:
-				en_an [i].next_frame = sprite_9_a;
+				en_an_next_frame [i] = sprite_9_a;
 				break;
 			case 2:
-				en_an [i].next_frame = sprite_13_a;
+				en_an_next_frame [i] = sprite_13_a;
 				break;
 			case 3:
-				en_an [i].next_frame = sprite_17_a;
+				en_an_next_frame [i] = sprite_17_a;
 				break;
 			case 4:
-				en_an [i].next_frame = sprite_21_a;
+				en_an_next_frame [i] = sprite_21_a;
 				break;
 			default:
-				en_an [i].next_frame = sprite_21_a;
+				en_an_next_frame [i] = sprite_21_a;
 		}
 	}
 	
@@ -152,15 +166,9 @@ void render_screen (unsigned char x_pant, unsigned char y_pant) {
 	// Dark?
 	
 	if (y_pant < yOsc) {
-		#asm
-			ld hl, 23304
-			ld (hl), 1
-		#endasm
+		attrs_byte = 1;
 	} else {
-		#asm
-			ld hl, 23304
-			ld (hl), 0
-		#endasm
+		attrs_byte = 0;
 		
 		draw_buff ();
 	}

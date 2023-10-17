@@ -1,6 +1,4 @@
-extern unsigned char ram_page [];
-extern unsigned int ram_address [];
-extern unsigned int ram_destination [];
+
 #asm
 
 ; aPPack decompressor
@@ -123,16 +121,6 @@ extern unsigned int ram_destination [];
 
 #endasm
 
-#asm
-	._ram_page
-		defb 0
-	._ram_address
-		defw 0
-	._ram_destination
-		defw 0
-#endasm
-
-
 void __FASTCALL__ blackout_everything () {
 	unsigned char *origin;
 
@@ -143,14 +131,10 @@ void __FASTCALL__ blackout_everything () {
 	}
 }
 
-void unpack_RAMn (unsigned char n, unsigned int address, unsigned int destination, unsigned char clear) {
-	ram_address [0] = address;
-	ram_page [0] = n;
-	ram_destination [0] = destination;
-
-	if (destination == 16384 && clear)
-		blackout_everything ();
-		
+void get_resource (unsigned char n, unsigned int destination) {
+	ram_page = resources [n].ramPage; 
+	ram_address = resources [n].ramOffset;
+	ram_destination = destination;
 	#asm	
 		di
 		ld a, (_ram_page)

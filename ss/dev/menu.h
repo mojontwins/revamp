@@ -1,4 +1,4 @@
-char espera_activa (int espera);
+void espera_activa (int espera);
 unsigned char game (unsigned char level);
 
 // Menu stuff. Doesn't matter if it falls into contended RAM.
@@ -50,14 +50,15 @@ unsigned char *cad_level = "LEVEL 0X";
 
 void start_game_from (unsigned char level) {
 	// Game controller	
-	unsigned char i;
-	unsigned char play = 1;
 	
 	wyz_stop_sound ();
 	
-	while (play) {
+	while (1) {
 		// Show level
-		unpack_RAMn (3, SCR_MENU, 16384, 1);
+		
+		blackout_everything ();
+		get_resource (RAM3_MENU_BIN, 16384);
+
 		wyz_play_music (1);	
 		cad_level [7] = '1' + level;
 		draw_char_by_char (12, 11, cad_level);
@@ -70,20 +71,21 @@ void start_game_from (unsigned char level) {
 		
 		espera_activa (250);
 		wyz_stop_sound ();
-		
-		i = game (level);
-		if (i) {
+				
+		if (game (level)) {
 			level ++;
 			if (level == 4)  {
 				sp_WaitForNoKey ();
 				// Final
-				unpack_RAMn (3, SCR_FINAL, 16384, 1);
+				blackout_everything ();
+				get_resource (RAM3_FINAL_BIN, 16384);
+
 				wyz_play_music (0);
 				espera_activa (32767);
-				play = 0;
+				break;
 			}
 		} else {
-			play = 0;
+			break;
 		}
 	}
 }
@@ -91,78 +93,72 @@ void start_game_from (unsigned char level) {
 unsigned char password [32];
 
 unsigned char get_password () {
-	unsigned char res = 0;
-	unsigned char len = 0;
-	unsigned char terminado = 0;
-	unsigned char key, i, j;
-	unsigned char *thispass;
-	
-	unpack_RAMn (3, SCR_MENU, 16384, 0);
+	blackout_everything ();
+	get_resource (RAM3_MENU_BIN, 16384);
 	draw_fast (9, 11, 70, (unsigned char *) ("ENTER PASSWORD"));
 	
-	password [len] = '#';
-	password [len + 1] = 0;
-	while (!terminado) {
-		draw_fast (16 - (len >> 1), 13, 71, password);
+	rda = 0;
+	password [rda] = '#';
+	password [rda + 1] = 0;
+	while (1) {
+		draw_fast (16 - (rda >> 1), 13, 71, password);
 		
 		do {
-			key = sp_GetKey ();
-		} while (!key);
+			rdb = sp_GetKey ();
+		} while (!rdb);
 		
-		if (key == 12 && len > 0) {
-			password [len] = ' ';
+		if (rdb == 12 && rda > 0) {
+			password [rda] = ' ';
 			draw_fast (5, 13, 71, (unsigned char *) ("                       "));
-			len --;
-			password [len] = '#';
-			password [len + 1] = 0;
+			rda --;
+			password [rda] = '#';
+			password [rda + 1] = 0;
 		}
 		
-		if (key == 13) {
-			terminado = 1;
+		if (rdb == 13) {
+			break;
 		}
 		
-		if (key > 'Z') key -= 32;
+		if (rdb > 'Z') rdb -= 32;
 		
-		if (key >= 'A' && key <= 'Z' && len < 20) {
-			password [len] = key;
-			password [len + 1] = '#';
-			password [len + 2] = 0;
-			len ++;
+		if (rdb >= 'A' && rdb <= 'Z' && rda < 20) {
+			password [rda] = rdb;
+			password [rda + 1] = '#';
+			password [rda + 2] = 0;
+			rda ++;
 		}
 		
 		sp_WaitForNoKey ();
 	}
 	
-	password [len] = 0;
+	password [rda] = 0;
 	
-	if (len > 0) {
-		for (j = 0; j < 3; j ++) {
-			thispass = passes [j];
-			for (i = 0; i < len; i ++) {
-				if (thispass [i] != password [i]) {
+	if (rda > 0) {
+		for (gpjt = 0; gpjt < 3; gpjt ++) {
+			gen_pt = passes [gpjt];
+			for (gpit = 0; gpit < rda; gpit ++) {
+				if (gen_pt [gpit] != password [gpit]) {
 					break;
 				}
 			}	
-			if (i == len) {
-				res = 1 + j;
-				break;
+			if (gpit == rda) {
+				return 1 + gpjt;
 			}
 		}
 	}
 	
-	return res;
+	return 0;
 }
 
 void menu (void) {
-	unsigned char i, key;
-	unsigned char fl1, fl2;
-	unsigned char denew = 1;
+	denew = 1;
 	
 	while (1) {
 		
 		// Show menu screen
 		if (denew) {
-			unpack_RAMn (3, SCR_MENU, 16384, 1);
+			blackout_everything ();
+			get_resource (RAM3_MENU_BIN, 16384);
 		
 			// Play ASTRO GANGA
 			wyz_play_music (0);
@@ -177,39 +173,39 @@ void menu (void) {
 		draw_fast (11, 13, 70, (unsigned char *) ("2 PASSWORD"));
 		draw_fast (11, 14, 70, (unsigned char *) ("3 CONTROLS"));
 		
-		fl1 = 0;
-		while (!fl1) {
-			key = sp_GetKey ();
-			if (key == '1') {
+		while (1) {
+			rdb = sp_GetKey ();
+			if (rdb == '1') {
 				start_game_from (0);
 				denew = 1;
-				fl1 = 1;
-			} else if (key == '2') {
+				break;
+			} else if (rdb == '2') {
 				sp_WaitForNoKey ();
 				start_game_from (get_password ());
 				denew = 1;
-				fl1 = 1;
-			} else if (key == '3') {
+				break;
+			} else if (rdb == '3') {
 				sp_WaitForNoKey ();
 				draw_fast (11, 12, 70, (unsigned char *) ("1 KEYBOARD"));
 				draw_fast (11, 13, 70, (unsigned char *) ("2 SINCLAIR"));
 				draw_fast (11, 14, 70, (unsigned char *) ("3 KEMPSTON"));
-				fl2 = 0;
-				while (!fl2) {
-					key = sp_GetKey ();
-					if (key == '1') {
+				
+				while (1) {
+					rdb = sp_GetKey ();
+					if (rdb == '1') {
 						joyfunc = (void *)sp_JoyKeyboard;
-						fl2 = 1;
-					} else if (key == '2') {
+						break;
+					} else if (rdb == '2') {
 						joyfunc = (void *)sp_JoySinclair1;
-						fl2 = 1;
-					} else if (key == '3') {
+						break;
+					} else if (rdb == '3') {
 						joyfunc = (void *)sp_JoyKempston;
-						fl2 = 1;
+						break;
 					}
 				}
+
 				sp_WaitForNoKey ();
-				fl1 = 1;
+				break;
 			}
 		}
 	}
