@@ -64,6 +64,10 @@ unsigned int key_r = 0x08fb;		// sp_LookupKey ('r');
 unsigned int key_g = 0x10fd; 		// sp_LookupKey ('g');
 unsigned int key_z = 0x02fe; 		// sp_LookupKey ('z');
 
+unsigned int key_1 = 0x01f7;
+unsigned int key_2 = 0x02f7;
+unsigned int key_3 = 0x04f7;
+
 // Actors
 
 unsigned char p_x, p_y;

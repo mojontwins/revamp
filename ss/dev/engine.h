@@ -35,11 +35,24 @@ unsigned char attr (char x, char y) {
 }
 
 void espera_activa (int espera) {
-	for (gpint = 0; gpint < espera; gpint ++) {
-		#asm
-			halt
-		#endasm
-		if (sp_GetKey ()) break;
+	// Waits until "espera" halts have passed 
+	// or a key has been pressed.
+
+	gpit = any_key ();
+	while (espera--)  {
+		#if defined MODE_128K_DUAL || defined MIN_FAPS_PER_FRAME
+			#asm
+				halt
+			#endasm
+		#else
+			rdd = 250; do { rdi = 1; } while (rdd --);
+		#endif
+
+		gpjt = any_key ();
+		if (gpjt && gpit == 0) {
+			break;
+		}
+		gpit = gpjt;
 	}
 }
 
@@ -98,7 +111,7 @@ void draw_life () {
 }
 
 void draw_score (void) {
-	rda = 16 + (p_score / 10); rdb = 16 + (p_score % 10);
+	rda = 246 + (p_score / 10); rdb = 246 + (p_score % 10);
 	#asm
 			; enter:  A = row position (0..23)
 			;         C = col position (0..31/63)
@@ -450,7 +463,7 @@ void muerte (unsigned char a, unsigned char b) {
 	sp_UpdateNow ();
 	wyz_play_sound (3);
 	for (gpit = 0; gpit < 100; gpit++) 	{
-		if (sp_GetKey ()) break;
+		if (any_key ()) break;
 		rdc ^= 1;
 		asm_number [0] = rdc ? a : b;
 		#asm

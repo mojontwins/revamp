@@ -103,9 +103,7 @@ unsigned char get_password () {
 	while (1) {
 		draw_fast (16 - (rda >> 1), 13, 71, password);
 		
-		do {
-			rdb = sp_GetKey ();
-		} while (!rdb);
+		while(!any_key ());
 		
 		if (rdb == 12 && rda > 0) {
 			password [rda] = ' ';
@@ -174,35 +172,28 @@ void menu (void) {
 		draw_fast (11, 14, 70, (unsigned char *) ("3 CONTROLS"));
 		
 		while (1) {
-			rdb = sp_GetKey ();
-			if (rdb == '1') {
+			if (sp_KeyPressed (key_1)) {
 				start_game_from (0);
 				denew = 1;
 				break;
-			} else if (rdb == '2') {
+			} else if (sp_KeyPressed (key_2)) {
 				sp_WaitForNoKey ();
 				start_game_from (get_password ());
 				denew = 1;
 				break;
-			} else if (rdb == '3') {
-				sp_WaitForNoKey ();
+			} else if (sp_KeyPressed (key_3)) {
+				while(any_key ());
 				draw_fast (11, 12, 70, (unsigned char *) ("1 KEYBOARD"));
 				draw_fast (11, 13, 70, (unsigned char *) ("2 SINCLAIR"));
 				draw_fast (11, 14, 70, (unsigned char *) ("3 KEMPSTON"));
 				
-				while (1) {
-					rdb = sp_GetKey ();
-					if (rdb == '1') {
-						joyfunc = (void *)sp_JoyKeyboard;
-						break;
-					} else if (rdb == '2') {
-						joyfunc = (void *)sp_JoySinclair1;
-						break;
-					} else if (rdb == '3') {
-						joyfunc = (void *)sp_JoyKempston;
-						break;
-					}
-				}
+				if (sp_KeyPressed (key_1)) {
+					joyfunc = (void *) sp_JoyKeyboard; break;
+				} else if (sp_KeyPressed (key_2)) {
+					joyfunc = (void *) sp_JoySinclair1; break;
+				} else if (sp_KeyPressed (key_3)) {
+					joyfunc = (void *) sp_JoyKempston; break;
+				}	
 
 				sp_WaitForNoKey ();
 				break;

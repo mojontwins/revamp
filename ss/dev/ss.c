@@ -61,6 +61,8 @@ void main (void) {
 
 	#asm
 		di
+		xor a 
+		out (254), a
 	#endasm
 
 	sp_InitIM2(0xf1f1);
@@ -70,7 +72,6 @@ void main (void) {
 	// Init splib2
 	
 	sp_Initialize (0, 0);
-	sp_Border (BLACK);
 	sp_AddMemory(0, 40, 14, AD_FREE);
 
 	// Control scheme: default keyboard
@@ -78,13 +79,26 @@ void main (void) {
 	joyfunc = (void *)sp_JoyKeyboard;
 
 	// Load tileset
-
-	gen_pt = tileset;
-	gpit = 0; do {
-		sp_TileArray (gpit, gen_pt);
-		gen_pt += 8;
-		gpit ++;		
-	} while (gpit);
+	#asm
+			ld  b, 0
+			ld  hl, SPTileArray
+			ld  de, _tileset
+		.load_tileset_loop
+			ld  (hl), e
+			inc h
+			ld  (hl), d
+			dec h
+			inc hl
+			inc de
+			inc de
+			inc de
+			inc de
+			inc de
+			inc de
+			inc de
+			inc de
+			djnz load_tileset_loop
+	#endasm
 
 	// Create sprites
 
@@ -103,7 +117,8 @@ void main (void) {
 	// Intro
 	
 	player_on = 1;
-		
+	wyz_init ();
+
 	#asm
 		ei
 	#endasm
