@@ -1,39 +1,61 @@
-// WYZ p_interface module.
+// MTE MK1 (la Churrera) v5.10
+// Copyleft 2010-2014, 2020-2023 by the Mojon Twins
 
-#define INICIAEFECTO	0xC364
-#define WYZp_SR	0xC021	// Esto es INICIO en el código de wyzp_asm
-#define CARGA_CANCION	0xC05E	// 0xC063
-#define SILENCIA_PLAYER	0xC043	// 0xC048
+// WYZ player hook functions
 
-unsigned char play_music = 0;
+// WYZ player and songs are loaded into RAM 1 ($C000).
+// In each interrupt, we just page in RAM 1, call the player,
+// then page back RAM 0 and exit.
 
+// The player is, thus, compiled to $C000, and its addresses
+// are:
+
+#define WYZPLAYERINIT		0xC018	// INIT_BUFFERS		EQU 0C018H
+#define WYZPLAYERISR		0xC000	// INICIO			EQU 0C000H
+#define INICIAEFECTO		0xC47E	// INICIA_EFECTO	EQU 0C46BH
+#define CARGA_CANCION		0xC087	// CARGA_CANCION	EQU 0C087H
+#define SILENCIA_PLAYER		0xC062	// PLAYER_OFF		EQU 0C062H
+
+// Start.
+
+// isr
 #asm
 	defw 0	// 2 bytes libres
 #endasm
 
 void ISR(void) {
-	if (play_music) {
 		#asm
+			ld  a, (_player_on)
+			or  a 
+			ret z
 			ld b, 1
 			call SetRAMBank
-			call WYZp_SR
+			call WYZPLAYERISR
 			ld b, 0
 			call SetRAMBank			
+
+			ld  hl, _isrc
+			inc (hl)						
 		#endasm
 	}
+
+void wyz_init (void) {
+	#asm
+			ld  b,1
+			call SetRAMBank
+			call WYZPLAYERINIT	
+			ld  b,0
+			call SetRAMBank
+	#endasm
 }
 
-void wyz_play_sound (unsigned char fx_number, unsigned char fx_channel) {
-	if (!play_music)
-		return;
-	
-	asm_int [0] = fx_channel + (fx_number	* 256);
-	
+void __FASTCALL__ wyz_play_sound (unsigned char fx_number) {
 	#asm
 		di
 		ld b, 1
 		call SetRAMBank
-		ld bc, (_asm_int)
+			; __FASTCALL__ -> fx_number is in l!
+			ld  b, l
 		call INICIAEFECTO
 		ld b, 0
 		call SetRAMBank
@@ -41,29 +63,22 @@ void wyz_play_sound (unsigned char fx_number, unsigned char fx_channel) {
 	#endasm
 }
 
-void wyz_play_music (unsigned char song_number) {
-	if (!play_music)
-		return;
-	
-	asm_int [0] = song_number;
-
+void __FASTCALL__ wyz_play_music (unsigned char song_number) {
 	#asm
 		di
 		ld b, 1
 		call SetRAMBank
-		ld a, (_asm_int)
+			; __FASTCALL__ -> song_number is in l!
+			ld  a, l
 		call CARGA_CANCION
 		ld b, 0
 		call SetRAMBank
 		ei
 	#endasm
+	song_playing = song_number;
 }
 
-void wyz_stop_sound ()
-{
-	if (!play_music)
-		return;
-	
+void wyz_stop_sound (void) {
 	#asm
 		di
 		ld b, 1

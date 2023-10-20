@@ -2,9 +2,36 @@
 
 // Functions
 
-unsigned char __FASTCALL__ attr (char x, char y) {
-	//if (x < 0 || x > 14 || y < 0 || y > 8) return 0;
-	return tile_behaviour [map_buffer [(y << 4) - y + x]];	
+unsigned char attr (char x, char y) {
+	// return tile_behaviour [map_buffer [(y << 4) - y + x]];	
+	#asm
+			ld  hl, 4
+			add hl, sp
+			ld  c, (hl) 	// x
+
+			dec hl
+			dec hl
+			ld  a, (hl) 	// y
+
+			ld  b, a 
+			sla a
+			sla a
+			sla a
+			sla a
+			sub b
+			add c
+
+			ld  d, 0
+			ld  e, a 
+			ld  hl, _map_buffer
+			add hl, de 
+			ld  l, (hl)
+			ld  h, 0 
+			ld  de, _tile_behaviour
+			add hl, de 
+			ld  l, (hl)
+			ld  h, 0
+	#endasm
 }
 
 void espera_activa (int espera) {
@@ -31,34 +58,88 @@ void init_player (unsigned char level) {
 }
 
 void draw_life () {
-	sp_PrintAtInv (22, 24, 71, 246 + (p_life / 100));
-	sp_PrintAtInv (22, 25, 71, 246 + (p_life % 100) / 10);
-	sp_PrintAtInv (22, 26, 71, 246 + (p_life % 10));
+	rda = 246 + (p_life / 100); rdb = 246 + (p_life % 100) / 10; rdc = 246 + (p_life % 10);
+	#asm
+			; enter:  A = row position (0..23)
+			;         C = col position (0..31/63)
+			;         D = pallette #
+			;         E = graphic #
+
+			ld  a, (_rda)
+			ld  e, a
+
+			ld  d, 71
+			
+			ld  c, 24
+			ld  a, 22
+
+			call SPPrintAtInv
+
+			ld  a, (_rdb)
+			ld  e, a
+
+			ld  d, 71
+			
+			ld  c, 25
+			ld  a, 22
+
+			call SPPrintAtInv
+
+			ld  a, (_rdc)
+			ld  e, a
+
+			ld  d, 71
+			
+			ld  c, 26
+			ld  a, 22
+
+			call SPPrintAtInv
+	#endasm
 }
 
 void draw_score (void) {
-	sp_PrintAtInv (22, 29, 71, 246 + (p_score / 10));
-	sp_PrintAtInv (22, 30, 71, 246 + (p_score % 10));
+	rda = 16 + (p_score / 10); rdb = 16 + (p_score % 10);
+	#asm
+			; enter:  A = row position (0..23)
+			;         C = col position (0..31/63)
+			;         D = pallette #
+			;         E = graphic #
+
+			ld  a, (_rda)
+			ld  e, a
+
+			ld  d, 71
+			
+			ld  c, 29
+			ld  a, 22
+
+			call SPPrintAtInv
+
+			ld  a, (_rdb)
+			ld  e, a
+
+			ld  d, 71
+			
+			ld  c, 30
+			ld  a, 22
+
+			call SPPrintAtInv
+	#endasm
 }
 
-unsigned char prefalling;
 void move () {
-	unsigned char i;
-	unsigned char xx, yy;
-	unsigned char falling;
-	
-	i = (joyfunc) (&keys);
-	xx = p_x >> 4;
-	yy = p_y >> 4;
+	gpit = (joyfunc) (&keys);
+	rdx = p_x >> 4;
+	rdy = p_y >> 4;
 	
 	// Behold the evil tile!
 	
-	if (attr (xx, yy) == 1 || 
-		((p_x & 15) != 0 && attr (xx + 1, yy) == 1) ||
-		((p_y & 15) != 0 && attr (xx, yy + 1) == 1) ||
-		((p_x & 15) != 0 && (p_y & 15) != 0 && attr (xx + 1, yy + 1) == 1)) {
+	if (attr (rdx, rdy) == 1 || 
+		((p_x & 15) != 0 && attr (rdx + 1, rdy) == 1) ||
+		((p_y & 15) != 0 && attr (rdx, rdy + 1) == 1) ||
+		((p_x & 15) != 0 && (p_y & 15) != 0 && attr (rdx + 1, rdy + 1) == 1)) {
 		if (p_life > 0 && half_life) {
-			wyz_play_sound (1, 2);
+			wyz_play_sound (1);
 			p_life --;	
 			draw_life ();
 		}
@@ -66,7 +147,7 @@ void move () {
 	
 	
 	if (p_sal == 0) {	
-		if ((i & sp_UP) && (i & sp_DOWN)) {
+		if ((gpit & sp_UP) && (gpit & sp_DOWN)) {
 			p_kpress = 0;
 		}
 				
@@ -76,13 +157,13 @@ void move () {
 			if (
 				(p_y & 15) != 0 ||
 				((p_y & 15) == 0 && 
-				(attr (xx, yy + 1) < 2 && 
-				((p_x & 15) == 0 || ((p_x & 15) != 0 && attr (xx + 1, yy + 1) < 2))))) {
+				(attr (rdx, rdy + 1) < 2 && 
+				((p_x & 15) == 0 || ((p_x & 15) != 0 && attr (rdx + 1, rdy + 1) < 2))))) {
 					falling = 1;	
 				}
 		
 		if (prefalling != falling && !falling)
-			wyz_play_sound (0, 2);
+			wyz_play_sound (0);
 			
 		prefalling = falling;
 			
@@ -90,34 +171,34 @@ void move () {
 			
 			// Walk
 			
-			if ((i & sp_LEFT) == 0) {
+			if ((gpit & sp_LEFT) == 0) {
 				if (p_facing == 0) {
 					p_facing = 4;
 				} else {
 					if ((p_x & 15) != 0 ||
 					(p_x != 0 && (p_x & 15) == 0 &&
-					(attr (xx - 1, yy) < 3 /*&&
+					(attr (rdx - 1, rdy) < 3 /*&&
 					((p_y & 15) == 0 ||
-					((p_y & 15) != 0 && attr (xx - 1, yy + 1) < 3))*/))) {
+					((p_y & 15) != 0 && attr (rdx - 1, rdy + 1) < 3))*/))) {
 						p_x -= 2;
 						p_frame = (p_frame + 1) & 3;
-						xx = p_x >> 4;
+						rdx = p_x >> 4;
 					}
 				}
 			}
 			
-			if ((i & sp_RIGHT) == 0) {
+			if ((gpit & sp_RIGHT) == 0) {
 				if (p_facing == 4) {
 					p_facing = 0;
 				} else {
 					if ((p_x & 15) != 0 ||
 					((p_x & 15) == 0 &&
-					(attr (xx + 1, yy) < 3 /*&&
+					(attr (rdx + 1, rdy) < 3 /*&&
 					((p_y & 15) == 0 ||
-					((p_y & 15) != 0 && attr (xx + 1, yy + 1) < 3))*/))) {
+					((p_y & 15) != 0 && attr (rdx + 1, rdy + 1) < 3))*/))) {
 						p_x += 2;
 						p_frame = (p_frame + 1) & 3;
-						xx = p_x >> 4;
+						rdx = p_x >> 4;
 					}
 				}
 			}
@@ -125,44 +206,44 @@ void move () {
 			// Jump
 			
 			if (!p_kpress) {
-				if ((i & sp_UP) == 0) {
+				if ((gpit & sp_UP) == 0) {
 					p_x = ((p_x >> 1) << 1);
 					p_mx = 2;
 					p_my = 4;
 					p_nu = 0;
 					p_sal = 1;
 					p_kpress = 1;
-					wyz_play_sound (8, 2);
+					wyz_play_sound (8);
 				}
 				
-				if ((i & sp_DOWN) == 0) {
+				if ((gpit & sp_DOWN) == 0) {
 					p_x = ((p_x >> 2) << 2);
 					p_mx = 4;
 					p_my = 2;
 					p_nu = 0;
 					p_sal = 1;
 					p_kpress = 1;
-					wyz_play_sound (7, 2);
+					wyz_play_sound (7);
 				}
 			}
 			
 			// Slide
 			
 			if (half_life && !p_sal) {
-				if (p_x > 0 && (attr (xx, yy + 1) == 4 ||
-					((p_x & 15) != 0 && attr (xx + 1, yy + 1) == 4)) &&
-					((p_x & 15) != 0 || ((p_x & 15) == 0 && attr (xx - 1, yy) < 3))) {
+				if (p_x > 0 && (attr (rdx, rdy + 1) == 4 ||
+					((p_x & 15) != 0 && attr (rdx + 1, rdy + 1) == 4)) &&
+					((p_x & 15) != 0 || ((p_x & 15) == 0 && attr (rdx - 1, rdy) < 3))) {
 					p_x -=2;
-					if (fc == 0) wyz_play_sound (2, 2);
-					//xx = p_x >> 4;
+					if (fc == 0) wyz_play_sound (2);
+					//rdx = p_x >> 4;
 				}
 				
-				if (p_x < 224 && (attr (xx, yy + 1) == 5 ||
-					((p_x & 15) != 0 && attr (xx + 1, yy + 1) == 5)) &&
-					((p_x & 15) != 0 || ((p_x & 15) == 0 && attr (xx + 1, yy) < 3))) {
+				if (p_x < 224 && (attr (rdx, rdy + 1) == 5 ||
+					((p_x & 15) != 0 && attr (rdx + 1, rdy + 1) == 5)) &&
+					((p_x & 15) != 0 || ((p_x & 15) == 0 && attr (rdx + 1, rdy) < 3))) {
 					p_x +=2;
-					if (fc == 0) wyz_play_sound (2, 2);
-					//xx = p_x >> 4;
+					if (fc == 0) wyz_play_sound (2);
+					//rdx = p_x >> 4;
 				}
 			}
 			
@@ -182,8 +263,8 @@ void move () {
 			if (p_y > 0) {
 				if ((p_y & 15) != 0 ||
 				(p_y != 0 && (p_y & 15) == 0 && 
-				(attr (xx, yy - 1) < 3 && 
-				((p_x & 15) == 0 || ((p_x & 15) != 0 && attr (xx + 1, yy - 1) < 3))))) {
+				(attr (rdx, rdy - 1) < 3 && 
+				((p_x & 15) == 0 || ((p_x & 15) != 0 && attr (rdx + 1, rdy - 1) < 3))))) {
 					p_y -= p_my;
 				}
 			}
@@ -192,39 +273,41 @@ void move () {
 				p_y += p_my;
 			} else {
 				if ((p_y & 15) == 0 && 
-					(attr (xx, yy + 1) < 2 && 
-					((p_x & 15) == 0 || ((p_x & 15) != 0 && attr (xx + 1, yy + 1) < 2)))) {
+					(attr (rdx, rdy + 1) < 2 && 
+					((p_x & 15) == 0 || ((p_x & 15) != 0 && attr (rdx + 1, rdy + 1) < 2)))) {
 					p_y += p_my;
 				} else {
 					p_sal = 0;
-					wyz_play_sound (0, 2);
+					wyz_play_sound (0);					
 				}
 			}
 		}
 		
-		yy = p_y >> 4;
-		
-		if (p_facing) {
-			if ((p_x & 15) != 0 ||
-			(p_x != 0 && (p_x & 15) == 0 &&
-			(attr (xx - 1, yy) < 3 &&
-			((p_y & 15) == 0 ||
-			((p_y & 15) != 0 && attr (xx - 1, yy + 1) < 3))))) {
-				p_x -= p_mx;
+		if (p_sal) {
+			rdy = p_y >> 4;
+			
+			if (p_facing) {
+				if ((p_x & 15) != 0 ||
+				(p_x != 0 && (p_x & 15) == 0 &&
+				(attr (rdx - 1, rdy) < 3 &&
+				((p_y & 15) == 0 ||
+				((p_y & 15) != 0 && attr (rdx - 1, rdy + 1) < 3))))) {
+					p_x -= p_mx;
+				}
+			} else {
+				if ((p_x & 15) != 0 ||
+				((p_x & 15) == 0 &&
+				(attr (rdx + 1, rdy) < 3 &&
+				((p_y & 15) == 0 ||
+				((p_y & 15) != 0 && attr (rdx + 1, rdy + 1) < 3))))) {
+					p_x += p_mx;
+				}
 			}
-		} else {
-			if ((p_x & 15) != 0 ||
-			((p_x & 15) == 0 &&
-			(attr (xx + 1, yy) < 3 &&
-			((p_y & 15) == 0 ||
-			((p_y & 15) != 0 && attr (xx + 1, yy + 1) < 3))))) {
-				p_x += p_mx;
+			
+			p_nu ++;
+			if (p_nu == 16) {
+				p_sal = 0;
 			}
-		}
-		
-		p_nu ++;
-		if (p_nu == 16) {
-			p_sal = 0;
 		}
 	}
 	
@@ -257,6 +340,7 @@ void move () {
 	}
 }
 
+/*
 unsigned char collide (unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2) {
 	unsigned char l1x, l1y, l2x, l2y;
 	l1x = (x1 > 12) ? x1 - 12 : 0;
@@ -265,76 +349,110 @@ unsigned char collide (unsigned char x1, unsigned char y1, unsigned char x2, uns
 	l2y = y1 + 12;
 	return (x2 >= l1x && x2 <= l2x && y2 >= l1y && y2 <= l2y);
 }
+*/
+
+unsigned char collide (void) {
+	// checks 12x12 collision between player @ p_x, p_y and whatever is @ rdx, rdy
+	#asm
+			ld  hl, 0
+
+		// p_x + BB_SIZE >= rdx
+			ld  a, (_rdx)
+			ld  c, a 
+			ld  a, (_p_x)
+			add BB_SIZE
+			cp  c
+			ret c 
+
+		// p_x <= cx2 + BB_SIZE -> cx + BB_SIZE >= p_x
+			ld  a, (_p_x)
+			ld  c, a 
+			ld  a, (_rdx)
+			add BB_SIZE
+			cp  c 
+			ret c
+
+		// p_y + BB_SIZE >= cy2
+			ld  a, (_rdy)
+			ld  c, a 
+			ld  a, (_p_y)
+			add BB_SIZE
+			cp  c
+			ret c 
+
+		// p_y <= cy2 + BB_SIZE -> cy + BB_SIZE >= p_y
+			ld  a, (_p_y)
+			ld  c, a 
+			ld  a, (_rdy)
+			add BB_SIZE
+			cp  c 
+			ret c
+
+			ld  l, 1
+	#endasm
+}
 
 void move_enemies () {
-	unsigned char i, j, enoffsmasi, xx, yy;
-	unsigned char cx, cy;
-	unsigned char ccx, ccy;
-	unsigned char orientation;
-
-	for (i = 0; i < 3; i ++) {
-		enoffsmasi = enoffs + i;
-		if (malotes [enoffsmasi].t != 0) {
-			cx = malotes [enoffsmasi].x;
-			cy = malotes [enoffsmasi].y;	
+	for (enit = 0; enit < 3; enit ++) {
+		enoffsmasi = enoffs + enit;
+		rdt = malotes [enoffsmasi].t;
+		if (rdt != 0) {
 			malotes [enoffsmasi].x += malotes [enoffsmasi].mx;
 			malotes [enoffsmasi].y += malotes [enoffsmasi].my;
 			
-			ccx = malotes [enoffsmasi].x;
-			ccy = malotes [enoffsmasi].y;
+			rdx = malotes [enoffsmasi].x;
+			rdy = malotes [enoffsmasi].y;
 			
-			if (collide (p_x, p_y, ccx, ccy)) {
+			if (collide ()) {
 				if (p_life > 0) {
 					p_life --;
 					draw_life ();
-					wyz_play_sound (1, 2);
+					wyz_play_sound (1);
 				} 	
 			}
 			
-			if (ccx == malotes [enoffsmasi].x1 || ccx == malotes [enoffsmasi].x2)
+			if (rdx == malotes [enoffsmasi].x1 || rdx == malotes [enoffsmasi].x2)
 				malotes [enoffsmasi].mx = -malotes [enoffsmasi].mx;
-			if (ccy == malotes [enoffsmasi].y1 || ccy == malotes [enoffsmasi].y2)
+			if (rdy == malotes [enoffsmasi].y1 || rdy == malotes [enoffsmasi].y2)
 				malotes [enoffsmasi].my = -malotes [enoffsmasi].my;
 				
-			en_an_count [i] ++; 
-			if (en_an_count [i] == 4) {
-				en_an_count [i] = 0;
-				en_an_frame [i] = !en_an_frame [i];
-
-				// Optimization: 
-				//	576 = 512 + 64; x * 576 = (x << 9) + (x << 6)
-				//	288 = 256 + 32; x * 288 = (x << 8) + (x << 5)
-				//	144 = 128 + 16; x * 144 = (x << 7) + (x << 4)
-				// en_an_next_frame [i] = sprite_9_a + 
-				//	576 * malotes [enoffsmasi].t + 
-				//	144 * en_an_frame [i] + 
-				//	288 * (malotes [enoffsmasi].mx < 0 || malotes [enoffsmasi].my < 0);
+			en_an_count [enit] ++; 
+			if (en_an_count [enit] == 4) {
+				en_an_count [enit] = 0;
+				en_an_frame [enit] = !en_an_frame [enit];
 				
-				orientation = (malotes [enoffsmasi].mx < 0 || malotes [enoffsmasi].my < 0);
-				en_an_next_frame [i] = sprite_5_a + 
-					((malotes [enoffsmasi].t << 9) + (malotes [enoffsmasi].t << 6)) + 
-					((en_an_frame [i] << 7) + (en_an_frame [i] << 4)) + 
-					((orientation << 8) + (orientation << 5));
+				rda = (malotes [enoffsmasi].mx < 0 || malotes [enoffsmasi].my < 0);
+				en_an_next_frame [enit] = sprite_frames[en_an_base_cell [enit] + (rda << 1) + en_an_frame [enit]];
+
 			}
 		}	
 	}
 }
 
 void init_hotspots () {
-	unsigned char i;
-	for (i = 0; i < 25; i ++)
-		if (hotspots [i].tipo != 0)
-			hotspots [i].act = 1;
+	#asm
+			// iterate MAP_W*MAP_H times
+			// start with _hotspots + 2
+			// set to 1, increment pointer by 3
+			ld  b, 25
+			ld  hl, _hotspots + 2
+			ld  de, 3
+			ld  a, 1
+		.init_hotspots_loop
+			ld  (hl), a
+			add hl, de
+			djnz init_hotspots_loop
+	#endasm		
 }
 	
 void muerte (unsigned char a, unsigned char b) {
-	unsigned char c = 0, i;
+	rdc = 0;
 	sp_UpdateNow ();
-	wyz_play_sound (3, 2);
-	for (i=0; i < 100; i++) 	{
+	wyz_play_sound (3);
+	for (gpit = 0; gpit < 100; gpit++) 	{
 		if (sp_GetKey ()) break;
-		c = 1 - c;
-		if (c) asm_number [0] = a; else asm_number [0] = b;
+		rdc ^= 1;
+		asm_number [0] = rdc ? a : b;
 		#asm
 				ld	a, (_asm_number)
 				ld	hl, 22561
@@ -388,14 +506,12 @@ void muerte (unsigned char a, unsigned char b) {
 				pop bc
 				djnz mb1
 		#endasm
-		if (i & 1)
-			wyz_play_sound (1, 2);
+		if (gpit & 1)
+			wyz_play_sound (1);
 	}
 }
 
-unsigned char rand () {
-	unsigned char res;
-	
+unsigned char rand (void) {
 	#asm
 		.rand16
 			ld	hl, _seed
@@ -432,27 +548,12 @@ unsigned char rand () {
 			
 			;; Ahora [SEED] = HL
 		
-			ld 	hl, _asm_int
-			ld	a,	e	
-			ld	(hl), a
-			inc	hl
-			ld	a,	d
-			ld	(hl), a
-			
-			;; Ahora [ASM_INT] = HL
+			ld  l, e
+			ret
 	#endasm
-	
-	res = asm_int [0];
-
-	return res;
 }
 
 unsigned char game (unsigned char level) {
-	unsigned char x, y;
-	unsigned char i;
-	unsigned char f_win, f_gameover;
-	
-	//malotes = (MALOTE *) (28375);
 
 	x_pant = levels [level].init_x_pant;
 	y_pant = levels [level].init_y_pant;
@@ -470,7 +571,7 @@ unsigned char game (unsigned char level) {
 	draw_life ();
 	draw_score ();
 	
-	attrs_byte = 1;
+	if (y_pant >= yOsc) attrs_byte = 1;
 	
 	render_screen (x_pant, y_pant);
 	
@@ -488,17 +589,21 @@ unsigned char game (unsigned char level) {
 		
 		// Animate water tiles (cheesy but fast)
 		
-		i = rand () & 15;
-		if (i < n_blobs) {
-			blobs [i].v = 1 - blobs [i].v; 
-			draw_coloured_tile (VIEWPORT_X + blobs [i].x, VIEWPORT_Y + blobs [i].y, 45 + blobs [i].v);
+		gpit = rand () & 15;
+		if (gpit < n_blobs) {
+			blobs_v [gpit] = 1 - blobs_v [gpit]; 
+			_x = blobs_x [gpit]; _y =blobs_y [gpit]; _t = 45 + blobs_v [gpit];
+			draw_coloured_tile ();
+			invalidate_tile ();
 		}
 		
 		// Lit somewhat obscured screens
 		
-		if (y_pant >= yOsc) draw_overlay ((p_x >> 3), (p_y >> 3));
-		if (y_pant >= yOsc) draw_buff ();
-		if (y_pant >= yOsc) del_overlay ((p_x >> 3), (p_y >> 3));
+		if (y_pant >= yOsc) {
+			draw_overlay ((p_x >> 3), (p_y >> 3));
+			draw_buff ();
+			del_overlay ((p_x >> 3), (p_y >> 3));
+		}
 		
 		// erm...
 		
@@ -506,17 +611,18 @@ unsigned char game (unsigned char level) {
 		if (p_x > 224) p_x = 224;
 		
 		// Checks
-		i = (joyfunc) (&keys);
-		x = p_x >> 4;
-		y = p_y >> 4;
+
+		gpit = (joyfunc) (&keys);
+		rdx = p_x >> 4;
+		rdy = p_y >> 4;
 		if (p_x == 0) {
-			if (((i & sp_LEFT) == 0 || (p_sal && p_facing) || (attr (x, y + 1) == 4 && (i & sp_RIGHT) != 0)) && x_pant > 0) {
+			if (((gpit & sp_LEFT) == 0 || (p_sal && p_facing) || (attr (rdx, rdy + 1) == 4 && (gpit & sp_RIGHT) != 0)) && x_pant > 0) {
 				x_pant --;
 				p_x = 224;
 				render_screen (x_pant, y_pant);
 			}
 		} else if (p_x == 224) {
-			if (((i & sp_RIGHT) == 0 || (p_sal && !p_facing) || (attr (x, y + 1) == 5 && (i & sp_LEFT) != 0)) && x_pant < 4) {
+			if (((gpit & sp_RIGHT) == 0 || (p_sal && !p_facing) || (attr (rdx, rdy + 1) == 5 && (gpit & sp_LEFT) != 0)) && x_pant < 4) {
 				x_pant ++;
 				p_x = 0;
 				render_screen (x_pant, y_pant);
@@ -538,18 +644,21 @@ unsigned char game (unsigned char level) {
 			}	
 		}
 		
-		if (collide (p_x, p_y, hotspot_x, hotspot_y)) {
-			
-			draw_coloured_tile (VIEWPORT_X + (hotspot_x >> 3), VIEWPORT_Y + (hotspot_y >> 3), orig_tile);
+		rdx = hotspot_x; rdy = hotspot_y;
+		if (collide ()) {		
+			_x = VIEWPORT_X + (hotspot_x >> 3); _y = VIEWPORT_Y + (hotspot_y >> 3); _t = orig_tile;	
+			draw_coloured_tile ();
+			invalidate_tile ();
+
 			hotspot_x = hotspot_y = 240;
 			if (hotspots [n_pant].tipo == 1) {
 				p_score ++;
 				draw_score ();	
-				wyz_play_sound (3, 2);
+				wyz_play_sound (3);
 			} else if (hotspots [n_pant].tipo == 2) {
 				p_life = p_life > 223 ? 255 : (p_life + 32);
 				draw_life ();
-				wyz_play_sound (5, 2);
+				wyz_play_sound (5);
 			}
 			hotspots [n_pant].act = 0;
 		}
@@ -559,23 +668,11 @@ unsigned char game (unsigned char level) {
 		if (sp_KeyPressed (key_z)) {
 			p_score ++;
 			draw_score ();
-			wyz_play_sound (3, 2);
+			wyz_play_sound (3);
 		}
 		*/
 		
 		// Render
-		/*
-		sp_MoveSprAbs(
-			sp_player, 
-			spritesClip, 
-			p_next_frame - p_current_frame, 
-			1 + (p_y >> 3), 
-			1 + (p_x >> 3), 
-			p_x & 7, 
-			p_y & 7
-		);
-		*/
-
 		#asm
 				ld  ix, (_sp_player)
 				ld  iy, vpClipStruct
@@ -608,7 +705,6 @@ unsigned char game (unsigned char level) {
 				ld  a, (_p_y)
 				and 7
 				ld  e, a
-
 				call SPMoveSprAbs
 		#endasm
 
@@ -618,11 +714,6 @@ unsigned char game (unsigned char level) {
 			enoffsmasi = enoffs + enit;
 
 			if (malotes [enoffsmasi].t != 0) {		// Esto sólo es necesario si hay habitaciones con menos de 3.
-				/*
-				x = malotes [enoffs + i].x;
-				y = malotes [enoffs + i].y;
-				sp_MoveSprAbs (sp_moviles [i], spritesClip, en_an_next_frame [i] - en_an_current_frame [i], VIEWPORT_Y + (y >> 3), VIEWPORT_X + (x >> 3),x & 7, y & 7);
-				*/
 				_en_x = malotes [enoffsmasi].x;
 				_en_y = malotes [enoffsmasi].y;
 			} else {
@@ -721,7 +812,7 @@ unsigned char game (unsigned char level) {
 		
 		}
 		
-		half_life = !half_life;
+		half_life ^= 1;
 		fc++; if (fc == 8) fc = 0;
 		
 		// Update

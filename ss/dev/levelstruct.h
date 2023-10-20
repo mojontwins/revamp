@@ -1,6 +1,6 @@
 // Current level structs & functions
 
-// The current level will be copied from RAM 3
+// The current level will be copied from extra RAM
 // into low, contended RAM, as this data will
 // only be accessed during refresh time.
 
@@ -24,10 +24,6 @@ typedef struct {
 	unsigned char xy, tipo, act;
 } HOTSPOT;
 
-typedef struct {
-	unsigned char x, y, v;
-} BLOB;
-
 // Decompresion buffers. Total= 3375 + 825 + 75 = 4275 which is the size of a level
 
 extern unsigned char level_buffer[0];
@@ -47,24 +43,6 @@ extern HOTSPOT hotspots[0];
 
 // 
 
-unsigned char en_an_frame [3];
-unsigned char en_an_count [3];
-unsigned char *en_an_current_frame [3], *en_an_next_frame [3];
-signed int en_x [3];
-signed int en_y [3];
-signed int en_vx [3];
-signed int en_vy [3];
-unsigned char fanty_activo;
-
-BLOB blobs [MAX_BLOBS];
-
-unsigned char n_blobs;
-unsigned char hotspot_x, hotspot_y;
-unsigned char orig_tile;
-extern unsigned char map_buffer [0];
-extern unsigned int level_pointer [0];
-unsigned char yOsc = 4;
-
 #asm
 	._level_pointer	
 		defw	0
@@ -79,45 +57,148 @@ void load_level (unsigned char level) {
 	yOsc = 99;
 }
 
-void __FASTCALL__ draw_coloured_tile (unsigned char x, unsigned char y, unsigned char t) {
-	unsigned int st_index;
-	st_index = t << 3;
-	sp_PrintAtInv (y    , x    , supertiles[st_index ++], supertiles[st_index ++]);
-	sp_PrintAtInv (y    , x + 1, supertiles[st_index ++], supertiles[st_index ++]);
-	sp_PrintAtInv (y + 1, x    , supertiles[st_index ++], supertiles[st_index ++]);
-	sp_PrintAtInv (y + 1, x + 1, supertiles[st_index ++], supertiles[st_index]);
+void invalidate_tile (void) {
+	#asm
+			; Invalidate Rectangle
+			;
+			; enter:  B = row coord top left corner
+			;         C = col coord top left corner
+			;         D = row coord bottom right corner
+			;         E = col coord bottom right corner
+			;        IY = clipping rectangle, set it to "ClipStruct" for full screen
+
+			ld  a, (__x)
+			ld  c, a
+			inc a
+			ld  e, a
+			ld  a, (__y)
+			ld  b, a
+			inc a
+			ld  d, a
+			ld  iy, fsClipStruct
+			call SPInvalidate			
+	#endasm
+}
+
+void invalidate_viewport (void) {
+	#asm
+			; Invalidate Rectangle
+			;
+			; enter:  B = row coord top left corner
+			;         C = col coord top left corner
+			;         D = row coord bottom right corner
+			;         E = col coord bottom right corner
+			;        IY = clipping rectangle, set it to "ClipStruct" for full screen
+
+			ld  b, VIEWPORT_Y
+			ld  c, VIEWPORT_X
+			ld  d, VIEWPORT_Y+17
+			ld  e, VIEWPORT_X+29
+			ld  iy, vpClipStruct
+			call SPInvalidate
+	#endasm
+}
+
+void draw_coloured_tile () {
+	#asm
+			ld  a, (__x)
+			ld  c, a
+			ld  a, (__y)
+			call SPCompDListAddr
+			ex de, hl
+
+			// DE -> display buffer
+
+			ld  a, (__t)
+			ld  h, 0
+			ld  l, a 
+			add hl, hl 
+			add hl, hl
+			add hl, hl
+			ld  bc, _supertiles
+			add hl, bc 
+
+			// For each char: write colour, inc DE, write tile, inc DE*3
+
+			ld  a, (hl) 	// read colour 
+			ld  (de), a  	// write colour
+			inc hl 
+			inc de 
+
+			ld  a, (hl) 	// read char
+			ld  (de), a  	// write char
+			inc hl 
+			inc de 
+
+			inc de
+			inc de 			// next DisplayList cell
+
+			ld  a, (hl) 	// read colour 
+			ld  (de), a  	// write colour
+			inc hl 
+			inc de 
+
+			ld  a, (hl) 	// read char
+			ld  (de), a  	// write char
+			inc hl 
+			
+			ex  de, hl
+			ld  bc, 123
+			add hl, bc
+			ex  de, hl			// next DisplayList cell
+
+			ld  a, (hl) 	// read colour 
+			ld  (de), a  	// write colour
+			inc hl 
+			inc de 
+
+			ld  a, (hl) 	// read char
+			ld  (de), a  	// write char
+			inc hl 
+			inc de 
+
+			inc de
+			inc de 			// next DisplayList cell
+
+			ld  a, (hl) 	// read colour 
+			ld  (de), a  	// write colour
+			inc hl 
+			inc de 
+
+			ld  a, (hl) 	// read char
+			ld  (de), a  	// write char
+
+	#endasm
 }
 
 void render_screen () {
-	unsigned char *map_pointer; 
-	unsigned char y = 0, x = 0;
-	unsigned char i;
-	unsigned char t;
-
 	n_pant = x_pant + (y_pant << 2) + y_pant;
 	
-	map_pointer = (unsigned char *) (level_buffer + y_pant * 675 + x_pant * 15);
+	map_pt = (unsigned char *) (level_buffer + y_pant * 675 + x_pant * 15);
 	n_blobs = 0;
+
+	_x = VIEWPORT_X;
+	_y = VIEWPORT_Y;
 		
-	for (i = 0; i < 135; i ++) {
-		t = *map_pointer;
-		map_buffer [i] = t;
+	for (gpit = 0; gpit < 135; gpit ++) {
+		_t = *map_pt;
+		map_buffer [gpit] = _t;
 		
-		if (t == 45 || t == 46) {
-			blobs [n_blobs].x = x;
-			blobs [n_blobs].y = y;
-			blobs [n_blobs].v = t - 45;
+		if (_t == 45 || _t == 46) {
+			blobs_x [n_blobs] = _x;
+			blobs_y [n_blobs] = _y;
+			blobs_v [n_blobs] = _t - 45;
 			n_blobs ++;
 		}
 		
-		draw_coloured_tile (VIEWPORT_X + x, VIEWPORT_Y + y, t);
+		draw_coloured_tile ();
 		
-		map_pointer ++;
-		x += 2;
-		if (x == 30) {
-			y += 2;
-			x = 0;
-			map_pointer += 60;	
+		map_pt ++;
+		_x += 2;
+		if (_x == 30 + VIEWPORT_X) {
+			_y += 2;
+			_x = VIEWPORT_X;
+			map_pt += 60;	
 		}
 	}
 	
@@ -125,28 +206,14 @@ void render_screen () {
 	
 	enoffs = n_pant + n_pant + n_pant;
 	
-	for (i = 0; i < 3; i ++) {
-		en_an_frame [i] = 0;
-		en_an_count [i] = 0;
+	for (gpit = 0; gpit < 3; gpit ++) {
+		//en_an_frame [gpit] = 0;
+		//en_an_count [gpit] = 0;
 		
-		switch (malotes [enoffs + i].t) {
-			case 0:
-				//sp_MoveSprAbs (sp_moviles [i], spritesClip, 0, 22, 0, 0, 0);
-				break;
-			case 1:
-				en_an_next_frame [i] = sprite_9_a;
-				break;
-			case 2:
-				en_an_next_frame [i] = sprite_13_a;
-				break;
-			case 3:
-				en_an_next_frame [i] = sprite_17_a;
-				break;
-			case 4:
-				en_an_next_frame [i] = sprite_21_a;
-				break;
-			default:
-				en_an_next_frame [i] = sprite_21_a;
+		rdt = malotes [enoffs + gpit].t;
+		if (rdt != 0) {
+			en_an_base_cell [gpit] = (rdt - 1) << 2;
+			en_an_next_frame [gpit] = sprite_frames [en_an_base_cell [gpit]];
 		}
 	}
 	
@@ -154,15 +221,21 @@ void render_screen () {
 	
 	hotspot_x = hotspot_y = 240;
 	if (hotspots [n_pant].act == 1 && hotspots [n_pant].tipo != 0) {
-		x = (hotspots [n_pant].xy >> 4);
-		y = (hotspots [n_pant].xy & 15);
-		hotspot_x = x << 4;
-		hotspot_y = y << 4;
-		map_pointer = (unsigned char *) (level_buffer + ((y_pant << 3) + y_pant + y) * 75 + ((x_pant << 4) - x_pant) + x);
-		orig_tile = *map_pointer;
-		draw_coloured_tile (VIEWPORT_X + x + x, VIEWPORT_Y + y + y, 59 - hotspots [n_pant].tipo);
+		_x = (hotspots [n_pant].xy >> 4);
+		_y = (hotspots [n_pant].xy & 15);
+		hotspot_x = _x << 4;
+		hotspot_y = _y << 4;
+		map_pt = (unsigned char *) (level_buffer + ((y_pant << 3) + y_pant + _y) * 75 + ((x_pant << 4) - x_pant) + _x);
+		orig_tile = *map_pt;
+		
+		_x = VIEWPORT_X + _x + _x; _y = VIEWPORT_Y + _y + _y; _t = 59 - hotspots [n_pant].tipo; 
+		draw_coloured_tile ();
 	}
 	
+	// Invalidate
+
+	invalidate_viewport ();
+
 	// Dark?
 	
 	if (y_pant < yOsc) {

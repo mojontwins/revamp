@@ -17,6 +17,11 @@
 #define VIEWPORT_X		1
 #define VIEWPORT_Y		1
 #define MAX_BLOBS		20
+#define NUMBLOCKS 		40
+
+unsigned char AD_FREE [NUMBLOCKS*15];		
+
+#define BB_SIZE 12
 
 // Globals
 
@@ -35,6 +40,14 @@
 #include "supertileset.h"
 #include "tileset.h"
 #include "spriteset.h"
+
+unsigned char *sprite_frames[] = {
+	sprite_9_a, sprite_10_a, sprite_11_a, sprite_12_a,
+	sprite_13_a, sprite_14_a, sprite_15_a, sprite_16_a,
+	sprite_17_a, sprite_18_a, sprite_19_a, sprite_20_a,
+	sprite_21_a, sprite_22_a, sprite_23_a, sprite_24_a,
+};
+
 #include "overlay.h"
 #include "leveldata.h"
 #include "levelstruct.h"
@@ -53,16 +66,12 @@ void main (void) {
 	sp_InitIM2(0xf1f1);
 	sp_CreateGenericISR(0xf1f1);
 	sp_RegisterHook(255, ISR);
-		
-	#asm
-		ei
-	#endasm
 
 	// Init splib2
 	
-	sp_Initialize (7, 0);
+	sp_Initialize (0, 0);
 	sp_Border (BLACK);
-	sp_AddMemory(0, 40, 15, AD_FREE);
+	sp_AddMemory(0, 40, 14, AD_FREE);
 
 	// Control scheme: default keyboard
 		
@@ -93,31 +102,37 @@ void main (void) {
 
 	// Intro
 	
-	play_music = 1;
+	player_on = 1;
+		
+	#asm
+		ei
+	#endasm
+
+	game(0);
 
 	blackout_everything ();
 	get_resource (RAM3_MOJON_TWINS_BIN, 16384);
 
-	wyz_play_sound (8, 2);
+	wyz_play_sound (8);
 	espera_activa (150);
 	
 	blackout_everything ();
 	get_resource (RAM3_UBHRES_BIN, 16384);
 
-	wyz_play_sound (7, 2);
+	wyz_play_sound (7);
 	espera_activa (150);
 
 	blackout_everything ();
 	get_resource (RAM3_SHEET_BIN, 16384);
 	
-	wyz_play_sound (5, 2);
+	wyz_play_sound (5);
 	espera_activa (1000);
 	
 	blackout_everything ();
 	draw_fast (10, 10, 70, (unsigned char *) ("DEDICATED TO"));
 	draw_fast (9, 12, 71, (unsigned char *) ("ENRIC  CERVERA"));
 	draw_fast (8, 13, 71, (unsigned char *) ("EMILIO SALGUEIRO"));
-	wyz_play_sound (6, 2);
+	wyz_play_sound (6);
 	espera_activa (150);
 	
 	// Menu

@@ -11,8 +11,6 @@ unsigned char ram_page 			@ 23301;
 // Reserver 23304 for communication with the overlay engine
 unsigned char attrs_byte 		@ 23304;
 
-unsigned char AD_FREE[40*15];
-
 unsigned int (*joyfunc)(struct sp_UDK *);				// Controls.
 void *my_malloc(uint bytes) {return sp_BlockAlloc(0);}	// malloc routines
 void *u_malloc = my_malloc;								// I wonder what
@@ -45,10 +43,10 @@ unsigned char enoffs;
 #endasm
 
 unsigned char gpit, gpjt;
-unsigned char rda, rdb, rdc, rdm, rdt;
+unsigned char rda, rdb, rdc, rdm, rdx, rdy, rdt, _x, _y, _t;
 unsigned char denew;
 unsigned int gpint;
-unsigned char *gen_pt;
+unsigned char *gen_pt, *map_pt;
 unsigned char x_pant, y_pant, n_pant;
 unsigned char *map_pointer; 
 
@@ -69,12 +67,14 @@ unsigned int key_z = 0x02fe; 		// sp_LookupKey ('z');
 // Actors
 
 unsigned char p_x, p_y;
-char p_mx, p_my;
+signed char p_mx, p_my;
 unsigned char p_sal, p_nu;
 unsigned char p_frame, p_facing;
 unsigned char p_life, p_score;
 unsigned char p_kpress;
 unsigned char *p_current_frame, *p_next_frame;
+unsigned char prefalling;
+unsigned char falling;
 
 unsigned char fc;		// Pseudo frame counter.
 
@@ -82,3 +82,24 @@ unsigned char _en_x, _en_y;
 unsigned char enoffsmasi;
 unsigned char enit;
 
+unsigned char en_an_frame [3];
+unsigned char en_an_count [3];
+unsigned char en_an_base_cell [3];
+unsigned char *en_an_current_frame [3], *en_an_next_frame [3];
+unsigned char en_x [3];
+unsigned char en_y [3];
+signed char en_vx [3];
+signed char en_vy [3];
+
+unsigned char blobs_v [MAX_BLOBS], blobs_x [MAX_BLOBS], blobs_y [MAX_BLOBS];
+
+unsigned char n_blobs;
+unsigned char hotspot_x, hotspot_y;
+unsigned char orig_tile;
+extern unsigned char map_buffer [0];
+extern unsigned int level_pointer [0];
+unsigned char yOsc = 4;
+
+unsigned char f_win, f_gameover, isrc;
+
+unsigned char player_on, song_playing;
