@@ -39,15 +39,11 @@ void espera_activa (int espera) {
 	// or a key has been pressed.
 
 	gpit = any_key ();
-	while (espera--)  {
-		#if defined MODE_128K_DUAL || defined MIN_FAPS_PER_FRAME
-			#asm
-				halt
-			#endasm
-		#else
-			rdd = 250; do { rdi = 1; } while (rdd --);
-		#endif
-
+	while (espera --)  {
+		#asm
+			halt
+		#endasm
+	
 		gpjt = any_key ();
 		if (gpjt && gpit == 0) {
 			break;
@@ -320,6 +316,7 @@ void move () {
 			p_nu ++;
 			if (p_nu == 16) {
 				p_sal = 0;
+				wyz_play_sound (0);	
 			}
 		}
 	}
@@ -584,8 +581,6 @@ unsigned char game (unsigned char level) {
 	draw_life ();
 	draw_score ();
 	
-	if (y_pant >= yOsc) attrs_byte = 1;
-	
 	render_screen (x_pant, y_pant);
 	
 	f_win = f_gameover = 0;
@@ -677,14 +672,13 @@ unsigned char game (unsigned char level) {
 		}
 		
 		// Quitar esto
-		/*
+		
 		if (sp_KeyPressed (key_z)) {
 			p_score ++;
 			draw_score ();
 			wyz_play_sound (3);
 		}
-		*/
-		
+				
 		// Render
 		#asm
 				ld  ix, (_sp_player)
@@ -829,6 +823,7 @@ unsigned char game (unsigned char level) {
 		fc++; if (fc == 8) fc = 0;
 		
 		// Update
+		attrs_byte = y_pant >= yOsc;
 		sp_UpdateNow ();
 		
 		// The last day on earth:

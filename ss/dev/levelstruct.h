@@ -46,15 +46,11 @@ extern HOTSPOT hotspots[0];
 #asm
 	._level_pointer	
 		defw	0
-	._map_buffer
-		defs 	150, 0
 #endasm
 
 void load_level (unsigned char level) {	
 	get_resource(levels[level].resource, level_buffer);
 	yOsc = levels [level].yOsc;
-
-	yOsc = 99;
 }
 
 void invalidate_tile (void) {
@@ -236,15 +232,6 @@ void render_screen () {
 
 	invalidate_viewport ();
 
-	// Dark?
-	
-	if (y_pant < yOsc) {
-		attrs_byte = 1;
-	} else {
-		attrs_byte = 0;
-		
-		draw_buff ();
-	}
 }
 
 // 0 nothing

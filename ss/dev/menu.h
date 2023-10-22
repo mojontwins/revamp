@@ -75,10 +75,12 @@ void start_game_from (unsigned char level) {
 		if (game (level)) {
 			level ++;
 			if (level == 4)  {
-				sp_WaitForNoKey ();
+				while(any_key ());
 				// Final
 				blackout_everything ();
 				get_resource (RAM3_FINAL_BIN, 16384);
+
+				draw_fast(8, 19, 71, (unsigned char *) ("ESTA NOCHE PAJA!"));
 
 				wyz_play_music (0);
 				espera_activa (32767);
@@ -103,8 +105,9 @@ unsigned char get_password () {
 	while (1) {
 		draw_fast (16 - (rda >> 1), 13, 71, password);
 		
-		while(!any_key ());
-		
+		//while(!any_key ());
+		rdb = sp_GetKey();
+
 		if (rdb == 12 && rda > 0) {
 			password [rda] = ' ';
 			draw_fast (5, 13, 71, (unsigned char *) ("                       "));
@@ -152,7 +155,8 @@ void menu (void) {
 	denew = 1;
 	
 	while (1) {
-		
+		while (any_key);
+
 		// Show menu screen
 		if (denew) {
 			blackout_everything ();
@@ -164,7 +168,7 @@ void menu (void) {
 		}
 	
 		// Text
-		draw_fast (7, 21, 71, (unsigned char *) ("C MOJON TWINS 2011"));
+		draw_fast (4, 21, 71, (unsigned char *) ("] MOJON TWINS 2011, 2023"));
 			
 		// Show menu options
 		draw_fast (11, 12, 70, (unsigned char *) ("1 PLAY    "));
@@ -183,19 +187,21 @@ void menu (void) {
 				break;
 			} else if (sp_KeyPressed (key_3)) {
 				while(any_key ());
-				draw_fast (11, 12, 70, (unsigned char *) ("1 KEYBOARD"));
-				draw_fast (11, 13, 70, (unsigned char *) ("2 SINCLAIR"));
-				draw_fast (11, 14, 70, (unsigned char *) ("3 KEMPSTON"));
-				
-				if (sp_KeyPressed (key_1)) {
-					joyfunc = (void *) sp_JoyKeyboard; break;
-				} else if (sp_KeyPressed (key_2)) {
-					joyfunc = (void *) sp_JoySinclair1; break;
-				} else if (sp_KeyPressed (key_3)) {
-					joyfunc = (void *) sp_JoyKempston; break;
-				}	
 
-				sp_WaitForNoKey ();
+				while(1) {
+					draw_fast (11, 12, 70, (unsigned char *) ("1 KEYBOARD"));
+					draw_fast (11, 13, 70, (unsigned char *) ("2 SINCLAIR"));
+					draw_fast (11, 14, 70, (unsigned char *) ("3 KEMPSTON"));
+					
+					if (sp_KeyPressed (key_1)) {
+						joyfunc = (void *) sp_JoyKeyboard; break;
+					} else if (sp_KeyPressed (key_2)) {
+						joyfunc = (void *) sp_JoySinclair1; break;
+					} else if (sp_KeyPressed (key_3)) {
+						joyfunc = (void *) sp_JoyKempston; break;
+					}	
+				}
+
 				break;
 			}
 		}

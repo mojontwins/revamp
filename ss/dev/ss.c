@@ -21,7 +21,7 @@
 
 unsigned char AD_FREE [NUMBLOCKS*15];		
 
-#define BB_SIZE 12
+#define BB_SIZE 8
 
 // Globals
 
@@ -122,8 +122,6 @@ void main (void) {
 	#asm
 		ei
 	#endasm
-
-	game(0);
 
 	blackout_everything ();
 	get_resource (RAM3_MOJON_TWINS_BIN, 16384);

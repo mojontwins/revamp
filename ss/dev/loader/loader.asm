@@ -12,15 +12,15 @@
 ; load screen
 	scf
 	ld	a, $ff
-	ld	ix, $ffff - 2179
-	ld	de, 2179
+	ld	ix, $ffff - 2465
+	ld	de, 2465
 	call $0556
 	di
 
 	call blackout
 
 ; Decompress
-	ld  hl, $ffff - 2179
+	ld  hl, $ffff - 2465
 	ld  de, 16384
 	call depack	
 
@@ -33,7 +33,7 @@
 	scf
 	ld	a, $ff
 	ld	ix, $8000
-	ld	de, 2910
+	ld	de, 2924
 	call $0556
 	di
 
@@ -51,7 +51,7 @@
 	scf
 	ld	a, $ff
 	ld	ix, $C000
-	ld	de, 12491
+	ld	de, 12456
 	call $0556
 	di
 
@@ -63,13 +63,13 @@
 	; Load as high as possible
 	scf
 	ld	a, $ff
-	ld	ix, $ffff - 11168
-	ld	de, 11168
+	ld	ix, $ffff - 11152
+	ld	de, 11152
 	call $0556
 	di
 
 	; Unpack
-	ld  hl, $ffff - 11168
+	ld  hl, $ffff - 11152
 	ld  de, 24000
 	call depack
 	

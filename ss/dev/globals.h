@@ -100,7 +100,7 @@ unsigned char blobs_v [MAX_BLOBS], blobs_x [MAX_BLOBS], blobs_y [MAX_BLOBS];
 unsigned char n_blobs;
 unsigned char hotspot_x, hotspot_y;
 unsigned char orig_tile;
-extern unsigned char map_buffer [0];
+unsigned char *map_buffer = FREEPOOL;
 extern unsigned int level_pointer [0];
 unsigned char yOsc = 4;
 

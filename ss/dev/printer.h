@@ -10,71 +10,8 @@ extern unsigned char ncc [];
 
 #asm	
 	._letters
-		defb   0,  0,  0,  0,  0,  0,  0,  0
-		defb   0, 24, 24, 24, 24,  0, 24,  0
-		defb   0,108,108,  0,  0,  0,  0,  0
-		defb   0,108,124,108,108,124,108,  0
-		defb   0, 56, 96,112,112, 96, 56,  0
-		defb   0, 12, 88, 24, 48, 52, 96,  0
-		defb   0,  0, 56, 40, 92, 72, 60,  0
-		defb   0, 96, 96,  0,  0,  0,  0,  0
-		defb   0,112, 96, 96, 96, 96,112,  0
-		defb   0,112, 48, 48, 48, 48,112,  0
-		defb   0,  0, 36, 24, 24, 36,  0,  0
-		defb   0,  0, 16,124,124, 16,  0,  0
-		defb   0,  0,  0,  0,  0, 24, 24,  0
-		defb   0,  0,  0,  0,124,  0,  0,  0
-		defb   0,  0,  0,  0, 24,  8, 16,  0
-		defb   0,  6, 12, 24, 48, 96, 64,  0
-		defb   0, 60,102,102,102,102, 60,  0
-		defb   0, 56, 24, 24, 24, 24, 60,  0
-		defb   0,124,  6, 60, 96, 96,126,  0
-		defb   0,124,  6, 60,  6,  6,124,  0
-		defb   0,100,100,100,100,126,  4,  0
-		defb   0,124, 96,124, 14, 14,124,  0
-		defb   0, 60, 96,124,102,102, 60,  0
-		defb   0,126,  6,  6, 12, 24, 48,  0
-		defb   0, 60,102, 60,102,102, 60,  0
-		defb   0, 60,102,102, 62,  6, 60,  0
-		defb   0,  0, 24, 24,  0, 24, 24,  0
-		defb   0,  0, 24, 24,  0, 24, 16,  0
-		defb   0, 24, 48, 96, 48, 24,  0,  0
-		defb   0,124,124,  0,  0,124,124,  0
-		defb   0, 96, 48, 24, 48, 96,  0,  0
-		defb   0,124,  6, 28, 48,  0, 48,  0
-		defb   0,126,110,110, 96, 98,126,  0
-		defb   0, 60,102,102,126,102,102,  0
-		defb   0,124,102,124,102,102,124,  0
-		defb   0, 60,102, 96, 96,102, 60,  0
-		defb   0,120,108,102,102,102,124,  0
-		defb   0,126, 96,124, 96, 96,126,  0
-		defb   0,126, 96,124, 96, 96, 96,  0
-		defb   0, 60,102, 96,110,102, 60,  0
-		defb   0,102,102,126,102,102,102,  0
-		defb   0, 24, 24, 24, 24, 24, 24,  0
-		defb   0,  6,  6,  6,102,102, 60,  0
-		defb   0,102,108,120,120,108,102,  0
-		defb   0, 96, 96, 96, 96, 96,126,  0
-		defb   0,124, 86, 86, 86, 86, 86,  0
-		defb   0,124,102,102,102,102,102,  0
-		defb   0, 60,102,102,102,102, 60,  0
-		defb   0,124,102,102,124, 96, 96,  0
-		defb   0, 60,102,102,102,108, 58,  0
-		defb   0,124,102,102,124,100,102,  0
-		defb   0, 62, 96,124,  6,126,124,  0
-		defb   0,126, 24, 24, 24, 24, 24,  0
-		defb   0,102,102,102,102,102, 60,  0
-		defb   0,102,102,102, 36, 60, 24,  0
-		defb   0, 86, 86, 86, 86, 86,124,  0
-		defb   0, 70, 44, 24, 48,100, 66,  0
-		defb   0,102,102,126, 24, 24, 24,  0
-		defb   0,126, 12, 24, 48, 96,126,  0
-		defb   0,112, 96, 96, 96, 96,112,  0
-		defb   0, 96, 48, 24, 12,  6,  2,  0
-		defb   0, 56, 24, 24, 24, 24, 56,  0
-		defb   0, 24, 60,102,  0,  0,  0,  0
-		defb   0,  0,  0,  0,  0,  0,  0,  0
-		
+		BINARY "../bin/font.bin"
+
 	._ncx
 		defb 0
 	._ncy
@@ -155,75 +92,6 @@ void __FASTCALL__ draw_char () {
 #endasm
 	ncx [0] ++;
 }
-#asm
-
-#endasm
-void clear_viewport (unsigned char attr) {
-	ncc [0] = attr;
-	#asm
-		ld	bc, 1
-		
-	cv_l0:
-		xor a
-		ld	hl, _line_buffer
-		add	hl, bc
-		add	hl, bc
-		ld	e, (hl)
-		inc	hl
-		ld	d, (hl)
-		inc	de
-		push bc
-		ld	b, 30
-		
-	cv_l1:
-		push de
-		
-		ld	(de), a
-		inc	d
-		ld	(de), a
-		inc	d
-		ld	(de), a
-		inc	d
-		ld	(de), a
-		inc	d
-		ld	(de), a
-		inc	d
-		ld	(de), a
-		inc	d
-		ld	(de), a
-		inc	d
-		ld	(de), a
-	
-		pop	de
-		inc	de
-		
-		djnz cv_l1
-		pop	bc
-		inc	bc
-		ld	a, c
-		cp	18
-		jr	nz, cv_l0
-	
-	;; Y whiteout
-		
-		ld	a, (_ncc)
-		ld	de, 22561 ; 22528 + 33
-		ld	b, 15
-	cv_l2:
-		push bc
-		ld	b, 30
-	cv_l3:
-		ld	(de), a
-		inc	de
-		djnz cv_l3
-		
-		inc	de
-		inc	de
-		
-		pop	bc
-		djnz cv_l2
-	#endasm
-}
 
 void draw_fast (unsigned char x, unsigned char y, unsigned char clr, unsigned char *s) {
 	unsigned char *address;
@@ -277,7 +145,7 @@ void draw_char_by_char (unsigned char x, unsigned char y, unsigned char *s) {
 	}
 }
 
-void any_key (void) {
+unsigned char any_key (void) {
 	#asm
 			ld  hl, 0
 			xor a
