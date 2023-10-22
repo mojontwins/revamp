@@ -605,14 +605,6 @@ unsigned char game (unsigned char level) {
 			invalidate_tile ();
 		}
 		
-		// Lit somewhat obscured screens
-		
-		if (y_pant >= yOsc) {
-			draw_overlay ((p_x >> 3), (p_y >> 3));
-			draw_buff ();
-			del_overlay ((p_x >> 3), (p_y >> 3));
-		}
-		
 		// erm...
 		
 		if (p_y > 128) p_y = 128;
@@ -651,7 +643,7 @@ unsigned char game (unsigned char level) {
 				render_screen (x_pant, y_pant);
 			}	
 		}
-		
+
 		rdx = hotspot_x; rdy = hotspot_y;
 		if (collide ()) {		
 			_x = VIEWPORT_X + (hotspot_x >> 3); _y = VIEWPORT_Y + (hotspot_y >> 3); _t = orig_tile;	
@@ -826,6 +818,14 @@ unsigned char game (unsigned char level) {
 		attrs_byte = y_pant >= yOsc;
 		sp_UpdateNow ();
 		
+		// Lit somewhat obscured screens
+		
+		if (y_pant >= yOsc) {
+			draw_overlay ((p_x >> 3), (p_y >> 3));
+			draw_buff ();
+			del_overlay ((p_x >> 3), (p_y >> 3));
+		}
+
 		// The last day on earth:
 		
 		if (p_life == 0 || sp_KeyPressed (key_g)) {

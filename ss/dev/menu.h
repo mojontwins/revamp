@@ -155,7 +155,7 @@ void menu (void) {
 	denew = 1;
 	
 	while (1) {
-		while (any_key);
+		while (any_key ());
 
 		// Show menu screen
 		if (denew) {
