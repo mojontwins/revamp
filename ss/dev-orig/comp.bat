@@ -21,7 +21,6 @@ cd ..\dev
 
 echo Compiling
 
-..\utils\sprcnv_exp.exe ..\gfx\spriteset.png spriteset.h 24 > nul
 ..\utils\librarian2.exe list=..\bin\list.txt index=librarian.h bins_prefix=..\bin\ rams_prefix=..\bin\ > nul
 zcc +zx -vn -m ss.c -O3 -crt0=crt.asm -o ss.bin -lsplib2_wan.lib -zorg=24000 > nul
 

@@ -136,16 +136,6 @@ void draw_score (void) {
 	#endasm
 }
 
-// Sound 0 when hit ground
-// Sound 7 tall jump
-// Sound 8 long jump
-// Sound 2 slide, 
-// Sound 1 drain life
-// attr 1 kill
-// attr 2 platform
-// attr 3 solid
-// attr 4 <-- attr 5 -->
-
 void move () {
 	gpit = (joyfunc) (&keys);
 	rdx = p_x >> 4;
