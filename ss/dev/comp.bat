@@ -15,8 +15,21 @@ for %%F in (*.scr) do ..\utils\apack.exe %%F ..\bin\%%~nF.bin > nul
 
 ..\utils\ts2bin.exe font.png notiles ..\bin\font.bin noattrs > nul
 
-cd ..\dev
+cd ..\bin
 
+..\utils\ene2bin_mk1.exe ..\enems\level1.ene enems1.bin 1 nolife > nul
+..\utils\ene2bin_mk1.exe ..\enems\level2.ene enems2.bin 1 nolife > nul
+..\utils\ene2bin_mk1.exe ..\enems\level3.ene enems3.bin 1 nolife > nul
+..\utils\ene2bin_mk1.exe ..\enems\level4.ene enems4.bin 1 nolife > nul
+
+copy /b map1.bin + enems1.bin level1.bin > nul
+copy /b map2.bin + enems2.bin level2.bin > nul
+copy /b map3.bin + enems3.bin level3.bin > nul
+copy /b map4.bin + enems4.bin level4.bin > nul
+
+for %%F in (level?.bin) do ..\utils\apack.exe %%F c-%%F > nul
+
+cd ..\dev
 :compile
 
 echo Compiling

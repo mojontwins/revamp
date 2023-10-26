@@ -412,40 +412,260 @@ unsigned char collide (void) {
 	#endasm
 }
 
+void calc_baddies_pointer (void) {
+	// Calculate a pointer to current baddie. HL should contain be `enoffsmasi`
+	// MALOTE struct is 9 bytes wide, hence...
+
+	#asm
+			ld  d, h
+			ld  e, l 				// DE = x1
+			add hl, hl 				// x2
+			add hl, hl 				// x4
+			add hl, hl 				// x8
+
+			add hl, de 				// HL = x8 + x1 = x9
+
+			ld  de, _malotes
+			add hl, de
+	#endasm
+}
+
 void move_enemies () {
+	// Rewrite: Make faster. Make better.
+
+	enoffsmasi = enoffs;
+
 	for (enit = 0; enit < 3; enit ++) {
-		enoffsmasi = enoffs + enit;
-		rdt = malotes [enoffsmasi].t;
-		if (rdt != 0) {
-			malotes [enoffsmasi].x += malotes [enoffsmasi].mx;
-			malotes [enoffsmasi].y += malotes [enoffsmasi].my;
-			
-			rdx = malotes [enoffsmasi].x;
-			rdy = malotes [enoffsmasi].y;
-			
-			if (collide ()) {
-				if (p_life > 0) {
-					p_life --;
-					draw_life ();
-					wyz_play_sound (1);
-				} 	
-			}
-			
-			if (rdx == malotes [enoffsmasi].x1 || rdx == malotes [enoffsmasi].x2)
-				malotes [enoffsmasi].mx = -malotes [enoffsmasi].mx;
-			if (rdy == malotes [enoffsmasi].y1 || rdy == malotes [enoffsmasi].y2)
-				malotes [enoffsmasi].my = -malotes [enoffsmasi].my;
-				
+		
+		#asm
+				ld  hl, (_enoffsmasi)
+				ld  h, 0 
+				call _calc_baddies_pointer
+
+				ld  (__baddies_pointer), hl 		// Save address for later
+
+				ld  a, (hl)
+				ld  (__en_x), a
+				inc hl 
+
+				ld  a, (hl)
+				ld  (__en_y), a
+				inc hl
+
+				ld  a, (hl)
+				ld  (__en_x1), a
+				inc hl 
+
+				ld  a, (hl)
+				ld  (__en_y1), a
+				inc hl 
+
+				ld  a, (hl)
+				ld  (__en_x2), a
+				inc hl 
+
+				ld  a, (hl)
+				ld  (__en_y2), a
+				inc hl 
+
+				ld  a, (hl)
+				ld  (__en_mx), a
+				inc hl 
+
+				ld  a, (hl)
+				ld  (__en_my), a
+				inc hl 
+
+				ld  a, (hl)
+				ld  (__en_t), a
+		#endasm 
+
+		if (_en_t != 0) {
+
+			/*
+			_en_x += _en_mx;
+			_en_y += _en_my;
+
+			rdx = _en_x;
+			rdy = _en_y;
+						
+			if (_en_x == _en_x1 || _en_x == _en_x2)
+				_en_mx = -_en_mx;
+			if (_en_y == _en_y1 || _en_y == _en_y2)
+				_en_my = -_en_my;
+			*/
+			#asm
+				// _en_x += _en_mx;
+					ld  a, (__en_mx)
+					ld  c, a
+					ld  a, (__en_x)
+					add c 
+					ld  (__en_x), a
+					ld  (_rdx), a
+
+				// _en_y += _en_my;
+					ld  a, (__en_my)
+					ld  c, a
+					ld  a, (__en_y)
+					add c 
+					ld  (__en_y), a
+					ld  (_rdy), a
+
+				// if (_en_x == _en_x1 || _en_x == _en_x2)
+					ld  a, (__en_x)
+					ld  c, a 
+					ld  a, (__en_x1)
+					cp  c 
+					jr  z, change_en_mx 
+
+					ld  a, (__en_x2)
+					cp  c 
+					jr  nz, nochange_en_mx
+
+				// _en_mx = -_en_mx;
+				.change_en_mx
+					ld  a, (__en_mx) 
+					neg a
+					ld  (__en_mx), a
+
+				.nochange_en_mx
+
+				// if (_en_y == _en_y1 || _en_y == _en_y2)
+					ld  a, (__en_y)
+					ld  c, a 
+					ld  a, (__en_y1)
+					cp  c 
+					jr  z, change_en_my
+
+					ld  a, (__en_y2)
+					cp  c 
+					jr  nz, nochange_en_my
+
+				// _en_my = -_en_my;
+				.change_en_my
+					ld  a, (__en_my) 
+					neg a
+					ld  (__en_my), a
+
+				.nochange_en_my
+
+				// if (collide ())
+					call _collide
+					xor a 
+					or  l
+					jr  z, nocollide_en
+
+
+					ld  a, (_p_life) 
+					or  a 
+					jr  z, nocollide_en
+
+					dec a 
+					ld  (_p_life), a 
+
+					call _draw_life
+					ld	hl, 1
+					call _wyz_play_sound
+
+				.nocollide_en
+
+			#endasm
+
+			/*
 			en_an_count [enit] ++; 
 			if (en_an_count [enit] == 4) {
 				en_an_count [enit] = 0;
 				en_an_frame [enit] = !en_an_frame [enit];
 				
-				rda = (malotes [enoffsmasi].mx < 0 || malotes [enoffsmasi].my < 0);
+				rda = (_en_mx < 0 || _en_my < 0);
 				en_an_next_frame [enit] = sprite_frames[en_an_base_cell [enit] + (rda << 1) + en_an_frame [enit]];
 
 			}
-		}	
+			*/
+
+			#asm
+					ld  bc, _enit 
+					ld  b, 0
+
+					ld  hl, _en_an_count
+					add hl, bc 
+					inc (hl)
+					ld  a, (hl)
+					cp  4 
+					jr  nz, noupd_en_spr
+
+				.upd_en_spr 
+					xor a 
+					ld  (hl), a 
+
+					ld  hl, _en_an_frame 
+					add hl, bc 
+					ld  a, (hl) 
+					xor 1 
+					ld  (hl), a 
+					ld  d, a 					// D = FRAME
+
+					ld  e, 0 					// E = FACING
+
+					ld  a, (__en_mx)  	
+					bit 7, a  					// Is negative?
+					jr  nz, setFacing 
+
+					ld  a, (__en_my) 
+					bit 7, a  					// Is negative?
+					jr  z, setFacingDone 
+
+				.setFacing 
+					ld  e, 2
+
+				.setFacingDone 
+
+					// en_an_next_frame [enit] = sprite_frames[en_an_base_cell [enit] + (rda << 1) + en_an_frame [enit]]
+					ld  hl, _en_an_base_cell 
+					add hl, bc 
+					ld  a, (hl) 
+					add d 
+					add e 
+
+					ld  d, 0
+					ld  e, a 
+					ld  hl, _sprite_frames
+					add hl, de 
+
+					////////STOOTOODOAOSDOASPDOASOD
+
+					ld  hl, _en_an_frame 
+					add hl, bc 
+					ld  (hl), a
+				.noupd_en_spr 
+			#endasm
+
+			//
+
+			#asm
+					ld  hl, (__baddies_pointer) 		// Restore pointer
+
+					ld  a, (__en_x)
+					ld  (hl), a
+					inc hl
+
+					ld  a, (__en_y)
+					ld  (hl), a
+					
+					// Skip 4 bytes x1, y1, x2, y2
+					ld  bc, 5
+					add hl, bc
+
+					ld  a, (__en_mx)
+					ld  (hl), a
+					inc hl
+
+					ld  a, (__en_my)
+					ld  (hl), a				
+			#endasm
+		}
+
+		enoffsmasi ++;
 	}
 }
 

@@ -51,7 +51,7 @@
 	scf
 	ld	a, $ff
 	ld	ix, $C000
-	ld	de, 12456
+	ld	de, 12208
 	call $0556
 	di
 
@@ -63,13 +63,13 @@
 	; Load as high as possible
 	scf
 	ld	a, $ff
-	ld	ix, $ffff - 11129
-	ld	de, 11129
+	ld	ix, $ffff - 11128
+	ld	de, 11128
 	call $0556
 	di
 
 	; Unpack
-	ld  hl, $ffff - 11129
+	ld  hl, $ffff - 11128
 	ld  de, 24000
 	call depack
 	

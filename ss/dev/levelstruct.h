@@ -14,7 +14,7 @@
 // Baddies descriptor.
 
 typedef struct {
-	int x, y;
+	unsigned char x, y;
 	unsigned char x1, y1, x2, y2;
 	char mx, my;
 	char t;
@@ -24,7 +24,7 @@ typedef struct {
 	unsigned char xy, tipo, act;
 } HOTSPOT;
 
-// Decompresion buffers. Total= 3375 + 825 + 75 = 4275 which is the size of a level
+// Decompresion buffers. Total= 3375 + 675 + 75 = 4125 which is the size of a level
 
 extern unsigned char level_buffer[0];
 #asm
@@ -33,12 +33,12 @@ extern unsigned char level_buffer[0];
 
 extern MALOTE malotes[0];
 #asm
-	._malotes defs 825
+	._malotes defs 25*3*9 	// 25 rooms, 3 enems, 9 bytes = 675
 #endasm
 
 extern HOTSPOT hotspots[0];
 #asm
-	._hotspots defs 75
+	._hotspots defs 25*3 	// 25 rooms, 3 bytes = 75
 #endasm
 
 // 

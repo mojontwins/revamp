@@ -95,6 +95,10 @@ unsigned char en_y [3];
 signed char en_vx [3];
 signed char en_vy [3];
 
+unsigned char _en_x, _en_y, _en_x1, _en_y1, _en_x2, _en_y2;
+signed char _en_mx, _en_my;
+unsigned char _en_t, *_baddies_pointer;
+
 unsigned char blobs_v [MAX_BLOBS], blobs_x [MAX_BLOBS], blobs_y [MAX_BLOBS];
 
 unsigned char n_blobs;
