@@ -1,7 +1,7 @@
 // World structure!
 
 typedef struct {
-	unsigned char resource;
+	unsigned char resource; 		
 	unsigned char yOsc;
 	unsigned char init_x_pant;
 	unsigned char init_y_pant;

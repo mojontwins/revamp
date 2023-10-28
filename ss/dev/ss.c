@@ -9,7 +9,6 @@
 		LIB SPNullSprPtr
 #endasm
 
-#include "printer.h"
 #include <spritepack.h>
 
 #pragma output STACKPTR=23999
@@ -34,6 +33,7 @@ unsigned char AD_FREE [NUMBLOCKS*15];
 
 // Modules
 
+#include "printer.h"
 #include "128k.h"
 #include "wyzplayer.h"
 #include "aplib.h"

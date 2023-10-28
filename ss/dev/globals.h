@@ -43,7 +43,9 @@ unsigned char enoffs;
 #endasm
 
 unsigned char gpit, gpjt;
-unsigned char rda, rdb, rdc, rdm, rdx, rdy, rdt, _x, _y, _t;
+unsigned char rda, rdb, rdc, rdm, rdx, rdy, rdt, _x, _y, _c, _t;
+unsigned char cx1, cx2, cy1, cy2, at1, at2;
+unsigned char ptx1, ptx2, pty1, pty2, pty2b;
 unsigned char denew;
 unsigned int gpint;
 unsigned char *gen_pt, *map_pt;
@@ -72,6 +74,7 @@ unsigned int key_3 = 0x04f7;
 
 unsigned char p_x, p_y;
 signed char p_mx, p_my;
+signed char p_jmx, p_jmy;
 unsigned char p_sal, p_nu;
 unsigned char p_frame, p_facing;
 unsigned char p_life, p_score;

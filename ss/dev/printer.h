@@ -3,23 +3,9 @@
 // If you know how to make them relatively faster,
 // please do and give us a call.
 
-extern unsigned char ncx [];
-extern unsigned char ncy [];
-extern unsigned char ncn [];
-extern unsigned char ncc [];
-
 #asm	
 	._letters
 		BINARY "../bin/font.bin"
-
-	._ncx
-		defb 0
-	._ncy
-		defb 0
-	._ncc
-		defb 0
-	._ncn
-		defb 0
 		
 	._line_buffer
 		defw $4000, $4020, $4040, $4060, $4080, $40A0, $40C0, $40E0
@@ -30,7 +16,7 @@ extern unsigned char ncc [];
 void draw_char () {
 	#asm
 		._drawchar
-			ld	a, (_ncy)
+			ld	a, (__y)
 			add	a, a
 			ld	b, 0
 			ld	c, a
@@ -40,8 +26,8 @@ void draw_char () {
 			inc	hl
 			ld	d, (hl)
 			ex	de, hl	
-			; hl <= principio de la linea _ncy
-			ld	a, (_ncx)
+			; hl <= principio de la linea __y
+			ld	a, (__x)
 			ld	b, 0
 			ld	c, a
 			add	hl, bc
@@ -49,7 +35,7 @@ void draw_char () {
 			ex	de, hl
 			; de <= address.
 			
-			ld	a, (_ncn)
+			ld	a, (__t)
 			ld	h, 0
 			ld	l, a
 			add	hl, hl	; * 2
@@ -90,56 +76,46 @@ void draw_char () {
 			ld a, (hl)
 			ld (de), a
 	#endasm
-		ncx [0] ++;
+	
+	_x ++;
 }
 
-void draw_fast (unsigned char x, unsigned char y, unsigned char clr, unsigned char *s) {
-	unsigned char *address;
-	unsigned char i;
-	unsigned char c;
-	
-	//whiteout_everything ();
-	
-	address = (unsigned char *) (22528 + x + (y << 5));
-	ncx [0] = x;
-	ncy [0] = y;
+void draw_fast (unsigned char x, unsigned char y, unsigned char clr, unsigned char *s) {	
+	_x = x;
+	_y = y;
+	gen_pt = (unsigned char *) (22528 + _x + (_y << 5));
 	while ((*s) != 0) {
-		c = (*s);
-		ncn [0] = c - 32;
+		_t = (*s) - 32;
 		draw_char ();
-		*address = clr;
-		address ++;
+		*gen_pt = clr;
+		gen_pt ++;
 		s++;
 	}
 }
 
 void draw_char_by_char (unsigned char x, unsigned char y, unsigned char *s) {
-	unsigned char *address;
-	unsigned char i;
-	unsigned char c;
-	
 	//whiteout_everything ();
 	
-	address = (unsigned char *) (22528 + x + (y << 5));
-	ncx [0] = x;
-	ncy [0] = y;
+	gen_pt = (unsigned char *) (22528 + x + (y << 5));
+	_x = x;
+	_y = y;
 	while ((*s) != 0) {
-		c = (*s);
-		if (c == 13) {
-			ncx [0] = x;
-			ncy [0] += 2;
-			address = (unsigned char *) (22528 + x + (ncy [0] << 5));
+		rdc = (*s);
+		if (rdc == 13) {
+			_x = x;
+			_y += 2;
+			gen_pt = (unsigned char *) (22528 + x + (_y << 5));
 		} else {
-			ncn [0] = c - 32;
+			_t  = rdc - 32;
 			draw_char ();
-			for (i = 1; i < 8; i += 2) {
-				*address = i + 64;
+			for (gpit = 1; gpit < 8; gpit += 2) {
+				*gen_pt = gpit + 64;
 				#asm
 					halt
 				#endasm
 				
 			}
-			address ++;
+			gen_pt ++;
 		}
 		s++;
 	}
