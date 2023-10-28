@@ -73,15 +73,13 @@ unsigned int key_3 = 0x04f7;
 // Actors
 
 unsigned char p_x, p_y;
-signed char p_mx, p_my;
+signed char p_vx, p_vy;
 signed char p_jmx, p_jmy;
 unsigned char p_sal, p_nu;
 unsigned char p_frame, p_facing;
 unsigned char p_life, p_score;
-unsigned char p_kpress;
 unsigned char *p_current_frame, *p_next_frame;
-unsigned char prefalling;
-unsigned char falling;
+unsigned char possee;
 
 unsigned char fc;		// Pseudo frame counter.
 

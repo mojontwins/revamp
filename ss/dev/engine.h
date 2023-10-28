@@ -77,8 +77,8 @@ void __FASTCALL__ init_player (unsigned char level) {
 			ld  (_p_facing), a 
 
 			xor a 
-			ld  (_p_mx), a
-			ld  (_p_my), a
+			ld  (_p_vx), a
+			ld  (_p_vy), a
 			ld  (_p_sal), a
 			ld  (_p_nu), a
 			ld  (_p_frame), a
@@ -301,18 +301,6 @@ void move (void) {
 	
 	// Behold the evil tile!
 	
-	/*
-	if (attr (rdx, rdy) == 1 || 
-		((p_x & 15) != 0 && attr (rdx + 1, rdy) == 1) ||
-		((p_y & 15) != 0 && attr (rdx, rdy + 1) == 1) ||
-		((p_x & 15) != 0 && (p_y & 15) != 0 && attr (rdx + 1, rdy + 1) == 1)) {
-		if (p_life > 0 && half_life) {
-			wyz_play_sound (1);
-			p_life --;	
-			draw_life ();
-		}
-	}
-	*/
 	player_bb ();
 	cx1 = cx2 = ptx1; cy1 = pty1; cy2 = pty2; cm_two_points ();
 	gpjt = at1 | at2;
@@ -329,72 +317,141 @@ void move (void) {
 	// New version: 
 
 	// Vertical axis. Move at will, then check collision & adjust.
+
 	if (p_sal == 0) {
 		// free fall
-		p_y += 4;
+		p_vy = 8;
 	} else {
 		// Jump
 		if (p_nu < 8) {
-			p_y -= p_jmy;
+			p_vy = -p_jmy;
 		} else {
-			p_y += p_jmy; 
+			p_vy = p_jmy; 
 		}
 	}
 
-	// Collision. No need to recalc bb
+	p_y += p_vy;
+
+	// Collision.
+
+	player_bb ();
 	
 	possee = 0;
+	cx1 = ptx1; cx2 = ptx2; 
+
+	// Finish the jump early
+	if (p_sal && (p_y & 0xF) == 0) {
+		cy1 = cy2 = pty2b;
+		cm_two_points ();
+
+		if ((at1 & 0xC) || (at2 & 0xC)) {
+			p_sal = 0;
+			p_vy = 0;
+		}
+	}
+	
 	if (p_vy > 0) {
+		cy1 = cy2 = pty2;
+		cm_two_points ();
 
+		if ((at1 & 0xC) || (at2 & 0xC)) {
+			p_y &= 0xf0; p_vy = 0;
+			p_sal = 0;
+			possee = 1;
+		} 
 	} else if (p_vy < 0) {
+		cy1 = cy2 = pty1;
+		cm_two_points ();
 
+		if (at1 & 0x8 || at2 & 0x8) {
+			p_y = 16 + (p_y & 0xf0);
+		}
 	}
 
-
 	// Horizontal axis. Move at will, the check collision & adjust.
+	p_vx = 0;
+	
 	if (p_sal == 0) {
-		p_vx = 0;
+		if (possee) {
+			if ((gpit & sp_LEFT) == 0) {
+				p_vx = -2;
+				p_facing = 4;
+			}
 
-		if ((gpit & sp_LEFT) == 0) {
-			p_vx = -2;
-		}
+			if ((gpit & sp_RIGHT) == 0) {
+				p_vx = 2;
+				p_facing = 0;
+			}
 
-		if ((gpit & sp_RIGHT) == 0) {
-			p_vx = 2;
+			if (p_vx) {
+				p_frame ++;
+				if (p_frame == 4) p_frame = 0;
+			}
+
+			// Conveyors
+
+			player_bb ();
+
+			cy1 = cy2 = pty2b;
+			cm_two_points ();
+			if ((at1 & 16) || (at2 & 16)) {
+				p_vx --;
+			}
+
+			if ((at1 & 32) || (at2 & 32)) {
+				p_vx ++;
+			}
 		}
 	} else {
 		// Jump 
 
 		if (p_facing) {
-			p_x -= p_jmx;
+			p_vx = -p_jmx;
 		} else {
-			p_x += p_jmx;
+			p_vx = p_jmx;
 		}
 	}
 
+	p_x += p_vx;
+
 	// Collision
 
-	if (p_vx > 0) {
+	player_bb ();
 
+	cy1 = pty1; cy2 = pty2;
+	if (p_vx > 0) {
+		cx1 = cx2 = ptx2;
+		cm_two_points ();
+
+		if((at1 & 0x8) || (at2 & 0x8)) {
+			p_x &= 0xf0; 
+		}
 	} else if (p_vx < 0) {
-		
+		cx1 = cx2 = ptx1;
+		cm_two_points ();
+
+		if((at1 & 0x8) || (at2 & 0x8)) {
+			p_x = 16 + (p_x & 0xf0);
+		}
 	}
 
 	// Jump management
 	if (p_sal) {
 		p_nu ++; 
 		if (p_nu == 16) p_sal = 0;
+	} else if (possee) {
+		p_nu = 0;
+
+		if ((gpit & sp_UP) == 0) {
+			p_jmx = 2; p_jmy = 4; p_sal = 1;
+		} else if ((gpit & sp_DOWN) == 0) {
+			p_jmx = 4; p_jmy = 2; p_sal = 1;
+		}
 	}
 
 	// Which frame?
 	
-	if (p_sal || falling) {
-		if (p_facing) {
-			p_next_frame = sprite_8_a;
-		} else {
-			p_next_frame = sprite_4_a;
-		}
-	} else {
+	if (possee) {
 		if (p_facing) {
 			if (p_frame == 0 || p_frame == 2) {
 				p_next_frame = sprite_5_a;
@@ -411,6 +468,12 @@ void move (void) {
 			} else {
 				p_next_frame = sprite_3_a;
 			}	
+		}
+	} else {
+		if (p_facing) {
+			p_next_frame = sprite_8_a;
+		} else {
+			p_next_frame = sprite_4_a;
 		}
 	}
 }
