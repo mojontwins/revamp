@@ -49,7 +49,7 @@ unsigned char ptx1, ptx2, pty1, pty2, pty2b;
 unsigned char denew;
 unsigned int gpint;
 unsigned char *gen_pt, *map_pt;
-unsigned char x_pant, y_pant, n_pant;
+unsigned char x_pant, y_pant, n_pant, o_pant;
 unsigned char *map_pointer; 
 
 // Keys

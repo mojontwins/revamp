@@ -301,6 +301,7 @@ void move (void) {
 	
 	// Behold the evil tile!
 	
+	/*
 	player_bb ();
 	cx1 = cx2 = ptx1; cy1 = pty1; cy2 = pty2; cm_two_points ();
 	gpjt = at1 | at2;
@@ -312,7 +313,47 @@ void move (void) {
 		wyz_play_sound (1);
 		p_life --;	
 		draw_life ();
-	}
+	}*/
+
+	#asm 
+			call _player_bb
+			ld  a, (_ptx1)
+			ld  (_cx1), a 
+			ld  (_cx2), a 
+			ld  a, (_pty1)
+			ld  (_cy1), a 
+			ld  a, (_pty2)
+			ld  (_cy2), a 
+			call _cm_two_points
+
+			ld  a, (_at1)
+			ld  c, a
+			ld  a, (_at2)
+			or  c
+			ld  (_gpjt), a 
+
+			ld  a, (_ptx2)
+			ld  (_cx1), a 
+			ld  (_cx2), a 
+			call _cm_two_points 
+
+			ld  a, (_at1)
+			ld  c, a 
+			ld  a, (_at2)
+			or  c 
+			ld  c, a 
+			ld  a, (_gpjt)
+			or  c 
+
+			jr  z, p_evil_done
+
+			ld  hl, 1 
+			call _wyz_play_sound
+			ld  hl, _p_life 
+			dec (hl)
+			call _draw_life		
+		.p_evil_done
+	#endasm
 	
 	// New version: 
 
@@ -956,14 +997,41 @@ unsigned char game (unsigned char level) {
 	draw_life ();
 	draw_score ();
 	
-	render_screen (x_pant, y_pant);
-	
+	n_pant = 0xff;
+
 	f_win = f_gameover = 0;
 
 	wyz_play_music (2 + level);
 	fc = half_life = 0;
 	
 	while (!(f_win || f_gameover)) {	
+
+		// Flick screen
+
+		o_pant = n_pant;
+
+		if (p_x == 0 && p_vx < 0) {
+			p_x = 224; 
+			x_pant --;
+		}
+
+		if (p_x == 224 && p_vx > 0) {
+			p_x = 0;
+			x_pant ++;
+		}
+
+		if ((p_y == 0 || p_y > 240) && p_vy < 0) {
+			p_y = 128;
+			y_pant --;
+		}
+
+		if (p_y >= 128 && p_vy > 0) {
+			p_y = 0;
+			y_pant ++;
+		}
+
+		n_pant = x_pant + (y_pant << 2) + y_pant;
+		if (n_pant != o_pant) render_screen ();
 	
 		// Move
 		
@@ -978,45 +1046,6 @@ unsigned char game (unsigned char level) {
 			_x = blobs_x [gpit]; _y =blobs_y [gpit]; _t = 45 + blobs_v [gpit];
 			draw_coloured_tile ();
 			invalidate_tile ();
-		}
-		
-		// erm...
-		
-		if (p_y > 128) p_y = 128;
-		if (p_x > 224) p_x = 224;
-		
-		// Checks
-
-		gpit = (joyfunc) (&keys);
-		rdx = p_x >> 4;
-		rdy = p_y >> 4;
-		if (p_x == 0) {
-			if (((gpit & sp_LEFT) == 0 || (p_sal && p_facing) || (attr (rdx, rdy + 1) == 4 && (gpit & sp_RIGHT) != 0)) && x_pant > 0) {
-				x_pant --;
-				p_x = 224;
-				render_screen (x_pant, y_pant);
-			}
-		} else if (p_x == 224) {
-			if (((gpit & sp_RIGHT) == 0 || (p_sal && !p_facing) || (attr (rdx, rdy + 1) == 5 && (gpit & sp_LEFT) != 0)) && x_pant < 4) {
-				x_pant ++;
-				p_x = 0;
-				render_screen (x_pant, y_pant);
-			}
-		}
-		
-		if (p_y == 0) {
-			if (p_sal == 1 && y_pant > 0 && p_nu < 7) {
-				y_pant --;
-				p_y = 128;
-				p_nu --;
-				render_screen (x_pant, y_pant);
-			}
-		} else if (p_y == 128) {
-			if ((p_sal == 0 || p_nu > 8) && y_pant < 4) {
-				y_pant ++;
-				p_y = 0;
-				render_screen (x_pant, y_pant);
-			}	
 		}
 
 		rdx = hotspot_x; rdy = hotspot_y;

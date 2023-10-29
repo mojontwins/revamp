@@ -168,8 +168,6 @@ void draw_coloured_tile () {
 }
 
 void render_screen () {
-	n_pant = x_pant + (y_pant << 2) + y_pant;
-	
 	map_pt = (unsigned char *) (level_buffer + y_pant * 675 + x_pant * 15);
 	n_blobs = 0;
 
