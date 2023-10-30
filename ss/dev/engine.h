@@ -2,38 +2,6 @@
 
 // Functions
 
-unsigned char attr (char x, char y) {
-	// return tile_behaviour [map_buffer [(y << 4) - y + x]];	
-	#asm
-			ld  hl, 4
-			add hl, sp
-			ld  c, (hl) 	// x
-
-			dec hl
-			dec hl
-			ld  a, (hl) 	// y
-
-			ld  b, a 
-			sla a
-			sla a
-			sla a
-			sla a
-			sub b
-			add c
-
-			ld  d, 0
-			ld  e, a 
-			ld  hl, _map_buffer
-			add hl, de 
-			ld  l, (hl)
-			ld  h, 0 
-			ld  de, _tile_behaviour
-			add hl, de 
-			ld  l, (hl)
-			ld  h, 0
-	#endasm
-}
-
 void espera_activa (int espera) {
 	// Waits until "espera" halts have passed 
 	// or a key has been pressed.
@@ -212,7 +180,7 @@ unsigned char cm_two_points (void) {
 			jr  nc, _cm_two_points_at2_reset
 
 			ld  a, (_cy2)
-			cp  10
+			cp  9
 			jr  c, _cm_two_points_at2_do
 
 		._cm_two_points_at2_reset
@@ -344,6 +312,7 @@ void move (void) {
 			ld  c, a 
 			ld  a, (_gpjt)
 			or  c 
+			and 1
 
 			jr  z, p_evil_done
 
@@ -359,6 +328,7 @@ void move (void) {
 
 	// Vertical axis. Move at will, then check collision & adjust.
 
+	/*
 	if (p_sal == 0) {
 		// free fall
 		p_vy = 8;
@@ -372,9 +342,37 @@ void move (void) {
 	}
 
 	p_y += p_vy;
+	*/
+
+	#asm
+			ld  a, (_p_sal) 
+			or  a 
+			jr  nz, mp_v_j
+
+			ld  a, 8
+			jr  mp_v_j_done
+
+		.mp_v_j
+			ld  a, (_p_nu)
+			cp  8
+
+			ld  a, (_p_jmy)
+			jr  nc, mp_v_j_done
+
+			neg 
+
+		.mp_v_j_done
+			ld  (_p_vy), a 
+
+			ld  c, a 
+			ld  a, (_p_y)
+			add a, c 
+			ld  (_p_y), a
+	#endasm
 
 	// Collision.
 
+	/*
 	player_bb ();
 	
 	possee = 0;
@@ -390,7 +388,50 @@ void move (void) {
 			p_vy = 0;
 		}
 	}
+	*/
+	#asm
+			// Recalculate bb			
+			call _player_bb 
+
+			xor a 
+			ld  (_possee), a
+
+			ld  a, (_ptx1)
+			ld  (_cx1), a 
+			ld  a, (_ptx2)
+			ld  (_cx2), a
+
+			// Finish the jump early
+			ld  a, (_p_sal) 
+			or  a 
+			jr  z, mp_v_fje_done
+
+			ld  a, (_p_y)
+			and 0xf 
+			jr  nz, mp_v_fje_done
+
+			ld  a, (_pty2b)
+			ld  (_cy1), a 
+			ld  (_cy2), a 
+			call _cm_two_points 
+
+			ld  a, (_at1) 
+			and 0xC
+			jr  nz, mp_v_fje_do 
+
+			ld  a, (_at2)
+			and 0xC 
+			jr  z, mp_v_fje_done 
+
+		.mp_v_fje_do
+			xor a 
+			ld  (_p_sal), a 
+			ld  (_p_vy), a
+
+		.mp_v_fje_done
+	#endasm
 	
+	/*
 	if (p_vy > 0) {
 		cy1 = cy2 = pty2;
 		cm_two_points ();
@@ -408,8 +449,75 @@ void move (void) {
 			p_y = 16 + (p_y & 0xf0);
 		}
 	}
+	*/
 
-	// Horizontal axis. Move at will, the check collision & adjust.
+	#asm
+		// Check bit 7 (sign) of p_vy to see if PH is going up or down
+			ld  a, (_p_vy)
+			bit 7, a
+			jr  nz, mp_v_chc_up
+
+		.mp_v_chc_down
+			// p_vy > 0
+			ld  a, (_pty2)
+			ld  (_cy1), a 
+			ld  (_cy2), a 
+			call _cm_two_points 
+
+			ld  a, (_at1)
+			and 0xC 
+			jr  nz, mp_v_chc_down_coll
+
+			ld  a, (_at2)
+			and 0xC
+			jr  z, mp_v_chc_done
+
+		.mp_v_chc_down_coll
+			ld  a, (_p_y) 
+			and 0xf0 
+			ld  (_p_y), a 
+
+			xor a 
+			ld  (_p_vy), a 
+			ld  (_p_sal), a 
+
+			inc a 
+			ld  (_possee), a 
+
+			jr  mp_v_chc_done
+
+		.mp_v_chc_up
+			// p_vy < 0
+			ld  a, (_pty1)
+			ld  (_cy1), a 
+			ld  (_cy2), a 
+			call _cm_two_points 
+
+			ld  a, (_at1)
+			and 0x8 
+			jr  nz, mp_v_chc_up_coll
+
+			ld  a, (_at2)
+			and 0x8
+			jr  z, mp_v_chc_done
+
+		.mp_v_chc_up_coll
+			ld  a, (_p_y) 
+			and 0xf0
+			add 16 
+			ld  (_p_y), a 
+
+			xor a 
+			ld  (_p_vy), a 
+
+			jr  mp_v_chc_done
+
+		.mp_v_chc_done
+
+	#endasm
+
+	// Horizontal axis. Move at will, then check collision & adjust.
+	/*
 	p_vx = 0;
 	
 	if (p_sal == 0) {
@@ -454,9 +562,120 @@ void move (void) {
 	}
 
 	p_x += p_vx;
+	*/
+	#asm
+			xor a 
+			ld  (_p_vx), a 
+
+			ld  a, (_p_sal) 
+			or  a 
+			jr  nz, mp_h_j
+
+			ld  a, (_possee) 
+			or  a 
+			jr  z, mp_h_j_done
+
+			// if ((gpit & sp_LEFT) == 0)
+			ld  a, (_gpit)
+			and sp_LEFT
+			jr  nz, mp_h_nj_left_done
+
+			ld  a, -2
+			ld  (_p_vx), a 
+			ld  a, 4 
+			ld  (_p_facing), a
+		.mp_h_nj_left_done
+
+			// if ((gpit & sp_RIGHT) == 0)
+			ld  a, (_gpit)
+			and sp_RIGHT
+			jr  nz, mp_h_nj_right_done
+
+			ld  a, 2
+			ld  (_p_vx), a 
+			xor a 
+			ld  (_p_facing), a
+		.mp_h_nj_right_done
+
+			// if (p_vx)
+			ld  a, (_p_vx) 
+			or  a 
+			jr  z, mp_h_nj_not_moving 
+
+			ld  a, (_p_frame)
+			inc a 
+			cp  4 
+			jr  nz, mp_h_nj_moving_noinc
+
+			xor a
+
+		.mp_h_nj_moving_noinc
+			ld  (_p_frame), a 
+		.mp_h_nj_not_moving	
+
+			// Conveyors
+
+			call _player_bb 
+
+			ld  a, (_pty2b) 	
+			ld  (_cy1), a 
+			ld  (_cy2), a 
+			// cx1, cx2 were calculated earlier and have not changed
+
+			call _cm_two_points 
+			
+			ld  hl, _p_vx
+
+			ld  a, (_at1) 
+			and 16 
+			jr  nz, mp_h_conv_left_do
+
+			ld  a, (_at2)
+			and 16 
+			jr  z, mp_h_conv_left_done
+
+		.mp_h_conv_left_do
+			dec (hl)
+		.mp_h_conv_left_done
+
+			ld  a, (_at1) 
+			and 32
+			jr  nz, mp_h_conv_right_do
+
+			ld  a, (_at2)
+			and 32 
+			jr  z, mp_h_conv_right_done
+
+		.mp_h_conv_right_do
+			inc (hl)
+		.mp_h_conv_right_done
+
+			jr  mp_h_j_done
+
+		.mp_h_j
+			// Jump 
+			ld  a, (_p_facing) 
+			or  a 
+
+			ld  a, (_p_jmx)
+			jr  z, mp_h_j_right
+
+			neg a 
+		.mp_h_j_right
+			ld  (_p_vx), a
+
+		.mp_h_j_done
+
+		ld  a, (_p_vx)
+		ld  c, a 
+		ld  a, (_p_x) 
+		add c 
+		ld  (_p_x), a
+	#endasm
 
 	// Collision
 
+	/*
 	player_bb ();
 
 	cy1 = pty1; cy2 = pty2;
@@ -475,8 +694,77 @@ void move (void) {
 			p_x = 16 + (p_x & 0xf0);
 		}
 	}
+	*/
+
+	#asm
+			call _player_bb
+
+			ld  a, (_pty1)
+			ld  (_cy1), a 
+			ld  a, (_pty2)
+			ld  (_cy2), a 
+
+		// Check bit 7 (sign) of p_vx to see if PH is going up or down
+		// But first we must make sure it is NOT ZERO
+			ld  a, (_p_vx) 
+			or  a 
+			jr  z, mp_h_chc_done
+
+			bit 7, a 
+			jr  nz, mp_h_chc_left
+
+		.mp_h_chc_right
+			// p_vx > 0
+
+			ld  a, (_ptx2)
+			ld  (_cx1), a 
+			ld  (_cx2), a 
+			call _cm_two_points 
+
+			ld  a, (_at1) 
+			and 8 
+			jr  nz, mp_h_chc_right_coll
+
+			ld  a, (_at2)
+			and 8 
+			jr  z, mp_h_chc_done 
+
+		.mp_h_chc_right_coll
+			ld  a, (_p_x)
+			and 0xf0 
+			ld  (_p_x), a 
+
+			jr  mp_h_chc_done
+
+		.mp_h_chc_left
+			// p_vx < 0
+
+			ld  a, (_ptx1)
+			ld  (_cx1), a 
+			ld  (_cx2), a 
+			call _cm_two_points 
+
+			ld  a, (_at1) 
+			and 8 
+			jr  nz, mp_h_chc_left_coll
+
+			ld  a, (_at2)
+			and 8 
+			jr  z, mp_h_chc_done 
+
+		.mp_h_chc_left_coll
+			ld  a, (_p_x)
+			and 0xf0 
+			add 16
+			ld  (_p_x), a 
+
+		.mp_h_chc_done
+
+	#endasm
 
 	// Jump management
+
+	/*
 	if (p_sal) {
 		p_nu ++; 
 		if (p_nu == 16) p_sal = 0;
@@ -489,27 +777,61 @@ void move (void) {
 			p_jmx = 4; p_jmy = 2; p_sal = 1;
 		}
 	}
+	*/
+
+	#asm
+			ld  a, (_p_sal) 
+			or  a 
+			jr  z, mp_jm_nsal
+
+			ld  a, (_p_nu)
+			inc a 
+			ld  (_p_nu), a 
+			cp  16
+			jr  nz, mp_jm_done
+
+			xor a 
+			ld  (_p_sal), a 
+			jr  mp_jm_done
+
+		.mp_jm_nsal
+			// a is 0
+			ld  (_p_nu), a
+
+			ld  a, (_possee)
+			or  a 
+			jr  z, mp_jm_done
+
+			ld  a, (_gpit) 
+			and sp_UP
+			jr  nz, mp_jm_up_done
+
+			ld  a, 2
+			ld  (_p_jmx), a 
+			ld  a, 4 
+			ld  (_p_jmy), a 
+			ld  a, 1 
+			ld  (_p_sal), a
+		.mp_jm_up_done
+
+			ld  a, (_gpit) 
+			and sp_DOWN
+			jr  nz, mp_jm_done
+
+			ld  a, 4
+			ld  (_p_jmx), a 
+			ld  a, 2 
+			ld  (_p_jmy), a 
+			ld  a, 1 
+			ld  (_p_sal), a
+
+		.mp_jm_done
+	#endasm
 
 	// Which frame?
 	
 	if (possee) {
-		if (p_facing) {
-			if (p_frame == 0 || p_frame == 2) {
-				p_next_frame = sprite_5_a;
-			} else if (p_frame == 1) {
-				p_next_frame = sprite_6_a;
-			} else {
-				p_next_frame = sprite_7_a;
-			}	
-		} else {
-			if (p_frame == 0 || p_frame == 2) {
-				p_next_frame =sprite_1_a;
-			} else if (p_frame == 1) {
-				p_next_frame = sprite_2_a;
-			} else {
-				p_next_frame = sprite_3_a;
-			}	
-		}
+		p_next_frame = player_walk [p_facing + p_frame];
 	} else {
 		if (p_facing) {
 			p_next_frame = sprite_8_a;
@@ -979,10 +1301,9 @@ unsigned char rand (void) {
 	#endasm
 }
 
-unsigned char game (unsigned char level) {
+unsigned char __FASTCALL__ game (unsigned char level) {
 
-	x_pant = levels [level].init_x_pant;
-	y_pant = levels [level].init_y_pant;
+	n_pant = levels [level].init_x_pant + 5 * levels [level].init_y_pant;
 
 	load_level (level);
 
@@ -997,41 +1318,18 @@ unsigned char game (unsigned char level) {
 	draw_life ();
 	draw_score ();
 	
-	n_pant = 0xff;
-
-	f_win = f_gameover = 0;
+	o_pant = 0xff;
+	f_win = 0;
 
 	wyz_play_music (2 + level);
-	fc = half_life = 0;
 	
-	while (!(f_win || f_gameover)) {	
+	while (1) {	
 
 		// Flick screen
-
-		o_pant = n_pant;
-
-		if (p_x == 0 && p_vx < 0) {
-			p_x = 224; 
-			x_pant --;
+		if (n_pant != o_pant) {
+			render_screen ();
+			o_pant = n_pant;
 		}
-
-		if (p_x == 224 && p_vx > 0) {
-			p_x = 0;
-			x_pant ++;
-		}
-
-		if ((p_y == 0 || p_y > 240) && p_vy < 0) {
-			p_y = 128;
-			y_pant --;
-		}
-
-		if (p_y >= 128 && p_vy > 0) {
-			p_y = 0;
-			y_pant ++;
-		}
-
-		n_pant = x_pant + (y_pant << 2) + y_pant;
-		if (n_pant != o_pant) render_screen ();
 	
 		// Move
 		
@@ -1040,6 +1338,7 @@ unsigned char game (unsigned char level) {
 		
 		// Animate water tiles (cheesy but fast)
 		
+		/*
 		gpit = rand () & 15;
 		if (gpit < n_blobs) {
 			blobs_v [gpit] = 1 - blobs_v [gpit]; 
@@ -1047,6 +1346,47 @@ unsigned char game (unsigned char level) {
 			draw_coloured_tile ();
 			invalidate_tile ();
 		}
+		*/
+		#asm
+				ld  a, (_n_blobs)
+				ld  c, a
+
+				call _rand 
+				ld  a, l 
+				and 15  		// A = gpit = rand () & 15
+
+				cp  c 
+				jr  nc, ml_an_b_done
+
+				// A = gpit
+				ld  b, 0 
+				ld  c, a 
+
+				ld  hl, _blobs_v 
+				add hl, bc 
+				ld  a, (hl)
+				xor 1 
+				ld  (hl), a 
+
+				add 45
+				ld  (__t), a 
+
+				ld  hl, _blobs_x 
+				add hl, bc 
+				ld  a, (hl)
+				ld  (__x), a 
+
+				ld  hl, _blobs_y 
+				add hl, bc 
+				ld  a, (hl)
+				ld  (__y), a 
+
+				call _draw_coloured_tile
+				call _invalidate_tile				
+			.ml_an_b_done
+		#endasm
+
+		// Hotspot check
 
 		rdx = hotspot_x; rdy = hotspot_y;
 		if (collide ()) {		
@@ -1054,12 +1394,12 @@ unsigned char game (unsigned char level) {
 			draw_coloured_tile ();
 			invalidate_tile ();
 
-			hotspot_x = hotspot_y = 240;
+			hotspot_y = 240;
 			if (hotspots [n_pant].tipo == 1) {
 				p_score ++;
 				draw_score ();	
 				wyz_play_sound (3);
-			} else if (hotspots [n_pant].tipo == 2) {
+			} else {
 				p_life = p_life > 223 ? 255 : (p_life + 32);
 				draw_life ();
 				wyz_play_sound (5);
@@ -1069,11 +1409,13 @@ unsigned char game (unsigned char level) {
 		
 		// Quitar esto
 		
+		/*
 		if (sp_KeyPressed (key_z)) {
 			p_score ++;
 			draw_score ();
 			wyz_play_sound (3);
 		}
+		*/
 				
 		// Render
 		#asm
@@ -1122,7 +1464,6 @@ unsigned char game (unsigned char level) {
 			} else {
 				_en_x = 240;
 			}
-
 
 			#asm
 				; enter: IX = sprite structure address 
@@ -1216,32 +1557,83 @@ unsigned char game (unsigned char level) {
 		}
 		
 		half_life ^= 1;
-		fc++; if (fc == 8) fc = 0;
 		
 		// Update
-		attrs_byte = y_pant >= yOsc;
+		attrs_byte = n_pant >= yOsc;
+		if (n_pant >= yOsc) {
+			#asm
+					ld  a, (_yOsc)
+					ld  c, a 
+					ld  a, (_n_pant)
+					cp  c 
+
+					ld  hl, _attrs_byte 
+					jr  c, nohalo
+
+					ld  a, 1
+					ld  (hl), a
+
+					ld  a, (_p_x)
+					srl a 
+					srl a 
+					srl a 
+					ld  (__x), a
+					ld  a, (_p_y)
+					srl a 
+					srl a 
+					srl a 
+					ld  (__y), a
+					call _ovl_draw_scr
+					call _draw_buff 
+					call _ovl_del
+					jr  halodone
+				.nohalo
+					xor a 					
+					ld  (hl), a 
+				.halodone
+			#endasm			
+		}
+
 		sp_UpdateNow ();
 		
 		// Lit somewhat obscured screens
 		
-		if (y_pant >= yOsc) {
-			draw_overlay ((p_x >> 3), (p_y >> 3));
-			draw_buff ();
-			del_overlay ((p_x >> 3), (p_y >> 3));
-		}
-
 		// The last day on earth:
 		
 		if (p_life == 0 || sp_KeyPressed (key_g)) {
 			wyz_stop_sound ();
 			muerte (2, 16);
-			f_gameover = 1;
+			break;
 		}
 		
 		if (p_score == 15) {
 			wyz_stop_sound ();
 			f_win = 1;	
+			break;
 		}
+
+		// Should flick?
+
+		if ((p_x == 0 || p_x > 240) && p_vx < 0) {
+			p_x = 224; 
+			n_pant --;
+		}
+
+		if (p_x >= 224 && p_vx > 0) {
+			p_x = 0;
+			n_pant ++;
+		}
+
+		if ((p_y == 0 || p_y > 240) && p_vy < 0) {
+			p_y = 128;
+			n_pant -= 5;
+		}
+
+		if (p_y >= 128 && p_vy > 0) {
+			p_y = 0;
+			n_pant += 5;
+		}
+
 	};
 	
 	return f_win;

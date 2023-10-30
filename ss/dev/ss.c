@@ -42,6 +42,11 @@ unsigned char AD_FREE [NUMBLOCKS*15];
 #include "tileset.h"
 #include "spriteset.h"
 
+unsigned char *player_walk[] = {
+	sprite_1_a, sprite_2_a, sprite_1_a, sprite_3_a,
+	sprite_5_a, sprite_6_a, sprite_5_a, sprite_7_a
+};
+
 unsigned char *sprite_frames[] = {
 	sprite_9_a, sprite_10_a, sprite_11_a, sprite_12_a,
 	sprite_13_a, sprite_14_a, sprite_15_a, sprite_16_a,

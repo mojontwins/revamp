@@ -1,9 +1,6 @@
 // Overlay code
 // Draws a lit overlay on splib2's buffer
 
-extern unsigned char ovl_x [];
-extern unsigned char ovl_y [];
-
 #asm
 ._ovl_halo	defb	0, 0, 1, 1, 1, 1, 0, 0
 			defb 	0, 1, 5, 5, 5, 5, 1, 0
@@ -14,27 +11,8 @@ extern unsigned char ovl_y [];
 			defb 	0, 1, 5, 5, 5, 5, 1, 0
 			defb	0, 0, 1, 1, 1, 1, 0, 0
 			
-._ovl_x		defb 	0
-._ovl_y		defb 	0			
-
 ._ovl_buff	defs	864, 0
 #endasm
-
-void draw_overlay (unsigned char x, unsigned char y) {
-	ovl_x [0] = x;
-	ovl_y [0] = y;
-	#asm
-		call _ovl_draw_scr
-	#endasm	
-}
-
-void del_overlay (unsigned char x, unsigned char y) {
-	ovl_x [0] = x;
-	ovl_y [0] = y;
-	#asm
-		call _ovl_del
-	#endasm
-}
 
 void draw_buff () {
 	#asm
@@ -95,25 +73,25 @@ void draw_buff () {
 
 ._ovl_draw_scr
 			; First we calculate the address
-			; address = ovl_buff + ovl_y * 36 + ovl_x
+			; address = ovl_buff + _y * 36 + _x
 			
-			ld 	a, (_ovl_y)
+			ld 	a, (__y)
 			ld	h, 0
 			ld	l, a
-			add	hl, hl				; hl = ovl_y * 2
-			add	hl, hl				; hl = ovl_y * 4
+			add	hl, hl				; hl = _y * 2
+			add	hl, hl				; hl = _y * 4
 			push hl
-			add hl, hl				; hl = ovl_y * 8
-			add	hl, hl				; hl = ovl_y * 16
-			add	hl, hl				; hl = ovl_y * 32
+			add hl, hl				; hl = _y * 8
+			add	hl, hl				; hl = _y * 16
+			add	hl, hl				; hl = _y * 32
 			pop	bc
-			add	hl, bc				; hl = ovl_y * 36
-			ld	a, (_ovl_x)
+			add	hl, bc				; hl = _y * 36
+			ld	a, (__x)
 			ld	d, 0
 			ld	e, a
-			add	hl, de				; hl = ovl_y * 36 + ovl_x
+			add	hl, de				; hl = _y * 36 + _x
 			ld	de, _ovl_buff
-			add	hl, de				; hl = _ovl_buff + ovl_y * 32 + ovl_x
+			add	hl, de				; hl = _ovl_buff + _y * 32 + _x
 			ld	de, _ovl_halo				
 			
 			ex	de, hl
@@ -238,25 +216,25 @@ void draw_buff () {
 
 ._ovl_del
 			; First we calculate the address
-			; address = ovl_buff + ovl_y * 36 + ovl_x
+			; address = ovl_buff + _y * 36 + _x
 			
-			ld 	a, (_ovl_y)
+			ld 	a, (__y)
 			ld	h, 0
 			ld	l, a
-			add	hl, hl				; hl = ovl_y * 2
-			add	hl, hl				; hl = ovl_y * 4
+			add	hl, hl				; hl = _y * 2
+			add	hl, hl				; hl = _y * 4
 			push hl
-			add hl, hl				; hl = ovl_y * 8
-			add	hl, hl				; hl = ovl_y * 16
-			add	hl, hl				; hl = ovl_y * 32
+			add hl, hl				; hl = _y * 8
+			add	hl, hl				; hl = _y * 16
+			add	hl, hl				; hl = _y * 32
 			pop	bc
-			add	hl, bc				; hl = ovl_y * 36
-			ld	a, (_ovl_x)
+			add	hl, bc				; hl = _y * 36
+			ld	a, (__x)
 			ld	d, 0
 			ld	e, a
-			add	hl, de				; hl = ovl_y * 36 + ovl_x
+			add	hl, de				; hl = _y * 36 + _x
 			ld	de, _ovl_buff
-			add	hl, de				; hl = _ovl_buff + ovl_y * 32 + ovl_x
+			add	hl, de				; hl = _ovl_buff + _y * 32 + _x
 		
 			xor	a
 						

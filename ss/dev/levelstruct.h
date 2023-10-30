@@ -1,16 +1,5 @@
 // Current level structs & functions
 
-// The current level will be copied from extra RAM
-// into low, contended RAM, as this data will
-// only be accessed during refresh time.
-
-// map_data = (unsigned char *) (level_buffer);
-// enem_data = (MALOTE *) (28375);
-// hotspot_data = (unsigned char *) (29200);
-
-#define ENEMS_DATA		(level_buffer + 3375)
-#define HOTSPOTS_DATA	(level_buffer + 4200)
-
 // Baddies descriptor.
 
 typedef struct {
@@ -48,9 +37,9 @@ extern HOTSPOT hotspots[0];
 		defw	0
 #endasm
 
-void load_level (unsigned char level) {	
+void __FASTCALL__ load_level (unsigned char level) {	
 	get_resource(levels[level].resource, level_buffer);
-	yOsc = levels [level].yOsc;
+	yOsc = levels [level].yOsc * 5;
 }
 
 void invalidate_tile (void) {
@@ -167,35 +156,87 @@ void draw_coloured_tile () {
 	#endasm
 }
 
-void render_screen () {
-	map_pt = (unsigned char *) (level_buffer + y_pant * 675 + x_pant * 15);
+void render_screen () {	
 	n_blobs = 0;
 
 	_x = VIEWPORT_X;
 	_y = VIEWPORT_Y;
-		
-	for (gpit = 0; gpit < 135; gpit ++) {
-		_t = *map_pt;
-		map_buffer [gpit] = _t;
-		
-		if (_t == 45 || _t == 46) {
-			blobs_x [n_blobs] = _x;
-			blobs_y [n_blobs] = _y;
-			blobs_v [n_blobs] = _t - 45;
-			n_blobs ++;
-		}
-		
-		draw_coloured_tile ();
-		
-		map_pt ++;
-		_x += 2;
-		if (_x == 30 + VIEWPORT_X) {
-			_y += 2;
-			_x = VIEWPORT_X;
-			map_pt += 60;	
-		}
-	}
 	
+	#asm 
+			ld  hl, (_n_pant)
+			ld  h, 0 
+			ld  de, 135
+			call l_mult 	// HL = n_pant * 135
+			ld  de, _level_buffer 
+			add hl, de 
+
+			ld  b, 135 
+			ld  de, _map_buffer 			
+
+		.draw_map_loop
+			ld  a, (hl)
+			ld  (de), a 
+			inc hl
+			inc de
+
+			push bc 
+			push hl 
+			push de  
+
+			// A = tile
+			ld  (__t), a
+
+			cp  45
+			jr  z, add_blob
+
+			cp  46
+			jr  nz, add_blob_done
+
+		.add_blob 
+
+			ld  bc, (_n_blobs)
+			ld  b, 0
+			ld  hl, _blobs_x 
+			add hl, bc 
+			ld  a, (__x)
+			ld  (hl), a 
+			ld  hl, _blobs_y 
+			add hl, bc 
+			ld  a, (__y) 
+			ld  (hl), a 
+			ld  hl, _blobs_v
+			add hl, bc 
+			ld  a, (__t)
+			sbc 45 
+			ld  (hl), a 
+			ld  hl, _n_blobs
+			inc (hl)
+
+		.add_blob_done
+
+			call _draw_coloured_tile
+
+			ld  a, (__x) 
+			inc a 
+			inc a 
+			cp  30 + VIEWPORT_X
+			jr  nz, draw_map_nc_x
+
+			ld  hl, __y
+			inc (hl)
+			inc (hl)
+			
+			ld  a, VIEWPORT_X
+
+		.draw_map_nc_x 
+			ld  (__x), a 
+
+			pop de 
+			pop hl
+			pop bc 
+			djnz draw_map_loop
+	#endasm
+
 	// Create enemies:
 	
 	enoffs = n_pant + n_pant + n_pant;
@@ -218,11 +259,10 @@ void render_screen () {
 		_x = (hotspots [n_pant].xy >> 4);
 		_y = (hotspots [n_pant].xy & 15);
 		hotspot_x = _x << 4;
-		hotspot_y = _y << 4;
-		map_pt = (unsigned char *) (level_buffer + ((y_pant << 3) + y_pant + _y) * 75 + ((x_pant << 4) - x_pant) + _x);
-		orig_tile = *map_pt;
+		hotspot_y = _y << 4;;
+		orig_tile = map_buffer [_x + (_y << 4) - _y];
 		
-		_x = VIEWPORT_X + _x + _x; _y = VIEWPORT_Y + _y + _y; _t =329 - hotspots [n_pant].tipo; 
+		_x = VIEWPORT_X + _x + _x; _y = VIEWPORT_Y + _y + _y; _t = 59 - hotspots [n_pant].tipo; 
 		draw_coloured_tile ();
 	}
 	

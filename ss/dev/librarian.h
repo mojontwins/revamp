@@ -11,21 +11,21 @@ typedef struct {
 
 RESOURCE resources [] = {
     { 3, 0xC000 },
-    { 3, 0xC70F },
-    { 3, 0xCDE5 },
-    { 3, 0xD4B9 },
-    { 3, 0xDB75 },
-    { 3, 0xE028 },
-    { 3, 0xE4AE },
-    { 3, 0xE8F0 },
-    { 3, 0xEC29 },
-    { 3, 0xEE13 }
+    { 3, 0xC7A7 },
+    { 3, 0xCF33 },
+    { 3, 0xD6B9 },
+    { 3, 0xDE34 },
+    { 3, 0xE2E7 },
+    { 3, 0xE76D },
+    { 3, 0xEBAF },
+    { 3, 0xEEE8 },
+    { 3, 0xF0D2 }
 };
 
-#define C_LEVEL1_BIN                    0
-#define C_LEVEL4_BIN                    1
-#define C_LEVEL2_BIN                    2
-#define C_LEVEL3_BIN                    3
+#define C_LEVEL2_BIN                    0
+#define C_LEVEL3_BIN                    1
+#define C_LEVEL1_BIN                    2
+#define C_LEVEL4_BIN                    3
 #define RAM3_UBHRES_BIN                 4
 #define RAM3_FINAL_BIN                  5
 #define RAM3_SHEET_BIN                  6

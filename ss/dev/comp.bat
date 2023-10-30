@@ -17,6 +17,11 @@ for %%F in (*.scr) do ..\utils\apack.exe %%F ..\bin\%%~nF.bin > nul
 
 cd ..\bin
 
+..\utils\mapcnvbin.exe ..\map\level1.map map1.bin 5 5 15 9 9999 > nul
+..\utils\mapcnvbin.exe ..\map\level2.map map2.bin 5 5 15 9 9999 > nul
+..\utils\mapcnvbin.exe ..\map\level3.map map3.bin 5 5 15 9 9999 > nul
+..\utils\mapcnvbin.exe ..\map\level4.map map4.bin 5 5 15 9 9999 > nul
+
 ..\utils\ene2bin_mk1.exe ..\enems\level1.ene enems1.bin 1 nolife > nul
 ..\utils\ene2bin_mk1.exe ..\enems\level2.ene enems2.bin 1 nolife > nul
 ..\utils\ene2bin_mk1.exe ..\enems\level3.ene enems3.bin 1 nolife > nul

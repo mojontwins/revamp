@@ -49,7 +49,7 @@ unsigned char ptx1, ptx2, pty1, pty2, pty2b;
 unsigned char denew;
 unsigned int gpint;
 unsigned char *gen_pt, *map_pt;
-unsigned char x_pant, y_pant, n_pant, o_pant;
+unsigned char n_pant, o_pant;
 unsigned char *map_pointer; 
 
 // Keys
@@ -81,8 +81,6 @@ unsigned char p_life, p_score;
 unsigned char *p_current_frame, *p_next_frame;
 unsigned char possee;
 
-unsigned char fc;		// Pseudo frame counter.
-
 unsigned char _en_x, _en_y;
 unsigned char enoffsmasi;
 unsigned char enit;
@@ -109,6 +107,6 @@ unsigned char map_buffer[150] @ FREEPOOL;
 extern unsigned int level_pointer [0];
 unsigned char yOsc = 4;
 
-unsigned char f_win, f_gameover, isrc;
+unsigned char f_win, isrc;
 
 unsigned char player_on, song_playing;
