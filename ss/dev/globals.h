@@ -110,3 +110,5 @@ unsigned char yOsc = 4;
 unsigned char f_win, isrc;
 
 unsigned char player_on, song_playing;
+
+signed char ovl_x, ovl_y;

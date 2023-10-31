@@ -11,7 +11,7 @@ typedef struct {
 } LEVEL;
 
 LEVEL levels [4] = {
-	{C_LEVEL1_BIN, 3, 3, 2, 128, 16, 4}, //1856
+	{C_LEVEL1_BIN, 3, 3-1, 2, 128, 16, 4}, //1856
 	{C_LEVEL2_BIN, 4, 0, 2, 16, 112, 0}, //1817
 	{C_LEVEL3_BIN, 4, 0, 1, 128, 48, 4}, //1786
 	{C_LEVEL4_BIN, 4, 0, 0, 128, 0, 0}

@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"ovl_zero",
+				"ovl_zero_remaining\tabc"
+			],
+			[
+				"_ovl",
+				"_ovl_halo\tabc"
+			],
+			[
+				"_blob",
+				"_blobs_v\t(levelstruct.h)"
+			],
+			[
+				"mp_v",
+				"mp_v_fje_do\tabc"
+			],
+			[
+				"_wyz",
+				"_wyz_play_sound\tabc"
+			],
+			[
+				"_en",
+				"_enit\tabc"
+			],
+			[
 				"VIEW",
 				"VIEWPORT_X\tabc"
 			],
@@ -440,55 +464,10 @@
 	"buffers":
 	[
 		{
-			"file": "dev/engine.h",
+			"file": "dev/menu.h",
 			"settings":
 			{
-				"buffer_size": 15664,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dev/comp.bat",
-			"settings":
-			{
-				"buffer_size": 1784,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dev/spriteset.h",
-			"settings":
-			{
-				"buffer_size": 32074,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/ss.c",
-			"settings":
-			{
-				"buffer_size": 3251,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dev/printer.h",
-			"settings":
-			{
-				"buffer_size": 3593,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dev/levelstruct.h",
-			"settings":
-			{
-				"buffer_size": 5160,
+				"buffer_size": 4379,
 				"line_ending": "Unix"
 			}
 		}
@@ -559,30 +538,49 @@
 	[
 		"/D/git/revamp/ss",
 		"/D/git/revamp/ss/dev",
-		"/D/git/revamp/ss/mus"
+		"/D/git/revamp/ss/enems",
+		"/D/git/revamp/ss/map",
+		"/D/git/revamp/ss/utils"
 	],
 	"file_history":
 	[
+		"/D/git/revamp/ss/dev/comp.bat",
 		"/D/git/revamp/ss/dev/globals.h",
+		"/D/git/revamp/ss/dev/ss.asm",
+		"/D/git/revamp/ss/dev/new_overlay.h",
+		"/D/git/revamp/ss/dev/leveldata.h",
+		"/D/git/revamp/ss/dev/levelstruct.h",
+		"/D/git/revamp/ss/dev/spriteset.h",
+		"/D/git/revamp/ss/dev/engine.h",
+		"/D/git/revamp/ss/dev/ss.map",
+		"/D/git/revamp/ss/dev/ss.c",
+		"/D/git/revamp/ss/dev/overlay.h",
+		"/D/git/revamp/ss/dev/printer.h",
+		"/C/Users/jcastano/AppData/Local/Temp/7zO495B74AD/levelstruct.h",
+		"/D/git/revamp/ss/dev/ss.c.asm",
+		"/D/git/MK1/src/utils/src/ts2bin.bas",
+		"/D/git/revamp/ss/enems/level1.bin",
+		"/D/git/revamp/ss/utils/ene2bin_mk1.bas",
+		"/D/git/MK1/src/utils/src/downgrademap.bas",
+		"/D/git/MK1/src/utils/src/chr2bin.bas",
+		"/D/git/MK1/src/utils/src/build_mus_bin.bas",
+		"/D/git/MK1/src/utils/src/asm2z88dk.bas",
+		"/D/git/MK1/src/utils/src/chars2work.bas",
+		"/D/git/MK1/src/utils/src/buildlevels_MK1.bas",
+		"/D/git/MK1/src/utils/src/msc3_mk1.bas",
+		"/D/git/MK1/src/utils/src/sprcnvbin.bas",
 		"/D/git/revamp/ss/dev/wyzplayer.h",
 		"/D/git/revamp/ss/mus/make-ram1.bat",
 		"/D/git/revamp/ss/mus/efectos.asm",
-		"/D/git/revamp/ss/dev/ss.c",
 		"/D/git/revamp/ss/dev/menu.h",
-		"/D/git/revamp/ss/dev/levelstruct.h",
-		"/D/git/revamp/ss/dev/printer.h",
-		"/D/git/revamp/ss/dev/ss.map",
-		"/D/git/revamp/ss/dev/engine.h",
 		"/D/git/revamp/ss/mus/WYZproPlay47aZXc.ASM",
 		"/D/git/revamp/ss/mus/wyzplayer.asm",
 		"/D/git/revamp/ss/mus/instrumentos.asm",
 		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins/plugin_linear_platformers_asm.h",
 		"/C/Users/jcastano/AppData/Local/Temp/pid-14164/errorwebmovil.txt",
-		"/D/git/revamp/ss/dev/leveldata.h",
 		"/D/git/revamp/ss/dev/mojon_twins--severin-sewers.tap",
 		"/D/git/revamp/ss/dev/128k.h",
 		"/D/git/revamp/ss/dev/aplib.h",
-		"/D/git/revamp/ss/dev/comp.bat",
 		"/D/git/revamp/ss/dev/librarian.h",
 		"/D/git/revamp/ss/bin/list.txt",
 		"/D/git/revamp/ss/dev/loader/loaderzx.asm-orig",
@@ -590,7 +588,6 @@
 		"/D/Proyectos/2016/20160719a--Api REST LDAP WMCCOR/manual.txt",
 		"/D/git/revamp/ss/dev/loader.txt",
 		"/D/git/revamp/ss/dev/loader/loader.asm",
-		"/D/git/revamp/ss/dev/overlay.h",
 		"/D/git/revamp/ss/bin/make-ram3.bat",
 		"/D/temp/ss/dev/ss.c",
 		"/D/temp/ss/dev/menu.h",
@@ -674,23 +671,7 @@
 		"/D/Proyectos/remote/descon01/consigna/.gitignore",
 		"/D/Proyectos/remote/descon01/consigna/system/core/Exceptions.php",
 		"/D/Proyectos/remote/descon01/consigna/system/helpers/html_helper.php",
-		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Error/Assertion.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/php-8.1-strftime.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/Ignitedquery.php",
-		"/D/Proyectos/remote/descon01/consigna/system/core/Lang.php",
-		"/D/Proyectos/remote/descon01/consigna/system/core/Input.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/MY_Log.php",
-		"/D/Proyectos/remote/descon01/consigna/system/core/Common.php",
-		"/D/Proyectos/remote/descon01/consigna/system/libraries/Log.php",
-		"/D/Proyectos/remote/descon01/consigna/.htaccess",
-		"/D/Proyectos/remote/descon01/consigna/public/index.php",
-		"/D/Proyectos/remote/descon01/consigna/app/views/form-login.php",
-		"/D/Proyectos/remote/descon01/consigna/app/config/routes.php",
-		"/D/Proyectos/2022/20221125b - Reserva de Recursos 1.29.0.0/instrucciones.txt",
-		"/D/Proyectos/2022/20221209a - Consigna 2.15.0.0 - Separación de autenticación y autorización/instrucciones.txt",
-		"/C/Users/jcastano/Desktop/archivo_dest_test",
-		"/C/Users/jcastano/Desktop/destinatario.txt",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/Gestionpermisos.php"
+		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Error/Assertion.php"
 	],
 	"find":
 	{
@@ -836,6 +817,40 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"halt",
+			"overlay",
+			"haloy",
+			"halox",
+			"cx1",
+			"([xy]\\d)",
+			"ovl_y",
+			"ovl_x",
+			"sprite_frames",
+			"sprite_9",
+			"ENEMS_DATA",
+			"HOTSPOTS_DATA",
+			"fc",
+			"yOsc",
+			"y_pant",
+			"x_pant",
+			"y_pant",
+			" 5",
+			"x_pant",
+			"attr",
+			"gpy",
+			"gpx",
+			"gp_gen",
+			"[0]",
+			"ncn",
+			"ncc",
+			"ncy",
+			"ncx",
+			"muerte",
+			"any_key",
+			"init_player",
+			"collide",
+			"inCommand",
+			"rdt",
 			"waitFor",
 			"any_key",
 			"sp_getkey",
@@ -929,41 +944,7 @@
 			"i",
 			"espera_activa",
 			"espera_actia",
-			"espera_activa",
-			"SetRAMBank",
-			"ram_address",
-			"ram",
-			"ram_address",
-			"unpack_RAMn",
-			"i",
-			"j",
-			"^\n",
-			"yOsc",
-			"ob_y",
-			"28375",
-			"25000",
-			"level_buffer",
-			"joyfunc",
-			"yOsc",
-			"SetRAMBank",
-			"avws",
-			"No funci",
-			"LIMPIO",
-			"PENDIENTE",
-			"identidad",
-			"var7",
-			"var6",
-			"var5",
-			"var4",
-			"var3",
-			"var2",
-			"var1",
-			"excesivo",
-			"general",
-			"api_model",
-			"enlace",
-			"ijab",
-			"_detect_method"
+			"espera_activa"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -971,6 +952,19 @@
 		"regex": true,
 		"replace_history":
 		[
+			"_y",
+			"_x",
+			"c\\1",
+			"_y",
+			"_x",
+			"p_y",
+			"p_x",
+			"gen_pt",
+			"",
+			"_t",
+			"_c",
+			"_y",
+			"_x",
 			"gpjt",
 			"gpit",
 			"wyz_play_sound (\\1);",
@@ -1085,20 +1079,7 @@
 			"Pública",
 			"Fundación",
 			"Energía",
-			"Consejería",
-			"replicación",
-			"dn: \\1\\nchangetype: modify\\nreplace: displayName",
-			"",
-			"\\ndn",
-			"",
-			"locationParameters",
-			"this",
-			" ",
-			"2",
-			"RRFaqs",
-			"RRAdministradores",
-			"accordionRRAdministradores",
-			" accordionRRAdministradores"
+			"Consejería"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1109,171 +1090,8 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "dev/engine.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15664,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2142,
-								2142
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1823.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "dev/comp.bat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1784,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								663,
-								663
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 108.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "dev/spriteset.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 32074,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "dev/ss.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3251,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								159,
-								159
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "dev/printer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3593,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1451,
-								1451
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2787.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		},
 		{
@@ -1281,12 +1099,12 @@
 			"sheets":
 			[
 				{
-					"buffer": 5,
-					"file": "dev/levelstruct.h",
+					"buffer": 0,
+					"file": "dev/menu.h",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 5160,
+						"buffer_size": 4379,
 						"regions":
 						{
 						},
@@ -1306,10 +1124,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3253.0,
+						"translation.y": 1521.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1317,7 +1135,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -1411,7 +1229,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

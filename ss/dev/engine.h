@@ -1561,6 +1561,7 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 		// Update
 		attrs_byte = n_pant >= yOsc;
 		if (n_pant >= yOsc) {
+
 			#asm
 					ld  a, (_yOsc)
 					ld  c, a 
@@ -1572,7 +1573,26 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 
 					ld  a, 1
 					ld  (hl), a
+			#endasm
 
+			#asm
+					ld  a, (_p_x)
+					srl a 
+					srl a 
+					srl a 
+					sub 3
+					ld  (_ovl_x), a
+					ld  a, (_p_y)
+					srl a 
+					srl a 
+					srl a 
+					sub 3 
+					ld  (_ovl_y), a
+					call ovl_update
+			#endasm
+
+			/*
+			#asm
 					ld  a, (_p_x)
 					srl a 
 					srl a 
@@ -1586,6 +1606,10 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 					call _ovl_draw_scr
 					call _draw_buff 
 					call _ovl_del
+			#endasm
+			*/
+
+			#asm
 					jr  halodone
 				.nohalo
 					xor a 					

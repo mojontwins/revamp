@@ -54,7 +54,7 @@ unsigned char *sprite_frames[] = {
 	sprite_21_a, sprite_22_a, sprite_23_a, sprite_24_a,
 };
 
-#include "overlay.h"
+#include "new_overlay.h"
 #include "leveldata.h"
 #include "levelstruct.h"
 #include "engine.h"
@@ -156,7 +156,7 @@ void main (void) {
 	#asm
 		ei
 	#endasm
-
+game(0);
 	blackout_everything ();
 	get_resource (RAM3_MOJON_TWINS_BIN, 16384);
 
