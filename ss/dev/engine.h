@@ -847,7 +847,7 @@ unsigned char collide (void) {
 			ld  hl, 0
 
 		// p_x + BB_SIZE >= rdx
-			ld  a, (_rdx)
+			ld  a, (__en_x)
 			ld  c, a 
 			ld  a, (_p_x)
 			add BB_SIZE
@@ -857,13 +857,13 @@ unsigned char collide (void) {
 		// p_x <= cx2 + BB_SIZE -> cx + BB_SIZE >= p_x
 			ld  a, (_p_x)
 			ld  c, a 
-			ld  a, (_rdx)
+			ld  a, (__en_x)
 			add BB_SIZE
 			cp  c 
 			ret c
 
 		// p_y + BB_SIZE >= cy2
-			ld  a, (_rdy)
+			ld  a, (__en_y)
 			ld  c, a 
 			ld  a, (_p_y)
 			add BB_SIZE
@@ -873,7 +873,7 @@ unsigned char collide (void) {
 		// p_y <= cy2 + BB_SIZE -> cy + BB_SIZE >= p_y
 			ld  a, (_p_y)
 			ld  c, a 
-			ld  a, (_rdy)
+			ld  a, (__en_y)
 			add BB_SIZE
 			cp  c 
 			ret c
@@ -1388,6 +1388,7 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 
 		// Hotspot check
 
+		/*
 		rdx = hotspot_x; rdy = hotspot_y;
 		if (collide ()) {		
 			_x = VIEWPORT_X + (hotspot_x >> 3); _y = VIEWPORT_Y + (hotspot_y >> 3); _t = orig_tile;	
@@ -1406,6 +1407,85 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 			}
 			hotspots [n_pant].act = 0;
 		}
+		*/
+
+		#asm
+				ld  a, (_hotspot_x)
+				ld  (__en_x), a 
+				ld  a, (_hotspot_y)
+				ld  (__en_y), a 
+				call _collide 
+				
+				xor a 
+				or  l 
+				jr  z, ml_hotspots_done
+
+			.ml_hotspots
+				ld  a, (_hotspot_x)
+				srl a 
+				srl a 
+				srl a 
+				add VIEWPORT_X
+				ld  (__x), a 
+
+				ld  a, (_hotspot_y)
+				srl a 
+				srl a 
+				srl a 
+				add VIEWPORT_Y
+				ld  (__y), a 
+
+				ld  a, (_orig_tile)
+				ld  (__t), a 
+				call _draw_coloured_tile
+				call _invalidate_tile
+
+				ld  a, 0xf0
+				ld  (_hotspot_y), a
+		
+				// hotspots struct is 3 bytes white
+				// hotspots [n_pant] is hotspots + n_pant*3
+				// Coincidentially, enoffs = n_pant*3 so in
+				// showcase of code unreadability we'll hit on that
+				ld  bc, (_enoffs)
+				ld  b, 0 
+				ld  ix, _hotspots 
+				add ix, bc 
+
+				// Struct is xy, tipo, act
+				ld  a, (ix + 1) 	// tipo
+				dec a 
+				jr  nz, ml_hotspots_t2
+
+				ld  hl, _p_score
+				inc (hl)
+				call _draw_score 
+				ld  hl, 3
+				call _wyz_play_sound
+				jr  ml_hotspots_deact
+
+			.ml_hotspots_t2 
+				// p_life = p_life > 223 ? 255 : (p_life + 32);
+				ld  a, (_p_life)
+				cp  224
+				jr  c, ml_inclife
+
+				ld  a, 0xff
+				jr  ml_setlife
+			
+			.ml_inclife	
+				add 32
+
+			.ml_setlife
+				ld  (_p_life), a
+				call _draw_life
+
+			.ml_hotspots_deact
+				xor a 
+				ld  (ix + 2), a
+
+			.ml_hotspots_done
+		#endasm
 		
 		// Quitar esto
 		
@@ -1591,28 +1671,8 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 					sub 3 
 					ld  (_ovl_y), a
 					call ovl_update
-			#endasm
-
-			/*
-			#asm
-					ld  a, (_p_x)
-					srl a 
-					srl a 
-					srl a 
-					ld  (__x), a
-					ld  a, (_p_y)
-					srl a 
-					srl a 
-					srl a 
-					ld  (__y), a
-					call _ovl_draw_scr
-					call _draw_buff 
-					call _ovl_del
-			#endasm
-			*/
-
-			#asm
 					jr  halodone
+	
 				.nohalo
 					xor a 					
 					ld  (hl), a 
@@ -1631,6 +1691,7 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 			.ml_min_faps_loop_end
 				xor a
 				ld  (_isrc), a
+				inc a
 
 				call SPUpdateNow
 		#endasm
@@ -1714,11 +1775,7 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 		*/
 
 		#asm
-				// n_pant > 4 -> n_pant >= 5
-				ld  a, (_n_pant)
-				cp  5
-				jr  c, flick_up_done
-
+				
 				// p_vy < 0
 				ld  a, (_p_vy)
 				or  a 
@@ -1734,11 +1791,23 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 				jr  c, flick_up_done
 
 			.flick_up_do
+
+				// n_pant > 4 -> n_pant >= 5
+				ld  a, (_n_pant)
+				cp  5
+				jr  c, flick_up_out_of_the_map
+
 				ld  a, 128
 				ld  (_p_y), a 
 				ld  a, (_n_pant)
 				sub 5 
 				ld  (_n_pant), a
+				jr  flick_up_done
+
+			.flick_up_out_of_the_map
+				xor a 
+				ld  (_p_y), a
+				ld  (_p_vy), a
 
 			.flick_up_done
 		#endasm

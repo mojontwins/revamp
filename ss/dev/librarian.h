@@ -14,12 +14,12 @@ RESOURCE resources [] = {
     { 3, 0xC7A7 },
     { 3, 0xCF33 },
     { 3, 0xD6AE },
-    { 3, 0xDE02 },
-    { 3, 0xE2B5 },
-    { 3, 0xE73B },
-    { 3, 0xEB7D },
-    { 3, 0xEEB6 },
-    { 3, 0xF0A0 }
+    { 3, 0xDE03 },
+    { 3, 0xE2B6 },
+    { 3, 0xE73C },
+    { 3, 0xEB7E },
+    { 3, 0xEEB7 },
+    { 3, 0xF0A1 }
 };
 
 #define C_LEVEL2_BIN                    0
