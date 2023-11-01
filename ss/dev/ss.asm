@@ -3,7 +3,7 @@
 ;
 ;	Reconstructed for z80 Module Assembler
 ;
-;	Module compile time: Mon Oct 30 12:14:34 2023
+;	Module compile time: Wed Nov 01 17:10:00 2023
 
 
 	C_LINE	0,"ss.c"
@@ -21,6 +21,7 @@
 		LIB SPInvalidate
 		LIB SPCompDListAddr
 		LIB SPNullSprPtr
+		LIB SPUpdateNow
 	C_LINE	0,"c:\z88dk\Lib\Config\\..\..\/include/spritepack.h"
 	C_LINE	26,"c:\z88dk\Lib\Config\\..\..\/include/spritepack.h"
 	C_LINE	27,"c:\z88dk\Lib\Config\\..\..\/include/spritepack.h"
@@ -167,8 +168,8 @@
 	C_LINE	618,"c:\z88dk\Lib\Config\\..\..\/include/spritepack.h"
 	C_LINE	619,"c:\z88dk\Lib\Config\\..\..\/include/spritepack.h"
 	C_LINE	620,"c:\z88dk\Lib\Config\\..\..\/include/spritepack.h"
-	C_LINE	12,"ss.c"
-	C_LINE	20,"ss.c"
+	C_LINE	13,"ss.c"
+	C_LINE	21,"ss.c"
 	C_LINE	0,"globals.h"
 	C_LINE	4,"globals.h"
 	C_LINE	6,"globals.h"
@@ -176,13 +177,14 @@
 	C_LINE	9,"globals.h"
 	C_LINE	12,"globals.h"
 	C_LINE	14,"globals.h"
-	C_LINE	15,"globals.h"
+	C_LINE	16,"globals.h"
+	C_LINE	17,"globals.h"
 	SECTION	code_compiler
 
 ; Function my_malloc flags 0x00000200 __smallc 
 ; void * my_malloc(unsigned int bytes)
 ; parameter 'unsigned int bytes' at sp+2 size(2)
-	C_LINE	15,"globals.h::my_malloc::0::0"
+	C_LINE	17,"globals.h::my_malloc::0::0"
 ._my_malloc
 	ld	hl,0	;const
 	push	hl
@@ -191,28 +193,28 @@
 	ret
 
 
-	C_LINE	16,"globals.h::my_malloc::0::1"
+	C_LINE	18,"globals.h::my_malloc::0::1"
 	SECTION	data_compiler
 ._u_malloc
 	defw	_my_malloc + 0
 	SECTION	code_compiler
-	C_LINE	17,"globals.h::my_malloc::0::1"
+	C_LINE	19,"globals.h::my_malloc::0::1"
 	SECTION	data_compiler
 ._u_free
 	defw	sp_FreeBlock + 0
 	SECTION	code_compiler
-	C_LINE	18,"globals.h::my_malloc::0::1"
-	C_LINE	19,"globals.h::my_malloc::0::1"
-	C_LINE	22,"globals.h::my_malloc::0::1"
+	C_LINE	20,"globals.h::my_malloc::0::1"
+	C_LINE	21,"globals.h::my_malloc::0::1"
+	C_LINE	24,"globals.h::my_malloc::0::1"
 	.vpClipStruct defb  1 ,  1  + 18,  1 ,  1  + 30
 	.fsClipStruct defb 0, 24, 0, 32
-	C_LINE	29,"globals.h::my_malloc::0::1"
-	C_LINE	30,"globals.h::my_malloc::0::1"
 	C_LINE	31,"globals.h::my_malloc::0::1"
 	C_LINE	32,"globals.h::my_malloc::0::1"
 	C_LINE	33,"globals.h::my_malloc::0::1"
 	C_LINE	34,"globals.h::my_malloc::0::1"
+	C_LINE	35,"globals.h::my_malloc::0::1"
 	C_LINE	36,"globals.h::my_malloc::0::1"
+	C_LINE	38,"globals.h::my_malloc::0::1"
 ._asm_number 
 	defb 0
 ._asm_int
@@ -221,8 +223,6 @@
 	defw 0
 ._seed	
 	defw 0
-	C_LINE	49,"globals.h::my_malloc::0::1"
-	C_LINE	50,"globals.h::my_malloc::0::1"
 	C_LINE	51,"globals.h::my_malloc::0::1"
 	C_LINE	52,"globals.h::my_malloc::0::1"
 	C_LINE	53,"globals.h::my_malloc::0::1"
@@ -230,7 +230,9 @@
 	C_LINE	55,"globals.h::my_malloc::0::1"
 	C_LINE	56,"globals.h::my_malloc::0::1"
 	C_LINE	57,"globals.h::my_malloc::0::1"
-	C_LINE	61,"globals.h::my_malloc::0::1"
+	C_LINE	58,"globals.h::my_malloc::0::1"
+	C_LINE	59,"globals.h::my_malloc::0::1"
+	C_LINE	63,"globals.h::my_malloc::0::1"
 	SECTION	data_compiler
 ._keys
 	defw	383
@@ -239,44 +241,43 @@
 	defw	509
 	defw	507
 	SECTION	code_compiler
-	C_LINE	69,"globals.h::my_malloc::0::1"
+	C_LINE	71,"globals.h::my_malloc::0::1"
 	SECTION	data_compiler
 ._key_r
 	defw	2299
 	SECTION	code_compiler
-	C_LINE	70,"globals.h::my_malloc::0::1"
+	C_LINE	72,"globals.h::my_malloc::0::1"
 	SECTION	data_compiler
 ._key_g
 	defw	4349
 	SECTION	code_compiler
-	C_LINE	71,"globals.h::my_malloc::0::1"
+	C_LINE	73,"globals.h::my_malloc::0::1"
 	SECTION	data_compiler
 ._key_z
 	defw	766
 	SECTION	code_compiler
-	C_LINE	73,"globals.h::my_malloc::0::1"
+	C_LINE	75,"globals.h::my_malloc::0::1"
 	SECTION	data_compiler
 ._key_1
 	defw	503
 	SECTION	code_compiler
-	C_LINE	74,"globals.h::my_malloc::0::1"
+	C_LINE	76,"globals.h::my_malloc::0::1"
 	SECTION	data_compiler
 ._key_2
 	defw	759
 	SECTION	code_compiler
-	C_LINE	75,"globals.h::my_malloc::0::1"
+	C_LINE	77,"globals.h::my_malloc::0::1"
 	SECTION	data_compiler
 ._key_3
 	defw	1271
 	SECTION	code_compiler
-	C_LINE	79,"globals.h::my_malloc::0::1"
-	C_LINE	80,"globals.h::my_malloc::0::1"
 	C_LINE	81,"globals.h::my_malloc::0::1"
 	C_LINE	82,"globals.h::my_malloc::0::1"
 	C_LINE	83,"globals.h::my_malloc::0::1"
 	C_LINE	84,"globals.h::my_malloc::0::1"
 	C_LINE	85,"globals.h::my_malloc::0::1"
 	C_LINE	86,"globals.h::my_malloc::0::1"
+	C_LINE	87,"globals.h::my_malloc::0::1"
 	C_LINE	88,"globals.h::my_malloc::0::1"
 	C_LINE	90,"globals.h::my_malloc::0::1"
 	C_LINE	91,"globals.h::my_malloc::0::1"
@@ -305,7 +306,8 @@
 	SECTION	code_compiler
 	C_LINE	116,"globals.h::my_malloc::0::1"
 	C_LINE	118,"globals.h::my_malloc::0::1"
-	C_LINE	28,"ss.c::my_malloc::0::1"
+	C_LINE	120,"globals.h::my_malloc::0::1"
+	C_LINE	29,"ss.c::my_malloc::0::1"
 	C_LINE	0,"librarian.h::my_malloc::0::1"
 	C_LINE	7,"librarian.h::my_malloc::0::1"
 	C_LINE	12,"librarian.h::my_malloc::0::1"
@@ -318,21 +320,21 @@
 	defb	3
 	defw	53043
 	defb	3
-	defw	54969
+	defw	54958
 	defb	3
-	defw	56884
+	defw	56835
 	defb	3
-	defw	58087
+	defw	58038
 	defb	3
-	defw	59245
+	defw	59196
 	defb	3
-	defw	60335
+	defw	60286
 	defb	3
-	defw	61160
+	defw	61111
 	defb	3
-	defw	61650
+	defw	61601
 	SECTION	code_compiler
-	C_LINE	32,"ss.c::my_malloc::0::1"
+	C_LINE	33,"ss.c::my_malloc::0::1"
 	C_LINE	0,"printer.h::my_malloc::0::1"
 	C_LINE	6,"printer.h::my_malloc::0::1"
 	._letters
@@ -676,7 +678,7 @@
 	ret
 
 
-	C_LINE	36,"ss.c::fix_sprites::0::11"
+	C_LINE	37,"ss.c::fix_sprites::0::11"
 	C_LINE	0,"128k.h::fix_sprites::0::11"
 	C_LINE	2,"128k.h::fix_sprites::0::11"
 
@@ -702,7 +704,7 @@
 	ret
 
 
-	C_LINE	37,"ss.c::SetRAMBank::0::12"
+	C_LINE	38,"ss.c::SetRAMBank::0::12"
 	C_LINE	0,"wyzplayer.h::SetRAMBank::0::12"
 	C_LINE	22,"wyzplayer.h::SetRAMBank::0::12"
 	defw 0	 
@@ -712,6 +714,8 @@
 ; void ISR()
 	C_LINE	28,"wyzplayer.h::ISR::0::12"
 ._ISR
+			ld  hl, _isrc
+			inc (hl)						
 			ld  a, (_player_on)
 			or  a 
 			ret z
@@ -720,8 +724,6 @@
 			call  0xC000 
 			ld b, 0
 			call SetRAMBank			
-			ld  hl, _isrc
-			inc (hl)						
 	ret
 
 
@@ -802,7 +804,7 @@
 	ret
 
 
-	C_LINE	38,"ss.c::wyz_stop_sound::0::17"
+	C_LINE	39,"ss.c::wyz_stop_sound::0::17"
 	C_LINE	0,"aplib.h::wyz_stop_sound::0::17"
 	C_LINE	2,"aplib.h::wyz_stop_sound::0::17"
 ; aPPack decompressor
@@ -995,7 +997,7 @@
 	ret
 
 
-	C_LINE	39,"ss.c::get_resource::0::20"
+	C_LINE	40,"ss.c::get_resource::0::20"
 	C_LINE	0,"menu.h::get_resource::0::20"
 	C_LINE	1,"menu.h::get_resource::0::20"
 	C_LINE	2,"menu.h::get_resource::0::20"
@@ -1705,7 +1707,7 @@
 	ret
 
 
-	C_LINE	40,"ss.c::menu::0::47"
+	C_LINE	41,"ss.c::menu::0::47"
 	C_LINE	0,"supertileset.h::menu::0::47"
 	C_LINE	3,"supertileset.h::menu::0::47"
 	C_LINE	5,"supertileset.h::menu::0::47"
@@ -1914,7 +1916,7 @@
 ; Alt sky empty rails
 	defb 30, 231, 30, 231, 5, 18, 5, 19
 ; FINI
-	C_LINE	41,"ss.c::menu::0::47"
+	C_LINE	42,"ss.c::menu::0::47"
 	C_LINE	0,"tileset.h::menu::0::47"
 	C_LINE	4,"tileset.h::menu::0::47"
 	SECTION	data_compiler
@@ -3968,7 +3970,7 @@
 	defb	0
 	defb	0
 	SECTION	code_compiler
-	C_LINE	42,"ss.c::menu::0::47"
+	C_LINE	43,"ss.c::menu::0::47"
 	C_LINE	0,"spriteset.h::menu::0::47"
 	C_LINE	6,"spriteset.h::menu::0::47"
 	C_LINE	7,"spriteset.h::menu::0::47"
@@ -5299,8 +5301,20 @@
         defb 0x00, 0xFF
         defb 0x00, 0xFF
         defb 0x00, 0xFF
-	C_LINE	43,"ss.c::menu::0::47"
-	C_LINE	45,"ss.c::menu::0::47"
+	C_LINE	44,"ss.c::menu::0::47"
+	C_LINE	46,"ss.c::menu::0::47"
+	SECTION	data_compiler
+._player_walk
+	defw	_sprite_1_a + 0
+	defw	_sprite_2_a + 0
+	defw	_sprite_1_a + 0
+	defw	_sprite_3_a + 0
+	defw	_sprite_5_a + 0
+	defw	_sprite_6_a + 0
+	defw	_sprite_5_a + 0
+	defw	_sprite_7_a + 0
+	SECTION	code_compiler
+	C_LINE	51,"ss.c::menu::0::47"
 	SECTION	data_compiler
 ._sprite_frames
 	defw	_sprite_9_a + 0
@@ -5320,410 +5334,189 @@
 	defw	_sprite_23_a + 0
 	defw	_sprite_24_a + 0
 	SECTION	code_compiler
-	C_LINE	0,"overlay.h::menu::0::47"
-	C_LINE	4,"overlay.h::menu::0::47"
-	C_LINE	5,"overlay.h::menu::0::47"
-	C_LINE	7,"overlay.h::menu::0::47"
+	C_LINE	0,"new_overlay.h::menu::0::47"
+	C_LINE	4,"new_overlay.h::menu::0::47"
 ._ovl_halo	defb	0, 0, 1, 1, 1, 1, 0, 0
 			defb 	0, 1, 5, 5, 5, 5, 1, 0
 			defb	1, 5, 6, 6, 6, 6, 5, 1
-			defb	1, 5, 6, 6, 6, 6, 5, 1
-			defb	1, 5, 6, 6, 6, 6, 5, 1
+			defb	1, 5, 6, 7, 7, 6, 5, 1
+			defb	1, 5, 6, 7, 7, 6, 5, 1
 			defb	1, 5, 6, 6, 6, 6, 5, 1
 			defb 	0, 1, 5, 5, 5, 5, 1, 0
 			defb	0, 0, 1, 1, 1, 1, 0, 0
-._ovl_x		defb 	0
-._ovl_y		defb 	0			
-._ovl_buff	defs	864, 0
-	C_LINE	25,"overlay.h::menu::0::47"
-
-; Function draw_overlay flags 0x00000200 __smallc 
-; void draw_overlay(unsigned char x, unsigned char y)
-; parameter 'unsigned char y' at sp+2 size(1)
-; parameter 'unsigned char x' at sp+4 size(1)
-	C_LINE	25,"overlay.h::draw_overlay::0::47"
-._draw_overlay
-	ld	de,_ovl_x
-	ld	hl,4	;const
-	add	hl,sp
-	ld	a,(hl)
-	ld	(de),a
-	ld	de,_ovl_y
-	ld	hl,2	;const
-	add	hl,sp
-	ld	a,(hl)
-	ld	(de),a
-	ld	l,a
-	ld	h,0
-		call _ovl_draw_scr
-	ret
-
-
-	C_LINE	35,"overlay.h::draw_overlay::0::48"
-
-; Function del_overlay flags 0x00000200 __smallc 
-; void del_overlay(unsigned char x, unsigned char y)
-; parameter 'unsigned char y' at sp+2 size(1)
-; parameter 'unsigned char x' at sp+4 size(1)
-	C_LINE	35,"overlay.h::del_overlay::0::48"
-._del_overlay
-	ld	de,_ovl_x
-	ld	hl,4	;const
-	add	hl,sp
-	ld	a,(hl)
-	ld	(de),a
-	ld	de,_ovl_y
-	ld	hl,2	;const
-	add	hl,sp
-	ld	a,(hl)
-	ld	(de),a
-	ld	l,a
-	ld	h,0
-		call _ovl_del
-	ret
-
-
-	C_LINE	45,"overlay.h::del_overlay::0::49"
-
-; Function draw_buff flags 0x00000200 __smallc 
-; void draw_buff()
-	C_LINE	45,"overlay.h::draw_buff::0::49"
-._draw_buff
-	._ovl_draw_buff
-			; hl => ovl_buff + 36 * 3 + 3 = ovl_buff + 111
-			ld	hl, _ovl_buff + 111
-			ld	b, 18
-			; de => 22528 + 32 + 1 = 22561
-			ld 	de, 22561
-	._ovldbl
-			push bc
-			; Copy 30 attrs
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			; Next line
-			inc	de
-			inc de
-			ld	bc, 6
-			add	hl, bc
-			pop	bc
-			djnz _ovldbl
-	ret
-
-
-	C_LINE	102,"overlay.h::draw_buff::0::50"
-._ovl_draw_scr
-			; First we calculate the address
-			; address = ovl_buff + ovl_y * 36 + ovl_x
-			ld 	a, (_ovl_y)
-			ld	h, 0
-			ld	l, a
-			add	hl, hl				; hl = ovl_y * 2
-			add	hl, hl				; hl = ovl_y * 4
-			push hl
-			add hl, hl				; hl = ovl_y * 8
-			add	hl, hl				; hl = ovl_y * 16
-			add	hl, hl				; hl = ovl_y * 32
-			pop	bc
-			add	hl, bc				; hl = ovl_y * 36
-			ld	a, (_ovl_x)
-			ld	d, 0
-			ld	e, a
-			add	hl, de				; hl = ovl_y * 36 + ovl_x
-			ld	de, _ovl_buff
-			add	hl, de				; hl = _ovl_buff + ovl_y * 32 + ovl_x
-			ld	de, _ovl_halo				
-			ex	de, hl
-			; DE -> buffer, HL -> ovl_halo
-			; Start the tint. 8x8 lines, unrolled.
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ex	de, hl
-			ld	bc, 28
-			add	hl, bc
-			ex	de, hl
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ex	de, hl
-			ld	bc, 28
-			add	hl, bc
-			ex	de, hl
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ex	de, hl
-			ld	bc, 28
-			add	hl, bc
-			ex	de, hl
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ex	de, hl
-			ld	bc, 28
-			add	hl, bc
-			ex	de, hl
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ex	de, hl
-			ld	bc, 28
-			add	hl, bc
-			ex	de, hl
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ex	de, hl
-			ld	bc, 28
-			add	hl, bc
-			ex	de, hl
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ex	de, hl
-			ld	bc, 28
-			add	hl, bc
-			ex	de, hl
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ldi
-			ex	de, hl
-			ld	bc, 28
-			add	hl, bc
-			ex	de, hl
-			ret
-._ovl_del
-			; First we calculate the address
-			; address = ovl_buff + ovl_y * 36 + ovl_x
-			ld 	a, (_ovl_y)
-			ld	h, 0
-			ld	l, a
-			add	hl, hl				; hl = ovl_y * 2
-			add	hl, hl				; hl = ovl_y * 4
-			push hl
-			add hl, hl				; hl = ovl_y * 8
-			add	hl, hl				; hl = ovl_y * 16
-			add	hl, hl				; hl = ovl_y * 32
-			pop	bc
-			add	hl, bc				; hl = ovl_y * 36
-			ld	a, (_ovl_x)
-			ld	d, 0
-			ld	e, a
-			add	hl, de				; hl = ovl_y * 36 + ovl_x
-			ld	de, _ovl_buff
-			add	hl, de				; hl = _ovl_buff + ovl_y * 32 + ovl_x
-			xor	a
-			; Start the tint. 8x8 lines, unrolled.
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			ld	bc, 29
-			add	hl, bc
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			ld	bc, 29
-			add	hl, bc
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			ld	bc, 29
-			add	hl, bc
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			ld	bc, 29
-			add	hl, bc
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			ld	bc, 29
-			add	hl, bc
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			ld	bc, 29
-			add	hl, bc
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			ld	bc, 29
-			add	hl, bc
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			inc	hl
-			ld	(hl), a
-			ret
-	C_LINE	52,"ss.c::draw_buff::0::50"
-	C_LINE	0,"leveldata.h::draw_buff::0::50"
-	C_LINE	3,"leveldata.h::draw_buff::0::50"
-	C_LINE	13,"leveldata.h::draw_buff::0::50"
+	C_LINE	59,"new_overlay.h::menu::0::47"
+	.ovl_update
+		ld  a, (_ovl_x)
+		bit 7, a 
+		jr  z, ovl_noadj1
+		xor a
+	.ovl_noadj1 
+		ld  (_cx1), a 
+		ld  a, (_ovl_x)
+		add 8
+		cp  30 
+		jr  c, ovl_noadj2 
+		ld  a, 30 
+	.ovl_noadj2 
+		ld  (_cx2), a 
+		ld  a, (_ovl_y)
+		bit 7, a 
+		jr  z, ovl_noadj3
+		xor a
+	.ovl_noadj3 
+		ld  (_cy1), a 
+		ld  a, (_ovl_y)
+		add 8
+		cp  18
+		jr  c, ovl_noadj4
+		ld  a, 18 
+	.ovl_noadj4 
+		ld  (_cy2), a 
+		ld  de, 22561
+		xor a 
+	.ovl_line_loop		
+		ld  (__y), a
+		ld  b, a
+		ld  a, (_cy1)
+		ld  c, a  
+		ld  a, b 				 
+		cp  c  					 
+		jr  c, ovl_fullblack	 
+		ld  a, (_cy2) 
+		ld  c, a 
+		ld  a, b  				 
+		cp  c  					 
+		jr  nc, ovl_fullblack	 
+		xor a 
+	.ovl_col_loop
+		ld  (__x), a 
+		ld  b, a
+		ld  a, (_cx1)
+		ld  c, a  
+		ld  a, b 				 
+		cp  c  					 
+		jr  c, ovl_zero  		 
+	 	ld  a, (_cx2)
+	 	ld  c, a 
+	 	ld  a, b 				 
+	 	cp  c 					 
+	 	jr 	nc, ovl_zero_remaining		 
+	 	ld  a, (_ovl_y)
+	 	ld  c, a 
+	 	ld  a, (__y)
+	 	sub c 
+	 	sla a 
+	 	sla a 
+	 	sla a
+	 	ld  b, a 
+	 	ld  a, (_ovl_x)
+	 	ld  c, a 
+	 	ld  a, (__x)
+	 	sub c 
+	 	add b 
+	 	ld  b, 0
+	 	ld  c, a 
+	 	ld  hl, _ovl_halo
+	 	add hl, bc
+	 	ld  a, (hl)
+	 	jr  ovl_set
+	 .ovl_zero
+	 	xor a 
+	 .ovl_set 
+	 	ld  (de), a 
+	 	inc de
+		ld  a, (__x)
+		inc a 
+		cp  30 
+		jr  nz, ovl_col_loop		
+		jr  ovl_next
+	.ovl_zero_remaining
+		ld  a, b 
+		sla a 
+		ld  b, 0 
+		ld  c, a 
+		ld  hl, ovl_unroll
+		add hl, bc 
+		xor a
+		jp  (hl)
+	.ovl_fullblack
+		xor a 
+	.ovl_unroll
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+		ld  (de), a 
+		inc de
+	.ovl_next
+		inc de 
+		inc de
+		ld  a, (__y)
+		inc a 
+		cp  18
+		jp  nz, ovl_line_loop
+		ret
+	C_LINE	58,"ss.c::menu::0::47"
+	C_LINE	0,"leveldata.h::menu::0::47"
+	C_LINE	3,"leveldata.h::menu::0::47"
+	C_LINE	13,"leveldata.h::menu::0::47"
 	SECTION	data_compiler
 ._levels
-	defb	2
+	defb	3
 	defb	3
 	defb	3
 	defb	2
@@ -5744,7 +5537,7 @@
 	defb	128
 	defb	48
 	defb	4
-	defb	3
+	defb	2
 	defb	4
 	defb	0
 	defb	0
@@ -5752,32 +5545,33 @@
 	defb	0
 	defb	0
 	SECTION	code_compiler
-	C_LINE	53,"ss.c::draw_buff::0::50"
-	C_LINE	0,"levelstruct.h::draw_buff::0::50"
-	C_LINE	16,"levelstruct.h::draw_buff::0::50"
-	C_LINE	23,"levelstruct.h::draw_buff::0::50"
-	C_LINE	29,"levelstruct.h::draw_buff::0::50"
-	C_LINE	30,"levelstruct.h::draw_buff::0::50"
+	C_LINE	59,"ss.c::menu::0::47"
+	C_LINE	0,"levelstruct.h::menu::0::47"
+	C_LINE	5,"levelstruct.h::menu::0::47"
+	C_LINE	12,"levelstruct.h::menu::0::47"
+	C_LINE	18,"levelstruct.h::menu::0::47"
+	C_LINE	19,"levelstruct.h::menu::0::47"
 	._level_buffer defs 3375
-	C_LINE	36,"levelstruct.h::draw_buff::0::50"
-	C_LINE	37,"levelstruct.h::draw_buff::0::50"
+	C_LINE	25,"levelstruct.h::menu::0::47"
+	C_LINE	26,"levelstruct.h::menu::0::47"
 	._malotes defs 25*3*9 	 
-	C_LINE	43,"levelstruct.h::draw_buff::0::50"
-	C_LINE	44,"levelstruct.h::draw_buff::0::50"
+	C_LINE	32,"levelstruct.h::menu::0::47"
+	C_LINE	33,"levelstruct.h::menu::0::47"
 	._hotspots defs 25*3 	 
-	C_LINE	52,"levelstruct.h::draw_buff::0::50"
+	C_LINE	41,"levelstruct.h::menu::0::47"
 	._level_pointer	
 		defw	0
-	C_LINE	59,"levelstruct.h::draw_buff::0::50"
+	C_LINE	48,"levelstruct.h::menu::0::47"
 
-; Function load_level flags 0x00000200 __smallc 
+; Function load_level flags 0x00000208 __smallc __z88dk_fastcall 
 ; void load_level(unsigned char level)
 ; parameter 'unsigned char level' at sp+2 size(1)
-	C_LINE	59,"levelstruct.h::load_level::0::50"
+	C_LINE	48,"levelstruct.h::load_level::0::47"
 ._load_level
+	push	hl
 	ld	hl,_levels
 	push	hl
-	ld	hl,4	;const
+	ld	hl,2	;const
 	add	hl,sp
 	ld	l,(hl)
 	ld	h,0
@@ -5799,7 +5593,7 @@
 	pop	bc
 	ld	hl,_levels
 	push	hl
-	ld	hl,4	;const
+	ld	hl,2	;const
 	add	hl,sp
 	ld	l,(hl)
 	ld	h,0
@@ -5822,14 +5616,15 @@
 	ld	h,0
 	ld	a,l
 	ld	(_yOsc),a
+	pop	bc
 	ret
 
 
-	C_LINE	64,"levelstruct.h::load_level::0::51"
+	C_LINE	53,"levelstruct.h::load_level::0::48"
 
 ; Function invalidate_tile flags 0x00000200 __smallc 
 ; void invalidate_tile()
-	C_LINE	64,"levelstruct.h::invalidate_tile::0::51"
+	C_LINE	53,"levelstruct.h::invalidate_tile::0::48"
 ._invalidate_tile
 			; Invalidate Rectangle
 			;
@@ -5851,11 +5646,11 @@
 	ret
 
 
-	C_LINE	89,"levelstruct.h::invalidate_tile::0::52"
+	C_LINE	78,"levelstruct.h::invalidate_tile::0::49"
 
 ; Function invalidate_viewport flags 0x00000200 __smallc 
 ; void invalidate_viewport()
-	C_LINE	89,"levelstruct.h::invalidate_viewport::0::52"
+	C_LINE	78,"levelstruct.h::invalidate_viewport::0::49"
 ._invalidate_viewport
 			; Invalidate Rectangle
 			;
@@ -5873,11 +5668,11 @@
 	ret
 
 
-	C_LINE	110,"levelstruct.h::invalidate_viewport::0::53"
+	C_LINE	99,"levelstruct.h::invalidate_viewport::0::50"
 
 ; Function draw_coloured_tile flags 0x00000200 __smallc 
 ; void draw_coloured_tile()
-	C_LINE	110,"levelstruct.h::draw_coloured_tile::0::53"
+	C_LINE	99,"levelstruct.h::draw_coloured_tile::0::50"
 ._draw_coloured_tile
 			ld  a, (__x)
 			ld  c, a
@@ -5932,36 +5727,35 @@
 	ret
 
 
-	C_LINE	184,"levelstruct.h::draw_coloured_tile::0::54"
+	C_LINE	173,"levelstruct.h::draw_coloured_tile::0::51"
 
 ; Function render_screen flags 0x00000200 __smallc 
 ; void render_screen()
-	C_LINE	184,"levelstruct.h::render_screen::0::54"
+	C_LINE	173,"levelstruct.h::render_screen::0::51"
 ._render_screen
 	xor	a
 	ld	(_n_blobs),a
 	ld	a,1
 	ld	(__x),a
-	ld	a,1
+	ld	hl,1	;const
+	ld	a,l
 	ld	(__y),a
-	ld	hl,_level_buffer
-	push	hl
-	ld	hl,(_n_pant)
-	ld	h,0
-	ld	de,135
-	call	l_mult
-	pop	de
-	add	hl,de
-	ld	(_map_pt),hl
+			ld  hl, (_n_pant)
+			ld  h, 0 
+			ld  de, 135
+			call l_mult 	 
+			ld  de, _level_buffer 
+			add hl, de 
 			ld  b, 135 
-			ld  de, _map_buffer 
-			ld  hl, (_map_pt) 
+			ld  de, _map_buffer 			
 		.draw_map_loop
-			push bc 
 			ld  a, (hl)
 			ld  (de), a 
 			inc hl
-			inc de 
+			inc de
+			push bc 
+			push hl 
+			push de  
 			ld  (__t), a
 			cp  45
 			jr  z, add_blob
@@ -5998,6 +5792,8 @@
 			ld  a,  1 
 		.draw_map_nc_x 
 			ld  (__x), a 
+			pop de 
+			pop hl
 			pop bc 
 			djnz draw_map_loop
 	ld	de,(_n_pant)
@@ -6011,15 +5807,15 @@
 	ld	(_enoffs),a
 	xor	a
 	ld	(_gpit),a
-	jp	i_84	;EOS
-.i_82
+	jp	i_85	;EOS
+.i_83
 	ld	hl,_gpit
 	ld	a,(hl)
 	inc	(hl)
-.i_84
+.i_85
 	ld	a,(_gpit)
 	sub	3
-	jp	nc,i_83	;
+	jp	nc,i_84	;
 	ld	hl,_malotes
 	push	hl
 	ld	de,(_enoffs)
@@ -6043,7 +5839,7 @@
 	ld	hl,_rdt
 	ld	(hl),a
 	and	a
-	jp	z,i_85	;
+	jp	z,i_86	;
 	ld	de,_en_an_base_cell
 	ld	hl,(_gpit)
 	ld	h,0
@@ -6078,9 +5874,9 @@
 	add	hl,de
 	call	l_gint	;
 	call	l_pint_pop
-	jp	i_82	;EOS
-	defc	i_85 = i_82
-.i_83
+	jp	i_83	;EOS
+	defc	i_86 = i_83
+.i_84
 	ld	hl,240	;const
 	ld	a,l
 	ld	(_hotspot_y),a
@@ -6100,7 +5896,7 @@
 	inc	hl
 	ld	a,(hl)
 	cp	1
-	jp	nz,i_87	;
+	jp	nz,i_88	;
 	ld	hl,_hotspots
 	push	hl
 	ld	hl,(_n_pant)
@@ -6114,9 +5910,9 @@
 	inc	hl
 	ld	a,(hl)
 	and	a
-	jp	z,i_87	;
-	defc	i_87 = i_86
-.i_88_i_87
+	jp	z,i_88	;
+	defc	i_88 = i_87
+.i_89_i_88
 	ld	hl,_hotspots
 	push	hl
 	ld	hl,(_n_pant)
@@ -6226,12 +6022,12 @@
 	ld	a,l
 	ld	(__t),a
 	call	_draw_coloured_tile
-.i_86
+.i_87
 	call	_invalidate_viewport
 	ret
 
 
-	C_LINE	317,"levelstruct.h::render_screen::0::58"
+	C_LINE	305,"levelstruct.h::render_screen::0::55"
 	SECTION	data_compiler
 ._tile_behaviour
 	defb	0
@@ -6381,57 +6177,57 @@
 	defb	4
 	defb	0
 	SECTION	code_compiler
-	C_LINE	54,"ss.c::render_screen::0::58"
-	C_LINE	0,"engine.h::render_screen::0::58"
-	C_LINE	5,"engine.h::render_screen::0::58"
+	C_LINE	60,"ss.c::render_screen::0::55"
+	C_LINE	0,"engine.h::render_screen::0::55"
+	C_LINE	5,"engine.h::render_screen::0::55"
 
-; Function espera_activa flags 0x00000200 __smallc 
+; Function espera_activa flags 0x00000208 __smallc __z88dk_fastcall 
 ; void espera_activa(int espera)
 ; parameter 'int espera' at sp+2 size(2)
-	C_LINE	5,"engine.h::espera_activa::0::58"
+	C_LINE	5,"engine.h::espera_activa::0::55"
 ._espera_activa
+	push	hl
 	call	_any_key
 	ld	h,0
 	ld	a,l
 	ld	(_gpit),a
-.i_90
-	pop	de
+.i_91
 	pop	hl
 	dec	hl
 	push	hl
-	push	de
 	inc	hl
 	ld	a,h
 	or	l
-	jp	z,i_91	;
+	jp	z,i_92	;
 			halt
 	call	_any_key
 	ld	a,l
 	ld	hl,_gpjt
 	ld	(hl),a
 	and	a
-	jp	z,i_93	;
+	jp	z,i_94	;
 	ld	a,(_gpit)
 	and	a
-	jp	nz,i_93	;
-	defc	i_93 = i_92
-	jp	i_91	;EOS
-	defc	i_94_i_93 = i_91
-.i_92
+	jp	nz,i_94	;
+	defc	i_94 = i_93
+	jp	i_92	;EOS
+	defc	i_95_i_94 = i_92
+.i_93
 	ld	hl,(_gpjt)
 	ld	a,l
 	ld	(_gpit),a
-	jp	i_90	;EOS
-.i_91
+	jp	i_91	;EOS
+.i_92
+	pop	bc
 	ret
 
 
-	C_LINE	25,"engine.h::espera_activa::0::61"
+	C_LINE	25,"engine.h::espera_activa::0::58"
 
 ; Function init_player flags 0x00000208 __smallc __z88dk_fastcall 
 ; void init_player(unsigned char level)
 ; parameter 'unsigned char level' at sp+2 size(1)
-	C_LINE	25,"engine.h::init_player::0::61"
+	C_LINE	25,"engine.h::init_player::0::58"
 ._init_player
 	push	hl
 			ld  a, l 				 
@@ -6466,11 +6262,11 @@
 	ret
 
 
-	C_LINE	67,"engine.h::init_player::0::62"
+	C_LINE	67,"engine.h::init_player::0::59"
 
 ; Function draw_life flags 0x00000200 __smallc 
 ; void draw_life()
-	C_LINE	67,"engine.h::draw_life::0::62"
+	C_LINE	67,"engine.h::draw_life::0::59"
 ._draw_life
 	ld	hl,(_p_life)
 	ld	h,0
@@ -6528,11 +6324,11 @@
 	ret
 
 
-	C_LINE	109,"engine.h::draw_life::0::63"
+	C_LINE	109,"engine.h::draw_life::0::60"
 
 ; Function draw_score flags 0x00000200 __smallc 
 ; void draw_score()
-	C_LINE	109,"engine.h::draw_score::0::63"
+	C_LINE	109,"engine.h::draw_score::0::60"
 ._draw_score
 	ld	hl,(_p_score)
 	ld	h,0
@@ -6573,11 +6369,11 @@
 	ret
 
 
-	C_LINE	141,"engine.h::draw_score::0::64"
+	C_LINE	141,"engine.h::draw_score::0::61"
 
 ; Function cm_two_points flags 0x00000200 __smallc 
 ; unsigned char cm_two_points()
-	C_LINE	141,"engine.h::cm_two_points::0::64"
+	C_LINE	141,"engine.h::cm_two_points::0::61"
 ._cm_two_points
 			ld  a, (_cx1)
 			cp  15
@@ -6614,7 +6410,7 @@
 			cp  15
 			jr  nc, _cm_two_points_at2_reset
 			ld  a, (_cy2)
-			cp  10
+			cp  9
 			jr  c, _cm_two_points_at2_do
 		._cm_two_points_at2_reset
 			xor a
@@ -6644,11 +6440,11 @@
 	ret
 
 
-	C_LINE	220,"engine.h::cm_two_points::0::65"
+	C_LINE	220,"engine.h::cm_two_points::0::62"
 
 ; Function player_bb flags 0x00000200 __smallc 
 ; void player_bb()
-	C_LINE	220,"engine.h::player_bb::0::65"
+	C_LINE	220,"engine.h::player_bb::0::62"
 ._player_bb
 			ld  a, (_p_x)
 			srl a
@@ -6687,11 +6483,11 @@
 	ret
 
 
-	C_LINE	271,"engine.h::player_bb::0::66"
+	C_LINE	271,"engine.h::player_bb::0::63"
 
 ; Function move flags 0x00000200 __smallc 
 ; void move()
-	C_LINE	271,"engine.h::move::0::66"
+	C_LINE	271,"engine.h::move::0::63"
 ._move
 	ld	hl,(_joyfunc)
 	push	hl
@@ -6748,6 +6544,7 @@
 			ld  c, a 
 			ld  a, (_gpjt)
 			or  c 
+			and 1
 			jr  z, p_evil_done
 			ld  hl, 1 
 			call _wyz_play_sound
@@ -6755,445 +6552,287 @@
 			dec (hl)
 			call _draw_life		
 		.p_evil_done
-	ld	a,(_p_sal)
+			ld  a, (_p_sal) 
+			or  a 
+			jr  nz, mp_v_j
+			ld  a, 8
+			jr  mp_v_j_done
+		.mp_v_j
+			ld  a, (_p_nu)
+			cp  8
+			ld  a, (_p_jmy)
+			jr  nc, mp_v_j_done
+			neg 
+		.mp_v_j_done
+			ld  (_p_vy), a 
+			ld  c, a 
+			ld  a, (_p_y)
+			add a, c 
+			ld  (_p_y), a
+			call _player_bb 
+			xor a 
+			ld  (_possee), a
+			ld  a, (_ptx1)
+			ld  (_cx1), a 
+			ld  a, (_ptx2)
+			ld  (_cx2), a
+			ld  a, (_p_sal) 
+			or  a 
+			jr  z, mp_v_fje_done
+			ld  a, (_p_y)
+			and 0xf 
+			jr  nz, mp_v_fje_done
+			ld  a, (_pty2b)
+			ld  (_cy1), a 
+			ld  (_cy2), a 
+			call _cm_two_points 
+			ld  a, (_at1) 
+			and 0xC
+			jr  nz, mp_v_fje_do 
+			ld  a, (_at2)
+			and 0xC 
+			jr  z, mp_v_fje_done 
+		.mp_v_fje_do
+			xor a 
+			ld  (_p_sal), a 
+			ld  (_p_vy), a
+		.mp_v_fje_done
+			ld  a, (_p_vy)
+			bit 7, a
+			jr  nz, mp_v_chc_up
+		.mp_v_chc_down
+			ld  a, (_pty2)
+			ld  (_cy1), a 
+			ld  (_cy2), a 
+			call _cm_two_points 
+			ld  a, (_at1)
+			and 0xC 
+			jr  nz, mp_v_chc_down_coll
+			ld  a, (_at2)
+			and 0xC
+			jr  z, mp_v_chc_done
+		.mp_v_chc_down_coll
+			ld  a, (_p_y) 
+			and 0xf0 
+			ld  (_p_y), a 
+			xor a 
+			ld  (_p_vy), a 
+			ld  (_p_sal), a 
+			inc a 
+			ld  (_possee), a 
+			jr  mp_v_chc_done
+		.mp_v_chc_up
+			ld  a, (_pty1)
+			ld  (_cy1), a 
+			ld  (_cy2), a 
+			call _cm_two_points 
+			ld  a, (_at1)
+			and 0x8 
+			jr  nz, mp_v_chc_up_coll
+			ld  a, (_at2)
+			and 0x8
+			jr  z, mp_v_chc_done
+		.mp_v_chc_up_coll
+			ld  a, (_p_y) 
+			and 0xf0
+			add 16 
+			ld  (_p_y), a 
+			xor a 
+			ld  (_p_vy), a 
+			jr  mp_v_chc_done
+		.mp_v_chc_done
+			xor a 
+			ld  (_p_vx), a 
+			ld  a, (_p_sal) 
+			or  a 
+			jr  nz, mp_h_j
+			ld  a, (_possee) 
+			or  a 
+			jr  z, mp_h_j_done
+			ld  a, (_gpit)
+			and  0x04 
+			jr  nz, mp_h_nj_left_done
+			ld  a, -2
+			ld  (_p_vx), a 
+			ld  a, 4 
+			ld  (_p_facing), a
+		.mp_h_nj_left_done
+			ld  a, (_gpit)
+			and  0x08 
+			jr  nz, mp_h_nj_right_done
+			ld  a, 2
+			ld  (_p_vx), a 
+			xor a 
+			ld  (_p_facing), a
+		.mp_h_nj_right_done
+			ld  a, (_p_vx) 
+			or  a 
+			jr  z, mp_h_nj_not_moving 
+			ld  a, (_p_frame)
+			inc a 
+			cp  4 
+			jr  nz, mp_h_nj_moving_noinc
+			xor a
+		.mp_h_nj_moving_noinc
+			ld  (_p_frame), a 
+		.mp_h_nj_not_moving	
+			call _player_bb 
+			ld  a, (_pty2b) 	
+			ld  (_cy1), a 
+			ld  (_cy2), a 
+			call _cm_two_points 
+			ld  hl, _p_vx
+			ld  a, (_at1) 
+			and 16 
+			jr  nz, mp_h_conv_left_do
+			ld  a, (_at2)
+			and 16 
+			jr  z, mp_h_conv_left_done
+		.mp_h_conv_left_do
+			dec (hl)
+		.mp_h_conv_left_done
+			ld  a, (_at1) 
+			and 32
+			jr  nz, mp_h_conv_right_do
+			ld  a, (_at2)
+			and 32 
+			jr  z, mp_h_conv_right_done
+		.mp_h_conv_right_do
+			inc (hl)
+		.mp_h_conv_right_done
+			jr  mp_h_j_done
+		.mp_h_j
+			ld  a, (_p_facing) 
+			or  a 
+			ld  a, (_p_jmx)
+			jr  z, mp_h_j_right
+			neg a 
+		.mp_h_j_right
+			ld  (_p_vx), a
+		.mp_h_j_done
+		ld  a, (_p_vx)
+		ld  c, a 
+		ld  a, (_p_x) 
+		add c 
+		ld  (_p_x), a
+			call _player_bb
+			ld  a, (_pty1)
+			ld  (_cy1), a 
+			ld  a, (_pty2)
+			ld  (_cy2), a 
+			ld  a, (_p_vx) 
+			or  a 
+			jr  z, mp_h_chc_done
+			bit 7, a 
+			jr  nz, mp_h_chc_left
+		.mp_h_chc_right
+			ld  a, (_ptx2)
+			ld  (_cx1), a 
+			ld  (_cx2), a 
+			call _cm_two_points 
+			ld  a, (_at1) 
+			and 8 
+			jr  nz, mp_h_chc_right_coll
+			ld  a, (_at2)
+			and 8 
+			jr  z, mp_h_chc_done 
+		.mp_h_chc_right_coll
+			ld  a, (_p_x)
+			and 0xf0 
+			ld  (_p_x), a 
+			jr  mp_h_chc_done
+		.mp_h_chc_left
+			ld  a, (_ptx1)
+			ld  (_cx1), a 
+			ld  (_cx2), a 
+			call _cm_two_points 
+			ld  a, (_at1) 
+			and 8 
+			jr  nz, mp_h_chc_left_coll
+			ld  a, (_at2)
+			and 8 
+			jr  z, mp_h_chc_done 
+		.mp_h_chc_left_coll
+			ld  a, (_p_x)
+			and 0xf0 
+			add 16
+			ld  (_p_x), a 
+		.mp_h_chc_done
+			ld  a, (_p_sal) 
+			or  a 
+			jr  z, mp_jm_nsal
+			ld  a, (_p_nu)
+			inc a 
+			ld  (_p_nu), a 
+			cp  16
+			jr  nz, mp_jm_done
+			xor a 
+			ld  (_p_sal), a 
+			jr  mp_jm_done
+		.mp_jm_nsal
+			ld  (_p_nu), a
+			ld  a, (_possee)
+			or  a 
+			jr  z, mp_jm_done
+			ld  a, (_gpit) 
+			and  0x01 
+			jr  nz, mp_jm_up_done
+			ld  a, 2
+			ld  (_p_jmx), a 
+			ld  a, 4 
+			ld  (_p_jmy), a 
+			ld  a, 1 
+			ld  (_p_sal), a
+		.mp_jm_up_done
+			ld  a, (_gpit) 
+			and  0x02 
+			jr  nz, mp_jm_done
+			ld  a, 4
+			ld  (_p_jmx), a 
+			ld  a, 2 
+			ld  (_p_jmy), a 
+			ld  a, 1 
+			ld  (_p_sal), a
+		.mp_jm_done
+	ld	a,(_possee)
 	and	a
-	jp	nz,i_95	;
-	ld	a,8
-	ld	(_p_vy),a
-	jp	i_96	;EOS
-.i_95
-	ld	a,(_p_nu)
-	sub	8
-	jp	nc,i_97	;
-	ld	hl,_p_jmy
-	call	l_gchar
-	call	l_neg
-	ld	a,l
-	call	l_sxt
-	ld	a,l
-	ld	(_p_vy),a
-	jp	i_98	;EOS
-.i_97
-	ld	hl,_p_jmy
-	call	l_gchar
-	ld	a,l
-	ld	(_p_vy),a
-.i_98
+	jp	z,i_96	;
+	ld	hl,_player_walk
+	push	hl
+	ld	de,(_p_facing)
+	ld	d,0
+	ld	hl,(_p_frame)
+	ld	h,d
+	add	hl,de
+	add	hl,hl
+	pop	de
+	add	hl,de
+	call	l_gint	;
+	ld	(_p_next_frame),hl
+	jp	i_97	;EOS
 .i_96
-	ld	hl,(_p_y)
-	ld	h,0
-	push	hl
-	ld	hl,_p_vy
-	call	l_gchar
-	pop	de
-	add	hl,de
-	ld	h,0
-	ld	a,l
-	ld	(_p_y),a
-	call	_player_bb
-	xor	a
-	ld	(_possee),a
-	ld	a,(_ptx1)
-	ld	(_cx1),a
-	ld	a,(_ptx2)
-	ld	(_cx2),a
-	ld	a,(_p_sal)
-	and	a
-	jp	z,i_100	;
-	ld	hl,(_p_y)
-	ld	h,0
-	ld	a,15
-	and	l
-	ld	l,a
-	jr	nz,ASMPC+3
-	scf
-	jp	nc,i_100	;
-	defc	i_100 = i_99
-.i_101_i_100
-	ld	hl,(_pty2b)
-	ld	a,l
-	ld	(_cy2),a
-	ld	(_cy1),a
-	call	_cm_two_points
-	ld	a,(_at1)
-	and	12
-	jp	nz,i_103	;
-	ld	a,(_at2)
-	and	12
-	jp	z,i_102	;
-.i_103
-	xor	a
-	ld	(_p_sal),a
-	ld	hl,0	;const
-	ld	a,l
-	ld	(_p_vy),a
-.i_102
-.i_99
-	ld	hl,_p_vy
-	call	l_gchar
-	ld	de,0
-	ex	de,hl
-	call	l_gt
-	jp	nc,i_105	;
-	ld	hl,(_pty2)
-	ld	a,l
-	ld	(_cy2),a
-	ld	(_cy1),a
-	call	_cm_two_points
-	ld	a,(_at1)
-	and	12
-	jp	nz,i_107	;
-	ld	a,(_at2)
-	and	12
-	jp	z,i_106	;
-.i_107
-	ld	hl,(_p_y)
-	ld	h,0
-	ld	a,240
-	and	l
-	ld	l,a
-	ld	(_p_y),a
-	xor	a
-	ld	(_p_vy),a
-	ld	(_p_sal),a
-	ld	a,1
-	ld	(_possee),a
-	jp	i_109	;EOS
-	defc	i_106 = i_109
-.i_105
-	ld	hl,_p_vy
-	ld	a,(hl)
-	rla
-	jp	nc,i_110	;
-	ld	hl,(_pty1)
-	ld	a,l
-	ld	(_cy2),a
-	ld	(_cy1),a
-	call	_cm_two_points
-	ld	a,(_at1)
-	and	8
-	jp	nz,i_112	;
-	ld	a,(_at2)
-	and	8
-	jp	z,i_111	;
-.i_112
-	ld	hl,(_p_y)
-	ld	h,0
-	ld	a,240
-	and	l
-	ld	l,a
-	ld	bc,16
-	add	hl,bc
-	ld	h,0
-	ld	a,l
-	ld	(_p_y),a
-.i_111
-.i_110
-.i_109
-	xor	a
-	ld	(_p_vx),a
-	ld	a,(_p_sal)
-	and	a
-	jp	nz,i_114	;
-	ld	a,(_possee)
-	and	a
-	jp	z,i_115	;
-	ld	hl,(_gpit)
-	ld	h,0
-	ld	a,4
-	and	l
-	ld	l,a
-	jr	nz,ASMPC+3
-	scf
-	jp	nc,i_116	;
-	ld	a,254
-	ld	(_p_vx),a
-	ld	a,4
-	ld	(_p_facing),a
-.i_116
-	ld	hl,(_gpit)
-	ld	h,0
-	ld	a,8
-	and	l
-	ld	l,a
-	jr	nz,ASMPC+3
-	scf
-	jp	nc,i_117	;
-	ld	a,2
-	ld	(_p_vx),a
-	xor	a
-	ld	(_p_facing),a
-.i_117
-	ld	a,(_p_vx)
-	and	a
-	jp	z,i_118	;
-	ld	hl,_p_frame
-	ld	a,(hl)
-	inc	(hl)
-	ld	a,(_p_frame)
-	cp	4
-	jp	nz,i_119	;
-	ld	hl,0	;const
-	ld	a,l
-	ld	(_p_frame),a
-.i_119
-.i_118
-	call	_player_bb
-	ld	hl,(_pty2b)
-	ld	a,l
-	ld	(_cy2),a
-	ld	(_cy1),a
-	call	_cm_two_points
-	ld	a,(_at1)
-	and	16
-	jp	nz,i_121	;
-	ld	a,(_at2)
-	and	16
-	jp	z,i_120	;
-.i_121
-	ld	hl,_p_vx
-	call	l_gchar
-	dec	hl
-	ld	a,l
-	ld	(_p_vx),a
-	inc	hl
-.i_120
-	ld	a,(_at1)
-	and	32
-	jp	nz,i_124	;
-	ld	a,(_at2)
-	and	32
-	jp	z,i_123	;
-.i_124
-	ld	hl,_p_vx
-	call	l_gchar
-	inc	hl
-	ld	a,l
-	ld	(_p_vx),a
-	jp	i_126	;EOS
-	defc	i_123 = i_126
-	defc	i_115 = i_126
-.i_114
 	ld	a,(_p_facing)
 	and	a
-	jp	z,i_127	;
-	ld	hl,_p_jmx
-	call	l_gchar
-	call	l_neg
-	ld	a,l
-	call	l_sxt
-	ld	a,l
-	ld	(_p_vx),a
-	jp	i_128	;EOS
-.i_127
-	ld	hl,_p_jmx
-	call	l_gchar
-	ld	a,l
-	ld	(_p_vx),a
-.i_128
-.i_126
-	ld	hl,(_p_x)
-	ld	h,0
-	push	hl
-	ld	hl,_p_vx
-	call	l_gchar
-	pop	de
-	add	hl,de
-	ld	h,0
-	ld	a,l
-	ld	(_p_x),a
-	call	_player_bb
-	ld	a,(_pty1)
-	ld	(_cy1),a
-	ld	a,(_pty2)
-	ld	(_cy2),a
-	ld	hl,_p_vx
-	call	l_gchar
-	ld	de,0
-	ex	de,hl
-	call	l_gt
-	jp	nc,i_129	;
-	ld	hl,(_ptx2)
-	ld	a,l
-	ld	(_cx2),a
-	ld	(_cx1),a
-	call	_cm_two_points
-	ld	a,(_at1)
-	and	8
-	jp	nz,i_131	;
-	ld	a,(_at2)
-	and	8
-	jp	z,i_130	;
-.i_131
-	ld	hl,(_p_x)
-	ld	h,0
-	ld	a,240
-	and	l
-	ld	l,a
-	ld	(_p_x),a
-	jp	i_133	;EOS
-	defc	i_130 = i_133
-.i_129
-	ld	hl,_p_vx
-	ld	a,(hl)
-	rla
-	jp	nc,i_134	;
-	ld	hl,(_ptx1)
-	ld	a,l
-	ld	(_cx2),a
-	ld	(_cx1),a
-	call	_cm_two_points
-	ld	a,(_at1)
-	and	8
-	jp	nz,i_136	;
-	ld	a,(_at2)
-	and	8
-	jp	z,i_135	;
-.i_136
-	ld	hl,(_p_x)
-	ld	h,0
-	ld	a,240
-	and	l
-	ld	l,a
-	ld	bc,16
-	add	hl,bc
-	ld	h,0
-	ld	a,l
-	ld	(_p_x),a
-.i_135
-.i_134
-.i_133
-	ld	a,(_p_sal)
-	and	a
-	jp	z,i_138	;
-	ld	hl,_p_nu
-	ld	a,(hl)
-	inc	(hl)
-	ld	a,(_p_nu)
-	cp	16
-	jp	nz,i_139	;
-	xor	a
-	ld	(_p_sal),a
-	jp	i_140	;EOS
-	defc	i_139 = i_140
-.i_138
-	ld	a,(_possee)
-	and	a
-	jp	z,i_141	;
-	xor	a
-	ld	(_p_nu),a
-	ld	hl,(_gpit)
-	ld	h,0
-	ld	a,1
-	and	l
-	ld	l,a
-	jr	nz,ASMPC+3
-	scf
-	jp	nc,i_142	;
-	ld	a,2
-	ld	(_p_jmx),a
-	ld	a,4
-	ld	(_p_jmy),a
-	ld	a,1
-	ld	(_p_sal),a
-	jp	i_143	;EOS
-.i_142
-	ld	hl,(_gpit)
-	ld	h,0
-	ld	a,2
-	and	l
-	ld	l,a
-	jr	nz,ASMPC+3
-	scf
-	jp	nc,i_144	;
-	ld	a,4
-	ld	(_p_jmx),a
-	ld	a,2
-	ld	(_p_jmy),a
-	ld	hl,1	;const
-	ld	a,l
-	ld	(_p_sal),a
-.i_144
-.i_143
-.i_141
-.i_140
-	ld	a,(_possee)
-	and	a
-	jp	z,i_145	;
-	ld	a,(_p_facing)
-	and	a
-	jp	z,i_146	;
-	ld	a,(_p_frame)
-	and	a
-	jp	z,i_148	;
-	ld	a,(_p_frame)
-	cp	2
-	jp	nz,i_147	;
-.i_148
-	ld	hl,_sprite_5_a
-	ld	(_p_next_frame),hl
-	jp	i_150	;EOS
-.i_147
-	ld	a,(_p_frame)
-	cp	1
-	jp	nz,i_151	;
-	ld	hl,_sprite_6_a
-	ld	(_p_next_frame),hl
-	jp	i_152	;EOS
-.i_151
-	ld	hl,_sprite_7_a
-	ld	(_p_next_frame),hl
-	jp	i_153	;EOS
-	defc	i_152 = i_153
-	defc	i_150 = i_153
-.i_146
-	ld	a,(_p_frame)
-	and	a
-	jp	z,i_155	;
-	ld	a,(_p_frame)
-	cp	2
-	jp	nz,i_154	;
-.i_155
-	ld	hl,_sprite_1_a
-	ld	(_p_next_frame),hl
-	jp	i_157	;EOS
-.i_154
-	ld	a,(_p_frame)
-	cp	1
-	jp	nz,i_158	;
-	ld	hl,_sprite_2_a
-	ld	(_p_next_frame),hl
-	jp	i_159	;EOS
-.i_158
-	ld	hl,_sprite_3_a
-	ld	(_p_next_frame),hl
-	jp	i_160	;EOS
-	defc	i_159 = i_160
-	defc	i_157 = i_160
-	defc	i_153 = i_160
-.i_145
-	ld	a,(_p_facing)
-	and	a
-	jp	z,i_161	;
+	jp	z,i_98	;
 	ld	hl,_sprite_8_a
 	ld	(_p_next_frame),hl
-	jp	i_162	;EOS
-.i_161
+	jp	i_99	;EOS
+.i_98
 	ld	hl,_sprite_4_a
 	ld	(_p_next_frame),hl
-.i_162
-.i_160
+.i_99
+.i_97
 	ret
 
 
-	C_LINE	492,"engine.h::move::0::107"
+	C_LINE	846,"engine.h::move::0::68"
 
 ; Function collide flags 0x00000200 __smallc 
 ; unsigned char collide()
-	C_LINE	492,"engine.h::collide::0::107"
+	C_LINE	846,"engine.h::collide::0::68"
 ._collide
 			ld  hl, 0
-			ld  a, (_rdx)
+			ld  a, (__en_x)
 			ld  c, a 
 			ld  a, (_p_x)
 			add  8 
@@ -7201,11 +6840,11 @@
 			ret c 
 			ld  a, (_p_x)
 			ld  c, a 
-			ld  a, (_rdx)
+			ld  a, (__en_x)
 			add  8 
 			cp  c 
 			ret c
-			ld  a, (_rdy)
+			ld  a, (__en_y)
 			ld  c, a 
 			ld  a, (_p_y)
 			add  8 
@@ -7213,7 +6852,7 @@
 			ret c 
 			ld  a, (_p_y)
 			ld  c, a 
-			ld  a, (_rdy)
+			ld  a, (__en_y)
 			add  8 
 			cp  c 
 			ret c
@@ -7221,11 +6860,11 @@
 	ret
 
 
-	C_LINE	535,"engine.h::collide::0::108"
+	C_LINE	889,"engine.h::collide::0::69"
 
 ; Function calc_baddies_pointer flags 0x00000200 __smallc 
 ; void calc_baddies_pointer()
-	C_LINE	535,"engine.h::calc_baddies_pointer::0::108"
+	C_LINE	889,"engine.h::calc_baddies_pointer::0::69"
 ._calc_baddies_pointer
 			ld  d, h
 			ld  e, l 				 
@@ -7238,11 +6877,11 @@
 	ret
 
 
-	C_LINE	555,"engine.h::calc_baddies_pointer::0::109"
+	C_LINE	909,"engine.h::calc_baddies_pointer::0::70"
 
 ; Function move_enemies flags 0x00000200 __smallc 
 ; void move_enemies()
-	C_LINE	555,"engine.h::move_enemies::0::109"
+	C_LINE	909,"engine.h::move_enemies::0::70"
 ._move_enemies
 			ld  a, (_enoffs)
 			ld  (_enoffsmasi), a 
@@ -7403,11 +7042,11 @@
 	ret
 
 
-	C_LINE	803,"engine.h::move_enemies::0::110"
+	C_LINE	1157,"engine.h::move_enemies::0::71"
 
 ; Function init_hotspots flags 0x00000200 __smallc 
 ; void init_hotspots()
-	C_LINE	803,"engine.h::init_hotspots::0::110"
+	C_LINE	1157,"engine.h::init_hotspots::0::71"
 ._init_hotspots
 			ld  b, 25
 			ld  hl, _hotspots + 2
@@ -7420,13 +7059,13 @@
 	ret
 
 
-	C_LINE	821,"engine.h::init_hotspots::0::111"
+	C_LINE	1175,"engine.h::init_hotspots::0::72"
 
 ; Function muerte flags 0x00000200 __smallc 
 ; void muerte(unsigned char a, unsigned char b)
 ; parameter 'unsigned char b' at sp+2 size(1)
 ; parameter 'unsigned char a' at sp+4 size(1)
-	C_LINE	821,"engine.h::muerte::0::111"
+	C_LINE	1175,"engine.h::muerte::0::72"
 ._muerte
 	ld	hl,4	;const
 	add	hl,sp
@@ -7436,10 +7075,8 @@
 	add	hl,sp
 	ld	a,(hl)
 	ld	(_rdb),a
-	ld	hl,0	;const
-	ld	a,l
+	xor	a
 	ld	(_rdc),a
-	call	sp_UpdateNow
 	ld	hl,3	;const
 	call	_wyz_play_sound
 			ld  a, 100
@@ -7508,11 +7145,11 @@
 	ret
 
 
-	C_LINE	913,"engine.h::muerte::0::112"
+	C_LINE	1266,"engine.h::muerte::0::73"
 
 ; Function rand flags 0x00000200 __smallc 
 ; unsigned char rand()
-	C_LINE	913,"engine.h::rand::0::112"
+	C_LINE	1266,"engine.h::rand::0::73"
 ._rand
 		.rand16
 			ld	hl, _seed
@@ -7550,16 +7187,17 @@
 	ret
 
 
-	C_LINE	957,"engine.h::rand::0::113"
+	C_LINE	1310,"engine.h::rand::0::74"
 
-; Function game flags 0x00000200 __smallc 
+; Function game flags 0x00000208 __smallc __z88dk_fastcall 
 ; unsigned char game(unsigned char level)
 ; parameter 'unsigned char level' at sp+2 size(1)
-	C_LINE	957,"engine.h::game::0::113"
+	C_LINE	1310,"engine.h::game::0::74"
 ._game
+	push	hl
 	ld	hl,_levels
 	push	hl
-	ld	hl,4	;const
+	ld	hl,2	;const
 	add	hl,sp
 	ld	l,(hl)
 	ld	h,0
@@ -7578,7 +7216,7 @@
 	push	hl
 	ld	hl,_levels
 	push	hl
-	ld	hl,6	;const
+	ld	hl,4	;const
 	add	hl,sp
 	ld	l,(hl)
 	ld	h,0
@@ -7604,20 +7242,16 @@
 	add	hl,de
 	ld	a,l
 	ld	(_n_pant),a
-	ld	hl,2	;const
-	add	hl,sp
-	ld	l,(hl)
-	ld	h,0
+	pop	hl
 	push	hl
+	ld	h,0
 	call	_load_level
-	pop	bc
-	ld	hl,2	;const
-	add	hl,sp
-	ld	l,(hl)
+	pop	hl
+	push	hl
 	ld	h,0
 	call	_init_player
 	call	_init_hotspots
-	call	sp_UpdateNow
+			call SPUpdateNow
 	call	_blackout_everything
 	ld	hl,8	;const
 	push	hl
@@ -7630,239 +7264,112 @@
 	call	_draw_score
 	ld	a,255
 	ld	(_o_pant),a
-	ld	hl,0	;const
-	ld	a,l
-	ld	(_f_gameover),a
-	ld	a,l
+	xor	a
 	ld	(_f_win),a
-	ld	hl,2	;const
-	add	hl,sp
-	ld	l,(hl)
+	pop	hl
+	push	hl
 	ld	h,0
 	inc	hl
 	inc	hl
 	ld	h,0
 	call	_wyz_play_music
-	ld	hl,0	;const
-	ld	a,l
-	ld	(_half_life),a
-	ld	(_fc),a
-.i_163
-	ld	a,(_f_win)
-	and	a
-	jp	nz,i_165	;
-	ld	a,(_f_gameover)
-	and	a
-	jp	nz,i_165	;
-	ld	hl,0	;const
-	jr	i_166
-.i_165
-	ld	hl,1	;const
-.i_166
-	call	l_lneg
-	jp	nc,i_164	;
+.i_100
 	ld	de,(_n_pant)
 	ld	d,0
 	ld	hl,(_o_pant)
 	ld	h,d
 	call	l_ne
-	jp	nc,i_167	;
+	jp	nc,i_102	;
 	call	_render_screen
 	ld	hl,(_n_pant)
 	ld	h,0
 	ld	a,l
 	ld	(_o_pant),a
-.i_167
+.i_102
 	call	_move
 	call	_move_enemies
-	call	_rand
-	ld	a,l
-	and	15
-	ld	hl,_gpit
-	ld	(hl),a
-	ld	e,(hl)
-	ld	d,0
-	ld	hl,(_n_blobs)
-	ld	h,d
-	ex	de,hl
-	and	a
-	sbc	hl,de
-	jp	nc,i_168	;
-	ld	de,_blobs_v
-	ld	hl,(_gpit)
-	ld	h,0
-	add	hl,de
-	push	hl
-	ld	de,_blobs_v
-	ld	hl,(_gpit)
-	ld	h,0
-	add	hl,de
-	ld	e,(hl)
-	ld	d,0
-	ld	hl,1	;const
-	and	a
-	sbc	hl,de
-	pop	de
-	ld	a,l
-	ld	(de),a
-	ld	de,_blobs_x
-	ld	hl,(_gpit)
-	ld	h,0
-	add	hl,de
-	ld	a,(hl)
-	ld	(__x),a
-	ld	de,_blobs_y
-	ld	hl,(_gpit)
-	ld	h,0
-	add	hl,de
-	ld	a,(hl)
-	ld	(__y),a
-	ld	de,_blobs_v
-	ld	hl,(_gpit)
-	ld	h,0
-	add	hl,de
-	ld	l,(hl)
-	ld	h,0
-	ld	bc,45
-	add	hl,bc
-	ld	h,0
-	ld	a,l
-	ld	(__t),a
-	call	_draw_coloured_tile
-	call	_invalidate_tile
-.i_168
-	ld	a,(_hotspot_x)
-	ld	(_rdx),a
-	ld	hl,(_hotspot_y)
-	ld	h,0
-	ld	a,l
-	ld	(_rdy),a
-	call	_collide
-	ld	a,h
-	or	l
-	jp	z,i_169	;
-	ld	hl,(_hotspot_x)
-	ld	h,0
-	ld	a,l
-	rrca
-	rrca
-	rrca
-	and	31
-	ld	l,a
-	inc	hl
-	ld	a,l
-	ld	(__x),a
-	ld	hl,(_hotspot_y)
-	ld	h,0
-	ld	a,l
-	rrca
-	rrca
-	rrca
-	and	31
-	ld	l,a
-	inc	hl
-	ld	a,l
-	ld	(__y),a
-	ld	hl,(_orig_tile)
-	ld	h,0
-	ld	a,l
-	ld	(__t),a
-	call	_draw_coloured_tile
-	call	_invalidate_tile
-	ld	hl,240	;const
-	ld	a,l
-	ld	(_hotspot_y),a
-	ld	a,l
-	ld	(_hotspot_x),a
-	ld	hl,_hotspots
-	push	hl
-	ld	hl,(_n_pant)
-	ld	h,0
-	ld	b,h
-	ld	c,l
-	add	hl,bc
-	add	hl,bc
-	pop	de
-	add	hl,de
-	inc	hl
-	ld	a,(hl)
-	cp	1
-	jp	nz,i_170	;
-	ld	hl,_p_score
-	ld	a,(hl)
-	inc	(hl)
-	ld	l,a
-	ld	h,0
-	call	_draw_score
-	ld	hl,3	;const
-	call	_wyz_play_sound
-	jp	i_171	;EOS
-.i_170
-	ld	hl,_hotspots
-	push	hl
-	ld	hl,(_n_pant)
-	ld	h,0
-	ld	b,h
-	ld	c,l
-	add	hl,bc
-	add	hl,bc
-	pop	de
-	add	hl,de
-	inc	hl
-	ld	a,(hl)
-	cp	2
-	jp	nz,i_172	;
-	ld	hl,(_p_life)
-	ld	h,0
-	ld	a,223
-	sub	l
-	jp	nc,i_173	;
-	ld	hl,255	;const
-	jp	i_174	;
-.i_173
-	ld	hl,(_p_life)
-	ld	h,0
-	ld	bc,32
-	add	hl,bc
-.i_174
-	ld	h,0
-	ld	a,l
-	ld	(_p_life),a
-	call	_draw_life
-	ld	hl,5	;const
-	call	_wyz_play_sound
-.i_172
-.i_171
-	ld	hl,_hotspots
-	push	hl
-	ld	hl,(_n_pant)
-	ld	h,0
-	ld	b,h
-	ld	c,l
-	add	hl,bc
-	add	hl,bc
-	pop	de
-	add	hl,de
-	inc	hl
-	inc	hl
-	ld	(hl),0
-.i_169
-	ld	hl,(_key_z)
-	push	hl
-	call	sp_KeyPressed
-	pop	bc
-	ld	a,h
-	or	l
-	jp	z,i_175	;
-	ld	hl,_p_score
-	ld	a,(hl)
-	inc	(hl)
-	ld	l,a
-	ld	h,0
-	call	_draw_score
-	ld	hl,3	;const
-	call	_wyz_play_sound
-.i_175
+				ld  a, (_n_blobs)
+				ld  c, a
+				call _rand 
+				ld  a, l 
+				and 15  		 
+				cp  c 
+				jr  nc, ml_an_b_done
+				ld  b, 0 
+				ld  c, a 
+				ld  hl, _blobs_v 
+				add hl, bc 
+				ld  a, (hl)
+				xor 1 
+				ld  (hl), a 
+				add 45
+				ld  (__t), a 
+				ld  hl, _blobs_x 
+				add hl, bc 
+				ld  a, (hl)
+				ld  (__x), a 
+				ld  hl, _blobs_y 
+				add hl, bc 
+				ld  a, (hl)
+				ld  (__y), a 
+				call _draw_coloured_tile
+				call _invalidate_tile				
+			.ml_an_b_done
+				ld  a, (_hotspot_x)
+				ld  (__en_x), a 
+				ld  a, (_hotspot_y)
+				ld  (__en_y), a 
+				call _collide 
+				xor a 
+				or  l 
+				jr  z, ml_hotspots_done
+			.ml_hotspots
+				ld  a, (_hotspot_x)
+				srl a 
+				srl a 
+				srl a 
+				add  1 
+				ld  (__x), a 
+				ld  a, (_hotspot_y)
+				srl a 
+				srl a 
+				srl a 
+				add  1 
+				ld  (__y), a 
+				ld  a, (_orig_tile)
+				ld  (__t), a 
+				call _draw_coloured_tile
+				call _invalidate_tile
+				ld  a, 0xf0
+				ld  (_hotspot_y), a
+				ld  bc, (_enoffs)
+				ld  b, 0 
+				ld  ix, _hotspots 
+				add ix, bc 
+				ld  a, (ix + 1) 	 
+				dec a 
+				jr  nz, ml_hotspots_t2
+				ld  hl, _p_score
+				inc (hl)
+				call _draw_score 
+				ld  hl, 3
+				call _wyz_play_sound
+				jr  ml_hotspots_deact
+			.ml_hotspots_t2 
+				ld  a, (_p_life)
+				cp  224
+				jr  c, ml_inclife
+				ld  a, 0xff
+				jr  ml_setlife
+			.ml_inclife	
+				add 32
+			.ml_setlife
+				ld  (_p_life), a
+				call _draw_life
+			.ml_hotspots_deact
+				xor a 
+				ld  (ix + 2), a
+			.ml_hotspots_done
 				ld  ix, (_sp_player)
 				ld  iy, vpClipStruct
 				ld  hl, (_p_next_frame)
@@ -7894,15 +7401,15 @@
 	ld	(_p_current_frame),hl
 	xor	a
 	ld	(_enit),a
-	jp	i_178	;EOS
-.i_176
+	jp	i_105	;EOS
+.i_103
 	ld	hl,_enit
 	ld	a,(hl)
 	inc	(hl)
-.i_178
+.i_105
 	ld	a,(_enit)
 	sub	3
-	jp	nc,i_177	;
+	jp	nc,i_104	;
 	ld	hl,_enoffs
 	ld	a,(_enit)
 	add	(hl)
@@ -7925,7 +7432,7 @@
 	add	hl,bc
 	ld	a,(hl)
 	and	a
-	jp	z,i_179	;
+	jp	z,i_106	;
 	ld	hl,_malotes
 	push	hl
 	ld	hl,(_enoffsmasi)
@@ -7959,12 +7466,12 @@
 	inc	hl
 	ld	a,(hl)
 	ld	(__en_y),a
-	jp	i_180	;EOS
-.i_179
+	jp	i_107	;EOS
+.i_106
 	ld	hl,240	;const
 	ld	a,l
 	ld	(__en_x),a
-.i_180
+.i_107
 				; enter: IX = sprite structure address 
 				;        IY = clipping rectangle, set it to "ClipStruct" for full screen 
 				;        BC = animate bitdef displacement (0 for no animation) 
@@ -8027,104 +7534,80 @@
 				add hl, bc 				 
 				ldi
 				ldi
-	jp	i_176	;EOS
-.i_177
+	jp	i_103	;EOS
+.i_104
 	ld	a,(_half_life)
 	xor	1
 	ld	l,a
 	ld	h,0
 	ld	(_half_life),a
-	ld	hl,_fc
-	ld	a,(hl)
-	inc	(hl)
-	ld	a,(_fc)
-	cp	8
-	jp	nz,i_181	;
-	xor	a
-	ld	(_fc),a
-.i_181
-	ld	de,(_n_pant)
-	ld	d,0
-	ld	hl,(_o_pant)
-	ld	h,d
-	call	l_eq
-	jp	nc,i_182	;
 	ld	de,(_n_pant)
 	ld	d,0
 	ld	hl,(_yOsc)
 	ld	h,d
 	call	l_uge
-	ld	h,0
 	ld	a,l
 	ld	(_attrs_byte),a
-	call	sp_UpdateNow
-.i_182
 	ld	de,(_n_pant)
 	ld	d,0
 	ld	hl,(_yOsc)
 	ld	h,d
 	call	l_uge
-	jp	nc,i_183	;
-	ld	hl,(_p_x)
-	ld	h,0
-	ld	a,l
-	rrca
-	rrca
-	rrca
-	and	31
-	ld	l,a
-	push	hl
-	ld	hl,(_p_y)
-	ld	h,0
-	ld	a,l
-	rrca
-	rrca
-	rrca
-	and	31
-	ld	l,a
-	push	hl
-	call	_draw_overlay
-	pop	bc
-	pop	bc
-	call	_draw_buff
-	ld	hl,(_p_x)
-	ld	h,0
-	ld	a,l
-	rrca
-	rrca
-	rrca
-	and	31
-	ld	l,a
-	push	hl
-	ld	hl,(_p_y)
-	ld	h,0
-	ld	a,l
-	rrca
-	rrca
-	rrca
-	and	31
-	ld	l,a
-	push	hl
-	call	_del_overlay
-	pop	bc
-	pop	bc
-.i_183
+	jp	nc,i_108	;
+					ld  a, (_yOsc)
+					ld  c, a 
+					ld  a, (_n_pant)
+					cp  c 
+					ld  hl, _attrs_byte 
+					jr  c, nohalo
+					ld  a, 1
+					ld  (hl), a
+					ld  a, (_p_x)
+					srl a 
+					srl a 
+					srl a 
+					sub 3
+					ld  (_ovl_x), a
+					ld  a, (_p_y)
+					srl a 
+					srl a 
+					srl a 
+					sub 3 
+					ld  (_ovl_y), a
+					call ovl_update
+					jr  halodone
+				.nohalo
+					xor a 					
+					ld  (hl), a 
+				.halodone
+.i_108
+			.ml_min_faps_loop
+				ld  a, (_isrc)
+				cp  2
+				jr  nc, ml_min_faps_loop_end
+				halt
+				jr  ml_min_faps_loop
+			.ml_min_faps_loop_end
+				xor a
+				ld  (_isrc), a
+				inc a
+				call SPUpdateNow
 	ld	a,(_p_life)
 	and	a
-	jp	z,i_185	;
+	jp	z,i_110	;
 	ld	hl,(_key_g)
 	push	hl
 	call	sp_KeyPressed
 	pop	bc
 	ld	a,h
 	or	l
-	jr	z,i_186
-.i_185
+	jr	z,i_111
+.i_110
 	ld	hl,1	;const
-.i_186
+.i_111
 	ld	a,h
 	or	l
-	jp	z,i_184	;
+	jp	z,i_109	;
 	call	_wyz_stop_sound
 	ld	hl,2	;const
 	push	hl
@@ -8133,110 +7616,104 @@
 	call	_muerte
 	pop	bc
 	pop	bc
-	ld	a,1
-	ld	(_f_gameover),a
-.i_184
+	jp	i_101	;EOS
+.i_109
 	ld	hl,(_p_score)
 	ld	h,0
 	ld	a,l
 	cp	15
-	jp	nz,i_187	;
+	jp	nz,i_112	;
 	call	_wyz_stop_sound
 	ld	a,1
 	ld	(_f_win),a
-.i_187
-	ld	a,(_p_x)
-	and	a
-	jp	nz,i_189	;
-	ld	hl,_p_vx
-	ld	a,(hl)
-	rla
-	jp	nc,i_189	;
-	defc	i_189 = i_188
-.i_190_i_189
-	ld	a,224
-	ld	(_p_x),a
-	ld	hl,_n_pant
-	ld	a,(hl)
-	dec	(hl)
-.i_188
-	ld	a,(_p_x)
-	cp	224
-	jp	nz,i_192	;
-	ld	hl,_p_vx
-	call	l_gchar
-	ld	de,0
-	ex	de,hl
-	call	l_gt
-	jp	nc,i_192	;
-	defc	i_192 = i_191
-.i_193_i_192
-	xor	a
-	ld	(_p_x),a
-	ld	hl,_n_pant
-	ld	a,(hl)
-	inc	(hl)
-.i_191
-	ld	a,(_p_y)
-	and	a
-	jp	z,i_195	;
-	ld	hl,(_p_y)
-	ld	a,240
-	sub	l
-	jp	nc,i_197	;
-.i_195
-	ld	hl,_p_vy
-	ld	a,(hl)
-	rla
-	jp	nc,i_197	;
-	defc	i_197 = i_194
-.i_198_i_197
-	ld	a,128
-	ld	(_p_y),a
-	ld	hl,(_n_pant)
-	ld	h,0
-	ld	bc,-5
-	add	hl,bc
-	ld	h,0
-	ld	a,l
-	ld	(_n_pant),a
-.i_194
-	ld	hl,(_p_y)
-	ld	h,0
-	ld	a,l
-	sub	128
-	ccf
-	jp	nc,i_200	;
-	ld	hl,_p_vy
-	call	l_gchar
-	ld	de,0
-	ex	de,hl
-	call	l_gt
-	jp	nc,i_200	;
-	defc	i_200 = i_199
-.i_201_i_200
-	xor	a
-	ld	(_p_y),a
-	ld	hl,(_n_pant)
-	ld	h,0
-	ld	bc,5
-	add	hl,bc
-	ld	a,l
-	ld	(_n_pant),a
-	jp	i_163	;EOS
-	defc	i_199 = i_163
-.i_164
+	jp	i_101	;EOS
+.i_112
+				ld  hl, _n_pant
+				ld  a, (_p_vx)
+				or  a 
+				jr  z, flick_left_done
+				bit 7, a
+				jr  z, flick_left_done 
+				ld  a, (_p_x) 
+				or  a 
+				jr  z, flick_left_do 
+				cp  240 
+				jr  c, flick_left_done
+			.flick_left_do
+				ld  a, 224
+				ld  (_p_x), a
+				dec (hl)
+			.flick_left_done
+				ld  a, (_p_x)
+				cp  224
+				jr  c, flick_right_done 
+				ld  a, (_p_vx)
+				or  a 
+				jr  z, flick_right_done
+				bit  7, a
+				jr  nz, flick_right_done
+			.flick_right_do
+				xor a
+				ld  (_p_x), a 
+				inc (hl)
+			.flick_right_done
+				ld  a, (_p_vy)
+				or  a 
+				jr  z, flick_up_done 
+				bit 7, a 
+				jr  z, flick_up_done
+				ld  a, (_p_y)
+				or  a 
+				jr  z, flick_up_do 
+				cp  240
+				jr  c, flick_up_done
+			.flick_up_do
+				ld  a, (_n_pant)
+				cp  5
+				jr  c, flick_up_out_of_the_map
+				ld  a, 128
+				ld  (_p_y), a 
+				ld  a, (_n_pant)
+				sub 5 
+				ld  (_n_pant), a
+				jr  flick_up_done
+			.flick_up_out_of_the_map
+				xor a 
+				ld  (_p_y), a
+				ld  (_p_vy), a
+			.flick_up_done
+				ld  a, (_n_pant)
+				cp  20
+				jr  nc, flick_down_done 
+				ld  a, (_p_vy) 
+				or  a 
+				jr  z, flick_down_done
+				bit 7, a 
+				jr  nz, flick_down_done
+				ld  a, (_p_y)
+				cp  128 
+				jr  c, flick_down_done
+			.flick_down_do
+				xor a
+				ld  (_p_y), a
+				ld  a, (_n_pant)
+				add 5 
+				ld  (_n_pant), a
+			.flick_down_done
+	jp	i_100	;EOS
+.i_101
 	ld	hl,(_f_win)
 	ld	h,0
+	pop	bc
 	ret
 
 
-	C_LINE	55,"ss.c::game::0::132"
-	C_LINE	59,"ss.c::game::0::132"
+	C_LINE	61,"ss.c::game::0::83"
+	C_LINE	65,"ss.c::game::0::83"
 
 ; Function main flags 0x00000000 __stdc 
 ; void main()
-	C_LINE	59,"ss.c::main::0::133"
+	C_LINE	65,"ss.c::main::0::84"
 ._main
 		di
 		xor a 
@@ -8324,15 +7801,15 @@
 	ld	(_p_current_frame),hl
 	xor	a
 	ld	(_gpit),a
-	jp	i_204	;EOS
-.i_202
+	jp	i_115	;EOS
+.i_113
 	ld	hl,_gpit
 	ld	a,(hl)
 	inc	(hl)
-.i_204
+.i_115
 	ld	a,(_gpit)
 	sub	3
-	jp	nc,i_203	;
+	jp	nc,i_114	;
 	ld	hl,_sp_moviles
 	push	hl
 	ld	hl,(_gpit)
@@ -8403,8 +7880,8 @@
 	ld	hl,_sprite_9_a
 	call	l_pint
 	call	l_pint_pop
-	jp	i_202	;EOS
-.i_203
+	jp	i_113	;EOS
+.i_114
 		.fix_sprites
 			ld  b, 6
 			ld  hl, (_sp_player) 			 
@@ -8622,7 +8099,6 @@
 ._p_current_frame	defs	2
 ._p_next_frame	defs	2
 ._possee	defs	1
-._fc	defs	1
 .__en_x	defs	1
 .__en_y	defs	1
 ._enoffsmasi	defs	1
@@ -8652,10 +8128,10 @@
 ._hotspot_y	defs	1
 ._orig_tile	defs	1
 ._f_win	defs	1
-._f_gameover	defs	1
-._isrc	defs	1
 ._player_on	defs	1
 ._song_playing	defs	1
+._ovl_x	defs	1
+._ovl_y	defs	1
 ._password	defs	32
 	SECTION	code_compiler
 
@@ -8795,6 +8271,7 @@
 	defc	_ram_destination	= 23299
 	defc	_ram_page	= 23301
 	defc	_attrs_byte	= 23304
+	defc	_isrc	= 23305
 	GLOBAL	_joyfunc
 	GLOBAL	_my_malloc
 	GLOBAL	_sp_player
@@ -8858,7 +8335,6 @@
 	GLOBAL	_p_current_frame
 	GLOBAL	_p_next_frame
 	GLOBAL	_possee
-	GLOBAL	_fc
 	GLOBAL	__en_x
 	GLOBAL	__en_y
 	GLOBAL	_enoffsmasi
@@ -8891,10 +8367,10 @@
 	GLOBAL	_level_pointer
 	GLOBAL	_yOsc
 	GLOBAL	_f_win
-	GLOBAL	_f_gameover
-	GLOBAL	_isrc
 	GLOBAL	_player_on
 	GLOBAL	_song_playing
+	GLOBAL	_ovl_x
+	GLOBAL	_ovl_y
 	GLOBAL	_resources
 	GLOBAL	_draw_char
 	GLOBAL	_draw_fast
@@ -8975,12 +8451,8 @@
 	GLOBAL	_sprite_23_b
 	GLOBAL	_sprite_24_a
 	GLOBAL	_sprite_24_b
+	GLOBAL	_player_walk
 	GLOBAL	_sprite_frames
-	GLOBAL	_ovl_x
-	GLOBAL	_ovl_y
-	GLOBAL	_draw_overlay
-	GLOBAL	_del_overlay
-	GLOBAL	_draw_buff
 	GLOBAL	_levels
 	GLOBAL	_level_buffer
 	GLOBAL	_malotes

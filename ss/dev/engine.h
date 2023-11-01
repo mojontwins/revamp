@@ -2,7 +2,7 @@
 
 // Functions
 
-void espera_activa (int espera) {
+void __FASTCALL__ espera_activa (int espera) {
 	// Waits until "espera" halts have passed 
 	// or a key has been pressed.
 
