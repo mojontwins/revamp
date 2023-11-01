@@ -11,6 +11,8 @@ unsigned char ram_page 			@ 23301;
 // Reserver 23304 for communication with the overlay engine
 unsigned char attrs_byte 		@ 23304;
 
+unsigned char isrc 				@ 23305;
+
 unsigned int (*joyfunc)(struct sp_UDK *);				// Controls.
 void *my_malloc(uint bytes) {return sp_BlockAlloc(0);}	// malloc routines
 void *u_malloc = my_malloc;								// I wonder what
@@ -107,7 +109,7 @@ unsigned char map_buffer[150] @ FREEPOOL;
 extern unsigned int level_pointer [0];
 unsigned char yOsc = 4;
 
-unsigned char f_win, isrc;
+unsigned char f_win;
 
 unsigned char player_on, song_playing;
 

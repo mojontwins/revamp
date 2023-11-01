@@ -1173,7 +1173,6 @@ void muerte (unsigned char a, unsigned char b) {
 	rda = a; rdb = b;
 	rdc = 0;
 
-	sp_UpdateNow ();
 	wyz_play_sound (3);
 	
 	#asm 
@@ -1310,8 +1309,9 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 	init_player (level);
 	init_hotspots ();
 
-	sp_UpdateNow ();
-
+	#asm
+			call SPUpdateNow
+	#endasm
 	blackout_everything ();
 	get_resource(RAM3_MARCADOR_BIN, 16384);
 	
@@ -1575,6 +1575,8 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 					ld  (hl), a
 			#endasm
 
+			// Lit somewhat obscured screens
+
 			#asm
 					ld  a, (_p_x)
 					srl a 
@@ -1618,9 +1620,21 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 			#endasm			
 		}
 
-		sp_UpdateNow ();
-		
-		// Lit somewhat obscured screens
+		#asm
+			.ml_min_faps_loop
+				ld  a, (_isrc)
+				cp  2
+				jr  nc, ml_min_faps_loop_end
+				halt
+				jr  ml_min_faps_loop
+
+			.ml_min_faps_loop_end
+				xor a
+				ld  (_isrc), a
+
+				call SPUpdateNow
+		#endasm
+
 		
 		// The last day on earth:
 		
@@ -1638,26 +1652,127 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 
 		// Should flick?
 
+		/*
 		if ((p_x == 0 || p_x > 240) && p_vx < 0) {
 			p_x = 224; 
 			n_pant --;
 		}
+		*/
+		#asm
+				ld  hl, _n_pant
 
+				ld  a, (_p_vx)
+				or  a 
+				jr  z, flick_left_done
+				bit 7, a
+				jr  z, flick_left_done 
+
+				ld  a, (_p_x) 
+				or  a 
+				jr  z, flick_left_do 
+				cp  240 
+				jr  c, flick_left_done
+
+			.flick_left_do
+				ld  a, 224
+				ld  (_p_x), a
+				dec (hl)
+			.flick_left_done
+		#endasm
+
+		/*
 		if (p_x >= 224 && p_vx > 0) {
 			p_x = 0;
 			n_pant ++;
 		}
+		*/
 
-		if ((p_y == 0 || p_y > 240) && p_vy < 0) {
+		#asm
+				ld  a, (_p_x)
+				cp  224
+				jr  c, flick_right_done 
+
+				ld  a, (_p_vx)
+				or  a 
+				jr  z, flick_right_done
+				bit  7, a
+				jr  nz, flick_right_done
+		
+			.flick_right_do
+				xor a
+				ld  (_p_x), a 
+				inc (hl)
+
+			.flick_right_done
+		#endasm
+
+		/*
+		if ((p_y == 0 || p_y > 240) && p_vy < 0 && n_pant > 4) {
 			p_y = 128;
 			n_pant -= 5;
 		}
+		*/
 
-		if (p_y >= 128 && p_vy > 0) {
+		#asm
+				// n_pant > 4 -> n_pant >= 5
+				ld  a, (_n_pant)
+				cp  5
+				jr  c, flick_up_done
+
+				// p_vy < 0
+				ld  a, (_p_vy)
+				or  a 
+				jr  z, flick_up_done 
+				bit 7, a 
+				jr  z, flick_up_done
+
+				ld  a, (_p_y)
+				or  a 
+				jr  z, flick_up_do 
+
+				cp  240
+				jr  c, flick_up_done
+
+			.flick_up_do
+				ld  a, 128
+				ld  (_p_y), a 
+				ld  a, (_n_pant)
+				sub 5 
+				ld  (_n_pant), a
+
+			.flick_up_done
+		#endasm
+
+		/*
+		if (p_y >= 128 && p_vy > 0 && n_pant < 20) {
 			p_y = 0;
 			n_pant += 5;
 		}
+		*/
 
+		#asm
+				ld  a, (_n_pant)
+				cp  20
+				jr  nc, flick_down_done 
+
+				ld  a, (_p_vy) 
+				or  a 
+				jr  z, flick_down_done
+				bit 7, a 
+				jr  nz, flick_down_done
+
+				ld  a, (_p_y)
+				cp  128 
+				jr  c, flick_down_done
+
+			.flick_down_do
+				xor a
+				ld  (_p_y), a
+				ld  a, (_n_pant)
+				add 5 
+				ld  (_n_pant), a
+			.flick_down_done
+		#endasm
 	};
 	
 	return f_win;

@@ -7,6 +7,7 @@
 		LIB SPInvalidate
 		LIB SPCompDListAddr
 		LIB SPNullSprPtr
+		LIB SPUpdateNow
 #endasm
 
 #include <spritepack.h>
@@ -156,7 +157,7 @@ void main (void) {
 	#asm
 		ei
 	#endasm
-game(0);
+
 	blackout_everything ();
 	get_resource (RAM3_MOJON_TWINS_BIN, 16384);
 

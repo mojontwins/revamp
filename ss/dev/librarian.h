@@ -13,19 +13,19 @@ RESOURCE resources [] = {
     { 3, 0xC000 },
     { 3, 0xC7A7 },
     { 3, 0xCF33 },
-    { 3, 0xD6B9 },
-    { 3, 0xDE34 },
-    { 3, 0xE2E7 },
-    { 3, 0xE76D },
-    { 3, 0xEBAF },
-    { 3, 0xEEE8 },
-    { 3, 0xF0D2 }
+    { 3, 0xD6AE },
+    { 3, 0xDE02 },
+    { 3, 0xE2B5 },
+    { 3, 0xE73B },
+    { 3, 0xEB7D },
+    { 3, 0xEEB6 },
+    { 3, 0xF0A0 }
 };
 
 #define C_LEVEL2_BIN                    0
 #define C_LEVEL3_BIN                    1
-#define C_LEVEL1_BIN                    2
-#define C_LEVEL4_BIN                    3
+#define C_LEVEL4_BIN                    2
+#define C_LEVEL1_BIN                    3
 #define RAM3_UBHRES_BIN                 4
 #define RAM3_FINAL_BIN                  5
 #define RAM3_SHEET_BIN                  6

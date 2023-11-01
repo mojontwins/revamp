@@ -4,40 +4,20 @@
 		"selected_items":
 		[
 			[
-				"ovl_zero",
-				"ovl_zero_remaining\tabc"
+				"flick_ri",
+				"flick_right_done\tabc"
 			],
 			[
-				"_ovl",
-				"_ovl_halo\tabc"
+				"flick_l",
+				"flick_left_done\tabc"
 			],
 			[
-				"_blob",
-				"_blobs_v\t(levelstruct.h)"
+				"po",
+				"possee\tabc"
 			],
 			[
-				"mp_v",
-				"mp_v_fje_do\tabc"
-			],
-			[
-				"_wyz",
-				"_wyz_play_sound\tabc"
-			],
-			[
-				"_en",
-				"_enit\tabc"
-			],
-			[
-				"VIEW",
-				"VIEWPORT_X\tabc"
-			],
-			[
-				"draw",
-				"draw_coloured_tile\tabc"
-			],
-			[
-				"VIER",
-				"VIEWPORT_X\tabc"
+				"player",
+				"player_bb\tabc"
 			],
 			[
 				"black",
@@ -464,11 +444,66 @@
 	"buffers":
 	[
 		{
-			"file": "dev/menu.h",
+			"file": "dev/engine.h",
 			"settings":
 			{
-				"buffer_size": 4379,
-				"line_ending": "Unix"
+				"buffer_size": 26465,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/wyzplayer.h",
+			"settings":
+			{
+				"buffer_size": 1605,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/ss.map",
+			"settings":
+			{
+				"buffer_size": 81417,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/globals.h",
+			"settings":
+			{
+				"buffer_size": 2857,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 29 files for \"sp_updatenow\" (regex)\n\nC:\\git\\revamp\\ss\\dev\\ss.asm:\n 7440  \tld\ta,l\n 7441  \tld\t(_rdc),a\n 7442: \tcall\tsp_UpdateNow\n 7443  \tld\thl,3\t;const\n 7444  \tcall\t_wyz_play_sound\n ....\n 7618  \tcall\t_init_player\n 7619  \tcall\t_init_hotspots\n 7620: \tcall\tsp_UpdateNow\n 7621  \tcall\t_blackout_everything\n 7622  \tld\thl,8\t;const\n ....\n 8058  \tld\ta,l\n 8059  \tld\t(_attrs_byte),a\n 8060: \tcall\tsp_UpdateNow\n 8061  .i_182\n 8062  \tld\tde,(_n_pant)\n ....\n 8718  \tGLOBAL\tsp_Validate\n 8719  \tGLOBAL\tsp_ClearRect\n 8720: \tGLOBAL\tsp_UpdateNow\n 8721: \tGLOBAL\tsp_UpdateNowEx\n 8722  \tGLOBAL\tsp_CompDListAddr\n 8723  \tGLOBAL\tsp_CompDirtyAddr\n\nC:\\git\\revamp\\ss\\dev\\ss.map:\n  672  _sp_RegisterHookLast            = $B0BA ; addr, public, , sp_RegisterHookLast_c, code_compiler, sp_RegisterHookLast.c::sp_RegisterHookLast::0::0:15\n  673  sp_RegisterHookLast             = $B0BA ; addr, public, , sp_RegisterHookLast_c, code_compiler, sp_RegisterHookLast.c::sp_RegisterHookLast::0::0:15\n  674: _sp_UpdateNow                   = $B0C7 ; addr, public, , sp_UpdateNow_c, code_compiler, sp_UpdateNow.c::sp_UpdateNow::0::0:15\n  675: sp_UpdateNow                    = $B0C7 ; addr, public, , sp_UpdateNow_c, code_compiler, sp_UpdateNow.c::sp_UpdateNow::0::0:15\n  676  SPCompDListAddr                 = $5E32 ; addr, public, , SPCompDListAddr, , displaylist/SPCompDListAddr.asm:19\n  677  SPCompDirtyAddr                 = $5E43 ; addr, public, , SPCompDirtyAddr, , displaylist/SPCompDirtyAddr.asm:20\n\n13 matches across 2 files\n\n\nSearching 29 files for \"isrc\" (regex)\n\nC:\\git\\revamp\\ss\\dev\\engine.h:\n 1621  \t\t#asm\n 1622  \t\t\t.ml_min_faps_loop\n 1623: \t\t\t\tld  a, (_isrc)\n 1624  \t\t\t\tcp  2\n 1625  \t\t\t\tjr  nc, ml_min_faps_loop_end\n ....\n 1629  \t\t\t.ml_min_faps_loop_end\n 1630  \t\t\t\txor a\n 1631: \t\t\t\tld  (_isrc), a\n 1632  \n 1633  \t\t\t\tcall SPUpdateNow\n\nC:\\git\\revamp\\ss\\dev\\globals.h:\n   12  unsigned char attrs_byte \t\t@ 23304;\n   13  \n   14: unsigned char isrc \t\t\t\t@ 23305;\n   15  \n   16  unsigned int (*joyfunc)(struct sp_UDK *);\t\t\t\t// Controls.\n\nC:\\git\\revamp\\ss\\dev\\ss.asm:\n  721  \t\t\tld b, 0\n  722  \t\t\tcall SetRAMBank\t\t\t\n  723: \t\t\tld  hl, _isrc\n  724  \t\t\tinc (hl)\t\t\t\t\t\t\n  725  \tret\n  ...\n 8654  ._f_win\tdefs\t1\n 8655  ._f_gameover\tdefs\t1\n 8656: ._isrc\tdefs\t1\n 8657  ._player_on\tdefs\t1\n 8658  ._song_playing\tdefs\t1\n ....\n 8893  \tGLOBAL\t_f_win\n 8894  \tGLOBAL\t_f_gameover\n 8895: \tGLOBAL\t_isrc\n 8896  \tGLOBAL\t_player_on\n 8897  \tGLOBAL\t_song_playing\n\nC:\\git\\revamp\\ss\\dev\\ss.map:\n   29  restISR                         = $7BA8 ; addr, local, , ss_c, code_compiler, 128k.h::SetRAMBank::0::11:2\n   30  keepGoing                       = $7BAC ; addr, local, , ss_c, code_compiler, 128k.h::SetRAMBank::0::11:2\n   31: _isrc                           = $5B09 ; const, local, , ss_c, code_compiler, ss.c::main::0::87:65\n   32  depack                          = $7C1A ; addr, local, , ss_c, code_compiler, aplib.h::wyz_stop_sound::0::17:2\n   33  apbranch1                       = $7C1D ; addr, local, , ss_c, code_compiler, aplib.h::wyz_stop_sound::0::17:2\n\nC:\\git\\revamp\\ss\\dev\\wyzplayer.h:\n   26  void ISR(void) {\n   27  \t\t#asm\n   28: \t\t\tld  hl, _isrc\n   29  \t\t\tinc (hl)\t\t\t\t\t\t\n   30  \n\n8 matches across 5 files\n\n\nSearching 29 files for \"halt\" (regex)\n\nC:\\git\\revamp\\ss\\dev\\engine.h:\n    4  \n    5  void espera_activa (int espera) {\n    6: \t// Waits until \"espera\" halts have passed \n    7  \t// or a key has been pressed.\n    8  \n    .\n   10  \twhile (espera --)  {\n   11  \t\t#asm\n   12: \t\t\thalt\n   13  \t\t#endasm\n   14  \t\n   ..\n 1204  \t\t\tld\tb, 18\n 1205  \t\t\t\n 1206: \t\t\thalt\n 1207  \t\t\t\t\n 1208  \t\t.mb1\t\n ....\n 1626  \t\t\t\tcp  2\n 1627  \t\t\t\tjr  nc, ml_min_faps_loop_end\n 1628: \t\t\t\thalt\n 1629  \t\t\t\tjr  ml_min_faps_loop\n 1630  \n\nC:\\git\\revamp\\ss\\dev\\printer.h:\n  112  \t\t\t\t*gen_pt = gpit + 64;\n  113  \t\t\t\t#asm\n  114: \t\t\t\t\thalt\n  115  \t\t\t\t#endasm\n  116  \t\t\t\t\n\nC:\\git\\revamp\\ss\\dev\\ss.asm:\n  602  \tld\ta,l\n  603  \tld\t(de),a\n  604: \t\t\t\t\thalt\n  605  \tjp\ti_19\t;EOS\n  606  .i_20\n  ...\n 6405  \tor\tl\n 6406  \tjp\tz,i_91\t;\n 6407: \t\t\thalt\n 6408  \tcall\t_any_key\n 6409  \tld\ta,l\n ....\n 7462  \t\t\tld\tde, 22561\n 7463  \t\t\tld\tb, 18\n 7464: \t\t\thalt\n 7465  \t\t.mb1\t\n 7466  \t\t\tpush bc\n\n8 matches across 3 files\n",
+			"settings":
+			{
+				"buffer_size": 4126,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "dev/ss.asm",
+			"settings":
+			{
+				"buffer_size": 143951,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/ss.c",
+			"settings":
+			{
+				"buffer_size": 3407,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -536,58 +571,39 @@
 	},
 	"expanded_folders":
 	[
-		"/D/git/revamp/ss",
-		"/D/git/revamp/ss/dev",
-		"/D/git/revamp/ss/enems",
-		"/D/git/revamp/ss/map",
-		"/D/git/revamp/ss/utils"
+		"/C/git/revamp/ss"
 	],
 	"file_history":
 	[
-		"/D/git/revamp/ss/dev/comp.bat",
-		"/D/git/revamp/ss/dev/globals.h",
-		"/D/git/revamp/ss/dev/ss.asm",
-		"/D/git/revamp/ss/dev/new_overlay.h",
-		"/D/git/revamp/ss/dev/leveldata.h",
-		"/D/git/revamp/ss/dev/levelstruct.h",
-		"/D/git/revamp/ss/dev/spriteset.h",
-		"/D/git/revamp/ss/dev/engine.h",
-		"/D/git/revamp/ss/dev/ss.map",
-		"/D/git/revamp/ss/dev/ss.c",
-		"/D/git/revamp/ss/dev/overlay.h",
-		"/D/git/revamp/ss/dev/printer.h",
-		"/C/Users/jcastano/AppData/Local/Temp/7zO495B74AD/levelstruct.h",
-		"/D/git/revamp/ss/dev/ss.c.asm",
-		"/D/git/MK1/src/utils/src/ts2bin.bas",
-		"/D/git/revamp/ss/enems/level1.bin",
-		"/D/git/revamp/ss/utils/ene2bin_mk1.bas",
-		"/D/git/MK1/src/utils/src/downgrademap.bas",
-		"/D/git/MK1/src/utils/src/chr2bin.bas",
-		"/D/git/MK1/src/utils/src/build_mus_bin.bas",
-		"/D/git/MK1/src/utils/src/asm2z88dk.bas",
-		"/D/git/MK1/src/utils/src/chars2work.bas",
-		"/D/git/MK1/src/utils/src/buildlevels_MK1.bas",
-		"/D/git/MK1/src/utils/src/msc3_mk1.bas",
-		"/D/git/MK1/src/utils/src/sprcnvbin.bas",
-		"/D/git/revamp/ss/dev/wyzplayer.h",
-		"/D/git/revamp/ss/mus/make-ram1.bat",
-		"/D/git/revamp/ss/mus/efectos.asm",
-		"/D/git/revamp/ss/dev/menu.h",
-		"/D/git/revamp/ss/mus/WYZproPlay47aZXc.ASM",
-		"/D/git/revamp/ss/mus/wyzplayer.asm",
-		"/D/git/revamp/ss/mus/instrumentos.asm",
-		"/D/git/MK1_Pestecera/wip/broojas/dev/plugins/plugin_linear_platformers_asm.h",
-		"/C/Users/jcastano/AppData/Local/Temp/pid-14164/errorwebmovil.txt",
-		"/D/git/revamp/ss/dev/mojon_twins--severin-sewers.tap",
-		"/D/git/revamp/ss/dev/128k.h",
+		"/C/git/revamp/ss/dev/levelstruct.h",
+		"/C/git/revamp/ss/dev/globals.h",
+		"/C/git/revamp/ss/dev/leveldata.h",
+		"/C/git/revamp/ss/dev/wyzplayer.h",
+		"/C/git/revamp/ss/dev/ss.c",
+		"/C/git/revamp/ss/dev/engine.h",
+		"/C/git/revamp/ss/dev/mojon_twins--severin-sewers.tap",
+		"/C/git/revamp/ss/dev/menu.h",
+		"/C/git/revamp/ss/dev/ss.map",
 		"/D/git/revamp/ss/dev/aplib.h",
+		"/D/git/revamp/ss/dev/globals.h",
+		"/D/git/revamp/ss/dev/ss.c",
+		"/D/git/revamp/ss/dev/engine.h",
+		"/D/git/revamp/ss/dev/comp.bat",
+		"/D/git/revamp/ss/dev/levelstruct.h",
+		"/D/git/revamp/ss/dev/leveldata.h",
+		"/D/git/revamp/ss/dev/printer.h",
+		"/D/git/revamp/ss/dev/ss.map",
 		"/D/git/revamp/ss/dev/librarian.h",
 		"/D/git/revamp/ss/bin/list.txt",
 		"/D/git/revamp/ss/dev/loader/loaderzx.asm-orig",
 		"/D/git/revamp/ss/bin/ram3.bin",
+		"/D/git/revamp/ss/dev/menu.h",
 		"/D/Proyectos/2016/20160719a--Api REST LDAP WMCCOR/manual.txt",
+		"/D/git/revamp/ss/dev/128k.h",
 		"/D/git/revamp/ss/dev/loader.txt",
+		"/D/git/revamp/ss/dev/wyzplayer.h",
 		"/D/git/revamp/ss/dev/loader/loader.asm",
+		"/D/git/revamp/ss/dev/overlay.h",
 		"/D/git/revamp/ss/bin/make-ram3.bat",
 		"/D/temp/ss/dev/ss.c",
 		"/D/temp/ss/dev/menu.h",
@@ -671,7 +687,22 @@
 		"/D/Proyectos/remote/descon01/consigna/.gitignore",
 		"/D/Proyectos/remote/descon01/consigna/system/core/Exceptions.php",
 		"/D/Proyectos/remote/descon01/consigna/system/helpers/html_helper.php",
-		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Error/Assertion.php"
+		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Error/Assertion.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/php-8.1-strftime.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/Ignitedquery.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Lang.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Input.php",
+		"/D/Proyectos/remote/descon01/consigna/app/libraries/MY_Log.php",
+		"/D/Proyectos/remote/descon01/consigna/system/core/Common.php",
+		"/D/Proyectos/remote/descon01/consigna/system/libraries/Log.php",
+		"/D/Proyectos/remote/descon01/consigna/.htaccess",
+		"/D/Proyectos/remote/descon01/consigna/public/index.php",
+		"/D/Proyectos/remote/descon01/consigna/app/views/form-login.php",
+		"/D/Proyectos/remote/descon01/consigna/app/config/routes.php",
+		"/D/Proyectos/2022/20221125b - Reserva de Recursos 1.29.0.0/instrucciones.txt",
+		"/D/Proyectos/2022/20221209a - Consigna 2.15.0.0 - Separación de autenticación y autorización/instrucciones.txt",
+		"/C/Users/jcastano/Desktop/archivo_dest_test",
+		"/C/Users/jcastano/Desktop/destinatario.txt"
 	],
 	"find":
 	{
@@ -682,6 +713,7 @@
 		"height": 134.0,
 		"where_history":
 		[
+			"C:\\git\\revamp\\ss\\dev",
 			"D:\\git\\revamp\\ss\\dev",
 			"D:\\temp\\ss\\dev",
 			"D:\\Proyectos\\remote\\descon01\\consigna",
@@ -808,8 +840,7 @@
 			"D:\\Proyectos\\remote\\descon01\\consigna",
 			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
 			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\libraries\\pheanstalk",
-			"D:\\Proyectos\\remote\\descon01\\consigna"
+			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\libraries\\pheanstalk"
 		]
 	},
 	"find_state":
@@ -818,90 +849,23 @@
 		"find_history":
 		[
 			"halt",
-			"overlay",
-			"haloy",
-			"halox",
-			"cx1",
-			"([xy]\\d)",
-			"ovl_y",
-			"ovl_x",
-			"sprite_frames",
-			"sprite_9",
-			"ENEMS_DATA",
-			"HOTSPOTS_DATA",
-			"fc",
-			"yOsc",
-			"y_pant",
+			"isrc",
+			"ISR",
+			"sp_updatenow",
 			"x_pant",
-			"y_pant",
-			" 5",
+			"x_pat",
 			"x_pant",
+			"n_pant",
+			"p_vy = 0",
+			"p_vx = 0",
 			"attr",
-			"gpy",
-			"gpx",
-			"gp_gen",
-			"[0]",
-			"ncn",
-			"ncc",
-			"ncy",
-			"ncx",
-			"muerte",
-			"any_key",
-			"init_player",
-			"collide",
-			"inCommand",
-			"rdt",
-			"waitFor",
-			"any_key",
-			"sp_getkey",
-			"ptj",
-			"pti",
-			"sp_getkey",
-			"sp_Border",
-			"sp_",
-			"sp_getkey",
-			"sp_",
-			"draw_life",
-			"life",
-			"wyz_play_sound \\((\\d+), \\d+\\);",
-			"wyz_play_sound",
-			"play_music",
-			"aplib",
-			"tabla_efectos",
-			"blobs",
-			"x",
-			"map_pointer",
-			"sp_PrintAtInv",
-			"printatinv",
-			"moveSprAbs",
-			"draw_cp",
-			"draw_col",
-			"draw_cpñ",
-			"draw_coloured_tile",
-			"sp_printatinv",
-			"fanty_activo",
-			"collide",
-			"gpit",
-			"orientation",
-			"j",
-			"xx",
-			"enoffsmasi",
 			"cx",
-			"ccxr",
-			"collide",
-			"gpy",
-			"gpx",
-			"collide",
-			"falling",
-			"yy",
-			"xx",
-			"play_music",
-			"hakuna",
-			"fc",
-			"half_life",
-			"i",
-			"blobs (\\[[a-zA-Z0-9\\_]+\\])\\.([a-zA-Z0-9\\_])",
-			"x",
+			"ctx",
+			"2",
+			"3",
+			" 4",
+			" 5",
+			"any",
 			"yOsc",
 			"sp_MoveSprAbs",
 			"en_an (\\[[a-z\\_]+\\])\\.([A-Za-z\\_]+)",
@@ -944,7 +908,74 @@
 			"i",
 			"espera_activa",
 			"espera_actia",
-			"espera_activa"
+			"espera_activa",
+			"SetRAMBank",
+			"ram_address",
+			"ram",
+			"ram_address",
+			"unpack_RAMn",
+			"i",
+			"j",
+			"^\n",
+			"yOsc",
+			"ob_y",
+			"28375",
+			"25000",
+			"level_buffer",
+			"joyfunc",
+			"yOsc",
+			"SetRAMBank",
+			"avws",
+			"No funci",
+			"LIMPIO",
+			"PENDIENTE",
+			"identidad",
+			"var7",
+			"var6",
+			"var5",
+			"var4",
+			"var3",
+			"var2",
+			"var1",
+			"excesivo",
+			"general",
+			"api_model",
+			"enlace",
+			"ijab",
+			"_detect_method",
+			"post",
+			"ficheros_post",
+			"rest_controller",
+			"expired",
+			"passcaducado",
+			"peticion POST",
+			"passcaducado",
+			"\"header\"",
+			"\"header",
+			"UNHANDLEDEXCEPTION",
+			"title_UNHANDLEDEXCEPTION",
+			"no controlada",
+			"error",
+			"errors",
+			"0131",
+			"extensi",
+			"exe",
+			"move_uploaded_file",
+			"'nombre'",
+			"data",
+			"logdetalles",
+			"INSERT INTO",
+			"UPLOAD",
+			"404",
+			"code",
+			"404",
+			"resultado",
+			"_procesado_envio_fichero",
+			"PROCESADO_ERR_EXTENSION",
+			"log_message",
+			"_procesado",
+			"_procesado_envio_fichero",
+			"UPLOAD_ERR_INI_SIZE"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -952,29 +983,11 @@
 		"regex": true,
 		"replace_history":
 		[
-			"_y",
-			"_x",
-			"c\\1",
-			"_y",
-			"_x",
-			"p_y",
-			"p_x",
-			"gen_pt",
-			"",
-			"_t",
-			"_c",
-			"_y",
-			"_x",
-			"gpjt",
-			"gpit",
-			"wyz_play_sound (\\1);",
-			"enit",
-			"p_y",
-			"p_x",
-			"rdy",
-			"rdx",
-			"gpit",
-			"blobs_\\2 \\1",
+			"cx",
+			"4",
+			"8",
+			"16",
+			"32",
 			"en_an_\\2 \\1",
 			"p_\\1",
 			"p_current_frame",
@@ -1079,7 +1092,25 @@
 			"Pública",
 			"Fundación",
 			"Energía",
-			"Consejería"
+			"Consejería",
+			"replicación",
+			"dn: \\1\\nchangetype: modify\\nreplace: displayName",
+			"",
+			"\\ndn",
+			"",
+			"locationParameters",
+			"this",
+			" ",
+			"2",
+			"RRFaqs",
+			"RRAdministradores",
+			"accordionRRAdministradores",
+			" accordionRRAdministradores",
+			" ",
+			"\\n",
+			"",
+			" ",
+			" \\n"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1090,44 +1121,338 @@
 	"groups":
 	[
 		{
-			"sheets":
-			[
-			]
-		},
-		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "dev/menu.h",
-					"semi_transient": true,
+					"file": "dev/engine.h",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4379,
+						"buffer_size": 26465,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								24126,
+								24126
 							]
 						],
 						"settings":
 						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1521.0,
+						"translation.y": 20635.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "dev/wyzplayer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1605,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								863,
+								863
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 239.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "dev/ss.map",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 81417,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22785,
+								22798
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 4143.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "dev/globals.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2857,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								342,
+								342
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4126,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										124,
+										136
+									],
+									[
+										262,
+										274
+									],
+									[
+										393,
+										405
+									],
+									[
+										520,
+										532
+									],
+									[
+										548,
+										560
+									],
+									[
+										975,
+										987
+									],
+									[
+										1032,
+										1044
+									],
+									[
+										1063,
+										1075
+									],
+									[
+										1079,
+										1091
+									],
+									[
+										1108,
+										1120
+									],
+									[
+										1166,
+										1178
+									],
+									[
+										1197,
+										1209
+									],
+									[
+										1213,
+										1225
+									],
+									[
+										1634,
+										1638
+									],
+									[
+										1769,
+										1773
+									],
+									[
+										1919,
+										1923
+									],
+									[
+										2106,
+										2110
+									],
+									[
+										2212,
+										2216
+									],
+									[
+										2350,
+										2354
+									],
+									[
+										2674,
+										2678
+									],
+									[
+										3101,
+										3105
+									],
+									[
+										3318,
+										3322
+									],
+									[
+										3442,
+										3446
+									],
+									[
+										3519,
+										3523
+									],
+									[
+										3625,
+										3629
+									],
+									[
+										3763,
+										3767
+									],
+									[
+										3874,
+										3878
+									],
+									[
+										3962,
+										3966
+									],
+									[
+										4062,
+										4066
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								1614,
+								1614
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 173.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "dev/ss.asm",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 143951,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129407,
+								129407
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Kick Assembler (C64)/Syntaxes/KickAssembler (C64).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 104528.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "dev/ss.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2789,
+								2789
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C Improved/C Improved.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1872.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1135,7 +1460,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -1150,18 +1475,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1229,7 +1547,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1237,7 +1555,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 268.0,
+	"side_bar_width": 167.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
