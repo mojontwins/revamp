@@ -1,20 +1,9 @@
 // Current level structs & functions
 
-// The current level will be copied from extra RAM
-// into low, contended RAM, as this data will
-// only be accessed during refresh time.
-
-// map_data = (unsigned char *) (level_buffer);
-// enem_data = (MALOTE *) (28375);
-// hotspot_data = (unsigned char *) (29200);
-
-#define ENEMS_DATA		(level_buffer + 3375)
-#define HOTSPOTS_DATA	(level_buffer + 4200)
-
 // Baddies descriptor.
 
 typedef struct {
-	int x, y;
+	unsigned char x, y;
 	unsigned char x1, y1, x2, y2;
 	char mx, my;
 	char t;
@@ -24,7 +13,7 @@ typedef struct {
 	unsigned char xy, tipo, act;
 } HOTSPOT;
 
-// Decompresion buffers. Total= 3375 + 825 + 75 = 4275 which is the size of a level
+// Decompresion buffers. Total= 3375 + 675 + 75 = 4125 which is the size of a level
 
 extern unsigned char level_buffer[0];
 #asm
@@ -33,12 +22,12 @@ extern unsigned char level_buffer[0];
 
 extern MALOTE malotes[0];
 #asm
-	._malotes defs 825
+	._malotes defs 25*3*9 	// 25 rooms, 3 enems, 9 bytes = 675
 #endasm
 
 extern HOTSPOT hotspots[0];
 #asm
-	._hotspots defs 75
+	._hotspots defs 25*3 	// 25 rooms, 3 bytes = 75
 #endasm
 
 // 
@@ -48,9 +37,9 @@ extern HOTSPOT hotspots[0];
 		defw	0
 #endasm
 
-void load_level (unsigned char level) {	
+void __FASTCALL__ load_level (unsigned char level) {	
 	get_resource(levels[level].resource, level_buffer);
-	yOsc = levels [level].yOsc;
+	yOsc = levels [level].yOsc * 5;
 }
 
 void invalidate_tile (void) {
@@ -167,37 +156,87 @@ void draw_coloured_tile () {
 	#endasm
 }
 
-void render_screen () {
-	n_pant = x_pant + (y_pant << 2) + y_pant;
-	
-	map_pt = (unsigned char *) (level_buffer + y_pant * 675 + x_pant * 15);
+void render_screen () {	
 	n_blobs = 0;
 
 	_x = VIEWPORT_X;
 	_y = VIEWPORT_Y;
-		
-	for (gpit = 0; gpit < 135; gpit ++) {
-		_t = *map_pt;
-		map_buffer [gpit] = _t;
-		
-		if (_t == 45 || _t == 46) {
-			blobs_x [n_blobs] = _x;
-			blobs_y [n_blobs] = _y;
-			blobs_v [n_blobs] = _t - 45;
-			n_blobs ++;
-		}
-		
-		draw_coloured_tile ();
-		
-		map_pt ++;
-		_x += 2;
-		if (_x == 30 + VIEWPORT_X) {
-			_y += 2;
-			_x = VIEWPORT_X;
-			map_pt += 60;	
-		}
-	}
 	
+	#asm 
+			ld  hl, (_n_pant)
+			ld  h, 0 
+			ld  de, 135
+			call l_mult 	// HL = n_pant * 135
+			ld  de, _level_buffer 
+			add hl, de 
+
+			ld  b, 135 
+			ld  de, _map_buffer 			
+
+		.draw_map_loop
+			ld  a, (hl)
+			ld  (de), a 
+			inc hl
+			inc de
+
+			push bc 
+			push hl 
+			push de  
+
+			// A = tile
+			ld  (__t), a
+
+			cp  45
+			jr  z, add_blob
+
+			cp  46
+			jr  nz, add_blob_done
+
+		.add_blob 
+
+			ld  bc, (_n_blobs)
+			ld  b, 0
+			ld  hl, _blobs_x 
+			add hl, bc 
+			ld  a, (__x)
+			ld  (hl), a 
+			ld  hl, _blobs_y 
+			add hl, bc 
+			ld  a, (__y) 
+			ld  (hl), a 
+			ld  hl, _blobs_v
+			add hl, bc 
+			ld  a, (__t)
+			sbc 45 
+			ld  (hl), a 
+			ld  hl, _n_blobs
+			inc (hl)
+
+		.add_blob_done
+
+			call _draw_coloured_tile
+
+			ld  a, (__x) 
+			inc a 
+			inc a 
+			cp  30 + VIEWPORT_X
+			jr  nz, draw_map_nc_x
+
+			ld  hl, __y
+			inc (hl)
+			inc (hl)
+			
+			ld  a, VIEWPORT_X
+
+		.draw_map_nc_x 
+			ld  (__x), a 
+
+			pop de 
+			pop hl
+			pop bc 
+			djnz draw_map_loop
+	#endasm
+
 	// Create enemies:
 	
 	enoffs = n_pant + n_pant + n_pant;
@@ -220,9 +259,8 @@ void render_screen () {
 		_x = (hotspots [n_pant].xy >> 4);
 		_y = (hotspots [n_pant].xy & 15);
 		hotspot_x = _x << 4;
-		hotspot_y = _y << 4;
-		map_pt = (unsigned char *) (level_buffer + ((y_pant << 3) + y_pant + _y) * 75 + ((x_pant << 4) - x_pant) + _x);
-		orig_tile = *map_pt;
+		hotspot_y = _y << 4;;
+		orig_tile = map_buffer [_x + (_y << 4) - _y];
 		
 		_x = VIEWPORT_X + _x + _x; _y = VIEWPORT_Y + _y + _y; _t = 59 - hotspots [n_pant].tipo; 
 		draw_coloured_tile ();
@@ -236,22 +274,29 @@ void render_screen () {
 
 // 0 nothing
 // 1 kills
-// 2 platform
-// 3 solid
+// 4 platform
+// 8 solid
 // 4 <-
-// 5 ->
+//84 ->
+
+// New encoding
+// & 1 = kills
+// & 4 = platform
+// & 8 = solid
+// & 16 = <-
+// & 84 = ->
 
 unsigned char tile_behaviour [] = {
-	0, 3, 3, 3, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-	0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 1, 1, 1,
-	4, 5, 2, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2,
-	2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 3, 3, 3, 0, 0, 2,
-	2, 0
+	 0, 8, 8, 8, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 8,
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8,
+	 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 8, 1, 1, 1,
+	24,40, 4, 1, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4,
+	 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0,
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 8, 8, 8, 0, 0, 4,
+	 4, 0
 };
 
 // Ergo.

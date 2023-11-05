@@ -57,7 +57,7 @@ void start_game_from (unsigned char level) {
 		// Show level
 		
 		blackout_everything ();
-		get_resource (RAM3_MENU_BIN, 16384);
+		unpack (scr_menu_bin, 16384);
 
 		wyz_play_music (1);	
 		cad_level [7] = '1' + level;
@@ -78,7 +78,7 @@ void start_game_from (unsigned char level) {
 				while(any_key ());
 				// Final
 				blackout_everything ();
-				get_resource (RAM3_FINAL_BIN, 16384);
+				unpack (scr_final_bin, 16384);
 
 				draw_fast(8, 19, 71, (unsigned char *) ("ESTA NOCHE PAJA!"));
 
@@ -96,7 +96,8 @@ unsigned char password [32];
 
 unsigned char get_password () {
 	blackout_everything ();
-	get_resource (RAM3_MENU_BIN, 16384);
+	unpack (scr_menu_bin, 16384);
+
 	draw_fast (9, 11, 70, (unsigned char *) ("ENTER PASSWORD"));
 	
 	rda = 0;
@@ -159,7 +160,7 @@ void menu (void) {
 		// Show menu screen
 		if (denew) {
 			blackout_everything ();
-			get_resource (RAM3_MENU_BIN, 16384);
+			unpack (scr_menu_bin, 16384);
 		
 			// Play ASTRO GANGA
 			wyz_play_music (0);

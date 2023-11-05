@@ -1313,8 +1313,8 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 			call SPUpdateNow
 	#endasm
 	blackout_everything ();
-	unpack (scr_marcador_bin, 16384);
-
+	get_resource(RAM3_MARCADOR_BIN, 16384);
+	
 	draw_life ();
 	draw_score ();
 	

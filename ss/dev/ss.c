@@ -30,14 +30,14 @@ unsigned char AD_FREE [NUMBLOCKS*15];
 
 // Extra RAM imports
 
-#include "librarian.h"
+#include "binassets.h"
 
 // Modules
 
 #include "printer.h"
 #include "128k.h"
 #include "wyzplayer.h"
-#include "aplib.h"
+#include "zx0.h"
 #include "menu.h"
 #include "supertileset.h"
 #include "tileset.h"
@@ -159,19 +159,19 @@ void main (void) {
 	#endasm
 
 	blackout_everything ();
-	get_resource (RAM3_MOJON_TWINS_BIN, 16384);
+	unpack (scr_mojon_twins_bin, 16384);
 
 	wyz_play_sound (8);
 	espera_activa (150);
 	
 	blackout_everything ();
-	get_resource (RAM3_UBHRES_BIN, 16384);
+	unpack (scr_ubhres_bin, 16384);
 
 	wyz_play_sound (7);
 	espera_activa (150);
 
 	blackout_everything ();
-	get_resource (RAM3_SHEET_BIN, 16384);
+	unpack (scr_ubhres_bin, 16384);
 	
 	wyz_play_sound (5);
 	espera_activa (1000);

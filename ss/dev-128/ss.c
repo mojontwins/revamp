@@ -6,9 +6,10 @@
 		LIB SPTileArray
 		LIB SPInvalidate
 		LIB SPCompDListAddr
+		LIB SPNullSprPtr
+		LIB SPUpdateNow
 #endasm
 
-#include "printer.h"
 #include <spritepack.h>
 
 #pragma output STACKPTR=23999
@@ -33,13 +34,19 @@ unsigned char AD_FREE [NUMBLOCKS*15];
 
 // Modules
 
+#include "printer.h"
 #include "128k.h"
 #include "wyzplayer.h"
-#include "aplib.h"
+#include "zx0.h"
 #include "menu.h"
 #include "supertileset.h"
 #include "tileset.h"
 #include "spriteset.h"
+
+unsigned char *player_walk[] = {
+	sprite_1_a, sprite_2_a, sprite_1_a, sprite_3_a,
+	sprite_5_a, sprite_6_a, sprite_5_a, sprite_7_a
+};
 
 unsigned char *sprite_frames[] = {
 	sprite_9_a, sprite_10_a, sprite_11_a, sprite_12_a,
@@ -48,7 +55,7 @@ unsigned char *sprite_frames[] = {
 	sprite_21_a, sprite_22_a, sprite_23_a, sprite_24_a,
 };
 
-#include "overlay.h"
+#include "new_overlay.h"
 #include "leveldata.h"
 #include "levelstruct.h"
 #include "engine.h"
@@ -104,15 +111,43 @@ void main (void) {
 
 	sp_player = sp_CreateSpr (sp_MASK_SPRITE, 3, sprite_1_a);
 	sp_AddColSpr (sp_player, sprite_1_b);
-	sp_AddColSpr (sp_player, sprite_1_c);
+	sp_AddColSpr (sp_player, sprite_1_b);	// This is a dummy and will be overwritten later
 	p_current_frame = p_next_frame = sprite_1_a;
 	
 	for (gpit = 0; gpit < 3; gpit ++) {
 		sp_moviles [gpit] = sp_CreateSpr(sp_MASK_SPRITE, 3, sprite_9_a);
 		sp_AddColSpr (sp_moviles [gpit], sprite_9_b);
-		sp_AddColSpr (sp_moviles [gpit], sprite_9_c);	
+		sp_AddColSpr (sp_moviles [gpit], sprite_9_b);	// This is a dummy and will be overwritten later
 		en_an_current_frame [gpit] = en_an_next_frame [gpit] = sprite_9_a;
 	}
+
+	// Create a virtual, non existent third column for sprites.
+	
+	#asm
+		.fix_sprites
+			ld  b, 6
+
+			ld  hl, (_sp_player) 			// Sprite base pointer
+			call _fix_sprites
+
+			ld  de, _sp_moviles
+			ld  b, 3
+
+		.fix_sprites_rep1
+			push bc
+			ld  a, (de)
+			ld  l, a
+			inc de 
+			ld  a, (de)
+			ld  h, a
+			inc de 
+
+			ld  b, 6
+			call _fix_sprites
+
+			pop bc 
+			djnz fix_sprites_rep1
+	#endasm
 
 	// Intro
 	

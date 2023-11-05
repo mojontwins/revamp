@@ -25,6 +25,9 @@
 
 void ISR(void) {
 		#asm
+			ld  hl, _isrc
+			inc (hl)						
+
 			ld  a, (_player_on)
 			or  a 
 			ret z
@@ -33,9 +36,6 @@ void ISR(void) {
 			call WYZPLAYERISR
 			ld b, 0
 			call SetRAMBank			
-
-			ld  hl, _isrc
-			inc (hl)						
 		#endasm
 	}
 

@@ -38,7 +38,7 @@ extern HOTSPOT hotspots[0];
 #endasm
 
 void __FASTCALL__ load_level (unsigned char level) {	
-	get_resource(levels[level].resource, level_buffer);
+	unpack (levels [level].binary, level_buffer);
 	yOsc = levels [level].yOsc * 5;
 }
 

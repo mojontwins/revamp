@@ -3,84 +3,88 @@
 ; by na_th_an - Thanks to Antonio Villena for his tutorials and utilities.
 
 	org $5ccb
-	ld  sp, $ffff
+	ld  sp, 23999
 	di
 	db	$de, $c0, $37, $0e, $8f, $39, $96 ;OVER USR 7 ($5ccb)
 	
-preload:
+	call blackout
+
 ; load screen
 	scf
 	ld	a, $ff
-	ld	ix, 65368 - 0
-	ld	de, 0
-	call $0556
-	di
-
-; Decompress
-	ld  hl, 65368 - 0
-	ld  de, 16384
-	call depack	
-
-load:
-; load screen
-	scf
-	ld	a, $ff
-	ld	ix, 65368 - 2465
+	ld	ix, $ffff - 2465
 	ld	de, 2465
 	call $0556
 	di
 
+	call blackout
+
 ; Decompress
-	ld  hl, 65368 - 2465
+	ld  hl, $ffff - 2465
 	ld  de, 16384
 	call depack	
-
-mainbin:
-; Main binary
-	scf
-	ld	a, $ff
-	ld	ix, 65368 - 36734
-	ld	de, 36734
-	call $0556
-	di
-
-; Decompress
-	ld  hl, 65368 - 36734
-	ld  de, 24000
-	call depack	
-
-ram1:
-; Detect if it's a 128K model to load RAM1.
-	ld  bc, 0x7ffd
-	xor a
-	out (c), a
-	ld  a, (0x1)
-	ld  h, a
-	ld  a, 0x10
-	out (c), a
-	ld  a, (0x1)
-	cp  h
-	jr  z, launch_exe
 
 ; RAM1
 	ld	a, $11 		; ROM 1, RAM 1
 	ld	bc, $7ffd
 	out (C), a
 
+	; Load block in $8000
 	scf
 	ld	a, $ff
-	ld	ix, $C000
+	ld	ix, $8000
 	ld	de, 2924
 	call $0556
 	di
 
+	; Unpack to $C000
+	ld  hl, $8000
+	ld  de, $C000
+	call depack
+
+; RAM3
+	ld	a, $13 		; ROM 1, RAM 3
+	ld	bc, $7ffd
+	out (C), a
+
+	; Load block in $C000
+	scf
+	ld	a, $ff
+	ld	ix, $C000
+	ld	de, 12182
+	call $0556
+	di
+
+; Main binary
 	ld	a, $10 		; ROM 1, RAM 0
 	ld	bc, $7ffd
 	out (C), a
+
+	; Load as high as possible
+	scf
+	ld	a, $ff
+	ld	ix, $ffff - 10496
+	ld	de, 10496
+	call $0556
+	di
+
+	; Unpack
+	ld  hl, $ffff - 10496
+	ld  de, 24000
+	call depack
 	
 ; run game!
-launch_exe:
 	jp 24000
+
+blackout:
+	; screen 0
+		ld  bc, 767
+		ld	hl, $5800
+		ld	de, $5801
+		ld	(hl), l
+		ldir
+		ret
+
 	
 ; -----------------------------------------------------------------------------
 ; ZX7 decoder by Einar Saukas, Antonio Villena & Metalbrain
@@ -149,4 +153,4 @@ dzx7s_next_bit:
 		ld      a, (hl)                 ; load another group of 8 bits
 		inc     hl
 		rla
-		ret
+		ret		

@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"scr",
+				"scr_marcador_bin\t(binassets.h)"
+			],
+			[
+				"__en",
+				"__en_x\tabc"
+			],
+			[
+				"ml_sp",
+				"ml_hotspots_deact\tabc"
+			],
+			[
+				"hotspots",
+				"ml_hotspots_t2"
+			],
+			[
+				"_hotspot",
+				"_hotspot_y\tabc"
+			],
+			[
+				"_hotpo",
+				"_hotspot_x\tabc"
+			],
+			[
+				"ml_hot",
+				"ml_hotspots_done\tabc"
+			],
+			[
+				"flic",
+				"flick_up_do\tabc"
+			],
+			[
 				"flick_ri",
 				"flick_right_done\tabc"
 			],
@@ -444,65 +476,84 @@
 	"buffers":
 	[
 		{
-			"file": "dev/engine.h",
+			"file": "dev/binassets.h",
 			"settings":
 			{
-				"buffer_size": 26465,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/wyzplayer.h",
-			"settings":
-			{
-				"buffer_size": 1605,
+				"buffer_size": 1109,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "dev/ss.map",
+			"file": "dev/zx0.h",
 			"settings":
 			{
-				"buffer_size": 81417,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/globals.h",
-			"settings":
-			{
-				"buffer_size": 2857,
+				"buffer_size": 3158,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "Searching 29 files for \"sp_updatenow\" (regex)\n\nC:\\git\\revamp\\ss\\dev\\ss.asm:\n 7440  \tld\ta,l\n 7441  \tld\t(_rdc),a\n 7442: \tcall\tsp_UpdateNow\n 7443  \tld\thl,3\t;const\n 7444  \tcall\t_wyz_play_sound\n ....\n 7618  \tcall\t_init_player\n 7619  \tcall\t_init_hotspots\n 7620: \tcall\tsp_UpdateNow\n 7621  \tcall\t_blackout_everything\n 7622  \tld\thl,8\t;const\n ....\n 8058  \tld\ta,l\n 8059  \tld\t(_attrs_byte),a\n 8060: \tcall\tsp_UpdateNow\n 8061  .i_182\n 8062  \tld\tde,(_n_pant)\n ....\n 8718  \tGLOBAL\tsp_Validate\n 8719  \tGLOBAL\tsp_ClearRect\n 8720: \tGLOBAL\tsp_UpdateNow\n 8721: \tGLOBAL\tsp_UpdateNowEx\n 8722  \tGLOBAL\tsp_CompDListAddr\n 8723  \tGLOBAL\tsp_CompDirtyAddr\n\nC:\\git\\revamp\\ss\\dev\\ss.map:\n  672  _sp_RegisterHookLast            = $B0BA ; addr, public, , sp_RegisterHookLast_c, code_compiler, sp_RegisterHookLast.c::sp_RegisterHookLast::0::0:15\n  673  sp_RegisterHookLast             = $B0BA ; addr, public, , sp_RegisterHookLast_c, code_compiler, sp_RegisterHookLast.c::sp_RegisterHookLast::0::0:15\n  674: _sp_UpdateNow                   = $B0C7 ; addr, public, , sp_UpdateNow_c, code_compiler, sp_UpdateNow.c::sp_UpdateNow::0::0:15\n  675: sp_UpdateNow                    = $B0C7 ; addr, public, , sp_UpdateNow_c, code_compiler, sp_UpdateNow.c::sp_UpdateNow::0::0:15\n  676  SPCompDListAddr                 = $5E32 ; addr, public, , SPCompDListAddr, , displaylist/SPCompDListAddr.asm:19\n  677  SPCompDirtyAddr                 = $5E43 ; addr, public, , SPCompDirtyAddr, , displaylist/SPCompDirtyAddr.asm:20\n\n13 matches across 2 files\n\n\nSearching 29 files for \"isrc\" (regex)\n\nC:\\git\\revamp\\ss\\dev\\engine.h:\n 1621  \t\t#asm\n 1622  \t\t\t.ml_min_faps_loop\n 1623: \t\t\t\tld  a, (_isrc)\n 1624  \t\t\t\tcp  2\n 1625  \t\t\t\tjr  nc, ml_min_faps_loop_end\n ....\n 1629  \t\t\t.ml_min_faps_loop_end\n 1630  \t\t\t\txor a\n 1631: \t\t\t\tld  (_isrc), a\n 1632  \n 1633  \t\t\t\tcall SPUpdateNow\n\nC:\\git\\revamp\\ss\\dev\\globals.h:\n   12  unsigned char attrs_byte \t\t@ 23304;\n   13  \n   14: unsigned char isrc \t\t\t\t@ 23305;\n   15  \n   16  unsigned int (*joyfunc)(struct sp_UDK *);\t\t\t\t// Controls.\n\nC:\\git\\revamp\\ss\\dev\\ss.asm:\n  721  \t\t\tld b, 0\n  722  \t\t\tcall SetRAMBank\t\t\t\n  723: \t\t\tld  hl, _isrc\n  724  \t\t\tinc (hl)\t\t\t\t\t\t\n  725  \tret\n  ...\n 8654  ._f_win\tdefs\t1\n 8655  ._f_gameover\tdefs\t1\n 8656: ._isrc\tdefs\t1\n 8657  ._player_on\tdefs\t1\n 8658  ._song_playing\tdefs\t1\n ....\n 8893  \tGLOBAL\t_f_win\n 8894  \tGLOBAL\t_f_gameover\n 8895: \tGLOBAL\t_isrc\n 8896  \tGLOBAL\t_player_on\n 8897  \tGLOBAL\t_song_playing\n\nC:\\git\\revamp\\ss\\dev\\ss.map:\n   29  restISR                         = $7BA8 ; addr, local, , ss_c, code_compiler, 128k.h::SetRAMBank::0::11:2\n   30  keepGoing                       = $7BAC ; addr, local, , ss_c, code_compiler, 128k.h::SetRAMBank::0::11:2\n   31: _isrc                           = $5B09 ; const, local, , ss_c, code_compiler, ss.c::main::0::87:65\n   32  depack                          = $7C1A ; addr, local, , ss_c, code_compiler, aplib.h::wyz_stop_sound::0::17:2\n   33  apbranch1                       = $7C1D ; addr, local, , ss_c, code_compiler, aplib.h::wyz_stop_sound::0::17:2\n\nC:\\git\\revamp\\ss\\dev\\wyzplayer.h:\n   26  void ISR(void) {\n   27  \t\t#asm\n   28: \t\t\tld  hl, _isrc\n   29  \t\t\tinc (hl)\t\t\t\t\t\t\n   30  \n\n8 matches across 5 files\n\n\nSearching 29 files for \"halt\" (regex)\n\nC:\\git\\revamp\\ss\\dev\\engine.h:\n    4  \n    5  void espera_activa (int espera) {\n    6: \t// Waits until \"espera\" halts have passed \n    7  \t// or a key has been pressed.\n    8  \n    .\n   10  \twhile (espera --)  {\n   11  \t\t#asm\n   12: \t\t\thalt\n   13  \t\t#endasm\n   14  \t\n   ..\n 1204  \t\t\tld\tb, 18\n 1205  \t\t\t\n 1206: \t\t\thalt\n 1207  \t\t\t\t\n 1208  \t\t.mb1\t\n ....\n 1626  \t\t\t\tcp  2\n 1627  \t\t\t\tjr  nc, ml_min_faps_loop_end\n 1628: \t\t\t\thalt\n 1629  \t\t\t\tjr  ml_min_faps_loop\n 1630  \n\nC:\\git\\revamp\\ss\\dev\\printer.h:\n  112  \t\t\t\t*gen_pt = gpit + 64;\n  113  \t\t\t\t#asm\n  114: \t\t\t\t\thalt\n  115  \t\t\t\t#endasm\n  116  \t\t\t\t\n\nC:\\git\\revamp\\ss\\dev\\ss.asm:\n  602  \tld\ta,l\n  603  \tld\t(de),a\n  604: \t\t\t\t\thalt\n  605  \tjp\ti_19\t;EOS\n  606  .i_20\n  ...\n 6405  \tor\tl\n 6406  \tjp\tz,i_91\t;\n 6407: \t\t\thalt\n 6408  \tcall\t_any_key\n 6409  \tld\ta,l\n ....\n 7462  \t\t\tld\tde, 22561\n 7463  \t\t\tld\tb, 18\n 7464: \t\t\thalt\n 7465  \t\t.mb1\t\n 7466  \t\t\tpush bc\n\n8 matches across 3 files\n",
+			"contents": "Searching 28 files for \"get_resource\" (regex)\n\nC:\\git\\revamp\\ss\\dev\\engine.h:\n 1314  \t#endasm\n 1315  \tblackout_everything ();\n 1316: \tget_resource(RAM3_MARCADOR_BIN, 16384);\n 1317  \t\n 1318  \tdraw_life ();\n\nC:\\git\\revamp\\ss\\dev\\levelstruct.h:\n   39  \n   40  void __FASTCALL__ load_level (unsigned char level) {\t\n   41: \tget_resource(levels[level].resource, level_buffer);\n   42  \tyOsc = levels [level].yOsc * 5;\n   43  }\n\nC:\\git\\revamp\\ss\\dev\\menu.h:\n   58  \t\t\n   59  \t\tblackout_everything ();\n   60: \t\tget_resource (RAM3_MENU_BIN, 16384);\n   61  \n   62  \t\twyz_play_music (1);\t\n   ..\n   79  \t\t\t\t// Final\n   80  \t\t\t\tblackout_everything ();\n   81: \t\t\t\tget_resource (RAM3_FINAL_BIN, 16384);\n   82  \n   83  \t\t\t\tdraw_fast(8, 19, 71, (unsigned char *) (\"ESTA NOCHE PAJA!\"));\n   ..\n   97  unsigned char get_password () {\n   98  \tblackout_everything ();\n   99: \tget_resource (RAM3_MENU_BIN, 16384);\n  100  \tdraw_fast (9, 11, 70, (unsigned char *) (\"ENTER PASSWORD\"));\n  101  \t\n  ...\n  160  \t\tif (denew) {\n  161  \t\t\tblackout_everything ();\n  162: \t\t\tget_resource (RAM3_MENU_BIN, 16384);\n  163  \t\t\n  164  \t\t\t// Play ASTRO GANGA\n\nC:\\git\\revamp\\ss\\dev\\ss.asm:\n  945  \tC_LINE\t136,\"aplib.h::blackout_everything::0::19\"\n  946  \n  947: ; Function get_resource flags 0x00000200 __smallc \n  948: ; void get_resource(unsigned char n, unsigned int destination)\n  949  ; parameter 'unsigned int destination' at sp+2 size(2)\n  950  ; parameter 'unsigned char n' at sp+4 size(1)\n  951: \tC_LINE\t136,\"aplib.h::get_resource::0::19\"\n  952: ._get_resource\n  953  \tld\thl,_resources\n  954  \tpush\thl\n  ...\n  998  \n  999  \n 1000: \tC_LINE\t40,\"ss.c::get_resource::0::20\"\n 1001: \tC_LINE\t0,\"menu.h::get_resource::0::20\"\n 1002: \tC_LINE\t1,\"menu.h::get_resource::0::20\"\n 1003: \tC_LINE\t2,\"menu.h::get_resource::0::20\"\n 1004: \tC_LINE\t13,\"menu.h::get_resource::0::20\"\n 1005: \tC_LINE\t14,\"menu.h::get_resource::0::20\"\n 1006: \tC_LINE\t15,\"menu.h::get_resource::0::20\"\n 1007: \tC_LINE\t16,\"menu.h::get_resource::0::20\"\n 1008: \tC_LINE\t18,\"menu.h::get_resource::0::20\"\n 1009: \tC_LINE\t19,\"menu.h::get_resource::0::20\"\n 1010: \tC_LINE\t20,\"menu.h::get_resource::0::20\"\n 1011: \tC_LINE\t22,\"menu.h::get_resource::0::20\"\n 1012  \tSECTION\tdata_compiler\n 1013  ._name_levels\n ....\n 1017  \tdefw\t_name_level4 + 0\n 1018  \tSECTION\tcode_compiler\n 1019: \tC_LINE\t23,\"menu.h::get_resource::0::20\"\n 1020  \tSECTION\tdata_compiler\n 1021  ._passes\n ....\n 1024  \tdefw\t_pass3 + 0\n 1025  \tSECTION\tcode_compiler\n 1026: \tC_LINE\t25,\"menu.h::get_resource::0::20\"\n 1027  \t._name_level1\n 1028  \t\tdefm \"  JUNKYARD  \"\n ....\n 1046  \t\tdefm \"ENCUERA\"\n 1047  \t\tdefb 0\n 1048: \tC_LINE\t51,\"menu.h::get_resource::0::20\"\n 1049  \tSECTION\tdata_compiler\n 1050  ._cad_level\n 1051  \tdefw\ti_1+0\n 1052  \tSECTION\tcode_compiler\n 1053: \tC_LINE\t53,\"menu.h::get_resource::0::20\"\n 1054  \n 1055  ; Function start_game_from flags 0x00000200 __smallc \n ....\n 1065  \tld\thl,16384\t;const\n 1066  \tpush\thl\n 1067: \tcall\t_get_resource\n 1068  \tpop\tbc\n 1069  \tpop\tbc\n ....\n 1199  \tld\thl,16384\t;const\n 1200  \tpush\thl\n 1201: \tcall\t_get_resource\n 1202  \tpop\tbc\n 1203  \tpop\tbc\n ....\n 1242  \tld\thl,16384\t;const\n 1243  \tpush\thl\n 1244: \tcall\t_get_resource\n 1245  \tpop\tbc\n 1246  \tpop\tbc\n ....\n 1518  \tld\thl,16384\t;const\n 1519  \tpush\thl\n 1520: \tcall\t_get_resource\n 1521  \tpop\tbc\n 1522  \tpop\tbc\n ....\n 5589  \tld\thl,_level_buffer\n 5590  \tpush\thl\n 5591: \tcall\t_get_resource\n 5592  \tpop\tbc\n 5593  \tpop\tbc\n ....\n 7258  \tld\thl,16384\t;const\n 7259  \tpush\thl\n 7260: \tcall\t_get_resource\n 7261  \tpop\tbc\n 7262  \tpop\tbc\n ....\n 7911  \tld\thl,16384\t;const\n 7912  \tpush\thl\n 7913: \tcall\t_get_resource\n 7914  \tpop\tbc\n 7915  \tpop\tbc\n ....\n 7925  \tld\thl,16384\t;const\n 7926  \tpush\thl\n 7927: \tcall\t_get_resource\n 7928  \tpop\tbc\n 7929  \tpop\tbc\n ....\n 7939  \tld\thl,16384\t;const\n 7940  \tpush\thl\n 7941: \tcall\t_get_resource\n 7942  \tpop\tbc\n 7943  \tpop\tbc\n ....\n 8385  \tGLOBAL\t_wyz_stop_sound\n 8386  \tGLOBAL\t_blackout_everything\n 8387: \tGLOBAL\t_get_resource\n 8388  \tGLOBAL\t_espera_activa\n 8389  \tGLOBAL\t_game\n\nC:\\git\\revamp\\ss\\dev\\ss.c:\n  160  \n  161  \tblackout_everything ();\n  162: \tget_resource (RAM3_MOJON_TWINS_BIN, 16384);\n  163  \n  164  \twyz_play_sound (8);\n  ...\n  166  \t\n  167  \tblackout_everything ();\n  168: \tget_resource (RAM3_UBHRES_BIN, 16384);\n  169  \n  170  \twyz_play_sound (7);\n  ...\n  172  \n  173  \tblackout_everything ();\n  174: \tget_resource (RAM3_SHEET_BIN, 16384);\n  175  \t\n  176  \twyz_play_sound (5);\n\nC:\\git\\revamp\\ss\\dev\\ss.map:\n   41  _ram_address                    = $5B01 ; const, local, , ss_c, code_compiler, ss.c::main::0::83:65\n   42  _ram_destination                = $5B03 ; const, local, , ss_c, code_compiler, ss.c::main::0::83:65\n   43: before_decomp                   = $7CA8 ; addr, local, , ss_c, code_compiler, zx0.h::get_resource::0::18:89\n   44  i_1                             = $B94D ; addr, local, , ss_c, rodata_compiler, ss.c::main::0::83:65\n   45  i_25                            = $7D0C ; addr, local, , ss_c, code_compiler, menu.h::start_game_from::0::19:53\n   ..\n  537  _wyz_stop_sound                 = $7C0A ; addr, public, , ss_c, code_compiler, wyzplayer.h::wyz_stop_sound::0::16:91\n  538  _blackout_everything            = $7C5E ; addr, public, , ss_c, code_compiler, zx0.h::blackout_everything::0::17:76\n  539: _get_resource                   = $7C6C ; addr, public, , ss_c, code_compiler, zx0.h::get_resource::0::18:89\n  540  _espera_activa                  = $A2EB ; addr, public, , ss_c, code_compiler, engine.h::espera_activa::0::54:5\n  541  _game                           = $A9AA ; addr, public, , ss_c, code_compiler, engine.h::game::0::73:1310\n  542: _name_level1                    = $7CB9 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  543: _name_level2                    = $7CC6 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  544: _name_level3                    = $7CD3 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  545: _name_level4                    = $7CE0 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  546: _pass1                          = $7CED ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  547: _pass2                          = $7CF6 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  548: _pass3                          = $7D01 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  549: _name_levels                    = $B05F ; addr, public, , ss_c, data_compiler, menu.h::get_resource::0::19:22\n  550: _passes                         = $B067 ; addr, public, , ss_c, data_compiler, menu.h::get_resource::0::19:23\n  551: _cad_level                      = $B06D ; addr, public, , ss_c, data_compiler, menu.h::get_resource::0::19:51\n  552  _start_game_from                = $7D09 ; addr, public, , ss_c, code_compiler, menu.h::start_game_from::0::19:53\n  553  _password                       = $BD2A ; addr, public, , ss_c, bss_compiler, ss.c::main::0::83:65\n\n52 matches across 6 files\n",
 			"settings":
 			{
-				"buffer_size": 4126,
+				"buffer_size": 6973,
 				"line_ending": "Windows",
 				"name": "Find Results",
 				"scratch": true
 			}
 		},
 		{
-			"file": "dev/ss.asm",
+			"file": "dev/ss.c",
 			"settings":
 			{
-				"buffer_size": 143951,
-				"encoding": "Western (Windows 1252)",
+				"buffer_size": 3385,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "dev/ss.c",
+			"file": "dev/menu.h",
 			"settings":
 			{
-				"buffer_size": 3407,
+				"buffer_size": 4352,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/levelstruct.h",
+			"settings":
+			{
+				"buffer_size": 5403,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/comp.bat",
+			"settings":
+			{
+				"buffer_size": 2671,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/leveldata.h",
+			"settings":
+			{
+				"buffer_size": 425,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dev/engine.h",
+			"settings":
+			{
+				"buffer_size": 27699,
+				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
 		}
@@ -571,19 +622,27 @@
 	},
 	"expanded_folders":
 	[
-		"/C/git/revamp/ss"
+		"/C/git/revamp/ss",
+		"/C/git/revamp/ss/bin",
+		"/C/git/revamp/ss/dev"
 	],
 	"file_history":
 	[
+		"/C/git/revamp/ss/dev/engine.h",
+		"/C/git/revamp/ss/dev/librarian.h",
+		"/C/git/revamp/ss/dev/comp.bat",
+		"/C/git/revamp/ss/dev/ss.map",
+		"/C/git/revamp/ss/dev/zx0.h",
+		"/C/git/revamp/ss/dev/ss.c",
+		"/C/git/revamp/ss/dev/ss.asm",
 		"/C/git/revamp/ss/dev/levelstruct.h",
 		"/C/git/revamp/ss/dev/globals.h",
-		"/C/git/revamp/ss/dev/leveldata.h",
+		"/C/git/revamp/ss/dev/aplib.h",
+		"/C/git/revamp/ss/dev/crt.asm",
 		"/C/git/revamp/ss/dev/wyzplayer.h",
-		"/C/git/revamp/ss/dev/ss.c",
-		"/C/git/revamp/ss/dev/engine.h",
+		"/C/git/revamp/ss/dev/leveldata.h",
 		"/C/git/revamp/ss/dev/mojon_twins--severin-sewers.tap",
 		"/C/git/revamp/ss/dev/menu.h",
-		"/C/git/revamp/ss/dev/ss.map",
 		"/D/git/revamp/ss/dev/aplib.h",
 		"/D/git/revamp/ss/dev/globals.h",
 		"/D/git/revamp/ss/dev/ss.c",
@@ -696,13 +755,7 @@
 		"/D/Proyectos/remote/descon01/consigna/system/core/Common.php",
 		"/D/Proyectos/remote/descon01/consigna/system/libraries/Log.php",
 		"/D/Proyectos/remote/descon01/consigna/.htaccess",
-		"/D/Proyectos/remote/descon01/consigna/public/index.php",
-		"/D/Proyectos/remote/descon01/consigna/app/views/form-login.php",
-		"/D/Proyectos/remote/descon01/consigna/app/config/routes.php",
-		"/D/Proyectos/2022/20221125b - Reserva de Recursos 1.29.0.0/instrucciones.txt",
-		"/D/Proyectos/2022/20221209a - Consigna 2.15.0.0 - Separación de autenticación y autorización/instrucciones.txt",
-		"/C/Users/jcastano/Desktop/archivo_dest_test",
-		"/C/Users/jcastano/Desktop/destinatario.txt"
+		"/D/Proyectos/remote/descon01/consigna/public/index.php"
 	],
 	"find":
 	{
@@ -848,6 +901,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"resource",
+			"\n\t",
+			"get_resource",
+			"di",
+			"apack",
+			"wyz_play",
+			"espera_a",
+			"espera_",
+			"espera_activa",
+			"espera_active",
+			"collide",
+			"_collide",
+			"call _collide",
+			"collide",
+			"23305",
 			"halt",
 			"isrc",
 			"ISR",
@@ -960,22 +1028,7 @@
 			"0131",
 			"extensi",
 			"exe",
-			"move_uploaded_file",
-			"'nombre'",
-			"data",
-			"logdetalles",
-			"INSERT INTO",
-			"UPLOAD",
-			"404",
-			"code",
-			"404",
-			"resultado",
-			"_procesado_envio_fichero",
-			"PROCESADO_ERR_EXTENSION",
-			"log_message",
-			"_procesado",
-			"_procesado_envio_fichero",
-			"UPLOAD_ERR_INI_SIZE"
+			"move_uploaded_file"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -983,6 +1036,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"zx0",
 			"cx",
 			"4",
 			"8",
@@ -1109,8 +1163,7 @@
 			" ",
 			"\\n",
 			"",
-			" ",
-			" \\n"
+			" "
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1121,53 +1174,52 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "dev/engine.h",
+					"file": "dev/binassets.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 26465,
+						"buffer_size": 1109,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								24126,
-								24126
+								1109,
+								1109
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 20635.0,
+						"translation.y": 382.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "dev/wyzplayer.h",
+					"file": "dev/zx0.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1605,
+						"buffer_size": 3158,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								863,
-								863
+								3147,
+								3147
 							]
 						],
 						"settings":
@@ -1176,55 +1228,394 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 239.0,
+						"translation.y": 929.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6973,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										134,
+										146
+									],
+									[
+										319,
+										331
+									],
+									[
+										502,
+										514
+									],
+									[
+										649,
+										661
+									],
+									[
+										853,
+										865
+									],
+									[
+										1040,
+										1052
+									],
+									[
+										1230,
+										1242
+									],
+									[
+										1284,
+										1296
+									],
+									[
+										1484,
+										1496
+									],
+									[
+										1514,
+										1526
+									],
+									[
+										1615,
+										1627
+									],
+									[
+										1662,
+										1674
+									],
+									[
+										1709,
+										1721
+									],
+									[
+										1756,
+										1768
+									],
+									[
+										1804,
+										1816
+									],
+									[
+										1852,
+										1864
+									],
+									[
+										1900,
+										1912
+									],
+									[
+										1948,
+										1960
+									],
+									[
+										1996,
+										2008
+									],
+									[
+										2044,
+										2056
+									],
+									[
+										2092,
+										2104
+									],
+									[
+										2140,
+										2152
+									],
+									[
+										2305,
+										2317
+									],
+									[
+										2459,
+										2471
+									],
+									[
+										2604,
+										2616
+									],
+									[
+										2750,
+										2762
+									],
+									[
+										2903,
+										2915
+									],
+									[
+										3009,
+										3021
+									],
+									[
+										3115,
+										3127
+									],
+									[
+										3221,
+										3233
+									],
+									[
+										3328,
+										3340
+									],
+									[
+										3434,
+										3446
+									],
+									[
+										3540,
+										3552
+									],
+									[
+										3646,
+										3658
+									],
+									[
+										3752,
+										3764
+									],
+									[
+										3884,
+										3896
+									],
+									[
+										4024,
+										4036
+									],
+									[
+										4159,
+										4171
+									],
+									[
+										4288,
+										4300
+									],
+									[
+										4699,
+										4711
+									],
+									[
+										5210,
+										5222
+									],
+									[
+										5295,
+										5307
+									],
+									[
+										5644,
+										5656
+									],
+									[
+										5761,
+										5773
+									],
+									[
+										5878,
+										5890
+									],
+									[
+										5995,
+										6007
+									],
+									[
+										6112,
+										6124
+									],
+									[
+										6229,
+										6241
+									],
+									[
+										6346,
+										6358
+									],
+									[
+										6463,
+										6475
+									],
+									[
+										6580,
+										6592
+									],
+									[
+										6697,
+										6709
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								4034,
+								4034
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1976.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "dev/ss.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3385,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3385,
+								3385
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C Improved/C Improved.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1991.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "dev/menu.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4352,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3183,
+								3183
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1867.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "dev/ss.map",
+					"buffer": 5,
+					"file": "dev/levelstruct.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 81417,
+						"buffer_size": 5403,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								22785,
-								22798
+								678,
+								678
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4143.0,
+						"translation.y": 481.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "dev/globals.h",
+					"buffer": 6,
+					"file": "dev/comp.bat",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2857,
+						"buffer_size": 2671,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								342,
-								342
+								2652,
+								2652
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 596.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "dev/leveldata.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 425,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								60,
+								60
 							]
 						],
 						"settings":
@@ -1236,223 +1627,36 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 8,
+					"file": "dev/engine.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4126,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										124,
-										136
-									],
-									[
-										262,
-										274
-									],
-									[
-										393,
-										405
-									],
-									[
-										520,
-										532
-									],
-									[
-										548,
-										560
-									],
-									[
-										975,
-										987
-									],
-									[
-										1032,
-										1044
-									],
-									[
-										1063,
-										1075
-									],
-									[
-										1079,
-										1091
-									],
-									[
-										1108,
-										1120
-									],
-									[
-										1166,
-										1178
-									],
-									[
-										1197,
-										1209
-									],
-									[
-										1213,
-										1225
-									],
-									[
-										1634,
-										1638
-									],
-									[
-										1769,
-										1773
-									],
-									[
-										1919,
-										1923
-									],
-									[
-										2106,
-										2110
-									],
-									[
-										2212,
-										2216
-									],
-									[
-										2350,
-										2354
-									],
-									[
-										2674,
-										2678
-									],
-									[
-										3101,
-										3105
-									],
-									[
-										3318,
-										3322
-									],
-									[
-										3442,
-										3446
-									],
-									[
-										3519,
-										3523
-									],
-									[
-										3625,
-										3629
-									],
-									[
-										3763,
-										3767
-									],
-									[
-										3874,
-										3878
-									],
-									[
-										3962,
-										3966
-									],
-									[
-										4062,
-										4066
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								1614,
-								1614
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 3,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 173.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "dev/ss.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 143951,
+						"buffer_size": 27699,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								129407,
-								129407
+								18884,
+								18886
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Kick Assembler (C64)/Syntaxes/KickAssembler (C64).tmLanguage",
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 104528.0,
+						"translation.y": 16856.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "dev/ss.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3407,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2789,
-								2789
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1872.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1555,7 +1759,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 167.0,
+	"side_bar_width": 172.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
