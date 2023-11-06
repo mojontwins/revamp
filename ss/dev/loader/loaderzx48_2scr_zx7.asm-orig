@@ -3,10 +3,12 @@
 ; by na_th_an - Thanks to Antonio Villena for his tutorials and utilities.
 
 	org $5ccb
-	ld  sp, $ffff
+	ld  sp, $5dbf
 	di
 	db	$de, $c0, $37, $0e, $8f, $39, $96 ;OVER USR 7 ($5ccb)
 	
+	call blackout
+
 preload:
 ; load screen
 	scf
@@ -29,6 +31,8 @@ load:
 	ld	de, %%%loadingcomplength%%%
 	call $0556
 	di
+
+	call blackout
 
 ; Decompress
 	ld  hl, 65368 - %%%loadingcomplength%%%
@@ -69,10 +73,15 @@ ram1:
 
 	scf
 	ld	a, $ff
-	ld	ix, $C000
+	ld	ix, 65368 - %%%ram1_length%%%
 	ld	de, %%%ram1_length%%%
 	call $0556
 	di
+
+	; Decompress
+	ld  hl, 65368 - %%%ram1_length%%%
+	ld  de, $C000
+	call depack	
 
 	ld	a, $10 		; ROM 1, RAM 0
 	ld	bc, $7ffd
@@ -81,6 +90,15 @@ ram1:
 ; run game!
 launch_exe:
 	jp 24000
+
+blackout:
+	; screen 0
+	ld  bc, 767
+	ld	hl, $5800
+	ld	de, $5801
+	ld	(hl), l
+	ldir
+	ret
 	
 ; -----------------------------------------------------------------------------
 ; ZX7 decoder by Einar Saukas, Antonio Villena & Metalbrain
@@ -150,3 +168,4 @@ dzx7s_next_bit:
 		inc     hl
 		rla
 		ret
+done:

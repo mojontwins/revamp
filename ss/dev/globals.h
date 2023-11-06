@@ -12,6 +12,7 @@ unsigned char ram_page 			@ 23301;
 unsigned char attrs_byte 		@ 23304;
 
 unsigned char isrc 				@ 23305;
+unsigned char is128k			@ 23306;
 
 unsigned int (*joyfunc)(struct sp_UDK *);				// Controls.
 void *my_malloc(uint bytes) {return sp_BlockAlloc(0);}	// malloc routines

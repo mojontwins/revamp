@@ -3,21 +3,23 @@
 ; by na_th_an - Thanks to Antonio Villena for his tutorials and utilities.
 
 	org $5ccb
-	ld  sp, $ffff
+	ld  sp, $5dbf
 	di
 	db	$de, $c0, $37, $0e, $8f, $39, $96 ;OVER USR 7 ($5ccb)
 	
+	call blackout
+
 preload:
 ; load screen
 	scf
 	ld	a, $ff
-	ld	ix, 65368 - 0
-	ld	de, 0
+	ld	ix, 65368 - 575
+	ld	de, 575
 	call $0556
 	di
 
 ; Decompress
-	ld  hl, 65368 - 0
+	ld  hl, 65368 - 575
 	ld  de, 16384
 	call depack	
 
@@ -30,6 +32,8 @@ load:
 	call $0556
 	di
 
+	call blackout
+
 ; Decompress
 	ld  hl, 65368 - 2465
 	ld  de, 16384
@@ -39,13 +43,13 @@ mainbin:
 ; Main binary
 	scf
 	ld	a, $ff
-	ld	ix, 65368 - 36734
-	ld	de, 36734
+	ld	ix, 65368 - 21251
+	ld	de, 21251
 	call $0556
 	di
 
 ; Decompress
-	ld  hl, 65368 - 36734
+	ld  hl, 65368 - 21251
 	ld  de, 24000
 	call depack	
 
@@ -69,10 +73,15 @@ ram1:
 
 	scf
 	ld	a, $ff
-	ld	ix, $C000
+	ld	ix, 65368 - 2924
 	ld	de, 2924
 	call $0556
 	di
+
+	; Decompress
+	ld  hl, 65368 - 2924
+	ld  de, $C000
+	call depack	
 
 	ld	a, $10 		; ROM 1, RAM 0
 	ld	bc, $7ffd
@@ -81,6 +90,15 @@ ram1:
 ; run game!
 launch_exe:
 	jp 24000
+
+blackout:
+	; screen 0
+	ld  bc, 767
+	ld	hl, $5800
+	ld	de, $5801
+	ld	(hl), l
+	ldir
+	ret
 	
 ; -----------------------------------------------------------------------------
 ; ZX7 decoder by Einar Saukas, Antonio Villena & Metalbrain
@@ -150,3 +168,4 @@ dzx7s_next_bit:
 		inc     hl
 		rla
 		ret
+done:

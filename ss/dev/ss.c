@@ -30,7 +30,16 @@ unsigned char AD_FREE [NUMBLOCKS*15];
 
 // Extra RAM imports
 
-#include "binassets.h"
+extern unsigned char c_level_1_bin [0];
+extern unsigned char c_level_2_bin [0];
+extern unsigned char c_level_3_bin [0];
+extern unsigned char c_level_4_bin [0];
+extern unsigned char scr_mojon_twins_bin [0];
+extern unsigned char scr_ubhres_bin [0];
+extern unsigned char scr_sheet_bin [0];
+extern unsigned char scr_menu_bin [0];
+extern unsigned char scr_marcador_bin [0];
+extern unsigned char scr_final_bin [0];
 
 // Modules
 
@@ -149,14 +158,37 @@ void main (void) {
 			djnz fix_sprites_rep1
 	#endasm
 
-	// Intro
-	
-	player_on = 1;
-	wyz_init ();
+	// Spectrum model detection
 
 	#asm
-		ei
+			ld  bc, 0x7ffd
+			xor a
+			out (c), a
+			ld  a, (0x1)
+			ld  h, a
+			ld  a, 0x10
+			out (c), a
+			ld  a, (0x1)
+			cp  h
+			jr  z, no128K
+
+			// 128K model!
+			call _wyz_init
+
+			ld  a, 1 
+			jr  detection_done
+
+		.no128K
+			xor a
+		
+		.detection_done
+			ld  (_is128k), a
+			ld  (_player_on), a
+
+			ei
 	#endasm
+
+	// Intro
 
 	blackout_everything ();
 	unpack (scr_mojon_twins_bin, 16384);
@@ -171,7 +203,7 @@ void main (void) {
 	espera_activa (150);
 
 	blackout_everything ();
-	unpack (scr_ubhres_bin, 16384);
+	unpack (scr_sheet_bin, 16384);
 	
 	wyz_play_sound (5);
 	espera_activa (1000);
@@ -187,3 +219,6 @@ void main (void) {
 	
 	menu ();
 }
+
+// Lots of compressed shit at the end...
+#include "binassets.h"

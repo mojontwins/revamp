@@ -55,8 +55,8 @@ del ..\bin\scrc.bin > nul 2> nul
 ..\utils\zx7.exe ..\bin\scr.bin ..\bin\scrc.bin > nul
 
 ..\utils\png2scr ..\gfx\preloading.png ..\bin\scr-pre.bin > nul
-del ..\bin\scr-prec.bin > nul 2> nul
-..\utils\zx7.exe ..\bin\scr-pre.bin ..\bin\scr-prec.bin > nul
+del ..\bin\scrprec.bin > nul 2> nul
+..\utils\zx7.exe ..\bin\scr-pre.bin ..\bin\scrprec.bin > nul
 
 del ..\bin\ram1c.bin > nul 2> nul
 ..\utils\zx7.exe ..\bin\ram1.bin ..\bin\ram1c.bin > nul
@@ -67,10 +67,10 @@ del ..\bin\ssc.bin > nul 2> nul
 ..\utils\imanol.exe ^
     in=loader\loaderzx48_2scr_zx7.asm-orig ^
     out=loader\loader.asm ^
-    preloadingcomplength=?..\bin\scr-prec.bin ^
+    preloadingcomplength=?..\bin\scrprec.bin ^
     loadingcomplength=?..\bin\scrc.bin ^
     ram1_length=?..\bin\ram1c.bin ^
-    mainbincomplength=?ss.bin > nul
+    mainbincomplength=?..\bin\ssc.bin > nul
 
 ..\utils\pasmo.exe loader\loader.asm ..\bin\loader.bin loader.txt > nul
 

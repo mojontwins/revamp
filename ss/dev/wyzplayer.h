@@ -28,9 +28,10 @@ void ISR(void) {
 			ld  hl, _isrc
 			inc (hl)						
 
-			ld  a, (_player_on)
+			ld  a, (_is128k)
 			or  a 
 			ret z
+
 			ld b, 1
 			call SetRAMBank
 			call WYZPLAYERISR
@@ -51,6 +52,10 @@ void wyz_init (void) {
 
 void __FASTCALL__ wyz_play_sound (unsigned char fx_number) {
 	#asm
+		ld  a, (_is128k)
+		or  a 
+		jr  z, beepersound
+		
 		di
 		ld b, 1
 		call SetRAMBank
@@ -60,11 +65,19 @@ void __FASTCALL__ wyz_play_sound (unsigned char fx_number) {
 		ld b, 0
 		call SetRAMBank
 		ei
+		ret
+
+	.beepersound
+		//
 	#endasm
 }
 
 void __FASTCALL__ wyz_play_music (unsigned char song_number) {
 	#asm
+		ld  a, (_is128k)
+		or  a
+		ret z
+		
 		di
 		ld b, 1
 		call SetRAMBank
@@ -80,8 +93,12 @@ void __FASTCALL__ wyz_play_music (unsigned char song_number) {
 
 void wyz_stop_sound (void) {
 	#asm
+		ld  a, (_is128k)
+		or  a
+		ret z
+		
 		di
-		ld b, 1
+		ld  b, 1
 		call SetRAMBank
 		call SILENCIA_PLAYER
 		ld b, 0
