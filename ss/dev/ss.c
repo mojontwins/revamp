@@ -45,7 +45,7 @@ extern unsigned char scr_final_bin [0];
 
 #include "printer.h"
 #include "128k.h"
-#include "wyzplayer.h"
+#include "sound.h"
 #include "zx0.h"
 #include "menu.h"
 #include "supertileset.h"
