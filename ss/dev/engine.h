@@ -21,27 +21,23 @@ void __FASTCALL__ espera_activa (int espera) {
 }
 
 void __FASTCALL__ init_player (unsigned char level) {
-	// Struct LEVEL is 7 bytes wide. 
-	// level * 7 = level * 4 + level * 2 + level
+	// Struct LEVEL is 8 bytes wide. 
 	#asm
 			ld  a, l 				// __FASTCALL__ -> level is in l!
-			ld  b, a  				// B = LEVEL
 			sla a  					
-			ld  c, a 				// C = LEVEL * 2
 			sla a  					// A = LEVEL * 4
-			add b 
-			add a 
+			sla a 					// A = LEVEL * 8 
 
 			ld  b, 0
 			ld  c, a 
 			ld  ix, _levels
 			add ix, bc 
 
-			ld  a, (ix + 4) 		// .init_x
+			ld  a, (ix + 5) 		// .init_x
 			ld  (_p_x), a 
-			ld  a, (ix + 5) 		// .init_y
+			ld  a, (ix + 6) 		// .init_y
 			ld  (_p_y), a 
-			ld  a, (ix + 6) 		// .init_facing 
+			ld  a, (ix + 7) 		// .init_facing 
 			ld  (_p_facing), a 
 
 			xor a 
@@ -316,8 +312,10 @@ void move (void) {
 
 			jr  z, p_evil_done
 
-			ld  hl, 1 
-			call _wyz_play_sound
+			// Play SFX_HIT
+			ld  hl, SFX_HIT 
+			call _play_sfx
+
 			ld  hl, _p_life 
 			dec (hl)
 			call _draw_life		
@@ -392,6 +390,11 @@ void move (void) {
 	#asm
 			// Recalculate bb			
 			call _player_bb 
+
+			// Copy the "possee" status
+			// To detect landing
+			ld  a, (_possee)
+			ld  (_rda), a
 
 			xor a 
 			ld  (_possee), a
@@ -483,6 +486,14 @@ void move (void) {
 
 			inc a 
 			ld  (_possee), a 
+
+			// Detect landing
+			ld  a, (_rda)
+			or  a 
+			jr  nz, mp_v_chc_done
+
+			ld  hl, SFX_LAND
+			call _play_sfx
 
 			jr  mp_v_chc_done
 
@@ -812,6 +823,10 @@ void move (void) {
 			ld  (_p_jmy), a 
 			ld  a, 1 
 			ld  (_p_sal), a
+
+			ld  hl, SFX_JUMP
+			call _play_sfx
+
 		.mp_jm_up_done
 
 			ld  a, (_gpit) 
@@ -824,6 +839,9 @@ void move (void) {
 			ld  (_p_jmy), a 
 			ld  a, 1 
 			ld  (_p_sal), a
+
+			ld  hl, SFX_JUMP
+			call _play_sfx
 
 		.mp_jm_done
 	#endasm
@@ -1049,8 +1067,9 @@ void move_enemies () {
 			ld  (_p_life), a 
 
 			call _draw_life
-			ld	hl, 1
-			call _wyz_play_sound
+			
+			ld	hl, SFX_HIT
+			call _play_sfx
 
 		.nocollide_en
 
@@ -1173,7 +1192,7 @@ void muerte (unsigned char a, unsigned char b) {
 	rda = a; rdb = b;
 	rdc = 0;
 
-	wyz_play_sound (3);
+	play_sfx (0);
 	
 	#asm 
 			ld  a, 100
@@ -1192,8 +1211,9 @@ void muerte (unsigned char a, unsigned char b) {
 			xor 1 
 			jr  z, muerte_nochangecol
 			
-			ld  hl, 1
-			call _wyz_play_sound
+			ld  hl, SFX_LAND
+			call _play_sfx
+
 			ld  a, (_rdb) 
 
 		.muerte_nochangecol
@@ -1321,7 +1341,8 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 	o_pant = 0xff;
 	f_win = 0;
 
-	wyz_play_music (2 + level);
+	// Music 0-3: ingame music
+	arkos_play_music (level);
 	
 	while (1) {	
 
@@ -1459,9 +1480,11 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 
 				ld  hl, _p_score
 				inc (hl)
-				call _draw_score 
-				ld  hl, 3
-				call _wyz_play_sound
+				call _draw_score
+
+				ld  hl, SFX_OBJECT
+				call _play_sfx
+				
 				jr  ml_hotspots_deact
 
 			.ml_hotspots_t2 
@@ -1478,6 +1501,10 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 
 			.ml_setlife
 				ld  (_p_life), a
+
+				ld  hl, SFX_LIFE
+				call _play_sfx
+
 				call _draw_life
 
 			.ml_hotspots_deact
@@ -1700,13 +1727,13 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 		// The last day on earth:
 		
 		if (p_life == 0 || sp_KeyPressed (key_g)) {
-			wyz_stop_sound ();
+			arkos_play_music (6);
 			muerte (2, 16);
 			break;
 		}
 		
 		if (p_score == 15) {
-			wyz_stop_sound ();
+			arkos_play_music (6);
 			f_win = 1;	
 			break;
 		}

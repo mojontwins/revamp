@@ -51,7 +51,7 @@ unsigned char *cad_level = "LEVEL 0X";
 void start_game_from (unsigned char level) {
 	// Game controller	
 	
-	wyz_stop_sound ();
+	arkos_play_music (6);
 	
 	while (1) {
 		// Show level
@@ -59,18 +59,20 @@ void start_game_from (unsigned char level) {
 		blackout_everything ();
 		unpack (scr_menu_bin, 16384);
 
-		wyz_play_music (1);	
+		// Play "Ganga"
+		arkos_play_music (4);
+
 		cad_level [7] = '1' + level;
 		draw_char_by_char (12, 11, cad_level);
 		draw_char_by_char (10, 13, name_levels [level]);
 		
 		if (level > 0) {
-			draw_fast (12, 15, 70, (unsigned char *) ("PASSWORD"));
-			draw_fast (level == 2 ? 11 : 12, 16, 70, passes [level - 1]);
+			_x = 12; _y = 15; _c = 70; str_pt = (unsigned char *) ("PASSWORD"); draw_fast ();
+			_x = level == 2 ? 11 : 12; _y = 16; _c = 70; str_pt = passes [level - 1]; draw_fast ();
 		}
 		
 		espera_activa (250);
-		wyz_stop_sound ();
+		arkos_play_music (6);
 				
 		if (game (level)) {
 			level ++;
@@ -80,9 +82,11 @@ void start_game_from (unsigned char level) {
 				blackout_everything ();
 				unpack (scr_final_bin, 16384);
 
-				draw_fast(8, 19, 71, (unsigned char *) ("ESTA NOCHE PAJA!"));
+				_x = 8; _y = 19; _c = 71; str_pt = (unsigned char *) ("ESTA NOCHE PAJA!"); draw_fast ();
 
-				wyz_play_music (0);
+				// Play "money"
+				arkos_play_music (5);
+
 				espera_activa (32767);
 				break;
 			}
@@ -98,20 +102,22 @@ unsigned char get_password () {
 	blackout_everything ();
 	unpack (scr_menu_bin, 16384);
 
-	draw_fast (9, 11, 70, (unsigned char *) ("ENTER PASSWORD"));
+	_x = 9; _y = 11; _c = 70; str_pt = (unsigned char *) ("ENTER PASSWORD"); draw_fast ();
 	
 	rda = 0;
 	password [rda] = '#';
 	password [rda + 1] = 0;
 	while (1) {
-		draw_fast (16 - (rda >> 1), 13, 71, password);
+		_x = 16 - (rda >> 1); _y = 13; _c = 71; str_pt = password; draw_fast ();
 		
 		//while(!any_key ());
 		rdb = sp_GetKey();
 
 		if (rdb == 12 && rda > 0) {
 			password [rda] = ' ';
-			draw_fast (5, 13, 71, (unsigned char *) ("                       "));
+			
+			_x = 5; _y = 13; _c = 71; str_pt = (unsigned char *) ("                       "); draw_fast ();
+			
 			rda --;
 			password [rda] = '#';
 			password [rda + 1] = 0;
@@ -162,18 +168,18 @@ void menu (void) {
 			blackout_everything ();
 			unpack (scr_menu_bin, 16384);
 		
-			// Play ASTRO GANGA
-			wyz_play_music (0);
+			// Play "Money"
+			arkos_play_music (5);
 			denew = 0;
 		}
 	
 		// Text
-		draw_fast (4, 21, 71, (unsigned char *) ("] MOJON TWINS 2011, 2023"));
+		_x = 4; _y = 21; _c = 71; str_pt = (unsigned char *) ("] MOJON TWINS 2011, 2023"); draw_fast ();
 			
 		// Show menu options
-		draw_fast (11, 12, 70, (unsigned char *) ("1 PLAY    "));
-		draw_fast (11, 13, 70, (unsigned char *) ("2 PASSWORD"));
-		draw_fast (11, 14, 70, (unsigned char *) ("3 CONTROLS"));
+		_x = 11; _y = 12; _c = 70; str_pt = (unsigned char *) ("1 PLAY    "); draw_fast ();
+		_x = 11; _y = 13; str_pt = (unsigned char *) ("2 PASSWORD"); draw_fast ();
+		_x = 11; _y = 14; str_pt = (unsigned char *) ("3 CONTROLS"); draw_fast ();
 		
 		while (1) {
 			if (sp_KeyPressed (key_1)) {
@@ -188,9 +194,9 @@ void menu (void) {
 				while(any_key ());
 
 				while(1) {
-					draw_fast (11, 12, 70, (unsigned char *) ("1 KEYBOARD"));
-					draw_fast (11, 13, 70, (unsigned char *) ("2 SINCLAIR"));
-					draw_fast (11, 14, 70, (unsigned char *) ("3 KEMPSTON"));
+					_x = 11; _y = 12; _c = 70; str_pt = (unsigned char *) ("1 KEYBOARD"); draw_fast ();
+					_y = 13; _c = 70; str_pt = (unsigned char *) ("2 SINCLAIR"); draw_fast ();
+					_y = 14; _c = 70; str_pt = (unsigned char *) ("3 KEMPSTON"); draw_fast ();
 					
 					if (sp_KeyPressed (key_1)) {
 						joyfunc = (void *) sp_JoyKeyboard; break;

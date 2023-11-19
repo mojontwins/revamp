@@ -80,10 +80,9 @@ void draw_char () {
 	_x ++;
 }
 
-void draw_fast (unsigned char x, unsigned char y, unsigned char clr, unsigned char *s) {	
-	_x = x;
-	_y = y;
+void draw_fast (void) {	
 	gen_pt = (unsigned char *) (22528 + _x + (_y << 5));
+	/*
 	while ((*s) != 0) {
 		_t = (*s) - 32;
 		draw_char ();
@@ -91,6 +90,30 @@ void draw_fast (unsigned char x, unsigned char y, unsigned char clr, unsigned ch
 		gen_pt ++;
 		s++;
 	}
+	*/
+	#asm
+		.draw_fast_loop
+			ld  hl, (_str_pt)
+			ld  a, (hl)
+			inc hl
+			ld  (_str_pt), hl
+
+			or  a 
+			ret z 
+
+			sub 32 
+			ld  (__t), a
+			call _draw_char
+
+			ld  hl, (_gen_pt)
+			ld  a, (__c) 
+			ld  (hl), a 
+			inc hl
+			ld  (_gen_pt), hl
+
+			jr draw_fast_loop
+	#endasm
+
 }
 
 void draw_char_by_char (unsigned char x, unsigned char y, unsigned char *s) {

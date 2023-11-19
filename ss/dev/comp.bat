@@ -1,4 +1,7 @@
 @echo off
+
+copy /y ..\mus\ram1.bin ..\bin >nul
+
 if [%1]==[tape] goto tape
 if [%1]==[noassets] goto compile
 
@@ -9,7 +12,7 @@ echo Rebuilding assets
 ..\utils\png2scr ..\gfx\menu.png ..\gfx\ram3-menu.scr > nul
 ..\utils\png2scr ..\gfx\final.png ..\gfx\ram3-final.scr > nul
 ..\utils\png2scr ..\gfx\sheet.png ..\gfx\ram3-sheet.scr > nul
-..\utils\png2scr ..\gfx\sheet.png ..\gfx\ram3-ubhres.scr > nul
+..\utils\png2scr ..\gfx\ubhres.png ..\gfx\ram3-ubhres.scr > nul
 
 cd ..\gfx
 for %%F in (*.scr) do del ..\bin\%%~nF.bin > nul

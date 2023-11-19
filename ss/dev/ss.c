@@ -43,10 +43,10 @@ extern unsigned char scr_final_bin [0];
 
 // Modules
 
-#include "printer.h"
 #include "128k.h"
 #include "sound.h"
 #include "zx0.h"
+#include "printer.h"
 #include "menu.h"
 #include "supertileset.h"
 #include "tileset.h"
@@ -173,7 +173,7 @@ void main (void) {
 			jr  z, no128K
 
 			// 128K model!
-			call _wyz_init
+			call _arkos_init
 
 			ld  a, 1 
 			jr  detection_done
@@ -183,36 +183,36 @@ void main (void) {
 		
 		.detection_done
 			ld  (_is128k), a
-			ld  (_player_on), a
 
 			ei
 	#endasm
 
 	// Intro
+	arkos_play_music (6);
 
 	blackout_everything ();
 	unpack (scr_mojon_twins_bin, 16384);
 
-	wyz_play_sound (8);
+	play_sfx (3);
 	espera_activa (150);
 	
 	blackout_everything ();
 	unpack (scr_ubhres_bin, 16384);
 
-	wyz_play_sound (7);
+	play_sfx (3);
 	espera_activa (150);
 
 	blackout_everything ();
 	unpack (scr_sheet_bin, 16384);
 	
-	wyz_play_sound (5);
+	play_sfx (3);
 	espera_activa (1000);
 	
 	blackout_everything ();
-	draw_fast (10, 10, 70, (unsigned char *) ("DEDICATED TO"));
-	draw_fast (9, 12, 71, (unsigned char *) ("ENRIC  CERVERA"));
-	draw_fast (8, 13, 71, (unsigned char *) ("EMILIO SALGUEIRO"));
-	wyz_play_sound (6);
+	_x = 10; _y = 10; _c = 70; str_pt = (unsigned char *) ("DEDICATED TO"); draw_fast ();
+	_x = 9; _y = 12; _c = 71; str_pt = (unsigned char *) ("ENRIC  CERVERA"); draw_fast ();
+	_x = 8; _y = 13; str_pt = (unsigned char *) ("EMILIO SALGUEIRO"); draw_fast ();
+	play_sfx (4);
 	espera_activa (150);
 	
 	// Menu

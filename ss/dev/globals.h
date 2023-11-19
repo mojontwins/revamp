@@ -46,12 +46,12 @@ unsigned char enoffs;
 #endasm
 
 unsigned char gpit, gpjt;
-unsigned char rda, rdb, rdc, rdm, rdx, rdy, rdt, _x, _y, _c, _t;
+unsigned char rda, rdb, rdc, rdx, rdy, rdt, _x, _y, _c, _t;
 unsigned char cx1, cx2, cy1, cy2, at1, at2;
 unsigned char ptx1, ptx2, pty1, pty2, pty2b;
 unsigned char denew;
 unsigned int gpint;
-unsigned char *gen_pt, *map_pt;
+unsigned char *gen_pt, *map_pt, *str_pt;
 unsigned char n_pant, o_pant;
 unsigned char *map_pointer; 
 
@@ -111,7 +111,5 @@ extern unsigned int level_pointer [0];
 unsigned char yOsc = 4;
 
 unsigned char f_win;
-
-unsigned char player_on, song_playing;
 
 signed char ovl_x, ovl_y;

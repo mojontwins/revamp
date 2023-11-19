@@ -272,19 +272,12 @@ void render_screen () {
 
 }
 
-// 0 nothing
-// 1 kills
-// 4 platform
-// 8 solid
-// 4 <-
-//84 ->
-
 // New encoding
 // & 1 = kills
 // & 4 = platform
 // & 8 = solid
 // & 16 = <-
-// & 84 = ->
+// & 32 = ->
 
 unsigned char tile_behaviour [] = {
 	 0, 8, 8, 8, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 8,

@@ -1,17 +1,48 @@
 // Arkos / beeper dual sound driver
 
-#define MUSIC_TITLE 	0xff
-#define MUSIC_LEVEL1	0
-#define MUSIC_LEVEL2	0
-#define MUSIC_LEVEL3	0
-#define MUSIC_LEVEL4	0
-#define MUSIC_ENDING	0Xff
+// Music order
+// 0-3: levels
+// 4: astro ganga
+// 5: money
+// 6: blank
 
 #define SFX_HIT			0
 #define SFX_LAND 		1
 #define SFX_JUMP 		2
 #define SFX_LIFE 		3
 #define SFX_OBJECT 		4
+
+#define ARKOS_SFX_CHANNEL 			1
+#define ARKOS_RAM 					1
+#define ARKOS_ADDRESS_ATPLAY 		0xC000 	
+#define ARKOS_ADDRESS_ATSTOP 		0xC6E1
+#define ARKOS_ADDRESS_ATSFXSTOPALL	0xC6F7
+#define ARKOS_ADDRESS_ATSFXPLAY 	0xC704
+#define ARKOS_ADDRESS_MT_LOAD_SONG	0xC7FC
+#define ARKOS_ADDRESS_MT_INIT 		0xC81C
+
+// isr
+#asm
+	defw 0	// 2 bytes libres
+#endasm
+
+void ISR(void) {
+	#asm
+		ld  hl, _isrc
+		inc (hl)						
+
+		ld  a, (_is128k)
+		or  a 
+		ret z
+
+		ld  b, ARKOS_RAM
+		call SetRAMBank
+		call ARKOS_ADDRESS_ATPLAY
+
+		ld b, 0
+		call SetRAMBank			
+	#endasm
+}
 
 #asm
 
@@ -39,7 +70,6 @@
 		xor a
 		ld (sfxRoutineToneBorder  +1),a
 		ld (sfxRoutineNoiseBorder +1),a
-		ld (sfxRoutineSampleBorder+1),a
 
 
 	.readData
@@ -60,6 +90,10 @@
 		pop ix
 		ei
 		ret
+
+	.nextData
+		add ix, bc 
+		jr  readData
 
 
 	;generate tone with many parameters
@@ -185,7 +219,7 @@
 		defb 1 ;pause
 		defw 1,1000,0,0,0
 		defb 1 ;tone
-		defw 1,1000,1500,0,64
+ 		defw 1,1000,1500,0,64
 		defb 0
 	.SoundEffect4Data
 		defb 1 ;tone
@@ -196,15 +230,27 @@
 
 #endasm
 
-void __FASTCALL__ arkos_play_music (unsigned char song_number) {
+void arkos_init (void) {
 	#asm
-		di
 		ld b, ARKOS_RAM
 		call SetRAMBank
 		
-		; Reactivate sound generation
-		ld a, 1
-		ld (_ay_player_on), a
+		call ARKOS_ADDRESS_MT_INIT				
+		
+		ld b, 0
+		jp SetRAMBank
+	#endasm
+}
+
+void __FASTCALL__ arkos_play_music (unsigned char song_number) {
+	#asm
+		ld  a, (_is128k)
+		or  a
+		jr z, apm_no128
+
+		di
+		ld b, ARKOS_RAM
+		call SetRAMBank
 		
 		ld  a, l
 		call ARKOS_ADDRESS_MT_LOAD_SONG		
@@ -212,26 +258,7 @@ void __FASTCALL__ arkos_play_music (unsigned char song_number) {
 		ld b, 0
 		call SetRAMBank
 		ei
-	#endasm
-}
-
-void arkos_stop_sound (void)
-{
-	#asm
-		di
-		ld b, ARKOS_RAM
-		call SetRAMBank
-		
-		call ARKOS_ADDRESS_ATSFXSTOPALL
-		call ARKOS_ADDRESS_ATSTOP
-		
-		; Turn off sound generation
-		xor a
-		ld (_ay_player_on), a
-		
-		ld b, 0
-		call SetRAMBank
-		ei
+	.apm_no128
 	#endasm
 }
 
@@ -247,6 +274,7 @@ void __FASTCALL__ play_sfx (unsigned char n) {
 			call SetRAMBank
 			
 			; __FASTCALL__ -> fx_number is in l!
+			inc l ; Stupid arkos
 			ld a, ARKOS_SFX_CHANNEL
 			ld h, 15
 			ld e, 50
@@ -257,7 +285,7 @@ void __FASTCALL__ play_sfx (unsigned char n) {
 			ld b,0
 			call SetRAMBank
 			ei
-			ret
+			jr play_sfx_done
 
 		._skip_ay
 
@@ -267,5 +295,6 @@ void __FASTCALL__ play_sfx (unsigned char n) {
 			call sound_play
 			pop ix
 			pop iy
+		.play_sfx_done
 	#endasm
 }

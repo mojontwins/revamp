@@ -85,9 +85,11 @@ void blackout_everything (void) {
 void unpack (unsigned int source, unsigned int destination) {
 	ram_address = source;
 	ram_destination = destination;
-	#asm	
+	#asm
+		di	
 		ld hl, (_ram_address)
 		ld de, (_ram_destination)
 		call dzx0_standard
+		ei
 	#endasm
 }
