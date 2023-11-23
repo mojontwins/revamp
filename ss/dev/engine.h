@@ -1464,6 +1464,8 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 				ld  a, 0xf0
 				ld  (_hotspot_y), a
 		
+			.ml_hotspots_fotten
+
 				// hotspots struct is 3 bytes white
 				// hotspots [n_pant] is hotspots + n_pant*3
 				// Coincidentially, enoffs = n_pant*3 so in
@@ -1472,6 +1474,7 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 				ld  b, 0 
 				ld  ix, _hotspots 
 				add ix, bc 
+				push ix
 
 				// Struct is xy, tipo, act
 				ld  a, (ix + 1) 	// tipo
@@ -1508,6 +1511,7 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 				call _draw_life
 
 			.ml_hotspots_deact
+				pop ix
 				xor a 
 				ld  (ix + 2), a
 
@@ -1802,6 +1806,16 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 		*/
 
 		#asm
+				// if(n_pant >= 5)
+				ld  a, (_n_pant) 
+				cp  5 
+				jr  nc, flick_up_check
+
+				xor a 
+				ld  (_p_y), a
+				jr flick_up_done
+
+			.flick_up_check
 				
 				// p_vy < 0
 				ld  a, (_p_vy)

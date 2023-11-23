@@ -254,6 +254,7 @@ void render_screen () {
 	
 	// Create hotspots
 	
+	/*
 	hotspot_x = hotspot_y = 240;
 	if (hotspots [n_pant].act == 1 && hotspots [n_pant].tipo != 0) {
 		_x = (hotspots [n_pant].xy >> 4);
@@ -265,6 +266,95 @@ void render_screen () {
 		_x = VIEWPORT_X + _x + _x; _y = VIEWPORT_Y + _y + _y; _t = 59 - hotspots [n_pant].tipo; 
 		draw_coloured_tile ();
 	}
+	*/
+	#asm
+		.create_hotspot
+			ld  a, 240
+			ld  (_hotspot_y), a 
+
+			// Calculate pointer: hotspots + n_pant*3 = hotspots + enoffs !!
+			ld  bc, (_enoffs)
+			ld  b, 0
+			ld  ix, _hotspots
+			add ix, bc 
+
+			// Struct is XY - type - act
+			ld  a, (ix + 2) 		// act
+			dec a  					// act == 1 ?
+			jr  nz, create_hotspot_done
+
+			ld  a, (ix + 1) 		// type
+			or  a  					// type != 0 ?
+			jr  z, create_hotspot_done
+
+			ld  a, (ix + 0) 		// xy 
+			ld  b, a 
+
+			// _x = xy >> 4
+			srl a 
+			srl a 
+			srl a 
+			srl a 
+			ld  (__x), a 
+
+			// hotspot_x = _x << 4 = xy & 0xf0
+			ld  a, b
+			and 0xf0 
+			ld  (_hotspot_x), a 
+
+			// _y = xy & 15
+			ld  a, b 
+			and 0x0f 
+			ld  (__y), a 
+
+			// hotspot_y = _y << 4
+			sla a
+			sla a  
+			sla a 
+			sla a 
+			ld  (_hotspot_y), a
+
+			// orig_tile = map_buffer [_x + (_y << 4) - _y];
+			ld  a, (__x)
+			ld  c, a 
+			ld  a, (__y)
+			ld  b, a 
+			sla a
+			sla a 
+			sla a 
+			sla a 
+			sub b 
+			add c 
+
+			ld  b, 0 
+			ld  c, a 
+			ld  hl, _map_buffer
+			add hl, bc 
+			ld  a, (hl)
+			ld  (_orig_tile), a 
+
+			// _x = VIEWPORT_X + _x + _x; 
+			ld  a, (__x) 
+			add a 
+			add VIEWPORT_X 
+			ld  (__x), a 
+
+			// _y = VIEWPORT_Y + _y + _y; 
+			ld  a, (__y) 
+			add a 
+			add VIEWPORT_Y 
+			ld  (__y), a 
+
+			// _t = 59 - hotspots [n_pant].tipo; 
+			ld  a, 59 
+			ld  b, (ix + 1)
+			sub b 
+			ld  (__t), a
+
+			call _draw_coloured_tile
+
+		.create_hotspot_done
+	#endasm
 	
 	// Invalidate
 

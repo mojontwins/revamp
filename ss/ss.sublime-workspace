@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"crea",
+				"create_hotspot_done\tabc"
+			],
+			[
+				"_hotspot",
+				"_hotspot_y\t(engine.h)"
+			],
+			[
 				"scr",
 				"scr_marcador_bin\t(binassets.h)"
 			],
@@ -18,10 +26,6 @@
 			[
 				"hotspots",
 				"ml_hotspots_t2"
-			],
-			[
-				"_hotspot",
-				"_hotspot_y\tabc"
 			],
 			[
 				"_hotpo",
@@ -146,10 +150,6 @@
 			[
 				"extrae",
 				"extrae_invitacion\t(trabajoficheros.php)"
-			],
-			[
-				"crea",
-				"crea_invitacion\t(trabajoficheros.php)"
 			],
 			[
 				"defecto",
@@ -475,88 +475,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "dev/binassets.h",
-			"settings":
-			{
-				"buffer_size": 1109,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/zx0.h",
-			"settings":
-			{
-				"buffer_size": 3158,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 28 files for \"get_resource\" (regex)\n\nC:\\git\\revamp\\ss\\dev\\engine.h:\n 1314  \t#endasm\n 1315  \tblackout_everything ();\n 1316: \tget_resource(RAM3_MARCADOR_BIN, 16384);\n 1317  \t\n 1318  \tdraw_life ();\n\nC:\\git\\revamp\\ss\\dev\\levelstruct.h:\n   39  \n   40  void __FASTCALL__ load_level (unsigned char level) {\t\n   41: \tget_resource(levels[level].resource, level_buffer);\n   42  \tyOsc = levels [level].yOsc * 5;\n   43  }\n\nC:\\git\\revamp\\ss\\dev\\menu.h:\n   58  \t\t\n   59  \t\tblackout_everything ();\n   60: \t\tget_resource (RAM3_MENU_BIN, 16384);\n   61  \n   62  \t\twyz_play_music (1);\t\n   ..\n   79  \t\t\t\t// Final\n   80  \t\t\t\tblackout_everything ();\n   81: \t\t\t\tget_resource (RAM3_FINAL_BIN, 16384);\n   82  \n   83  \t\t\t\tdraw_fast(8, 19, 71, (unsigned char *) (\"ESTA NOCHE PAJA!\"));\n   ..\n   97  unsigned char get_password () {\n   98  \tblackout_everything ();\n   99: \tget_resource (RAM3_MENU_BIN, 16384);\n  100  \tdraw_fast (9, 11, 70, (unsigned char *) (\"ENTER PASSWORD\"));\n  101  \t\n  ...\n  160  \t\tif (denew) {\n  161  \t\t\tblackout_everything ();\n  162: \t\t\tget_resource (RAM3_MENU_BIN, 16384);\n  163  \t\t\n  164  \t\t\t// Play ASTRO GANGA\n\nC:\\git\\revamp\\ss\\dev\\ss.asm:\n  945  \tC_LINE\t136,\"aplib.h::blackout_everything::0::19\"\n  946  \n  947: ; Function get_resource flags 0x00000200 __smallc \n  948: ; void get_resource(unsigned char n, unsigned int destination)\n  949  ; parameter 'unsigned int destination' at sp+2 size(2)\n  950  ; parameter 'unsigned char n' at sp+4 size(1)\n  951: \tC_LINE\t136,\"aplib.h::get_resource::0::19\"\n  952: ._get_resource\n  953  \tld\thl,_resources\n  954  \tpush\thl\n  ...\n  998  \n  999  \n 1000: \tC_LINE\t40,\"ss.c::get_resource::0::20\"\n 1001: \tC_LINE\t0,\"menu.h::get_resource::0::20\"\n 1002: \tC_LINE\t1,\"menu.h::get_resource::0::20\"\n 1003: \tC_LINE\t2,\"menu.h::get_resource::0::20\"\n 1004: \tC_LINE\t13,\"menu.h::get_resource::0::20\"\n 1005: \tC_LINE\t14,\"menu.h::get_resource::0::20\"\n 1006: \tC_LINE\t15,\"menu.h::get_resource::0::20\"\n 1007: \tC_LINE\t16,\"menu.h::get_resource::0::20\"\n 1008: \tC_LINE\t18,\"menu.h::get_resource::0::20\"\n 1009: \tC_LINE\t19,\"menu.h::get_resource::0::20\"\n 1010: \tC_LINE\t20,\"menu.h::get_resource::0::20\"\n 1011: \tC_LINE\t22,\"menu.h::get_resource::0::20\"\n 1012  \tSECTION\tdata_compiler\n 1013  ._name_levels\n ....\n 1017  \tdefw\t_name_level4 + 0\n 1018  \tSECTION\tcode_compiler\n 1019: \tC_LINE\t23,\"menu.h::get_resource::0::20\"\n 1020  \tSECTION\tdata_compiler\n 1021  ._passes\n ....\n 1024  \tdefw\t_pass3 + 0\n 1025  \tSECTION\tcode_compiler\n 1026: \tC_LINE\t25,\"menu.h::get_resource::0::20\"\n 1027  \t._name_level1\n 1028  \t\tdefm \"  JUNKYARD  \"\n ....\n 1046  \t\tdefm \"ENCUERA\"\n 1047  \t\tdefb 0\n 1048: \tC_LINE\t51,\"menu.h::get_resource::0::20\"\n 1049  \tSECTION\tdata_compiler\n 1050  ._cad_level\n 1051  \tdefw\ti_1+0\n 1052  \tSECTION\tcode_compiler\n 1053: \tC_LINE\t53,\"menu.h::get_resource::0::20\"\n 1054  \n 1055  ; Function start_game_from flags 0x00000200 __smallc \n ....\n 1065  \tld\thl,16384\t;const\n 1066  \tpush\thl\n 1067: \tcall\t_get_resource\n 1068  \tpop\tbc\n 1069  \tpop\tbc\n ....\n 1199  \tld\thl,16384\t;const\n 1200  \tpush\thl\n 1201: \tcall\t_get_resource\n 1202  \tpop\tbc\n 1203  \tpop\tbc\n ....\n 1242  \tld\thl,16384\t;const\n 1243  \tpush\thl\n 1244: \tcall\t_get_resource\n 1245  \tpop\tbc\n 1246  \tpop\tbc\n ....\n 1518  \tld\thl,16384\t;const\n 1519  \tpush\thl\n 1520: \tcall\t_get_resource\n 1521  \tpop\tbc\n 1522  \tpop\tbc\n ....\n 5589  \tld\thl,_level_buffer\n 5590  \tpush\thl\n 5591: \tcall\t_get_resource\n 5592  \tpop\tbc\n 5593  \tpop\tbc\n ....\n 7258  \tld\thl,16384\t;const\n 7259  \tpush\thl\n 7260: \tcall\t_get_resource\n 7261  \tpop\tbc\n 7262  \tpop\tbc\n ....\n 7911  \tld\thl,16384\t;const\n 7912  \tpush\thl\n 7913: \tcall\t_get_resource\n 7914  \tpop\tbc\n 7915  \tpop\tbc\n ....\n 7925  \tld\thl,16384\t;const\n 7926  \tpush\thl\n 7927: \tcall\t_get_resource\n 7928  \tpop\tbc\n 7929  \tpop\tbc\n ....\n 7939  \tld\thl,16384\t;const\n 7940  \tpush\thl\n 7941: \tcall\t_get_resource\n 7942  \tpop\tbc\n 7943  \tpop\tbc\n ....\n 8385  \tGLOBAL\t_wyz_stop_sound\n 8386  \tGLOBAL\t_blackout_everything\n 8387: \tGLOBAL\t_get_resource\n 8388  \tGLOBAL\t_espera_activa\n 8389  \tGLOBAL\t_game\n\nC:\\git\\revamp\\ss\\dev\\ss.c:\n  160  \n  161  \tblackout_everything ();\n  162: \tget_resource (RAM3_MOJON_TWINS_BIN, 16384);\n  163  \n  164  \twyz_play_sound (8);\n  ...\n  166  \t\n  167  \tblackout_everything ();\n  168: \tget_resource (RAM3_UBHRES_BIN, 16384);\n  169  \n  170  \twyz_play_sound (7);\n  ...\n  172  \n  173  \tblackout_everything ();\n  174: \tget_resource (RAM3_SHEET_BIN, 16384);\n  175  \t\n  176  \twyz_play_sound (5);\n\nC:\\git\\revamp\\ss\\dev\\ss.map:\n   41  _ram_address                    = $5B01 ; const, local, , ss_c, code_compiler, ss.c::main::0::83:65\n   42  _ram_destination                = $5B03 ; const, local, , ss_c, code_compiler, ss.c::main::0::83:65\n   43: before_decomp                   = $7CA8 ; addr, local, , ss_c, code_compiler, zx0.h::get_resource::0::18:89\n   44  i_1                             = $B94D ; addr, local, , ss_c, rodata_compiler, ss.c::main::0::83:65\n   45  i_25                            = $7D0C ; addr, local, , ss_c, code_compiler, menu.h::start_game_from::0::19:53\n   ..\n  537  _wyz_stop_sound                 = $7C0A ; addr, public, , ss_c, code_compiler, wyzplayer.h::wyz_stop_sound::0::16:91\n  538  _blackout_everything            = $7C5E ; addr, public, , ss_c, code_compiler, zx0.h::blackout_everything::0::17:76\n  539: _get_resource                   = $7C6C ; addr, public, , ss_c, code_compiler, zx0.h::get_resource::0::18:89\n  540  _espera_activa                  = $A2EB ; addr, public, , ss_c, code_compiler, engine.h::espera_activa::0::54:5\n  541  _game                           = $A9AA ; addr, public, , ss_c, code_compiler, engine.h::game::0::73:1310\n  542: _name_level1                    = $7CB9 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  543: _name_level2                    = $7CC6 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  544: _name_level3                    = $7CD3 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  545: _name_level4                    = $7CE0 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  546: _pass1                          = $7CED ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  547: _pass2                          = $7CF6 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  548: _pass3                          = $7D01 ; addr, public, , ss_c, code_compiler, menu.h::get_resource::0::19:25\n  549: _name_levels                    = $B05F ; addr, public, , ss_c, data_compiler, menu.h::get_resource::0::19:22\n  550: _passes                         = $B067 ; addr, public, , ss_c, data_compiler, menu.h::get_resource::0::19:23\n  551: _cad_level                      = $B06D ; addr, public, , ss_c, data_compiler, menu.h::get_resource::0::19:51\n  552  _start_game_from                = $7D09 ; addr, public, , ss_c, code_compiler, menu.h::start_game_from::0::19:53\n  553  _password                       = $BD2A ; addr, public, , ss_c, bss_compiler, ss.c::main::0::83:65\n\n52 matches across 6 files\n",
-			"settings":
-			{
-				"buffer_size": 6973,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "dev/ss.c",
-			"settings":
-			{
-				"buffer_size": 3385,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/menu.h",
-			"settings":
-			{
-				"buffer_size": 4352,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/levelstruct.h",
-			"settings":
-			{
-				"buffer_size": 5403,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/comp.bat",
-			"settings":
-			{
-				"buffer_size": 2671,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/leveldata.h",
-			"settings":
-			{
-				"buffer_size": 425,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/engine.h",
-			"settings":
-			{
-				"buffer_size": 27699,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -622,12 +540,21 @@
 	},
 	"expanded_folders":
 	[
-		"/C/git/revamp/ss",
-		"/C/git/revamp/ss/bin",
-		"/C/git/revamp/ss/dev"
+		"/D/git/revamp/ss",
+		"/D/git/revamp/ss/dev"
 	],
 	"file_history":
 	[
+		"/D/git/revamp/ss/dev/levelstruct.h",
+		"/D/git/revamp/ss/dev/ss.map",
+		"/D/git/revamp/ss/dev/ss.asm",
+		"/D/git/revamp/ss/dev/engine.h",
+		"/D/git/revamp/ss/dev/binassets.h",
+		"/D/git/revamp/ss/dev/zx0.h",
+		"/D/git/revamp/ss/dev/ss.c",
+		"/D/git/revamp/ss/dev/menu.h",
+		"/D/git/revamp/ss/dev/comp.bat",
+		"/D/git/revamp/ss/dev/leveldata.h",
 		"/C/git/revamp/ss/dev/engine.h",
 		"/C/git/revamp/ss/dev/librarian.h",
 		"/C/git/revamp/ss/dev/comp.bat",
@@ -645,18 +572,11 @@
 		"/C/git/revamp/ss/dev/menu.h",
 		"/D/git/revamp/ss/dev/aplib.h",
 		"/D/git/revamp/ss/dev/globals.h",
-		"/D/git/revamp/ss/dev/ss.c",
-		"/D/git/revamp/ss/dev/engine.h",
-		"/D/git/revamp/ss/dev/comp.bat",
-		"/D/git/revamp/ss/dev/levelstruct.h",
-		"/D/git/revamp/ss/dev/leveldata.h",
 		"/D/git/revamp/ss/dev/printer.h",
-		"/D/git/revamp/ss/dev/ss.map",
 		"/D/git/revamp/ss/dev/librarian.h",
 		"/D/git/revamp/ss/bin/list.txt",
 		"/D/git/revamp/ss/dev/loader/loaderzx.asm-orig",
 		"/D/git/revamp/ss/bin/ram3.bin",
-		"/D/git/revamp/ss/dev/menu.h",
 		"/D/Proyectos/2016/20160719a--Api REST LDAP WMCCOR/manual.txt",
 		"/D/git/revamp/ss/dev/128k.h",
 		"/D/git/revamp/ss/dev/loader.txt",
@@ -752,10 +672,7 @@
 		"/D/Proyectos/remote/descon01/consigna/system/core/Lang.php",
 		"/D/Proyectos/remote/descon01/consigna/system/core/Input.php",
 		"/D/Proyectos/remote/descon01/consigna/app/libraries/MY_Log.php",
-		"/D/Proyectos/remote/descon01/consigna/system/core/Common.php",
-		"/D/Proyectos/remote/descon01/consigna/system/libraries/Log.php",
-		"/D/Proyectos/remote/descon01/consigna/.htaccess",
-		"/D/Proyectos/remote/descon01/consigna/public/index.php"
+		"/D/Proyectos/remote/descon01/consigna/system/core/Common.php"
 	],
 	"find":
 	{
@@ -901,6 +818,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fotten",
+			"hotspots",
 			"resource",
 			"\n\t",
 			"get_resource",
@@ -1026,9 +945,7 @@
 			"error",
 			"errors",
 			"0131",
-			"extensi",
-			"exe",
-			"move_uploaded_file"
+			"extensi"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1174,497 +1091,19 @@
 	"groups":
 	[
 		{
-			"selected": 6,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "dev/binassets.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1109,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1109,
-								1109
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 382.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "dev/zx0.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3158,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3147,
-								3147
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 929.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6973,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										134,
-										146
-									],
-									[
-										319,
-										331
-									],
-									[
-										502,
-										514
-									],
-									[
-										649,
-										661
-									],
-									[
-										853,
-										865
-									],
-									[
-										1040,
-										1052
-									],
-									[
-										1230,
-										1242
-									],
-									[
-										1284,
-										1296
-									],
-									[
-										1484,
-										1496
-									],
-									[
-										1514,
-										1526
-									],
-									[
-										1615,
-										1627
-									],
-									[
-										1662,
-										1674
-									],
-									[
-										1709,
-										1721
-									],
-									[
-										1756,
-										1768
-									],
-									[
-										1804,
-										1816
-									],
-									[
-										1852,
-										1864
-									],
-									[
-										1900,
-										1912
-									],
-									[
-										1948,
-										1960
-									],
-									[
-										1996,
-										2008
-									],
-									[
-										2044,
-										2056
-									],
-									[
-										2092,
-										2104
-									],
-									[
-										2140,
-										2152
-									],
-									[
-										2305,
-										2317
-									],
-									[
-										2459,
-										2471
-									],
-									[
-										2604,
-										2616
-									],
-									[
-										2750,
-										2762
-									],
-									[
-										2903,
-										2915
-									],
-									[
-										3009,
-										3021
-									],
-									[
-										3115,
-										3127
-									],
-									[
-										3221,
-										3233
-									],
-									[
-										3328,
-										3340
-									],
-									[
-										3434,
-										3446
-									],
-									[
-										3540,
-										3552
-									],
-									[
-										3646,
-										3658
-									],
-									[
-										3752,
-										3764
-									],
-									[
-										3884,
-										3896
-									],
-									[
-										4024,
-										4036
-									],
-									[
-										4159,
-										4171
-									],
-									[
-										4288,
-										4300
-									],
-									[
-										4699,
-										4711
-									],
-									[
-										5210,
-										5222
-									],
-									[
-										5295,
-										5307
-									],
-									[
-										5644,
-										5656
-									],
-									[
-										5761,
-										5773
-									],
-									[
-										5878,
-										5890
-									],
-									[
-										5995,
-										6007
-									],
-									[
-										6112,
-										6124
-									],
-									[
-										6229,
-										6241
-									],
-									[
-										6346,
-										6358
-									],
-									[
-										6463,
-										6475
-									],
-									[
-										6580,
-										6592
-									],
-									[
-										6697,
-										6709
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								4034,
-								4034
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1976.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "dev/ss.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3385,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3385,
-								3385
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1991.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "dev/menu.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4352,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3183,
-								3183
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1867.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "dev/levelstruct.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5403,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								678,
-								678
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 481.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "dev/comp.bat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2671,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2652,
-								2652
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 596.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "dev/leveldata.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 425,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								60,
-								60
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "dev/engine.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 27699,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								18884,
-								18886
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 16856.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -1679,11 +1118,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1713,7 +1159,7 @@
 	"project": "ss.sublime-project",
 	"replace":
 	{
-		"height": 94.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1751,7 +1197,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
