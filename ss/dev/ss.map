@@ -1,9 +1,9 @@
-DEFINED_CRT_ORG_CODE            = $0001 ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000DB44BC93/zcc_opt.def:3
-CRT_ORG_CODE                    = $5DC0 ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000DB44BC93/zcc_opt.def:4
-DEFINED_STACKPTR                = $0001 ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000DB44BC93/zcc_opt.def:11
-STACKPTR                        = $5DBF ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000DB44BC93/zcc_opt.def:12
-DEFINED_REGISTER_SP             = $0001 ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000DB44BC93/zcc_opt.def:19
-REGISTER_SP                     = $5DBF ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000DB44BC93/zcc_opt.def:20
+DEFINED_CRT_ORG_CODE            = $0001 ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000A08962C3/zcc_opt.def:3
+CRT_ORG_CODE                    = $5DC0 ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000A08962C3/zcc_opt.def:4
+DEFINED_STACKPTR                = $0001 ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000A08962C3/zcc_opt.def:11
+STACKPTR                        = $5DBF ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000A08962C3/zcc_opt.def:12
+DEFINED_REGISTER_SP             = $0001 ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000A08962C3/zcc_opt.def:19
+REGISTER_SP                     = $5DBF ; const, local, , zx82_crt0, , C:/DOCUME~1/ADMINI~1/CONFIG~1/Temp/zcc00000A08962C3/zcc_opt.def:20
 start                           = $5DC0 ; addr, local, , zx82_crt0, , crt.asm:15
 vpClipStruct                    = $77B5 ; addr, local, , ss_c, code_compiler, globals.h::my_malloc::0::1:25
 fsClipStruct                    = $77B9 ; addr, local, , ss_c, code_compiler, globals.h::my_malloc::0::1:25
