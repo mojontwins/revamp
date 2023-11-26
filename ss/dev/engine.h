@@ -455,6 +455,7 @@ void move (void) {
 	*/
 
 	#asm
+			
 		// Check bit 7 (sign) of p_vy to see if PH is going up or down
 			ld  a, (_p_vy)
 			bit 7, a
@@ -462,6 +463,17 @@ void move (void) {
 
 		.mp_v_chc_down
 			// p_vy > 0
+			ld  a, (_p_sal)
+			or  a 
+			jr  z, mp_v_chc_down_check
+
+			ld  a, (_p_y)
+			dec a
+			and 0xf 
+			cp  8
+			jr  nc, mp_v_chc_done
+
+		.mp_v_chc_down_check
 			ld  a, (_pty2)
 			ld  (_cy1), a 
 			ld  (_cy2), a 
@@ -1807,14 +1819,7 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 
 		#asm
 				// if(n_pant >= 5)
-				ld  a, (_n_pant) 
-				cp  5 
-				jr  nc, flick_up_check
-
-				xor a 
-				ld  (_p_y), a
-				jr flick_up_done
-
+		
 			.flick_up_check
 				
 				// p_vy < 0
@@ -1843,6 +1848,16 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 				ld  a, (_n_pant)
 				sub 5 
 				ld  (_n_pant), a
+
+				ld  a, (_p_nu)
+				
+				sub 2
+				jr  nc, flick_up_set_pnu 
+
+				xor a
+			.flick_up_set_pnu
+				ld  (_p_nu), a
+
 				jr  flick_up_done
 
 			.flick_up_out_of_the_map
