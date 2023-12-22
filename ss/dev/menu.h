@@ -195,8 +195,8 @@ void menu (void) {
 
 				while(1) {
 					_x = 11; _y = 12; _c = 70; str_pt = (unsigned char *) ("1 KEYBOARD"); draw_fast ();
-					_y = 13; _c = 70; str_pt = (unsigned char *) ("2 SINCLAIR"); draw_fast ();
-					_y = 14; _c = 70; str_pt = (unsigned char *) ("3 KEMPSTON"); draw_fast ();
+					_x = 11; _y = 13; str_pt = (unsigned char *) ("2 SINCLAIR"); draw_fast ();
+					_x = 11; _y = 14; str_pt = (unsigned char *) ("3 KEMPSTON"); draw_fast ();
 					
 					if (sp_KeyPressed (key_1)) {
 						joyfunc = (void *) sp_JoyKeyboard; break;
