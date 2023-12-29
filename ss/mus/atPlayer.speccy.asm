@@ -1665,11 +1665,11 @@ mt_init:
 		ret 
 
 song_00: INCBIN "00_level1_c.bin" 
-song_01: INCBIN "00_level1_c.bin" 
-song_02: INCBIN "00_level1_c.bin" 
-song_03: INCBIN "00_level1_c.bin" 
-song_04: INCBIN "00_level1_c.bin" 
-song_05: INCBIN "00_level1_c.bin" 
+song_01: INCBIN "01_level2_c.bin" 
+song_02: INCBIN "02_level3_c.bin" 
+song_03: INCBIN "03_level4_c.bin" 
+song_04: INCBIN "04_ganga_intro_c.bin" 
+song_05: INCBIN "05_money_c.bin" 
 song_06: INCBIN "06_blank_c.bin" 
 
 song_sfx: INCBIN "sfx_c.bin"

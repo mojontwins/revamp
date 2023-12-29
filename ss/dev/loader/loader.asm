@@ -43,13 +43,13 @@ mainbin:
 ; Main binary
 	scf
 	ld	a, $ff
-	ld	ix, 65368 - 23694
-	ld	de, 23694
+	ld	ix, 65368 - 23704
+	ld	de, 23704
 	call $0556
 	di
 
 ; Decompress
-	ld  hl, 65368 - 23694
+	ld  hl, 65368 - 23704
 	ld  de, 24000
 	call depack	
 
@@ -73,13 +73,13 @@ ram1:
 
 	scf
 	ld	a, $ff
-	ld	ix, 65368 - 2315
-	ld	de, 2315
+	ld	ix, 65368 - 4061
+	ld	de, 4061
 	call $0556
 	di
 
 	; Decompress
-	ld  hl, 65368 - 2315
+	ld  hl, 65368 - 4061
 	ld  de, $C000
 	call depack	
 

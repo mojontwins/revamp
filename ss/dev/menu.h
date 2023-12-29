@@ -104,38 +104,41 @@ unsigned char get_password () {
 
 	_x = 9; _y = 11; _c = 70; str_pt = (unsigned char *) ("ENTER PASSWORD"); draw_fast ();
 	
-	rda = 0;
+	rda = 0; 
 	password [rda] = '#';
 	password [rda + 1] = 0;
 	while (1) {
 		_x = 16 - (rda >> 1); _y = 13; _c = 71; str_pt = password; draw_fast ();
 		
 		//while(!any_key ());
-		rdb = sp_GetKey();
+		rdb = sp_GetKey(); if (rdb) {
 
-		if (rdb == 12 && rda > 0) {
-			password [rda] = ' ';
+			if (rdb == 12 && rda > 0) {
+				password [rda] = ' ';
+				
+				_x = 5; _y = 13; _c = 71; str_pt = (unsigned char *) ("                       "); draw_fast ();
+				
+				rda --;
+				password [rda] = '#';
+				password [rda + 1] = 0;
+			}
 			
-			_x = 5; _y = 13; _c = 71; str_pt = (unsigned char *) ("                       "); draw_fast ();
+			if (rdb == 13) {
+				break;
+			}
 			
-			rda --;
-			password [rda] = '#';
-			password [rda + 1] = 0;
+			if (rdb > 'Z') rdb -= 32;
+			
+			if (rdb >= 'A' && rdb <= 'Z' && rda < 20) {
+				password [rda] = rdb;
+				password [rda + 1] = '#';
+				password [rda + 2] = 0;
+				rda ++;
+				
+			}
+			
+			while (any_key ());
 		}
-		
-		if (rdb == 13) {
-			break;
-		}
-		
-		if (rdb > 'Z') rdb -= 32;
-		
-		if (rdb >= 'A' && rdb <= 'Z' && rda < 20) {
-			password [rda] = rdb;
-			password [rda + 1] = '#';
-			password [rda + 2] = 0;
-			rda ++;
-		}
-		
 	}
 	
 	password [rda] = 0;
