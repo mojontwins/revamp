@@ -4,9 +4,6 @@
 // zx0.h
 // Cointains the ZX0 decompressor.
 
-unsigned int ram_address;
-unsigned int ram_destination;
-
 #asm
 	; -----------------------------------------------------------------------------
 	; ZX0 decoder by Einar Saukas & Urusergi
@@ -82,14 +79,14 @@ void blackout_everything (void) {
 	#endasm
 }
 
-void unpack (unsigned int source, unsigned int destination) {
+void unpack (unsigned char *source, unsigned char *destination) {
 	ram_address = source;
 	ram_destination = destination;
 	#asm
-		di	
-		ld hl, (_ram_address)
-		ld de, (_ram_destination)
-		call dzx0_standard
-		ei
+			di	
+			ld hl, (_ram_address)
+			ld de, (_ram_destination)
+			call dzx0_standard
+			ei
 	#endasm
 }

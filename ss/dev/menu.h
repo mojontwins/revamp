@@ -1,15 +1,6 @@
 void espera_activa (int espera);
-unsigned char game (unsigned char level);
+unsigned char game (void);
 
-// Menu stuff. Doesn't matter if it falls into contended RAM.
-
-/*
-unsigned char *name_level1 = "  JUNKYARD  ";
-unsigned char *name_level2 = "  DEAD JOE  ";
-unsigned char *name_level3 = "SEVERAL SINS";
-unsigned char *name_level4 = "KEWPIE  DOLL";
-unsigned char *name_levels [4] = {name_level1, name_level2, name_level3, name_level4};
-*/
 extern unsigned char name_level1 [0];
 extern unsigned char name_level2 [0];
 extern unsigned char name_level3 [0];
@@ -18,6 +9,8 @@ extern unsigned char name_level4 [0];
 extern unsigned char pass1 [0];
 extern unsigned char pass2 [0];
 extern unsigned char pass3 [0];
+
+extern unsigned char password [0];
 
 unsigned char *name_levels [4] = {name_level1, name_level2, name_level3, name_level4};
 unsigned char *passes [3] = {pass1, pass2, pass3};
@@ -44,11 +37,13 @@ unsigned char *passes [3] = {pass1, pass2, pass3};
 	._pass3
 		defm "ENCUERA"
 		defb 0
+	._password
+		defs 12
 #endasm
 
 unsigned char *cad_level = "LEVEL 0X";
 
-void start_game_from (unsigned char level) {
+void start_game_from (void) {
 	// Game controller	
 	
 	arkos_play_music (6);
@@ -57,14 +52,14 @@ void start_game_from (unsigned char level) {
 		// Show level
 		
 		blackout_everything ();
-		unpack (scr_menu_bin, 16384);
+		unpack (scr_menu_bin, (unsigned char *) (0x4000));
 
 		// Play "Ganga"
 		arkos_play_music (4);
 
 		cad_level [7] = '1' + level;
-		draw_char_by_char (12, 11, cad_level);
-		draw_char_by_char (10, 13, name_levels [level]);
+		_x = 12; _y = 11; str_pt = cad_level; draw_char_by_char ();
+		_x = 10; _y = 13; str_pt = name_levels [level]; draw_char_by_char ();
 		
 		if (level > 0) {
 			_x = 12; _y = 15; _c = 70; str_pt = (unsigned char *) ("PASSWORD"); draw_fast ();
@@ -80,7 +75,7 @@ void start_game_from (unsigned char level) {
 				while(any_key ());
 				// Final
 				blackout_everything ();
-				unpack (scr_final_bin, 16384);
+				unpack (scr_final_bin, (unsigned char *) (0x4000));
 
 				_x = 8; _y = 19; _c = 71; str_pt = (unsigned char *) ("ESTA NOCHE PAJA!"); draw_fast ();
 
@@ -96,11 +91,9 @@ void start_game_from (unsigned char level) {
 	}
 }
 
-unsigned char password [32];
-
 unsigned char get_password () {
 	blackout_everything ();
-	unpack (scr_menu_bin, 16384);
+	unpack (scr_menu_bin, (unsigned char *) (0x4000));
 
 	_x = 9; _y = 11; _c = 70; str_pt = (unsigned char *) ("ENTER PASSWORD"); draw_fast ();
 	
@@ -129,7 +122,7 @@ unsigned char get_password () {
 			
 			if (rdb > 'Z') rdb -= 32;
 			
-			if (rdb >= 'A' && rdb <= 'Z' && rda < 20) {
+			if (rdb >= 'A' && rdb <= 'Z' && rda < 10) {
 				password [rda] = rdb;
 				password [rda + 1] = '#';
 				password [rda + 2] = 0;
@@ -140,24 +133,76 @@ unsigned char get_password () {
 			while (any_key ());
 		}
 	}
+
+	// Check password
+
+	#asm
+			ld  a, (_rda)
+			ld  b, 0 
+			ld  c, a 
+			ld  hl, _password 
+			add hl, bc 
+			xor a 
+			ld  (hl), a 
+			ld  (_level), a
+
+		.passcheck
+			ld  a, (_rda) 
+			or  a 
+			jr  z, passcheck
+
+			ld  a, 6
+		.passcheck_l1
+			sub 2
+			ld  (_gpjt), a
+			ld  b, 0
+			ld  c, a
+
+			// gen_pt = passes [gpjt]
+			ld  hl, _passes 
+			add hl, bc 
+			ld  a, (hl)
+		 	inc hl 
+		 	ld  h, (hl) 
+		 	ld  l, a 
+		 	ld  (_gen_pt), hl 
+
+		 	ld  bc, 0
+		.passcheck_l2 
+		 	ld  hl, _password 
+		 	add hl, bc 
+		 	ld  a, (hl) 
+		 	ld  d, a 
+		 	ld  hl, (_gen_pt)
+		 	add hl, bc 
+		 	ld  a, (hl)
+		 	cp  d 
+
+		 	// Cur char !=, next pass
+		 	jr  nz, passnext 
+
+		 	// loop gpit < rda -> exit if rda == gpit
+		 	inc c 
+		 	ld  a, (_rda)
+		 	cp  c 
+		 	jr  z, passcorrect
+		 	jr  passcheck_l2
+
+		 .passcorrect 
+		 	ld  a, (_gpjt) 
+		 	srl a 
+		 	inc a 
+		 	ld  (_level), a 
+		 	ret
+
+		 .passnext
+			ld  a, (_gpjt) 
+			or  a
+			jr  nz, passcheck_l1
+
+		.passcheckdone
+	#endasm
 	
-	password [rda] = 0;
-	
-	if (rda > 0) {
-		for (gpjt = 0; gpjt < 3; gpjt ++) {
-			gen_pt = passes [gpjt];
-			for (gpit = 0; gpit < rda; gpit ++) {
-				if (gen_pt [gpit] != password [gpit]) {
-					break;
-				}
-			}	
-			if (gpit == rda) {
-				return 1 + gpjt;
-			}
-		}
-	}
-	
-	return 0;
 }
 
 void menu (void) {
@@ -169,7 +214,7 @@ void menu (void) {
 		// Show menu screen
 		if (denew) {
 			blackout_everything ();
-			unpack (scr_menu_bin, 16384);
+			unpack (scr_menu_bin, (unsigned char *) (0x4000));
 		
 			// Play "Money"
 			arkos_play_music (5);
@@ -177,7 +222,7 @@ void menu (void) {
 		}
 	
 		// Text
-		_x = 4; _y = 21; _c = 71; str_pt = (unsigned char *) ("] MOJON TWINS 2011, 2023"); draw_fast ();
+		_x = 4; _y = 21; _c = 71; str_pt = (unsigned char *) ("] MOJON TWINS 2011, 2024"); draw_fast ();
 			
 		// Show menu options
 		_x = 11; _y = 12; _c = 70; str_pt = (unsigned char *) ("1 PLAY    "); draw_fast ();
@@ -186,11 +231,13 @@ void menu (void) {
 		
 		while (1) {
 			if (sp_KeyPressed (key_1)) {
-				start_game_from (0);
+				level = 0;
+				start_game_from ();
 				denew = 1;
 				break;
 			} else if (sp_KeyPressed (key_2)) {
-				start_game_from (get_password ());
+				get_password ();
+				start_game_from ();
 				denew = 1;
 				break;
 			} else if (sp_KeyPressed (key_3)) {

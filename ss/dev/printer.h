@@ -116,31 +116,24 @@ void draw_fast (void) {
 
 }
 
-void draw_char_by_char (unsigned char x, unsigned char y, unsigned char *s) {
+void draw_char_by_char (void) {
 	//whiteout_everything ();
 	
-	gen_pt = (unsigned char *) (22528 + x + (y << 5));
-	_x = x;
-	_y = y;
-	while ((*s) != 0) {
-		rdc = (*s);
-		if (rdc == 13) {
-			_x = x;
-			_y += 2;
-			gen_pt = (unsigned char *) (22528 + x + (_y << 5));
-		} else {
-			_t  = rdc - 32;
-			draw_char ();
-			for (gpit = 1; gpit < 8; gpit += 2) {
-				*gen_pt = gpit + 64;
-				#asm
-					halt
-				#endasm
-				
-			}
-			gen_pt ++;
+	gen_pt = (unsigned char *) (22528 + _x + (_y << 5));
+
+	while ((*str_pt) != 0) {
+		rdc = (*str_pt);
+		_t  = rdc - 32;
+		draw_char ();
+		for (gpit = 1; gpit < 8; gpit += 2) {
+			*gen_pt = gpit + 64;
+			#asm
+				halt
+			#endasm
+			
 		}
-		s++;
+		gen_pt ++;
+		str_pt ++;
 	}
 }
 

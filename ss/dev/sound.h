@@ -28,19 +28,20 @@
 
 void ISR(void) {
 	#asm
-		ld  hl, _isrc
-		inc (hl)						
+			ld  hl, _isrc
+			inc (hl)						
 
-		ld  a, (_is128k)
-		or  a 
-		ret z
+			ld  a, (_is128k)
+			or  a 
+			jr  z, isr_skip
 
-		ld  b, ARKOS_RAM
-		call SetRAMBank
-		call ARKOS_ADDRESS_ATPLAY
+			ld  b, ARKOS_RAM
+			call SetRAMBank
+			call ARKOS_ADDRESS_ATPLAY
 
-		ld b, 0
-		call SetRAMBank			
+			ld b, 0
+			call SetRAMBank	
+		.isr_skip		
 	#endasm
 }
 
@@ -95,7 +96,6 @@ void ISR(void) {
 		add ix, bc 
 		jr  readData
 
-
 	;generate tone with many parameters
 
 	.sfxRoutineTone
@@ -143,7 +143,6 @@ void ISR(void) {
 
 		ld c,11
 		jr nextData
-
 
 	;generate noise with two parameters
 
@@ -232,33 +231,33 @@ void ISR(void) {
 
 void arkos_init (void) {
 	#asm
-		ld b, ARKOS_RAM
-		call SetRAMBank
-		
-		call ARKOS_ADDRESS_MT_INIT				
-		
-		ld b, 0
-		jp SetRAMBank
+			ld b, ARKOS_RAM
+			call SetRAMBank
+			
+			call ARKOS_ADDRESS_MT_INIT				
+			
+			ld b, 0
+			jp SetRAMBank
 	#endasm
 }
 
 void __FASTCALL__ arkos_play_music (unsigned char song_number) {
 	#asm
-		ld  a, (_is128k)
-		or  a
-		jr z, apm_no128
+			ld  a, (_is128k)
+			or  a
+			jr z, apm_no128
 
-		di
-		ld b, ARKOS_RAM
-		call SetRAMBank
-		
-		ld  a, l
-		call ARKOS_ADDRESS_MT_LOAD_SONG		
-		
-		ld b, 0
-		call SetRAMBank
-		ei
-	.apm_no128
+			di
+			ld b, ARKOS_RAM
+			call SetRAMBank
+			
+			ld  a, l
+			call ARKOS_ADDRESS_MT_LOAD_SONG		
+			
+			ld b, 0
+			call SetRAMBank
+			ei
+		.apm_no128
 	#endasm
 }
 
@@ -289,12 +288,9 @@ void __FASTCALL__ play_sfx (unsigned char n) {
 
 		._skip_ay
 
-			push ix
-			push iy
 			ld a, l
 			call sound_play
-			pop ix
-			pop iy
+			
 		.play_sfx_done
 	#endasm
 }

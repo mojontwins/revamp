@@ -61,9 +61,6 @@ del ..\bin\scrc.bin > nul 2> nul
 del ..\bin\scrprec.bin > nul 2> nul
 ..\utils\zx7.exe ..\bin\scr-pre.bin ..\bin\scrprec.bin > nul
 
-del ..\bin\ram1c.bin > nul 2> nul
-..\utils\zx7.exe ..\bin\ram1.bin ..\bin\ram1c.bin > nul
-
 del ..\bin\ssc.bin > nul 2> nul
 ..\utils\zx7.exe ss.bin ..\bin\ssc.bin > nul
 
@@ -72,7 +69,7 @@ del ..\bin\ssc.bin > nul 2> nul
     out=loader\loader.asm ^
     preloadingcomplength=?..\bin\scrprec.bin ^
     loadingcomplength=?..\bin\scrc.bin ^
-    ram1_length=?..\bin\ram1c.bin ^
+    ram1_length=?..\bin\ram1.bin ^
     mainbincomplength=?..\bin\ssc.bin > nul
 
 ..\utils\pasmo.exe loader\loader.asm ..\bin\loader.bin loader.txt > nul
@@ -82,7 +79,7 @@ del ..\bin\ssc.bin > nul 2> nul
     data              ..\bin\scr-prec.bin ^
     data              ..\bin\scrc.bin ^
     data              ..\bin\ssc.bin ^
-    data              ..\bin\ram1c.bin > nul
+    data              ..\bin\ram1.bin > nul
 
 :fin
 

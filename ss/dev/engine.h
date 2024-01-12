@@ -20,10 +20,10 @@ void __FASTCALL__ espera_activa (int espera) {
 	}
 }
 
-void __FASTCALL__ init_player (unsigned char level) {
+void init_player (void) {
 	// Struct LEVEL is 8 bytes wide. 
 	#asm
-			ld  a, l 				// __FASTCALL__ -> level is in l!
+			ld  a, (_level)
 			sla a  					
 			sla a  					// A = LEVEL * 4
 			sla a 					// A = LEVEL * 8 
@@ -1122,9 +1122,15 @@ void move_enemies () {
 			ld  e, 0 					// E = FACING
 
 			ld  a, (__en_mx)  	
+			or  a
+			jr  z, vertDecidesFacing
+
 			bit 7, a  					// Is negative?
 			jr  nz, setFacing 
 
+			jr  setFacingDone
+
+		.vertDecidesFacing
 			ld  a, (__en_my) 
 			bit 7, a  					// Is negative?
 			jr  z, setFacingDone 
@@ -1200,8 +1206,8 @@ void init_hotspots () {
 	#endasm		
 }
 	
-void muerte (unsigned char a, unsigned char b) {
-	rda = a; rdb = b;
+void muerte (void) {
+	
 	rdc = 0;
 
 	play_sfx (0);
@@ -1332,20 +1338,22 @@ unsigned char rand (void) {
 	#endasm
 }
 
-unsigned char __FASTCALL__ game (unsigned char level) {
+unsigned char game (void) {
 
 	n_pant = levels [level].init_x_pant + 5 * levels [level].init_y_pant;
 
-	load_level (level);
+	// Load level
+	unpack (levels [level].binary, level_buffer);
+	yOsc = levels [level].yOsc * 5;
 
-	init_player (level);
+	init_player ();
 	init_hotspots ();
 
 	#asm
 			call SPUpdateNow
 	#endasm
 	blackout_everything ();
-	unpack (scr_marcador_bin, 16384);
+	unpack (scr_marcador_bin, (unsigned char *) (0x4000));
 
 	draw_life ();
 	draw_score ();
@@ -1542,6 +1550,14 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 				
 		// Render
 		#asm
+				ld  a, (_p_y)
+				cp  240 
+				jr  c, spriteplayernozero
+
+				xor a
+			.spriteplayernozero
+				ld  (_rdy), a
+
 				ld  ix, (_sp_player)
 				ld  iy, vpClipStruct
 
@@ -1552,7 +1568,7 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 				ld  b, h
 				ld  c, l
 
-				ld  a, (_p_y)
+				ld  a, (_rdy)
 				srl a
 				srl a
 				srl a
@@ -1570,7 +1586,7 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 				and 7
 				ld  d, a
 
-				ld  a, (_p_y)
+				ld  a, (_rdy)
 				and 7
 				ld  e, a
 				call SPMoveSprAbs
@@ -1680,50 +1696,43 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 		}
 		
 		half_life ^= 1;
-		
-		// Update
-		attrs_byte = n_pant >= yOsc;
-		if (n_pant >= yOsc) {
+	
+		#asm
+				ld  a, (_yOsc)
+				ld  c, a 
+				ld  a, (_n_pant)
+				cp  c 
 
-			#asm
-					ld  a, (_yOsc)
-					ld  c, a 
-					ld  a, (_n_pant)
-					cp  c 
+				ld  hl, _attrs_byte 
+				jr  c, nohalo
 
-					ld  hl, _attrs_byte 
-					jr  c, nohalo
-
-					ld  a, 1
-					ld  (hl), a
-			#endasm
+				ld  a, 1
+				ld  (hl), a
 
 			// Lit somewhat obscured screens
 
-			#asm
-					ld  a, (_p_x)
-					srl a 
-					srl a 
-					srl a 
-					sub 3
-					ld  (_ovl_x), a
-					ld  a, (_p_y)
-					srl a 
-					srl a 
-					srl a 
-					sub 3 
-					ld  (_ovl_y), a
-					call ovl_update
-					jr  halodone
-	
-				.nohalo
-					xor a 					
-					ld  (hl), a 
-				.halodone
-			#endasm			
-		}
+				ld  a, (_p_x)
+				srl a 
+				srl a 
+				srl a 
+				sub 3
+				ld  (_ovl_x), a
+				ld  a, (_p_y)
+				srl a 
+				srl a 
+				srl a 
+				sub 3 
+				ld  (_ovl_y), a
+				call ovl_update
+				jr  halodone
 
-		#asm
+			.nohalo
+				xor a 					
+				ld  (hl), a 
+			.halodone
+
+			// Lock to 25 faps maximum
+
 			.ml_min_faps_loop
 				ld  a, (_isrc)
 				cp  2
@@ -1738,13 +1747,12 @@ unsigned char __FASTCALL__ game (unsigned char level) {
 
 				call SPUpdateNow
 		#endasm
-
 		
 		// The last day on earth:
 		
 		if (p_life == 0 || sp_KeyPressed (key_g)) {
 			arkos_play_music (6);
-			muerte (2, 16);
+			rda = 2; rdb = 16; muerte ();
 			break;
 		}
 		

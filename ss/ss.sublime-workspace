@@ -4,160 +4,280 @@
 		"selected_items":
 		[
 			[
-				"_p_",
-				"_p_nu\tabc"
+				"custom_",
+				"custom_attribute_value_id\tabc"
 			],
 			[
-				"mp_v_dow",
-				"mp_v_chc_down_check\tabc"
+				"custo",
+				"custom_attribute_value_id\t(AttributeValue.php)"
 			],
 			[
-				"play",
-				"play_sfx\tabc"
+				"CustomAttri",
+				"CustomAttributeCategory\tabc"
 			],
 			[
-				"draw_fas",
-				"draw_fast_loop\tabc"
+				"resourceAttr",
+				"resourceAttributeList\tabc"
 			],
 			[
-				"SFX_",
-				"SFX_LAND\tabc"
+				"resourceAt",
+				"resourceAttributeList\tabc"
 			],
 			[
-				"SFX",
-				"SFX_JUMP\t(sound.h)"
+				"resourecAtt",
+				"resourceAttributeList\tabc"
 			],
 			[
-				"scr",
-				"scr_marcador_bin\t(binassets.h)"
+				"schdule",
+				"scheduleId\tabc"
 			],
 			[
-				"__en",
-				"__en_x\tabc"
+				"GetOrgani",
+				"GetOrganismoIdAA\t(SyncInterfacePage.php)"
 			],
 			[
-				"ml_sp",
-				"ml_hotspots_deact\tabc"
+				"autoass",
+				"autoassign\tabc"
 			],
 			[
-				"hotspots",
-				"ml_hotspots_t2"
+				"MODE_",
+				"MODE_AUTO_ASSIGN\tabc"
 			],
 			[
-				"_hotspot",
-				"_hotspot_y\tabc"
+				"applica",
+				"applicableDates\tabc"
 			],
 			[
-				"_hotpo",
-				"_hotspot_x\tabc"
+				"default",
+				"default_period\tabc"
 			],
 			[
-				"ml_hot",
-				"ml_hotspots_done\tabc"
+				"GetSchedu",
+				"GetScheduleIncludeWeekends\t(NotificationPreferencesPresenter.php)"
 			],
 			[
-				"flic",
-				"flick_up_do\tabc"
+				"sche",
+				"schedule_include_weekends\tabc"
 			],
 			[
-				"flick_ri",
-				"flick_right_done\tabc"
+				"scued",
+				"schedule_include_weekends\tabc"
 			],
 			[
-				"flick_l",
-				"flick_left_done\tabc"
+				"daily",
+				"dailyLayout\tabc"
 			],
 			[
-				"po",
-				"possee\tabc"
+				"PPD",
+				"PdfOutput\t(view-resource.php)"
 			],
 			[
-				"player",
-				"player_bb\tabc"
+				"custom_attrbu",
+				"custom_attribute_id\tabc"
 			],
 			[
-				"black",
-				"blackout_everything\tabc"
+				"custom_at",
+				"custom_attribute_values\tabc"
 			],
 			[
-				"array",
-				"array_keys_get_args\tabc"
+				"resourceAtt",
+				"resourceAttributesForResourceTypeAssoc\tabc"
 			],
 			[
-				"noti",
-				"notificame\t(ficheros.php)"
+				"resourceTy",
+				"resourceTypeId\tabc"
 			],
 			[
-				"mysqli_fe",
-				"mysqli_fetch_assoc\tabc"
+				"log",
+				"log::debug(\"For\t(AttributeList.php)"
 			],
 			[
-				"emai",
-				"email_dest\t(diario.md)"
+				"secondarY",
+				"secondary_entity_id\t(Queries.php)"
 			],
 			[
-				"resultados",
-				"resultados_por_pagina\tabc"
+				"custom_att",
+				"custom_attribute_id\tabc"
 			],
 			[
-				"resumen",
-				"resumen_invitaciones\tabc"
+				"custom_atr",
+				"custom_attribute_id\tabc"
 			],
 			[
-				"intervalo",
-				"intervalo_tiempo_pretty\t(ficheros.php)"
+				"custom",
+				"custom_attribute_values\tabc"
 			],
 			[
-				"fecha",
-				"fechaenvio\tabc"
+				"entity",
+				"entityIds\tabc"
 			],
 			[
-				"invitati",
-				"invitation_data\tabc"
+				"secondary",
+				"secondaryEntityId\tabc"
 			],
 			[
-				"_user",
-				"_user_ldap_displayName\t(REST_Controller.php)"
+				"ATT",
+				"ATTRIBUTE_SECONDARY_ENTITY_ID\t(diario.md)"
 			],
 			[
-				"feche",
-				"fechaenvio\t(ficheros.php)"
+				"secon",
+				"secondaryEntityId\t(diario.md)"
 			],
 			[
-				"_user_ldap_",
-				"_user_ldap_mail\tabc"
+				"secondar",
+				"secondary_entity_id\tabc"
 			],
 			[
-				"_user_lda",
-				"_user_ldap_displayName\tabc"
+				"seco",
+				"secondary_entity_id\tabc"
 			],
 			[
-				"texto",
-				"texto_opcional\t(genera-invitacion.php)"
+				"ATTRIBUTE_SEC",
+				"ATTRIBUTE_SECONDARY_ENTITY_ID\tabc"
 			],
 			[
-				"table",
-				"table-layout\tproperty"
+				"attributeCate",
+				"attributeCategoryId\tabc"
 			],
 			[
-				"JAconsi",
-				"JAconsignaLimitesSoft\tabc"
+				"GET_ATTRBUTE",
+				"GET_ATTRIBUTE_BY_ID\tabc"
 			],
 			[
-				"UPLOA",
-				"UPLOAD_ERR_INI_SIZE\tabc"
+				"organis",
+				"organismo_id\tabc"
 			],
 			[
-				"JA",
-				"JAconsignaLimitesMaxPrettyPrint\t(form-envio-fichero.php)"
+				"Parame",
+				"ParameterNames::SEDE_ID\tabc"
 			],
 			[
-				"ja",
-				"jaconsignalimites\t(LDAP.php)"
+				"force",
+				"force_migration\tabc"
 			],
 			[
-				"DefaultLimit",
-				"DefaultLimitTime\t(LDAP.php)"
+				"migra",
+				"migration_from\tabc"
+			],
+			[
+				"mig",
+				"migration_to\tabc"
+			],
+			[
+				"users_",
+				"users_partial\tabc"
+			],
+			[
+				"attt",
+				"attribute\tabc"
+			],
+			[
+				"is",
+				"is_array\tabc"
+			],
+			[
+				"User",
+				"Username\tabc"
+			],
+			[
+				"join",
+				"joinby\tabc"
+			],
+			[
+				"sedel",
+				"sedeSeleccionada\tabc"
+			],
+			[
+				"Pas",
+				"PassCaducado\t(AuthenticationResponse.php)"
+			],
+			[
+				"Authent",
+				"AuthenticationResponse\tabc"
+			],
+			[
+				"extra",
+				"extra_resources\tabc"
+			],
+			[
+				"adminResoure",
+				"adminResourceList\tabc"
+			],
+			[
+				"user",
+				"username\tabc"
+			],
+			[
+				"pag",
+				"page\tabc"
+			],
+			[
+				"SetOrgani",
+				"SetOrganismoId\t(SyncInterfacePage.php)"
+			],
+			[
+				"organi",
+				"organismo_id\tabc"
+			],
+			[
+				"master",
+				"master_organismo_id\tabc"
+			],
+			[
+				"getOr",
+				"getOrganismoID\tabc"
+			],
+			[
+				"SetFlag",
+				"SetFlagUniversalVisibility\t(OrganismoConfigPage.php)"
+			],
+			[
+				"orgnai",
+				"organismo_id\tabc"
+			],
+			[
+				"AS",
+				"ASSOC_NAME\t(diario.md)"
+			],
+			[
+				"SetNmbre",
+				"SetNombreAsociacion\t(ManageResourcesPage.php)"
+			],
+			[
+				"SetShowWar",
+				"SetShowWarningNotMaster\t(ManageResourcesPage.php)"
+			],
+			[
+				"ORGNAI",
+				"ORGANISMO_ID\tabc"
+			],
+			[
+				"masetr",
+				"master_organismo_id\t(diario.md)"
+			],
+			[
+				"Organism",
+				"OrganismosRepository\t(diario.md)"
+			],
+			[
+				"GET_ORGNA",
+				"GET_ORGANISMOS_BY_ASSOC_ID\t(diario.md)"
+			],
+			[
+				"fijar",
+				"fijarEsteOrganismo\tabc"
+			],
+			[
+				"durationH",
+				"durationHoursReadable\t(reservation.js)"
+			],
+			[
+				"ldap_get_",
+				"ldap_get_entries\t(test_ldap.php)"
+			],
+			[
+				"Addio",
+				"AdditionalResources\t(ReservationSavePresenter.php)"
 			],
 			[
 				"descripc",
@@ -176,8 +296,16 @@
 				"crea_invitacion\t(trabajoficheros.php)"
 			],
 			[
+				"fecha",
+				"fecha\tabc"
+			],
+			[
 				"defecto",
 				"defecto_ta_publico\tabc"
+			],
+			[
+				"feche",
+				"fechaexp\tabc"
 			],
 			[
 				"form_sub",
@@ -284,10 +412,6 @@
 				"organismoId"
 			],
 			[
-				"organis",
-				"organismo_id"
-			],
-			[
 				"organimo",
 				"organismoId"
 			],
@@ -301,10 +425,6 @@
 			],
 			[
 				"organismo",
-				"organismoId"
-			],
-			[
-				"organi",
 				"organismoId"
 			],
 			[
@@ -394,165 +514,11 @@
 			[
 				"psk",
 				"PLAYER_SINKS"
-			],
-			[
-				"PLAYER_PU",
-				"PLAYER_HAS_PUNCH\t(definitions.h)"
-			],
-			[
-				"sclp",
-				"sclpGetValue"
-			],
-			[
-				"menu_instr",
-				"menu_instructions_one_char"
-			],
-			[
-				"MENU_T",
-				"MENU_TOP_Y"
-			],
-			[
-				"poin",
-				"pointer_opt"
-			],
-			[
-				"MENU",
-				"MENU_INST_TOP_Y"
-			],
-			[
-				"MENU_",
-				"MENU_INST_ST_DELETE"
-			],
-			[
-				"MENU_INST",
-				"MENU_INST_ST_PRINT"
-			],
-			[
-				"MENU_INS",
-				"MENU_INST_ST_IDLE"
-			],
-			[
-				"MEN",
-				"MENU_INST_ST_DELETE"
-			],
-			[
-				"MENU_I",
-				"MENU_INST_ST_IDLE"
-			],
-			[
-				"SPRI",
-				"SPRINGS_CREATE_FROM_MAP"
-			],
-			[
-				"CREATE",
-				"PROPELLERS_CREATE_FROM_MAP"
-			],
-			[
-				"LAME",
-				"ENABLE_LAME_BOSS_1"
-			],
-			[
-				"ENABLE_",
-				"ENABLE_LAME_BOSS_1"
-			],
-			[
-				"ENEMS_",
-				"ENEMS_GENERAL_HIT_FRAMES"
-			],
-			[
-				"ENABLE",
-				"ENABLE_LAME_BOSS_1"
-			],
-			[
-				"ENAB",
-				"ENABLE_PRECALC_HOMING_FANTY"
-			],
-			[
-				"SAW",
-				"ENABLE_SAW"
-			],
-			[
-				"levelNames",
-				"levelNamesListIndex"
-			],
-			[
-				"ppode",
-				"ppodewwwr_on"
-			],
-			[
-				"ppu",
-				"ppu_waitnmi"
-			],
-			[
-				"fra",
-				"frame_counter"
-			],
-			[
-				"PLAYER_",
-				"PLAYER_GENITAL"
-			],
-			[
-				"PLAYER_HA",
-				"PLAYER_HAS_JUMP"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-<<<<<<< HEAD
-			"file": "dev/menu.h",
-			"settings":
-			{
-				"buffer_size": 4710,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-=======
-			"file": "dev/sound.h",
-			"settings":
-			{
-				"buffer_size": 4014,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/engine.h",
-			"settings":
-			{
-				"buffer_size": 28358,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/leveldata.h",
-			"settings":
-			{
-				"buffer_size": 404,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/ss.map",
-			"settings":
-			{
-				"buffer_size": 83872,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dev/ss.asm",
-			"settings":
-			{
-				"buffer_size": 142502,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
->>>>>>> 845b875be56b0732d1ccd56bdfd8be82c21afded
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -566,7 +532,7 @@
 		"selected_items":
 		[
 			[
-				"packa",
+				"install",
 				"Package Control: Install Package"
 			],
 			[
@@ -584,10 +550,6 @@
 			[
 				"phpfmt",
 				"phpfmt: format now"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"remove",
@@ -618,141 +580,138 @@
 	},
 	"expanded_folders":
 	[
-		"/C/git/revamp/ss",
-		"/C/git/revamp/ss/dev",
-		"/C/git/revamp/ss/gfx",
-		"/C/git/revamp/ss/mus"
+		"/D/git/revamp/ss"
 	],
 	"file_history":
 	[
-		"/C/git/revamp/ss/dev/leveldata.h",
-		"/C/git/revamp/ss/dev/engine.h",
-		"/C/git/revamp/ss/dev/ss.c",
-		"/C/git/revamp/ss/dev/sound.h",
-		"/C/git/revamp/ss/mus/atPlayer.speccy.asm",
-		"/C/git/revamp/ss/dev/globals.h",
-		"/C/git/revamp/ss/dev/levelstruct.h",
-		"/C/git/revamp/ss/dev/printer.h",
-		"/C/git/revamp/ss/dev/menu.h",
-		"/C/git/revamp/ss/dev/ss.map",
-		"/C/git/revamp/ss/dev/ss.asm",
-		"/C/git/revamp/ss/dev/zx0.h",
-		"/C/git/revamp/ss/dev/comp.bat",
-		"/C/git/revamp/ss/dev/wyzplayer.h",
-		"/C/git/revamp/ss/mus/make_ogt.bat",
-		"/C/git/revamp/marsport/48k/dev/mars-48.c",
-		"/C/git/revamp/ss/dev/beeper.h",
-		"/C/git/revamp/ss/mus/beeper.asm",
-		"/C/git/mk1/examples/impossamal/README.md",
-		"/C/git/revamp/ss/bin/scr-prec.bin",
-		"/C/git/revamp/ss/dev/loader.txt",
-		"/C/git/revamp/ss/dev/loader/loaderzx48_2scr_zx7.asm-orig",
-		"/C/git/revamp/ss/dev/loader/loader.asm",
-		"/C/git/revamp/ss/dev/binassets.h",
-		"/C/git/revamp/ss/dev/loader/loader_128.asm-orig",
-		"/C/git/revamp/ss/dev/loader/loaderzx.asm-orig",
-		"/C/git/revamp/ss/dev/librarian.h",
-		"/C/git/revamp/ss/dev/aplib.h",
-		"/C/git/revamp/ss/dev/crt.asm",
-		"/C/git/revamp/ss/dev/mojon_twins--severin-sewers.tap",
-		"/D/git/revamp/ss/dev/aplib.h",
-		"/D/git/revamp/ss/dev/globals.h",
-		"/D/git/revamp/ss/dev/ss.c",
-		"/D/git/revamp/ss/dev/engine.h",
-		"/D/git/revamp/ss/dev/comp.bat",
-		"/D/git/revamp/ss/dev/levelstruct.h",
-		"/D/git/revamp/ss/dev/leveldata.h",
-		"/D/git/revamp/ss/dev/printer.h",
-		"/D/git/revamp/ss/dev/ss.map",
-		"/D/git/revamp/ss/dev/librarian.h",
-		"/D/git/revamp/ss/bin/list.txt",
-		"/D/git/revamp/ss/dev/loader/loaderzx.asm-orig",
-		"/D/git/revamp/ss/bin/ram3.bin",
-		"/D/git/revamp/ss/dev/menu.h",
-		"/D/Proyectos/2016/20160719a--Api REST LDAP WMCCOR/manual.txt",
-		"/D/git/revamp/ss/dev/128k.h",
-		"/D/git/revamp/ss/dev/loader.txt",
-		"/D/git/revamp/ss/dev/wyzplayer.h",
-		"/D/git/revamp/ss/dev/loader/loader.asm",
-		"/D/git/revamp/ss/dev/overlay.h",
-		"/D/git/revamp/ss/bin/make-ram3.bat",
-		"/D/temp/ss/dev/ss.c",
-		"/D/temp/ss/dev/menu.h",
-		"/D/temp/ss/dev/engine.h",
-		"/D/temp/ss/dev/ss.map",
-		"/D/temp/ss/dev/levelstruct.h",
-		"/D/temp/ss/bin/make-ram4.bat",
-		"/D/git/MK1/src/dev/assets/levels.h",
-		"/D/temp/ss/dev/128k.h",
-		"/D/temp/ss/dev/wyzplayer.h",
-		"/D/temp/ss/dev/aplib.h",
-		"/D/temp/ss/dev/loader/loaderzx.asm-orig",
-		"/D/Proyectos/2023/20230808 - Revision SMSWS en P3S/instrucciones.txt",
-		"/D/Proyectos/2023/20230516 - Reparación vista Administradores de Recursos en Reservas/modificaciones/Presenters/Sandetel/ManageResourceAdminsPresenter.php",
-		"/D/Proyectos/CIs.txt",
-		"/D/Proyectos/2023/20230808 - Revision SMSWS en P3S/instrucciones-separado.txt",
-		"/D/Proyectos/2021/20211215a - P3S. Nuevos métodos en WebmovilWS/instrucciones-separado.txt",
-		"/D/Proyectos/2021/20211215a - P3S. Nuevos métodos en WebmovilWS/instrucciones2.txt",
-		"/C/Users/jcastano/Downloads/SmsWS.java",
-		"/C/Users/jcastano/Downloads/BlockLeaves.java",
-		"/D/Proyectos/remote/descon01/consigna/app/config/rest.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/authmodules/LDAP.php",
-		"/D/Proyectos/2023/20230504 - Reparación PassCaducado Consigna y Reservas/instrucciones.txt",
-		"/D/Proyectos/remote/descon01/simplesaml/config/config.php",
-		"/D/Proyectos/remote/descon01/simplesaml/www/_include.php",
-		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Error/Error.php",
-		"/D/Proyectos/remote/descon01/consigna/app/controllers/ficheros.php",
-		"/D/Proyectos/remote/descon01/simplesaml/templates/includes/header.php",
-		"/D/Proyectos/remote/descon01/simplesaml/dictionaries/errors.translation.json",
-		"/D/Proyectos/remote/descon01/consigna.OLD/app/libraries/authmodules/LDAP.php-deprecated",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/authmodules/LDAP.php-deprecated",
-		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Error/ErrorCodes.php",
-		"/D/Proyectos/remote/descon01/consigna/system/libraries/Upload.php",
-		"/D/Proyectos/2023/20230321 - Reserva de Recursos v1.32.0.0 - Edificios recuperables en Sync/instrucciones.txt",
-		"/D/Proyectos/remote/descon01/consigna/app/models/trabajoficheros.php",
-		"/D/Proyectos/remote/descon01/consigna/app/controllers/api_v1/api.php",
+		"/C/Users/jcastano/Desktop/lista.txt",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/SchedulePage.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Reservation/ReservationComponentBinder.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Reservation/ReservationInitializerBase.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Reservation/create.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Reservation/edit.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/ReservationPage.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/css/jda.css",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/PasswordPage.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Values/AttributeEntityValue.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Database/Commands/ColumnNames.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Database/Commands/Commands.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Database/Commands/ParameterNames.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Values/AttributeValue.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Access/AttributeRepository.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Database/Commands/Queries.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/BookableResource.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Presenters/Admin/ManageResourcesPresenter.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Access/ResourceRepository.php",
 		"/C/Users/jcastano/Desktop/pikapika.txt",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/MY_Form_validation.php",
-		"/D/Proyectos/2021/20210319a - Consigna v2.7.0.0 - históricos, correcciones/instrucciones.txt",
-		"/D/Proyectos/2021/20210205a - Actualización Consigna 2.4.0.0/instrucciones.txt",
-		"/D/temp/logs/consigna--20230113/log-2023-01-13.php.nodo2",
-		"/D/Proyectos/remote/descon01/consigna/mysql-database/database.sql",
-		"/D/Proyectos/remote/descon01/consigna/system/helpers/form_helper.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/Manejoauxiliar.php",
-		"/D/Proyectos/remote/descon01/consigna/app/config/config.php",
-		"/D/Proyectos/2023/20230120 - Declaraciones de Accesibilidad para clientes móviles de Consigna/instrucciones.txt",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/nusoap.php",
-		"/D/Proyectos/remote/descon01/consigna/app/views/cabecera.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/nusoapmime.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.xmlschema.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.wsdlcache.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.wsdl.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soapclient.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_val.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_transport_http.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_server.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_parser.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/nusoap/class.soap_fault.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/Email.php",
-		"/D/Proyectos/remote/descon01/consigna/app/views/invitacion-results.php",
-		"/D/Proyectos/remote/descon01/consigna/system/core/Output.php",
-		"/C/Users/jcastano/Downloads/Thread.php",
-		"/D/Proyectos/remote/descon01/consigna/system/core/URI.php",
-		"/D/Proyectos/remote/descon01/consigna/system/core/Router.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/authmodules/SamlSSO.php",
-		"/D/Proyectos/remote/descon01/consigna/system/core/CodeIgniter.php",
-		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Logger.php",
-		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Logger/FileLoggingHandler.php",
-		"/D/Proyectos/remote/descon01/simplesaml/SamlAuthentication.php",
-		"/D/Proyectos/remote/descon01/consigna/app/libraries/Auth.php",
-		"/D/Proyectos/remote/descon01/consigna/app/controllers/usuario.php",
-		"/C/Users/jcastano/Desktop/Configuration.php",
-		"/C/Users/jcastano/Desktop/authsources.php",
-		"/C/Users/jcastano/Desktop/config.php",
-		"/D/Proyectos/remote/descon01/simplesaml/metadata/saml20-idp-remote.php",
-		"/D/Proyectos/remote/descon01/simplesaml/config/authsources.php",
-		"/D/Proyectos/remote/descon01/simplesaml/Configuration.php",
-		"/D/Proyectos/remote/descon01/simplesaml/lib/SimpleSAML/Memcache.php"
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Reservation/ExistingReservationInitializer.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Presenters/Reservation/ReservationPresenter.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Reservation/NewReservationInitializer.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Reservation/ReservationInitializerFactory.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Presenters/SchedulePageBuilder.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Presenters/SchedulePresenter.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/external/fpdf/fpdf.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule-week.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Admin/Resources/manage_resources.tpl_orig.html",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/CustomAttribute.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/Admin/ManageResourcesPage.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Attributes/AttributeFormParser.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Attributes/AttributeList.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Admin/Resources/manage_resources.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Attributes/AttributeService.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Common/Date.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Access/ReservationRepository.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Activation/activation-error.tpl",
+		"/D/Proyectos/entregas/Entrega-FicherosJunta_1.11.0.0/instrucciones.md",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule-year.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Access/UserRepository.php",
+		"/D/git/infhell2/src/minecraft/net/minecraft/src/RenderCreeper.java",
+		"/D/Proyectos/2023/20231127 - Reservas 1.37.0.0 - Script cambio de permisos en lote/act-reservas--20231127a/tpl/login.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/external/fpdf/fpdfSandetel.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/Sandetel/SyncInterfacePage.php",
+		"/C/Users/jcastano/AppData/Local/Temp/7zO830A05F7/engine.h",
+		"/C/Users/jcastano/AppData/Local/Temp/7zO83098D67/on_tile_pushed.h",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Sync/Sync.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Server/Server.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Sandetel/sync_interface.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/Sandetel/CreateSedePage.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Presenters/Sandetel/SyncInterfacePresenter.php",
+		"/C/Users/jcastano/AppData/Local/Temp/7zO830333B7/on_tile_pushed.h",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/WebServices/Controllers/ReservationSaveController.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/WebServices/ResourcesWriteWebService.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/WebServices/ReservationWriteWebService.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/WebServices/Requests/ReservationRequest.php",
+		"/D/Proyectos/ionic/reservaRecursos/android/app/src/main/AndroidManifest.xml",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/scripts/sandetel.js",
+		"/D/Proyectos/entregas/Entrega-FicherosJunta_1.10.0.0/modificaciones/apps/files/templates/appnavigation.php",
+		"/D/Proyectos/entregas/Entrega-FicherosJunta_1.10.0.0/modificaciones/lib/private/L10N/Factory.php",
+		"/D/Proyectos/entregas/Entrega-FicherosJunta_1.10.0.0/modificaciones/lib/private/legacy/defaults.php",
+		"/D/Proyectos/2023/20230627 - Reservas 1.34.0.0/instrucciones.txt",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/login.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/login_prod/login_scripts.js",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/login_prod/jquery.js",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/WebServices/AuthenticationWebService.php",
+		"/D/Proyectos/entregas/Entrega-FicherosJunta_1.10.0.0/modificaciones/lib/private/Files/Filesystem.php",
+		"/D/Proyectos/entregas/Entrega-FicherosJunta_1.10.0.0/instrucciones.md",
+		"/D/Proyectos/2023/20230427 - Actualización utilLdap - Soporte TLSv1.2 en minicliente REST/instrucciones.txt",
+		"/D/Proyectos/2023/20230516 - Reparación vista Administradores de Recursos en Reservas/instrucciones.txt",
+		"/D/Proyectos/2023/20230526 - WSDC 1.25.0.1 - Corrección respuesta XML ValidaUsuario/instrucciones.txt",
+		"/D/Proyectos/2023/20230531 - Reservas 1.33.0.0/instrucciones.txt",
+		"/D/Proyectos/2023/20230502 - JAperfilAcceso para Adm. Delegados y Listados de Usuarios/1.Selco/instrucciones.txt",
+		"/D/Proyectos/2023/20230421 - Actualización utilLdap en las aplicaciones de CCOTOMXX/instrucciones.txt",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Presenters/NotificationPreferencesPresenter.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/notification-preferences.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Common/DateRange.php",
+		"/D/git/Minecraft-Infdev-Plus/Client/bin/textures/blocks/fire_0.txt",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/css/style.css",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/WebServices/SchedulesWebService.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/NotificationPreferencesPage.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Controls/DatePickerSetupControl.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/NewReservationPage.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/scripts/admin/resource.js",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/User.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Values/UserPreferences.php",
+		"/D/git/Minecraft-Infdev-Plus/Client/src/net/minecraft/client/textures/pack/TexturePackList.java",
+		"/C/Users/jcastano/AppData/Local/Temp/scp56979/www.ojodepez-fanzine.net/triangulo/pdf/index.php",
+		"/D/git/Minecraft-Infdev-Plus/Impdev/server.properties",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/Ajax/ResourceDetailsPage.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Attributes/Attribute.php",
+		"/D/Proyectos/remote/desres01/diario.md",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Ajax/resourcedetails.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Access/ReservationViewRepository.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Schedule/ResourceService.php",
+		"/D/Proyectos/2023/20230720 - Reservas 1.35.0.0/instrucciones.txt",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Schedule/ScheduleResourceFilter.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/schedule.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/support-and-credits.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/Page.php",
+		"/C/Users/jcastano/Downloads/schedule.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/Pages.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/view-resource.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/ViewResourcePage.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/get_image.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Blackout.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/css/schedule.css",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Schedule/ReservationSlot.php",
+		"/D/tmep/sad/src/lib/repository/com/gmv/commons/gmv-ldap-dao/1.0.0-rc6/GenericDaoLdap.java",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Ajax/respopup.tpl",
+		"/D/Proyectos/2023/20230710 - Reparación WS Reservas/instrucciones.txt",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/belcher.php",
+		"/D/Proyectos/remote/ccobuz30.sublime-workspace",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/ajax/respopup.php",
+		"/D/Proyectos/2023/20230628 - Modificación Verificador MRA en MiCuenta/instrucciones.txt",
+		"/C/Users/jcastano/Downloads/leveldesc.bas",
+		"/C/Users/jcastano/Downloads/pheng.bas",
+		"/C/Users/jcastano/Downloads/mtsx.bas",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Events/IDomainEvent.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Events/ReservationEvents.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/view-schedule.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule-days-horizontal.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule-flipped.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule-orig.tpl",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/ajax/resource_details.php",
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/admin/manage_schedules.php"
 	],
 	"find":
 	{
@@ -760,137 +719,9 @@
 	},
 	"find_in_files":
 	{
-		"height": 134.0,
+		"height": 137.0,
 		"where_history":
 		[
-			"C:\\git\\revamp\\ss\\dev",
-			"D:\\git\\revamp\\ss\\dev",
-			"D:\\temp\\ss\\dev",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\extra",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\libraries\\authmodules",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01",
-			"D:\\Proyectos\\remote\\descon01\\simplesaml\\templates",
-			"D:\\Proyectos\\remote\\descon01\\simplesaml",
-			"D:\\Proyectos\\remote\\descon01\\simplesaml\\www",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\mysql-database",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\simplesaml",
-			"D:\\Proyectos\\remote\\descon01\\simplesaml\\lib\\SimpleSAML",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\controllers",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\simplesaml",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\system",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\config",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\config",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\css",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\login_prod",
-			"",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\system",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\system",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\system",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\js",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\views",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\css",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\public\\js",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\controllers",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\config",
-			"D:\\Proyectos\\remote\\descon01\\consigna",
-			"D:\\Proyectos\\remote\\descon01\\consigna\\app\\libraries\\pheanstalk"
 		]
 	},
 	"find_state":
@@ -898,269 +729,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"posse",
-			"player_on",
-			"ISR",
-			"arkos_stop_sound",
-			"arkos_play_music",
-			"_menu",
-			"arkos_play_music",
-			"_menu",
-			"_x = ",
-			"draw_fast_loop",
-			"str_ptr",
-			"draw_",
-			"_x",
-			"draw_fast",
-			"rdt",
-			"rdc",
-			"rdm",
-			"wyz",
-			"ei",
-			"arkos_stop_sound",
-			"slevel",
-			"WYZPLAYER",
-			"player_on",
-			"isr",
-			"ay_player_on",
-			"ay_player",
-			"possee",
-			"sp_up",
-			"sp_UP",
-			"_sound",
-			"music",
-			"ARKOS_ADDRESS_MT_LOAD_SONG",
-			"music",
-			"([A-Za-z0-9]+):",
-			"border",
-			"di",
-			"beeper",
-			"wyz_play_music",
-			"resource",
-			"\n\t",
-			"get_resource",
-			"di",
-			"apack",
-			"wyz_play",
-			"espera_a",
-			"espera_",
-			"espera_activa",
-			"espera_active",
-			"collide",
-			"_collide",
-			"call _collide",
-			"collide",
-			"23305",
-			"halt",
-			"isrc",
-			"ISR",
-			"sp_updatenow",
-			"x_pant",
-			"x_pat",
-			"x_pant",
-			"n_pant",
-			"p_vy = 0",
-			"p_vx = 0",
-			"attr",
-			"cx",
-			"ctx",
-			"2",
-			"3",
-			" 4",
-			" 5",
-			"any",
-			"yOsc",
-			"sp_MoveSprAbs",
-			"en_an (\\[[a-z\\_]+\\])\\.([A-Za-z\\_]+)",
-			"en_an",
-			"moveSprAb",
-			"player.([a-z\\_]+)",
-			"player.current_frame",
-			"player.next_frame",
-			"player_y",
-			"player_x",
-			"player.y",
-			"player.x",
-			"spritesclip",
-			"map_buffer",
-			"ENEMS_DATA",
-			"MAX_BLOBS",
-			"23304",
-			"24999",
-			"sp_UpdateNow",
-			"unpack",
-			"ram_address",
-			"yOsc",
-			"draw_overlay",
-			"unpack",
-			"list.txt",
-			"level_buffer",
-			"\nlevel_buffer",
-			"map_pointer",
-			"n_pant",
-			"n_oant",
-			"x_pant",
-			"terminado",
-			"denew",
-			"fl1",
-			"key",
-			"thispass",
-			"len",
-			"res",
-			"j",
-			"i",
-			"espera_activa",
-			"espera_actia",
-			"espera_activa",
-			"SetRAMBank",
-			"ram_address",
-			"ram",
-			"ram_address",
-			"unpack_RAMn",
-			"i",
-			"j",
-			"^\n",
-			"yOsc",
-			"ob_y",
-			"28375",
-			"25000",
-			"level_buffer",
-			"joyfunc"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
-			"str_pt",
-			"player_on",
-			".\\1",
-			"zx0",
-			"cx",
-			"4",
-			"8",
-			"16",
-			"32",
-			"en_an_\\2 \\1",
-			"p_\\1",
-			"p_current_frame",
-			"p_next_frame",
-			"p_y",
-			"p_x",
-			"player_y",
-			"player_x",
-			"rdb",
-			"gen_pt",
-			"rda",
-			"gpjt",
-			"gpit",
-			"blockID",
-			"z",
-			"x",
-			"hash",
-			"j",
-			"zPlayer",
-			"xPlayer",
-			"0321",
-			"\\1",
-			"info",
-			"act-rr--20221125a.tar.gz",
-			"10.10",
-			"..\\utils\\",
-			"2.14",
-			"\"",
-			"/",
-			"\\n",
-			"sandetel",
-			"/login_prod/",
-			"sandetel",
-			"/var/www/html/consigna/",
-			"php",
-			"%%%dni%%%",
-			"%%%uidnumber%%%",
-			"%%%surname%%%",
-			"%%%firstname%%%",
-			"%%%uid%%%",
-			"prueba",
-			"act-consigna--20210715a",
-			"EOL",
-			"EMAIL_EOL",
-			".",
-			"'info'",
-			"\"",
-			"20210429a",
-			"2.7",
-			"/var/www/html/consigna/app",
-			"/var/www/html/consigna/",
-			"1.18.7",
-			"1.18",
-			"log_message",
-			"CONUCD] ' . $this->_user_ldap_dn . ' ",
-			"$resource->\\1(filter_var(\\2, FILTER_SANITIZE_STRING))",
-			"$resource->\\1(filter_var(\\2, FILTER_SANITIZE_STRING)));",
-			"$this->resourceRepository->\\1(filter_var(\\2, FILTER_SANITIZE_STRING)));",
-			"$this->resourceRepository->\\1(filter_var(\\2, FILTER_SANITIZE_STRING));",
-			"/",
-			"date",
-			"gmdate",
-			"strtotime",
-			"function",
-			"php",
-			"Europe/Madrid",
-			"",
-			"false",
-			"o=juntadeandalucia",
-			"Imagen",
-			"sedeId",
-			"organismoId",
-			"h3",
-			"Médicos",
-			"Policía",
-			"Público",
-			"Gestión",
-			"Córdoba",
-			"Málaga",
-			"Cádiz",
-			"Andalucía",
-			"Pública",
-			"Políticas",
-			"Ordenación",
-			"Informático",
-			"Científico",
-			"Consejería",
-			"Evaluación",
-			"aeronáutico",
-			"tecnológico",
-			"Administración",
-			"Ríos",
-			"Área",
-			"Formación",
-			"Estadística",
-			"Innovación",
-			"Economía",
-			"Educación",
-			"Andalucía",
-			"Fundación",
-			"Integración",
-			"Pública",
-			"Fundación",
-			"Energía",
-			"Consejería",
-			"replicación",
-			"dn: \\1\\nchangetype: modify\\nreplace: displayName",
-			"",
-			"\\ndn",
-			"",
-			"locationParameters",
-			"this",
-			" ",
-			"2",
-			"RRFaqs",
-			"RRAdministradores",
-			"accordionRRAdministradores",
-			" accordionRRAdministradores",
-			" "
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1171,197 +746,23 @@
 	"groups":
 	[
 		{
-<<<<<<< HEAD
-			"selected": 0,
-=======
-			"selected": 1,
->>>>>>> 845b875be56b0732d1ccd56bdfd8be82c21afded
 			"sheets":
 			[
-				{
-					"buffer": 0,
-<<<<<<< HEAD
-					"file": "dev/menu.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4710,
-=======
-					"file": "dev/sound.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4014,
->>>>>>> 845b875be56b0732d1ccd56bdfd8be82c21afded
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-<<<<<<< HEAD
-								4266,
-								4266
-=======
-								3734,
-								3734
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3238.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "dev/engine.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 28358,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								27401,
-								27401
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 23855.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "dev/leveldata.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 404,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								271,
-								271
->>>>>>> 845b875be56b0732d1ccd56bdfd8be82c21afded
-							]
-						],
-						"settings":
-						{
-<<<<<<< HEAD
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-=======
->>>>>>> 845b875be56b0732d1ccd56bdfd8be82c21afded
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-<<<<<<< HEAD
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		},
 		{
 			"sheets":
 			[
-=======
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "dev/ss.map",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 83872,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								25181,
-								25192
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 9.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "dev/ss.asm",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 142502,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								18508,
-								18508
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Kick Assembler (C64)/Syntaxes/KickAssembler (C64).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7402.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				}
->>>>>>> 845b875be56b0732d1ccd56bdfd8be82c21afded
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 24.0
 	},
 	"input":
 	{
-		"height": 37.0
+		"height": 46.0
 	},
 	"layout":
 	{
@@ -1372,11 +773,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1388,7 +796,7 @@
 	"menu_visible": true,
 	"output.SFTP":
 	{
-		"height": 96.0
+		"height": 136.0
 	},
 	"output.doc":
 	{
@@ -1398,15 +806,11 @@
 	{
 		"height": 0.0
 	},
-	"output.sftp":
-	{
-		"height": 183.0
-	},
 	"pinned_build_system": "",
 	"project": "ss.sublime-project",
 	"replace":
 	{
-		"height": 94.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1426,11 +830,11 @@
 		[
 			[
 				"",
-				"C:\\git\\mk1\\mk1.sublime-project"
+				"D:\\git\\revamp\\ss\\ss.sublime-project"
 			],
 			[
-				"desres",
-				"D:\\Proyectos\\remote\\desres01.sublime-project"
+				"desown",
+				"D:\\Proyectos\\remote\\desowncl01.sublime-project"
 			]
 		],
 		"width": 380.0
@@ -1444,7 +848,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
@@ -1452,7 +856,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 178.0,
+	"side_bar_width": 296.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

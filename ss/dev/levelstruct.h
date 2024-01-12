@@ -37,11 +37,6 @@ extern HOTSPOT hotspots[0];
 		defw	0
 #endasm
 
-void __FASTCALL__ load_level (unsigned char level) {	
-	unpack (levels [level].binary, level_buffer);
-	yOsc = levels [level].yOsc * 5;
-}
-
 void invalidate_tile (void) {
 	#asm
 			; Invalidate Rectangle

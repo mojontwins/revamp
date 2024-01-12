@@ -12,7 +12,12 @@
 
 #include <spritepack.h>
 
-#pragma output STACKPTR=23999
+#ifdef OLD_Z88DK
+	#define STACK_ADDR 23999
+#else
+	#pragma output STACKPTR=23999
+#endif
+
 #define FREEPOOL		61697
 
 #define VIEWPORT_X		1
@@ -76,19 +81,53 @@ void main (void) {
 	// Install ISR
 
 	#asm
-		di
-		xor a 
-		out (254), a
+		// Just in case
+			di
+
+		// Set stack pointer
+			#ifdef OLD_Z88DK
+				ld  sp, STACK_ADDR
+			#endif
+
+		// Border 0
+			xor a 
+			out (254), a
+
+		// Spectrum model detection
+			ld  bc, 0x7ffd
+			xor a
+			out (c), a
+			ld  a, (0x1)
+			ld  h, a
+			ld  a, 0x10
+			out (c), a
+			ld  a, (0x1)
+			cp  h
+			jr  z, no128K
+
+			// 128K model!
+			call _arkos_init
+
+			ld  a, 1 
+			jr  detection_done
+
+		.no128K
+			xor a
+		
+		.detection_done
+			ld  (_is128k), a
 	#endasm
 
-	sp_InitIM2(0xf1f1);
-	sp_CreateGenericISR(0xf1f1);
-	sp_RegisterHook(255, ISR);
+	// Setup IM2
+
+	sp_InitIM2 (0xf1f1);
+	sp_CreateGenericISR (0xf1f1);
+	sp_RegisterHook (255, ISR);
 
 	// Init splib2
 	
 	sp_Initialize (0, 0);
-	sp_AddMemory(0, 40, 14, AD_FREE);
+	sp_AddMemory (0, 40, 14, AD_FREE);
 
 	// Control scheme: default keyboard
 		
@@ -158,32 +197,9 @@ void main (void) {
 			djnz fix_sprites_rep1
 	#endasm
 
-	// Spectrum model detection
+	// And enable interruptions
 
 	#asm
-			ld  bc, 0x7ffd
-			xor a
-			out (c), a
-			ld  a, (0x1)
-			ld  h, a
-			ld  a, 0x10
-			out (c), a
-			ld  a, (0x1)
-			cp  h
-			jr  z, no128K
-
-			// 128K model!
-			call _arkos_init
-
-			ld  a, 1 
-			jr  detection_done
-
-		.no128K
-			xor a
-		
-		.detection_done
-			ld  (_is128k), a
-
 			ei
 	#endasm
 
@@ -191,19 +207,19 @@ void main (void) {
 	arkos_play_music (6);
 
 	blackout_everything ();
-	unpack (scr_mojon_twins_bin, 16384);
+	unpack (scr_mojon_twins_bin, (unsigned char *) (0x4000));
 
 	play_sfx (3);
 	espera_activa (150);
 	
 	blackout_everything ();
-	unpack (scr_ubhres_bin, 16384);
+	unpack (scr_ubhres_bin, (unsigned char *) (0x4000));
 
 	play_sfx (3);
 	espera_activa (150);
 
 	blackout_everything ();
-	unpack (scr_sheet_bin, 16384);
+	unpack (scr_sheet_bin, (unsigned char *) (0x4000));
 	
 	play_sfx (3);
 	espera_activa (1000);

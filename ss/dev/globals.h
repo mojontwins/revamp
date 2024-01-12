@@ -3,8 +3,8 @@
 
 unsigned char safe_byte 		@ 23296;
 
-unsigned int ram_address 		@ 23297;
-unsigned int ram_destination 	@ 23299;
+unsigned char *ram_address 		@ 23297;
+unsigned char *ram_destination 	@ 23299;
 
 unsigned char ram_page 			@ 23301;
 
@@ -14,7 +14,12 @@ unsigned char attrs_byte 		@ 23304;
 unsigned char isrc 				@ 23305;
 unsigned char is128k			@ 23306;
 
-unsigned int (*joyfunc)(struct sp_UDK *);				// Controls.
+#ifdef OLD_Z88DK
+	void *joyfunc;
+#else
+	unsigned int (*joyfunc)(struct sp_UDK *);				// Controls.
+#endif
+
 void *my_malloc(uint bytes) {return sp_BlockAlloc(0);}	// malloc routines
 void *u_malloc = my_malloc;								// I wonder what
 void *u_free = sp_FreeBlock;							// those do...
@@ -84,7 +89,6 @@ unsigned char p_life, p_score;
 unsigned char *p_current_frame, *p_next_frame;
 unsigned char possee;
 
-unsigned char _en_x, _en_y;
 unsigned char enoffsmasi;
 unsigned char enit;
 
@@ -113,3 +117,5 @@ unsigned char yOsc = 4;
 unsigned char f_win;
 
 signed char ovl_x, ovl_y;
+
+unsigned char level;

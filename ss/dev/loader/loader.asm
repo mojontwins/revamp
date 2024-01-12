@@ -13,13 +13,13 @@ preload:
 ; load screen
 	scf
 	ld	a, $ff
-	ld	ix, 65368 - 575
+	ld	ix, 65536 - 575
 	ld	de, 575
 	call $0556
 	di
 
 ; Decompress
-	ld  hl, 65368 - 575
+	ld  hl, 65536 - 575
 	ld  de, 16384
 	call depack	
 
@@ -27,7 +27,7 @@ load:
 ; load screen
 	scf
 	ld	a, $ff
-	ld	ix, 65368 - 2465
+	ld	ix, 65536 - 2465
 	ld	de, 2465
 	call $0556
 	di
@@ -35,7 +35,7 @@ load:
 	call blackout
 
 ; Decompress
-	ld  hl, 65368 - 2465
+	ld  hl, 65536 - 2465
 	ld  de, 16384
 	call depack	
 
@@ -43,13 +43,13 @@ mainbin:
 ; Main binary
 	scf
 	ld	a, $ff
-	ld	ix, 65368 - 23704
-	ld	de, 23704
+	ld	ix, 65536 - 23620
+	ld	de, 23620
 	call $0556
 	di
 
 ; Decompress
-	ld  hl, 65368 - 23704
+	ld  hl, 65536 - 23620
 	ld  de, 24000
 	call depack	
 
@@ -73,15 +73,10 @@ ram1:
 
 	scf
 	ld	a, $ff
-	ld	ix, 65368 - 4061
-	ld	de, 4061
+	ld	ix, $c000
+	ld	de, 5059
 	call $0556
 	di
-
-	; Decompress
-	ld  hl, 65368 - 4061
-	ld  de, $C000
-	call depack	
 
 	ld	a, $10 		; ROM 1, RAM 0
 	ld	bc, $7ffd
@@ -168,4 +163,3 @@ dzx7s_next_bit:
 		inc     hl
 		rla
 		ret
-done:
