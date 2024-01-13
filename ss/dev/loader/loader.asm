@@ -27,15 +27,15 @@ load:
 ; load screen
 	scf
 	ld	a, $ff
-	ld	ix, 65536 - 2465
-	ld	de, 2465
+	ld	ix, 65536 - 2467
+	ld	de, 2467
 	call $0556
 	di
 
 	call blackout
 
 ; Decompress
-	ld  hl, 65536 - 2465
+	ld  hl, 65536 - 2467
 	ld  de, 16384
 	call depack	
 
@@ -43,13 +43,13 @@ mainbin:
 ; Main binary
 	scf
 	ld	a, $ff
-	ld	ix, 65536 - 23620
-	ld	de, 23620
+	ld	ix, 65536 - 23611
+	ld	de, 23611
 	call $0556
 	di
 
 ; Decompress
-	ld  hl, 65536 - 23620
+	ld  hl, 65536 - 23611
 	ld  de, 24000
 	call depack	
 

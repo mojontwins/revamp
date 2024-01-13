@@ -1207,34 +1207,31 @@ void init_hotspots () {
 }
 	
 void muerte (void) {
-	
-	rdc = 0;
-
 	play_sfx (0);
-	
-	#asm 
-			ld  a, 100
-			ld  (_gpit), a
+
+	#asm
+		// Repeat 150 times
+			ld  b, 50
+			ld  c, 0
+
 		.muerte_loop
-			call _any_key
-			xor a 
-			or  l 
-
-			ret nz 
-
-			ld  a, (_rda) 
+			ld  a, c 
+			xor 1
 			ld  c, a
-
-			ld  a, (_rdc) 
-			xor 1 
-			jr  z, muerte_nochangecol
+			push bc 
 			
+			jr  z, muerte_c2
+			
+			ld  a, 2
+			jr  muerte_cd
+
+		.muerte_c2
 			ld  hl, SFX_LAND
 			call _play_sfx
 
-			ld  a, (_rdb) 
+			ld  a, 16
 
-		.muerte_nochangecol
+		.muerte_cd
 
 			ld	hl, 22561
 			ld	de, 22561
@@ -1288,12 +1285,10 @@ void muerte (void) {
 			pop bc
 			djnz mb1
 
-			ld  a, (_gpit)
-			or  a
-
+			pop bc
 			djnz muerte_loop
-	#endasm
 
+	#endasm
 }
 
 unsigned char rand (void) {
@@ -1752,7 +1747,7 @@ unsigned char game (void) {
 		
 		if (p_life == 0 || sp_KeyPressed (key_g)) {
 			arkos_play_music (6);
-			rda = 2; rdb = 16; muerte ();
+			muerte ();
 			break;
 		}
 		
@@ -1907,6 +1902,6 @@ unsigned char game (void) {
 			.flick_down_done
 		#endasm
 	};
-	
+
 	return f_win;
 }
