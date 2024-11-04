@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"setFa",
+				"setFacingDone\tabc"
+			],
+			[
+				"draw_cha",
+				"draw_char_by_char\tabc"
+			],
+			[
 				"custom_",
 				"custom_attribute_value_id\tabc"
 			],
@@ -506,19 +514,37 @@
 			[
 				"ignore",
 				"ignoreMapFile"
-			],
-			[
-				"bolts",
-				"bolts_update_tile"
-			],
-			[
-				"psk",
-				"PLAYER_SINKS"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"contents": "\t",
+			"settings":
+			{
+				"buffer_size": 1,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Proyectos/2024/20240129a - Replicar la configuración de fomento a ada en LDAPSearch de Webmail/instrucciones.txt",
+			"settings":
+			{
+				"buffer_size": 1374,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Proyectos/entregas/Entrega-FicherosJunta_1.12.0.0/instrucciones.md",
+			"settings":
+			{
+				"buffer_size": 15595,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -580,10 +606,34 @@
 	},
 	"expanded_folders":
 	[
-		"/D/git/revamp/ss"
+		"/D/git/revamp/ss",
+		"/D/git/revamp/ss/dev",
+		"/D/git/revamp/ss/dev/loader",
+		"/D/git/revamp/ss/mus",
+		"/D/git/revamp/ss/show"
 	],
 	"file_history":
 	[
+		"/D/temp/__VIEHO/LBASIC8.zip",
+		"/D/temp/__VIEHO/lbaswin1.9/INTWN.TXT",
+		"/D/temp/__VIEHO/vb4iso/cdkey.txt",
+		"/D/temp/__VIEHO/lbaswin1.9.zip",
+		"/C/Users/jcastano/AppData/Local/Temp/7zOCDB1A0A4/defs.bas",
+		"/C/Users/jcastano/Downloads/TBS.DOC",
+		"/C/Users/jcastano/Downloads/TBS2.DOC",
+		"/C/Users/jcastano/AppData/Local/Temp/pid-11076/Instrucciones.txt",
+		"/D/git/revamp/ss/mus/make_ogt.bat",
+		"/D/Proyectos/2022/20220609a - Mejoras Webmail (ldap_search, MariaDB 10.5, etc)/instrucciones.txt",
+		"/D/Proyectos/2023/20230413 - Replicar la configuración de cfiot a fomento en LDAPSearch de Webmail/instrucciones.txt",
+		"/D/Proyectos/2024/20240129a - Replicar la configuración de fomento a ada en LDAPSearch de Webmail/instrucciones.txt",
+		"/D/git/revamp/ss/dev/sound.h",
+		"/D/git/revamp/ss/lib/interrupts/SPRegisterHookLast.asm",
+		"/D/git/revamp/ss/dev/loader/loaderzx48_2scr_zx7.asm-orig",
+		"/D/git/revamp/ss/dev/menu.h",
+		"/D/git/revamp/ss/dev/printer.h",
+		"/D/git/revamp/ss/dev/engine.h",
+		"/D/git/revamp/ss/dev/ss.c",
+		"/D/git/MK1v4/games_zx/perils/dev/mtasmlib.h",
 		"/C/Users/jcastano/Desktop/lista.txt",
 		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/SchedulePage.php",
 		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule.tpl",
@@ -691,37 +741,20 @@
 		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/view-resource.php",
 		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Pages/ViewResourcePage.php",
 		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/get_image.php",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Blackout.php",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/css/schedule.css",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/lib/Application/Schedule/ReservationSlot.php",
-		"/D/tmep/sad/src/lib/repository/com/gmv/commons/gmv-ldap-dao/1.0.0-rc6/GenericDaoLdap.java",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Ajax/respopup.tpl",
-		"/D/Proyectos/2023/20230710 - Reparación WS Reservas/instrucciones.txt",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/belcher.php",
-		"/D/Proyectos/remote/ccobuz30.sublime-workspace",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/ajax/respopup.php",
-		"/D/Proyectos/2023/20230628 - Modificación Verificador MRA en MiCuenta/instrucciones.txt",
-		"/C/Users/jcastano/Downloads/leveldesc.bas",
-		"/C/Users/jcastano/Downloads/pheng.bas",
-		"/C/Users/jcastano/Downloads/mtsx.bas",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Events/IDomainEvent.php",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Events/ReservationEvents.php",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/view-schedule.tpl",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule-days-horizontal.tpl",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule-flipped.tpl",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/tpl/Schedule/schedule-orig.tpl",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/ajax/resource_details.php",
-		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Web/admin/manage_schedules.php"
+		"/D/Proyectos/remote/desres01/reserva.juntadeandalucia.es/Domain/Blackout.php"
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 54.0
 	},
 	"find_in_files":
 	{
 		"height": 137.0,
 		"where_history":
 		[
+			"D:\\git\\revamp\\ss\\dev",
+			"D:\\git\\revamp\\ss\\lib",
+			"D:\\git\\revamp\\ss\\dev"
 		]
 	},
 	"find_state":
@@ -729,6 +762,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"setrambank",
+			" ED",
+			"ED",
+			"SPREGISTERHOOKLAST",
+			"DONE",
+			"facing",
+			"draw_char_by_char"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -746,8 +786,104 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"incomplete_sync": null,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/Proyectos/2024/20240129a - Replicar la configuración de fomento a ada en LDAPSearch de Webmail/instrucciones.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1374,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1143,
+								1143
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/Proyectos/entregas/Entrega-FicherosJunta_1.12.0.0/instrucciones.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15595,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15286,
+								15286
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6006.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		},
 		{
@@ -848,7 +984,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -856,7 +992,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 296.0,
+	"side_bar_width": 435.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

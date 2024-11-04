@@ -7,7 +7,7 @@ if [%1]==[justassemble] goto :assemble
 
 echo Convirtiendo . . .
 ..\utils\AKSToBIN.exe -a %base% "level1.aks" 00_level1.bin 
-..\utils\AKSToBIN.exe -a %base% "level2.aks" 01_level2.bin 
+..\utils\AKSToBIN.exe -a %base% "level2v2.aks" 01_level2.bin 
 ..\utils\AKSToBIN.exe -a %base% "level3.aks" 02_level3.bin 
 ..\utils\AKSToBIN.exe -a %base% "level4.aks" 03_level4.bin 
 ..\utils\AKSToBIN.exe -a %base% "ganga_intro.aks" 04_ganga_intro.bin 

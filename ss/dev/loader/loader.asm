@@ -74,7 +74,7 @@ ram1:
 	scf
 	ld	a, $ff
 	ld	ix, $c000
-	ld	de, 5059
+	ld	de, 5058
 	call $0556
 	di
 
